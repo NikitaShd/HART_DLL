@@ -7,12 +7,7 @@ namespace Class_HART
 {
    public class _Convert
     {
-        static char[] PACKED_ASCII = { '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 
-                               'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
-                               'X', 'Y', 'Z', '[', '\\', ']', '^', '_', ' ', '!', '"', '#',
-                               '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/',
-                               '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';',
-                               '<', '=', '>', '?'};
+       
         //===================================================================================================================================================================================================================================================================================
         /*! @} */
         /*! \defgroup 2_module конверктаця байт в различные типы даных 
@@ -53,7 +48,7 @@ namespace Class_HART
                         int buet2 = (tem >> 12) & 0x3F;
                         int buet3 = (tem >> 6) & 0x3F;
                         int buet4 = tem & 0x3F;
-                        str += Convert.ToString(PACKED_ASCII[buet1]) + Convert.ToString(PACKED_ASCII[buet2]) + Convert.ToString(PACKED_ASCII[buet3]) + Convert.ToString(PACKED_ASCII[buet4]);
+                        str += Convert.ToString(_Tables.PACKED_ASCII[buet1]) + Convert.ToString(_Tables.PACKED_ASCII[buet2]) + Convert.ToString(_Tables.PACKED_ASCII[buet3]) + Convert.ToString(_Tables.PACKED_ASCII[buet4]);
                         j = 0;
                         Array.Resize(ref a, 0);
                     }
@@ -293,7 +288,7 @@ namespace Class_HART
             string tem = s.PadRight(40, ' ');
             for (int i = 0; i < tem.Length; i++)
             {
-                int temp = Array.IndexOf(PACKED_ASCII, tem[i]);
+                int temp = Array.IndexOf(_Tables.PACKED_ASCII, tem[i]);
                 if (temp != -1)
                 {
                     buf |= temp;
