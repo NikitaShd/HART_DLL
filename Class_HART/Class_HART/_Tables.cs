@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Class_HART
 {
-   public class _Tables
+     public class _Tables
     {
         //=================< Декодирывание (Таблицы) >=====================================================================================
         static public char[] PACKED_ASCII = { '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 

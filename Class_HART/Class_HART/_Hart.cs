@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 namespace Class_HART
 {
-    public class Conect
+    public partial class Conect
     {
         private static SerialPort port;      ///< клас USB порта 
         // =========== стандартные настройки usb ========================================
@@ -55,6 +55,10 @@ namespace Class_HART
             Port_id = ID;
             Spide   = Spid;
         }
+        public Conect() // 1 конструктор 
+        {
+            
+        }
         public Conect(string ID, int Spid, Parity p, int Databits, StopBits Stop_Bits) // 2 конструктор 
         {
             Port_id   = ID;
@@ -99,7 +103,7 @@ namespace Class_HART
             }
         }
 
-        
+       
         
         
         public string close()
@@ -147,7 +151,7 @@ namespace Class_HART
             }
             return bytes;
         }
-       
+     
        
 
         public string Eror_cod()
@@ -305,143 +309,7 @@ namespace Class_HART
          
         }
         /*! @} */
-        // =======================<  Спец команды   >========================================================================== 
-           public string[] dev = { "MTM701" };    
-           public void MTM701_Comand_130(int id_master, Byte[] id_slaiv, ref string[] res)
-           {
-               try
-               {
-                   Read_Fraim[] temp = Write_long(preambula_leng, id_master, id_slaiv, 130, new Byte[] { });
-                   Array.Resize(ref res, 5);
-                   res[0] = BitConverter.ToString(temp[0].DT, 0, 2);
-                   res[1] = BitConverter.ToString(temp[0].DT, 2, 2);
-                   res[2] = BitConverter.ToString(temp[0].DT, 4, 2);
-                   res[3] = BitConverter.ToString(temp[0].DT, 6, 2);
-                   res[4] = BitConverter.ToString(temp[0].DT, 8, 2);
-                 
-               }
-               catch
-               {
-                   res[0] = "READ_EROR";
-                   res[1] = "READ_EROR";
-                   res[2] = "READ_EROR";
-                   res[3] = "READ_EROR";
-                   res[4] = "READ_EROR";
-                   EROR = "READ_EROR";
-               }
-
-           }
-           public void MTM701_Comand_131(int id_master, Byte[] id_slaiv,int kod_op,ref int res)
-           {
-               try
-               {
-                   Read_Fraim[] temp = { };
-                   if (kod_op == 1)
-                   {
-                       temp = Write_long(preambula_leng, id_master, id_slaiv, 131, new Byte[] { (byte)kod_op,(byte)res});
-                   }
-                   else if (kod_op == 0)
-                   {
-                       temp = Write_long(preambula_leng, id_master, id_slaiv, 131, new Byte[] { (byte)kod_op });
-                       res = Convert.ToInt32(temp[0].DT[1]);
-                   }else
-                   {
-
-                   }
-
-                        
-
-                        
-                     
-                    
-               }
-               catch
-               {
-                   res =-1;
-
-                   EROR = "READ_EROR";
-               }
-
-           }
-
-           public void MTM701_Comand_132(int id_master, Byte[] id_slaiv,int kod,ref int nom_ust,ref int logic,ref float min,ref float max ,ref float gist)
-           {
-               try
-               {
-                  
-                         
-                           Read_Fraim[] temp = { };
-                           if (kod == 1)
-                           {
-                           
-                               byte[] mi = _Convert.Float_tu_byte(min);
-                               byte[] ma = _Convert.Float_tu_byte(max);
-                               byte[] g = _Convert.Float_tu_byte(gist);
-                               Byte[] te = { (byte)kod, (byte)nom_ust, (byte)logic, mi[0], mi[1], mi[2], mi[3], ma[0], ma[1], ma[2], ma[3], g[0], g[1], g[2], g[3] };
-                               temp = Write_long(preambula_leng, id_master, id_slaiv, 132, te);
-                           }
-                           else if (kod == 0)
-                           {
-                               temp = Write_long(preambula_leng, id_master, id_slaiv, 132, new Byte[] { (byte)kod,(byte)nom_ust});
-                               nom_ust = temp[0].DT[1];
-                               logic = temp[0].DT[2];
-                               min = _Convert.Buye_tu_F(temp[0].DT, 3, 4);
-                               max = _Convert.Buye_tu_F(temp[0].DT, 7, 4);
-                               gist = _Convert.Buye_tu_F(temp[0].DT, 11, 4);
-                           }
-                           else
-                           {
-
-                           }
-                           
-               
-               }
-               catch
-               {
-
-                   EROR = "READ_EROR";
-               }
-
-           }
-           public void MTM701_Comand_133(int id_master, Byte[] id_slaiv, int kod, ref int kod_d, ref int kod_ed, ref int allarm, ref byte[] kod_CAP, ref int t, ref int d, ref int t_m, ref int d_m)
-           {
-               try
-               {
-
-
-                   Read_Fraim[] temp = { };
-                   if (kod == 1)
-                   {
-                       Byte[] te = { (byte)kod, (byte)kod_d, (byte)kod_ed, (byte)allarm, kod_CAP[0], kod_CAP[1], (byte)t, (byte)d };
-                       temp = Write_long(preambula_leng, id_master, id_slaiv, 132, te);
-                   }
-                   else if (kod == 0)
-                   {
-                       temp = Write_long(preambula_leng, id_master, id_slaiv, 132, new Byte[] { (byte)kod });
-                       kod_d = temp[0].DT[1];
-                       kod_ed = temp[0].DT[2];
-                       allarm = temp[0].DT[3];
-                       kod_CAP[0] = temp[0].DT[4];
-                       kod_CAP[1] = temp[0].DT[5];
-                       t = temp[0].DT[8];
-                       d = temp[0].DT[9];
-                       t_m = temp[0].DT[6];
-                       d_m = temp[0].DT[8];
-                   }
-                   else
-                   {
-
-                   }
-
-
-               }
-               catch
-               {
-
-                   EROR = "READ_EROR";
-               }
-
-           }
+        
            /*! \addtogroup <COMAND> [(Базовые команды)]
             * \brief Данный модуль содержит список базовых команд и их описание.
          @{
