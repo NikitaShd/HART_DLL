@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="_Hart.cs" />
     <Compile Include="Form_131.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -52,6 +52,7 @@
       <DependentUpon>Form_131.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="_Convert.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form_131.resx">

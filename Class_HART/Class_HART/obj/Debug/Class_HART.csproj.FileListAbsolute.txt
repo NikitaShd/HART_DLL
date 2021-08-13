@@ -10,3 +10,10 @@ D:\Progect\HART\DLL\Class_HART\Class_HART\obj\Debug\Class_HART.dll
 D:\Progect\HART\DLL\Class_HART\Class_HART\obj\Debug\Class_HART.pdb
 D:\Progect\HART\DLL\Class_HART\Class_HART\obj\Debug\Class_HART.Form_131.resources
 D:\Progect\HART\DLL\Class_HART\Class_HART\obj\Debug\Class_HART.csproj.GenerateResource.Cache
+D:\GIT\HART_DLL\Class_HART\Class_HART\bin\Debug\Class_HART.dll
+D:\GIT\HART_DLL\Class_HART\Class_HART\bin\Debug\Class_HART.pdb
+D:\GIT\HART_DLL\Class_HART\Class_HART\obj\Debug\Class_HART.csprojResolveAssemblyReference.cache
+D:\GIT\HART_DLL\Class_HART\Class_HART\obj\Debug\Class_HART.Form_131.resources
+D:\GIT\HART_DLL\Class_HART\Class_HART\obj\Debug\Class_HART.csproj.GenerateResource.Cache
+D:\GIT\HART_DLL\Class_HART\Class_HART\obj\Debug\Class_HART.dll
+D:\GIT\HART_DLL\Class_HART\Class_HART\obj\Debug\Class_HART.pdb
