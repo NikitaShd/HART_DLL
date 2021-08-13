@@ -8,6 +8,10 @@ namespace Class_HART
 {
     public partial class Conect
     {
+        string[] MTM701_Cods = new string[]
+        {
+        "Па","кПа","МПа","гс/см2","кгс/см2","мм.рт.ст.","мм.вод.ст","psi","бар","Мбар"
+        };
         public void MTM701_Comand_130(int id_master, Byte[] id_slaiv, ref string[] res)
         {
             Array.Resize(ref res, 5);
