@@ -8,6 +8,7 @@ namespace Class_HART
 {
     public partial class Conect
     {
+        // описание команд для MTM701
         static public string[] MTM701_Cods_Pressure = new string[]{ // Коды единиц измерения давления
         "Па","кПа","МПа","гс/см2","кгс/см2","мм.рт.ст.","мм.вод.ст","psi","бар","Мбар"
         };
