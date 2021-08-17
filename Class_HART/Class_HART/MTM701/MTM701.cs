@@ -184,5 +184,44 @@ namespace Class_HART
             }
 
         }
+        public void MTM701_Comand_135(int id_master, Byte[] id_slaiv, int kod, int i,int j, ref float davlenie, ref string cod_d, ref string cod_mk, ref string cod_dn,ref string cod_dt)
+        {
+            try
+            {
+                Read_Fraim[] temp;
+                if (kod == 0)
+                {
+                    temp = Write_long(preambula_leng, id_master, id_slaiv, 135, new Byte[] { (byte)kod, (byte)i, (byte)j });
+
+
+                    // Array.Reverse(temp[0].DT);
+
+                    davlenie = _Convert.Buye_tu_F(temp[0].DT, 3, 4);
+                    cod_d  = "0x" + BitConverter.ToString(temp[0].DT, 7, 2).Replace("-", "");
+                    cod_mk = "0x" + BitConverter.ToString(temp[0].DT, 9, 2).Replace("-", "");
+                    cod_dn = "0x" + BitConverter.ToString(temp[0].DT, 11, 2).Replace("-", "");
+                    cod_dt = "0x" + BitConverter.ToString(temp[0].DT, 13, 2).Replace("-", "");
+
+                }
+                else if (kod == 1)
+                {
+                    List<byte> list = new List<byte>();
+                    list.AddRange(new byte[] { (byte)kod, (byte)i });
+                  //  list.AddRange(_Convert.Float_tu_byte(tem));
+                   // list.AddRange(_Convert.GetBytes(cod_te));
+                    list.AddRange(_Convert.GetBytes(cod_d));
+                  //  list.AddRange(_Convert.GetBytes(cod_to));
+                    byte[] z = list.ToArray();
+                    temp = Write_long(preambula_leng, id_master, id_slaiv, 135, z);
+                }
+            }
+            catch
+            {
+
+
+                EROR = "EROR";
+            }
+
+        }
     }
 }
