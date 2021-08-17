@@ -353,7 +353,28 @@ namespace Class_HART
             Byte[] temp = { Convert.ToByte(dd), Convert.ToByte(mm), Convert.ToByte(yy) };
             return temp;
         }
-
+       /// <summary>
+       /// Конветрирует строку в байты 
+       /// </summary>
+       /// <remarks>
+       /// Конверктирует строку байт типа ХХХХХХХХ в масив типа байт [XX,XX,XX,XX];
+       /// </remarks>
+       /// <param name="str">- входная строка</param>
+       /// <returns>выходной масив байт</returns>
+      static public byte[] GetBytes(string str)
+       {
+           str = str.Replace(",","");
+           str = str.Replace(" ", "");
+           str = str.Replace("-", "");
+           str = str.Replace("0x", "");
+           int hexLength = str.Length;
+           byte[] bytes = new byte[hexLength / 2];
+           for (int i = 0; i < hexLength; i += 2)
+           {
+               bytes[i / 2] = Convert.ToByte(str.Substring(i, 2), 16);
+           }
+           return bytes;
+       }
 
         //===========================================================================================================================================================================================================================================================================
         /*! @} */

@@ -18,7 +18,7 @@ namespace Class_HART
         private Parity P = Parity.Odd;  ///< Паритет 
         private int Data_bits = 8;    ///< Количетсво бит
         private StopBits S = StopBits.One; ///< Стоп бит  
-        private int ReadTimeout = 2000;
+        // private int ReadTimeout = 2000;
      	private int WriteTimeout = 2000;
         private string EROR;         ///< код ошибки
         //   port = new SerialPort("COM5", 9600, Parity.None, 8, StopBits.One);
@@ -133,24 +133,7 @@ namespace Class_HART
         */
 
         //========================== Функцыи для работы с байтами ===========================================================================================================================================================================================================================
-      /// <summary>
-      /// Конветрирует строку в байты 
-      /// </summary>
-      /// <remarks>
-      /// Конверктирует строку байт типа ХХХХХХХХ в масив типа байт [XX,XX,XX,XX];
-      /// </remarks>
-      /// <param name="str">- входная строка</param>
-      /// <returns>выходной масив байт</returns>
-        public byte[] GetBytes(string str)
-        {
-            int hexLength = str.Length;
-            byte[] bytes = new byte[hexLength / 2];
-            for (int i = 0; i < hexLength; i += 2)
-            {
-                bytes[i / 2] = Convert.ToByte(str.Substring(i, 2), 16);
-            }
-            return bytes;
-        }
+    
      
        
 
@@ -1012,7 +995,7 @@ namespace Class_HART
             try
             {
                 string d = Final_Assembly_Number.Replace("-", "");
-                Byte[] a = GetBytes(d);
+                Byte[] a = _Convert.GetBytes(d);
                 
                 Read_Fraim[] temp = Write_long(preambula_leng, id_master, id_slaiv, 19, a);
 
@@ -2040,7 +2023,7 @@ namespace Class_HART
 
                     test.RemoveAt(j);
                 }
-                      for (int i = 0; i < read[j].Length; i++)
+                for (int i = 0; i < read[j].Length; i++)
                 {
                     if (read[j][0] == 0x86){
                         if ((i >= 1) && (i <= 6))
