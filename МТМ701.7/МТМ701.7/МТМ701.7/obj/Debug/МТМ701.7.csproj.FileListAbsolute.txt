@@ -1,8 +1,0 @@
-D:\GIT\HART_DLL\МТМ701.7\МТМ701.7\МТМ701.7\obj\Debug\МТМ701.7.csproj.CoreCompileInputs.cache
-D:\GIT\HART_DLL\МТМ701.7\МТМ701.7\МТМ701.7\bin\Debug\МТМ701.7.dll
-D:\GIT\HART_DLL\МТМ701.7\МТМ701.7\МТМ701.7\bin\Debug\МТМ701.7.pdb
-D:\GIT\HART_DLL\МТМ701.7\МТМ701.7\МТМ701.7\bin\Debug\Class_HART.dll
-D:\GIT\HART_DLL\МТМ701.7\МТМ701.7\МТМ701.7\bin\Debug\Class_HART.pdb
-D:\GIT\HART_DLL\МТМ701.7\МТМ701.7\МТМ701.7\obj\Debug\МТМ701.7.csproj.CopyComplete
-D:\GIT\HART_DLL\МТМ701.7\МТМ701.7\МТМ701.7\obj\Debug\МТМ701.7.dll
-D:\GIT\HART_DLL\МТМ701.7\МТМ701.7\МТМ701.7\obj\Debug\МТМ701.7.pdb

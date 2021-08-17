@@ -8,9 +8,13 @@ namespace Class_HART
 {
     public partial class Conect
     {
-        string[] MTM701_Cods = new string[]
+       static public string[] MTM701_Cods_Pressure = new string[] // Коды единиц измерения давления
         {
         "Па","кПа","МПа","гс/см2","кгс/см2","мм.рт.ст.","мм.вод.ст","psi","бар","Мбар"
+        };
+       static public string[] MTM701_Cods_TempSignal = new string[] //Коды источников сигнала температуры
+        {
+        "Сенсор встроенный в МК","Сенсор давления питающийся напряжением","Сенсор давления питающийся током"
         };
         public void MTM701_Comand_130(int id_master, Byte[] id_slaiv, ref string[] res)
         {
@@ -116,6 +120,69 @@ namespace Class_HART
            gist.ToString(),
            };
            return temp;
+        }
+        public void MTM701_Comand_133(int id_master, Byte[] id_slaiv, int kod,ref int cod_dt, ref int cod_iz)
+        {
+            try
+            {
+                Read_Fraim[] temp;
+                if (kod == 0)
+                {
+                    temp = Write_long(preambula_leng, id_master, id_slaiv, 133, new Byte[] { (byte)kod });
+                    cod_dt = temp[0].DT[1];
+                    cod_iz = temp[0].DT[2];
+                    
+                }
+                else if (kod == 1)
+                {
+                    temp = Write_long(preambula_leng, id_master, id_slaiv, 133, new byte[] { (byte)kod, (byte)cod_dt, (byte)cod_iz });
+                }
+            }
+            catch
+            {
+                cod_dt = 0;
+                cod_iz = 0;
+                EROR = "EROR";
+            }
+
+        }
+        public void MTM701_Comand_134(int id_master, Byte[] id_slaiv, int kod, int i, ref float tem,ref string cod_te,ref string cod_d,ref string cod_to)
+        {
+            try
+            {
+                Read_Fraim[] temp;
+                if (kod == 0)
+                {
+                    temp = Write_long(preambula_leng, id_master, id_slaiv, 134, new Byte[] { (byte)kod , (byte)i });
+
+                  
+                   // Array.Reverse(temp[0].DT);
+
+                    tem = _Convert.Buye_tu_F( temp[0].DT,2,4);
+                    cod_te = "0x" + BitConverter.ToString(temp[0].DT, 6, 2).Replace("-", "");
+                    cod_d  = "0x" + BitConverter.ToString(temp[0].DT, 8, 2).Replace("-", "");
+                    cod_to = "0x" + BitConverter.ToString(temp[0].DT, 10, 2).Replace("-", "");
+
+                }
+                else if (kod == 1)
+                {
+                    List<byte> list = new List<byte>();
+                    list.AddRange(new byte[] {  (byte)kod, (byte)i });
+                    list.AddRange(_Convert.Float_tu_byte(tem));
+                    list.AddRange(_Convert.GetBytes(cod_te));
+                    list.AddRange(_Convert.GetBytes(cod_d));
+                    list.AddRange(_Convert.GetBytes(cod_to));
+                    byte[] z = list.ToArray();
+                    temp = Write_long(preambula_leng, id_master, id_slaiv, 134, z);
+                }
+            }
+            catch
+            {
+               
+             
+                EROR = "EROR";
+            }
+
         }
     }
 }
