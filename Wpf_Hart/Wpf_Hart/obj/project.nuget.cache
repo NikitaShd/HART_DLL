@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "99h+apIPdta6vIGEWBlc2jvpkUnOf2r7r+IKXQfIdM2z/yfnQffL1QKdyy5iNQg+IfMPHBoGuAaVFkkQBg9cFQ==",
+  "success": true,
+  "projectFilePath": "D:\\GIT\\HART_DLL\\Wpf_Hart\\Wpf_Hart\\Wpf_Hart.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\TviZet\\.nuget\\packages\\materialdesigncolors\\2.0.1\\materialdesigncolors.2.0.1.nupkg.sha512",
+    "C:\\Users\\TviZet\\.nuget\\packages\\materialdesignthemes\\4.1.0\\materialdesignthemes.4.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}
