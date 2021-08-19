@@ -24,8 +24,10 @@ namespace Wpf_Hart
         public MainWindow()
         {
             InitializeComponent();
+            List_menu.SelectedIndex = 0; // устанавливаем по умолчанию выбраный первый элемент меню
         }
 
+        //изменение размена окна 
         private void stateChanged(object sender, EventArgs e)
         {
             if (WindowState == WindowState.Maximized)
@@ -37,17 +39,22 @@ namespace Wpf_Hart
                 this.WindowState = WindowState.Maximized;
             }
         }
+
+        //меняем местами кнопки выдвижного меню
         private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
         {
             ButtonCloseMenu.Visibility = Visibility.Collapsed;
             ButtonOpenMenu.Visibility = Visibility.Visible;
         }
 
+        //меняем местами кнопки выдвижного меню
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
         {
             ButtonCloseMenu.Visibility = Visibility.Visible;
             ButtonOpenMenu.Visibility = Visibility.Collapsed;
         }
+
+        //диалог на закрытиие
         protected override void OnClosing(CancelEventArgs e)
         {
             var response = MessageBox.Show("Do you really want to exit?", "Exiting...",
@@ -63,14 +70,29 @@ namespace Wpf_Hart
  
             base.OnClosing(e);
         }
+
+        // закрыть окно
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
 
+        //свернуть окно
         private void Minimaize_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private void List_menu_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            int item = List_menu.SelectedIndex;
+            List_menu.SelectedIndex = item;
+        }
+
+        //перетаскивание формы
+        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
         }
     }
 }

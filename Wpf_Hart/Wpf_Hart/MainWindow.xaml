@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf_Hart"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d" Height="600" Width="1080" ShowInTaskbar="True" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen"  Foreground="white" BorderThickness="5,5,5,5" AllowsTransparency="True" WindowStyle="None">
+        mc:Ignorable="d" Height="600" Width="1080" ShowInTaskbar="True" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen"  Foreground="white" BorderThickness="0,5,5,5" AllowsTransparency="True" WindowStyle="None">
     <Window.Effect>
         <DropShadowEffect BlurRadius="5" ShadowDepth="5" Opacity="0.9" />
     </Window.Effect>
@@ -38,7 +38,7 @@
     </Window.Triggers>
 
     <Grid >
-        <Grid Height="40" VerticalAlignment="Top" Background="#FF15A4A6">
+        <Grid Height="40" MouseLeftButtonDown="Grid_MouseLeftButtonDown" VerticalAlignment="Top" Background="#FF15A4A6">
             <TextBlock  Text="HART" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
                 <materialDesign:PopupBox Margin="1" PlacementMode="BottomAndAlignRightEdges" ForceCursor="false" StaysOpen="false" UnfurlOrientation="Vertical">
@@ -71,42 +71,42 @@
                         <materialDesign:PackIcon Kind="Menu" Width="30" Height="30" Foreground="White"/>
                     </Button>
                 </Grid>
-                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFC2F2FD">
-                    <ListViewItem Height="60">
+                <ListView ItemContainerStyle="{StaticResource ListBoxItemStyle1}" x:Name="List_menu" PreviewMouseUp="List_menu_MouseDown" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFC2F2FD" SelectionMode="Single">
+                    <ListViewItem Height="60" Margin="1" >
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ViewDashboard" Margin="10" Width="25" Height="25" VerticalAlignment="Center"/>
-                            <TextBlock Text="test" Margin="20 10" VerticalAlignment="Center"/>
+                            <materialDesign:PackIcon Kind="Usb" Margin="10" Width="30" Height="30" VerticalAlignment="Center"/>
+                            <TextBlock Text="Conect" FontSize="18" Margin="10 10" VerticalAlignment="Center"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" Margin="1">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ViewArray" Margin="10" Width="25" Height="25" VerticalAlignment="Center"/>
-                            <TextBlock Text="test" Margin="20 10" VerticalAlignment="Center"/>
+                            <materialDesign:PackIcon Kind="ViewArray" Margin="10" Width="30" Height="30" VerticalAlignment="Center"/>
+                            <TextBlock Text="test" FontSize="18" Margin="10 10" VerticalAlignment="Center"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" Margin="1">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ViewArray" Margin="10" Width="25" Height="25" VerticalAlignment="Center"/>
-                            <TextBlock Text="test" Margin="20 10" VerticalAlignment="Center"/>
+                            <materialDesign:PackIcon Kind="ViewArray" Margin="10" Width="30" Height="30" VerticalAlignment="Center"/>
+                            <TextBlock Text="test" FontSize="18" Margin="10 10" VerticalAlignment="Center"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" Margin="1">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ViewArray" Margin="10" Width="25" Height="25" VerticalAlignment="Center"/>
-                            <TextBlock Text="test" Margin="20 10" VerticalAlignment="Center"/>
+                            <materialDesign:PackIcon Kind="ViewArray" Margin="10" Width="30" Height="30" VerticalAlignment="Center"/>
+                            <TextBlock Text="test" FontSize="18" Margin="10 10" VerticalAlignment="Center"/>
                         </StackPanel>
                     </ListViewItem>
                     <Separator/>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" Margin="1">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ViewArray" Margin="10" Width="25" Height="25" VerticalAlignment="Center"/>
-                            <TextBlock Text="test" Margin="20 10" VerticalAlignment="Center"/>
+                            <materialDesign:PackIcon Kind="ViewArray" Margin="10" Width="30" Height="30" VerticalAlignment="Center"/>
+                            <TextBlock Text="test" FontSize="18" Margin="10 10" VerticalAlignment="Center"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" Margin="1">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ViewArray" Margin="10" Width="25" Height="25" VerticalAlignment="Center"/>
-                            <TextBlock Text="test" Margin="20 10" VerticalAlignment="Center"/>
+                            <materialDesign:PackIcon Kind="ViewArray" Margin="10" Width="30" Height="30" VerticalAlignment="Center"/>
+                            <TextBlock Text="test" FontSize="18" Margin="10 10" VerticalAlignment="Center"/>
                         </StackPanel>
                     </ListViewItem>
                 </ListView>
