@@ -13,6 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Interop;
+using System.Collections.ObjectModel;
+using System.IO.Ports;
 
 namespace Wpf_Hart
 {
@@ -36,9 +39,58 @@ namespace Wpf_Hart
     /// </summary>
     public partial class MainWindow : Window
     {
-      
+
+        string this_usb = "";
+        public ObservableCollection<string> usb { get; set; } = new ObservableCollection<string> { };
+        private const int WM_DEVICECHANGE = 0x0219;  // int = 537
+        private const int DEVICE_NOTIFY_ALL_INTERFACE_CLASSES = 0x00000004;
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            base.OnSourceInitialized(e);
+            HwndSource source = PresentationSource.FromVisual(this) as HwndSource;
+            source.AddHook(WndProc);
+        }
+
+        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            if (msg == WM_DEVICECHANGE)
+            {
+                ReadDongleHeader();
+            }
+            return IntPtr.Zero;
+        }
+
+        private void ReadDongleHeader() // срабатывает при подключении\отключении usb
+        {
+           
+          
+           
+            string[] ports = SerialPort.GetPortNames();
+            usb.Clear();
+            foreach (string port in ports)
+            {
+                usb.Add(port);
+            }
+            if (usb.Contains(this_usb))
+            {
+                ComboBox_UsbDevaise.SelectedIndex = usb.IndexOf(this_usb);
+                this_usb = "";
+            }
+            else if (usb.Count > 0)
+            {
+                ComboBox_UsbDevaise.SelectedIndex = 0;
+            }
+
+        }
+
         public MainWindow()
         {
+            this.DataContext = this;
             InitializeComponent();
             List_menu.SelectedIndex = 0; // устанавливаем по умолчанию выбраный первый элемент меню
             Tab_control_main.SelectedIndex = 0;// устанавливаем по умолчанию первую панель 
@@ -49,9 +101,8 @@ namespace Wpf_Hart
             s.Setters.Add(new Setter(UIElement.VisibilityProperty, Visibility.Collapsed));//убираем полосу вкладок в стиле
             Tab_control_main.ItemContainerStyle = s;// присваеваем стил нашей панельке 
             // ===========================================================================================
-            
-
         }
+     
 
         //изменение размена окна 
         private void stateChanged(object sender, EventArgs e)
@@ -121,6 +172,12 @@ namespace Wpf_Hart
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
+        }
+
+        private void ComboBox_UsbDevaise_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(ComboBox_UsbDevaise.SelectedItem != null)
+            this_usb = ComboBox_UsbDevaise.SelectedItem.ToString();
         }
     }
 }

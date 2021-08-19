@@ -96,8 +96,11 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
-        <Style TargetType="{x:Type Button}" x:Key="srec_s">
+            <Style TargetType="{x:Type Label}">
+                <Setter Property="FontSize" Value="18"/>
+                
+             </Style>
+                <Style TargetType="{x:Type Button}" x:Key="srec_s">
             <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="Foreground" Value="#FF19CACD"/>
             <Setter Property="Template">

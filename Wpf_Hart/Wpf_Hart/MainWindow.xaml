@@ -115,13 +115,14 @@
         <TabControl x:Name="Tab_control_main"  Margin="{Binding ElementName =GridMenu , Path=Width ,  Converter={StaticResource MarginConverter}}" HorizontalContentAlignment="Center" Foreground="Black" BorderThickness="0,0,0,0">
             <TabItem Header="TabItem" Margin="-2,-2,-2,2" VerticalAlignment="Top">
                 <Grid Background="White">
-                    <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
+                    <ComboBox x:Name="ComboBox_UsbDevaise" SelectionChanged="ComboBox_UsbDevaise_SelectionChanged" ItemsSource="{Binding usb}" IsSynchronizedWithCurrentItem =" True "  HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="300"/>
+                    <Label Content="USB Devaise list" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
                 </Grid>
             </TabItem>
             <TabItem Header="TabItem" Margin="-2,-2,-2,2">
                 <Grid Background="White">
-                    
+
                     <Slider HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" />
 
                 </Grid>
