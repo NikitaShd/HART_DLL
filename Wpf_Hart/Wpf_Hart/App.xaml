@@ -14,10 +14,10 @@
             </ResourceDictionary.MergedDictionaries>
 
 
+            <local:MarginConverter x:Key="MarginConverter"></local:MarginConverter>
 
 
 
-          
             <Style TargetType="{x:Type Button}" x:Key="exit_s">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="#FF19CACD"/>

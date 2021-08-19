@@ -21,3 +21,4 @@ D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\bin\Debug\netcoreapp3.1\MaterialDesignColors.d
 D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\bin\Debug\netcoreapp3.1\MaterialDesignThemes.Wpf.dll
 D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Debug\netcoreapp3.1\Wpf_Hart.csproj.CopyComplete
 D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Debug\netcoreapp3.1\App.baml
+D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs

@@ -16,15 +16,41 @@ using System.Windows.Shapes;
 
 namespace Wpf_Hart
 {
+   
+    public class MarginConverter : IValueConverter
+    {
+
+        public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return new Thickness(System.Convert.ToDouble(value),40, 0, 0);
+        }
+
+        public object ConvertBack(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return null;
+        }
+    }
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+      
         public MainWindow()
         {
             InitializeComponent();
             List_menu.SelectedIndex = 0; // устанавливаем по умолчанию выбраный первый элемент меню
+            Tab_control_main.SelectedIndex = 0;// устанавливаем по умолчанию первую панель 
+
+
+            // ========== нужно чтобы в редакторе вкладки отображались а в програме нет ==================
+            Style s = new Style();
+            s.Setters.Add(new Setter(UIElement.VisibilityProperty, Visibility.Collapsed));//убираем полосу вкладок в стиле
+            Tab_control_main.ItemContainerStyle = s;// присваеваем стил нашей панельке 
+            // ===========================================================================================
+            
+
         }
 
         //изменение размена окна 
@@ -86,7 +112,9 @@ namespace Wpf_Hart
         private void List_menu_MouseDown(object sender, MouseButtonEventArgs e)
         {
             int item = List_menu.SelectedIndex;
-            List_menu.SelectedIndex = item;
+           // List_menu.SelectedIndex = item;
+            if (item != -1) Tab_control_main.SelectedIndex = item;
+
         }
 
         //перетаскивание формы
