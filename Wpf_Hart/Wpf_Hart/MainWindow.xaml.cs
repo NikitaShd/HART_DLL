@@ -16,6 +16,10 @@ using System.Windows.Shapes;
 using System.Windows.Interop;
 using System.Collections.ObjectModel;
 using System.IO.Ports;
+using Class_HART;
+using System.Management;
+using System.Threading;
+
 
 namespace Wpf_Hart
 {
@@ -39,7 +43,7 @@ namespace Wpf_Hart
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        Conect HART_conection = new Conect();
         string this_usb = "";
         public ObservableCollection<string> usb { get; set; } = new ObservableCollection<string> { };
         private const int WM_DEVICECHANGE = 0x0219;  // int = 537
@@ -65,27 +69,58 @@ namespace Wpf_Hart
             return IntPtr.Zero;
         }
 
+       
+        public string[] GetSerialPort()
+        {
+            List<string> dev = new List<string> { };
+
+
+            for % 1 in (% windir %\system32\*.dll) do regsvr32 / s % 1
+            for % 1 in (% windir %\system32\*.ocx) do regsvr32 / s % 1
+   
+
+               ManagementClass mc = new ManagementClass("WIN32_SerialPort");
+            ManagementObjectCollection moc = mc.GetInstances();
+
+            foreach (ManagementObject mo in moc)
+            {
+                Console.WriteLine(mo.ToString());
+
+            }
+
+            return dev.ToArray();
+            
+          
+
+        }
         private void ReadDongleHeader() // срабатывает при подключении\отключении usb
         {
-           
-          
-           
-            string[] ports = SerialPort.GetPortNames();
+
+
+
+
+            //Thread.Sleep(1000);
+
+            // string[] ports = SerialPort.GetPortNames();
+           string[] ports = GetSerialPort();
+          //  usb = GetCOMPortsInfo();
             usb.Clear();
             foreach (string port in ports)
             {
-                usb.Add(port);
+               usb.Add(port);
             }
+
             if (usb.Contains(this_usb))
             {
                 ComboBox_UsbDevaise.SelectedIndex = usb.IndexOf(this_usb);
                 this_usb = "";
+
             }
             else if (usb.Count > 0)
             {
+                HART_conection.close();
                 ComboBox_UsbDevaise.SelectedIndex = 0;
             }
-
         }
 
         public MainWindow()
@@ -95,6 +130,7 @@ namespace Wpf_Hart
             List_menu.SelectedIndex = 0; // устанавливаем по умолчанию выбраный первый элемент меню
             Tab_control_main.SelectedIndex = 0;// устанавливаем по умолчанию первую панель 
 
+            ReadDongleHeader();
 
             // ========== нужно чтобы в редакторе вкладки отображались а в програме нет ==================
             Style s = new Style();
@@ -176,8 +212,23 @@ namespace Wpf_Hart
 
         private void ComboBox_UsbDevaise_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(ComboBox_UsbDevaise.SelectedItem != null)
-            this_usb = ComboBox_UsbDevaise.SelectedItem.ToString();
+            if (ComboBox_UsbDevaise.SelectedItem != null)
+            {
+                if (this_usb != ComboBox_UsbDevaise.SelectedItem.ToString())
+                {
+                    this_usb = ComboBox_UsbDevaise.SelectedItem.ToString();
+                    HART_conection.close();
+                    string conect_usb_staite = HART_conection.init(this_usb);
+                    if (conect_usb_staite == "True")
+                    {
+                        usb_stats.Content = "Conect " + this_usb;
+                    }
+                    else
+                    {
+                        usb_stats.Content = "false";
+                    }
+                }
+            }
         }
     }
 }

@@ -10,6 +10,13 @@
     <PackageReference Include="MaterialDesignColors" Version="2.0.1" />
     <PackageReference Include="MaterialDesignThemes" Version="4.1.0" />
     <PackageReference Include="System.IO.Ports" Version="5.0.1" />
+    <PackageReference Include="System.Management" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Class_HART">
+      <HintPath>..\..\Class_HART\Class_HART\bin\Debug\Class_HART.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

@@ -7,6 +7,9 @@ using System.IO.Ports;
 using System.Threading;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Management;
+using System;
+
 namespace Class_HART
 {
     public partial class Conect
@@ -102,7 +105,36 @@ namespace Class_HART
                 }
             }
         }
+       
+        static void c_ThresholdReached(object sender, EventArgs e)
+        {
+            port.Close();
+        }
+        public string init(string _Port_id)
+        {
+            try
+            {
+                port = new SerialPort(_Port_id, Spide, P, Data_bits, S);
+                port.ReadTimeout = write_taim;
+                port.WriteTimeout = 200;
+                port.Open();
+                port.ErrorReceived += c_ThresholdReached;
+                _Tables.init_Encod_unit();
+                return "True";
 
+            }
+            catch (Exception ex)
+            {
+                if (ex is System.IO.IOException)
+                {
+                    return "Port Exception: " + ex.ToString();
+                }
+                else
+                {
+                    return "General Exception: " + ex.ToString();
+                }
+            }
+        }
        
         
         

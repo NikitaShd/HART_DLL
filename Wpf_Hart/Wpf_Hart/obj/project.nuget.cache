@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "E84GQWdV4vPH0BvEwyrR+ABbmJ6wIl9kfEr5G2jGVKCLMfiT6dJYzAxldGMriIeCCreV3f70DLyvrlkTfyRmFg==",
+  "dgSpecHash": "8pGshaRTh9uncVH1PBVt0dBkWuN03IbNBGxHXrbrVArcaePrPLmq6sYNfxlPRdKqtPeN+7wxGWk+Fm+Nvzv1Dw==",
   "success": true,
   "projectFilePath": "D:\\GIT\\HART_DLL\\Wpf_Hart\\Wpf_Hart\\Wpf_Hart.csproj",
   "expectedPackageFiles": [
@@ -13,7 +13,9 @@
     "C:\\Users\\TviZet\\.nuget\\packages\\runtime.linux-x64.runtime.native.system.io.ports\\5.0.0\\runtime.linux-x64.runtime.native.system.io.ports.5.0.0.nupkg.sha512",
     "C:\\Users\\TviZet\\.nuget\\packages\\runtime.native.system.io.ports\\5.0.1\\runtime.native.system.io.ports.5.0.1.nupkg.sha512",
     "C:\\Users\\TviZet\\.nuget\\packages\\runtime.osx-x64.runtime.native.system.io.ports\\5.0.0\\runtime.osx-x64.runtime.native.system.io.ports.5.0.0.nupkg.sha512",
+    "C:\\Users\\TviZet\\.nuget\\packages\\system.codedom\\5.0.0\\system.codedom.5.0.0.nupkg.sha512",
     "C:\\Users\\TviZet\\.nuget\\packages\\system.io.ports\\5.0.1\\system.io.ports.5.0.1.nupkg.sha512",
+    "C:\\Users\\TviZet\\.nuget\\packages\\system.management\\5.0.0\\system.management.5.0.0.nupkg.sha512",
     "C:\\Users\\TviZet\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
     "C:\\Users\\TviZet\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512"
   ],

@@ -19,44 +19,44 @@
 
 
             <Style TargetType="{x:Type Button}" x:Key="exit_s">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Foreground" Value="#FF19CACD"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Border Background="{TemplateBinding Background}">
-                            <Viewbox>
-                                <Canvas Width="19" Height="19" x:Name="Canvas">
-                                    <Path Canvas.Right="3" Canvas.Bottom="3" Data="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" Fill="{TemplateBinding Foreground}" />
-                                </Canvas>
-                            </Viewbox>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <EventTrigger RoutedEvent="MouseEnter">
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                      
-                                        <ColorAnimation Storyboard.TargetProperty="Foreground.Color"
-                                        To="Red"  Duration="0:0:.3" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                            <EventTrigger RoutedEvent="MouseLeave">
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        
-                                        <ColorAnimation Storyboard.TargetProperty="Foreground.Color"
-                                        To="#FF19CACD"  Duration="0:0:.3" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="#FF19CACD"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <Border Background="{TemplateBinding Background}">
+                                <Viewbox>
+                                    <Canvas Width="19" Height="19" x:Name="Canvas">
+                                        <Path Canvas.Right="3" Canvas.Bottom="3" Data="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" Fill="{TemplateBinding Foreground}" />
+                                    </Canvas>
+                                </Viewbox>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <EventTrigger RoutedEvent="MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
 
-        <Style TargetType="{x:Type Button}" x:Key="expand_s">
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color"
+                                        To="Red"  Duration="0:0:.3" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color"
+                                        To="#FF19CACD"  Duration="0:0:.3" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="{x:Type Button}" x:Key="expand_s">
             <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="Foreground" Value="#FF19CACD"/>
             <Setter Property="Template">

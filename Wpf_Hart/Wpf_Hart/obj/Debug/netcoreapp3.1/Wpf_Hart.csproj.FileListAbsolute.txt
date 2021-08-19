@@ -37,3 +37,8 @@ D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\bin\Debug\netcoreapp3.1\runtimes\win\lib\netst
 D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Security.AccessControl.dll
 D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\bin\Debug\netcoreapp3.1\Class_HART.dll
+D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\bin\Debug\netcoreapp3.1\Class_HART.pdb
+D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\bin\Debug\netcoreapp3.1\System.CodeDom.dll
+D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\bin\Debug\netcoreapp3.1\System.Management.dll
+D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Management.dll
