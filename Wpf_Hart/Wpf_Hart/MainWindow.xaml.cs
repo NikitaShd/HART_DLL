@@ -46,6 +46,16 @@ namespace Wpf_Hart
         Conect HART_conection = new Conect();
         string this_usb = "";
         public ObservableCollection<string> usb { get; set; } = new ObservableCollection<string> { };
+
+        public struct devaise {
+            public string name { get; set; }
+            public string vers_pribor { get; set; }
+            public string vers_po { get; set; }
+            public string num { get; set; }
+
+        } 
+
+        public ObservableCollection<devaise> HART_dev_list { get; set; } = new ObservableCollection<devaise> { };
         private const int WM_DEVICECHANGE = 0x0219;  // int = 537
         private const int DEVICE_NOTIFY_ALL_INTERFACE_CLASSES = 0x00000004;
 
@@ -97,15 +107,7 @@ namespace Wpf_Hart
         }
         private void ReadDongleHeader() // срабатывает при подключении\отключении usb
         {
-
-
-
-
-            //Thread.Sleep(1000);
-
-            // string[] ports = SerialPort.GetPortNames();
-           string[] ports = GetSerialPort();
-          //  usb = GetCOMPortsInfo();
+            string[] ports = GetSerialPort();
             usb.Clear();
             foreach (string port in ports)
             {
@@ -223,13 +225,53 @@ namespace Wpf_Hart
                     string conect_usb_staite = HART_conection.init(this_usb);
                     if (conect_usb_staite == "True")
                     {
-                        usb_stats.Content = "Conect " + this_usb;
+                        usb_stats.Content = "Conect";
                     }
                     else
                     {
-                        usb_stats.Content = "false";
+                        usb_stats.Content = "Disconect";
                     }
                 }
+            }
+        }
+
+        private void B_findDevaise_Click(object sender, RoutedEventArgs e)
+        {
+            
+            
+            if (HART_conection.scan == false)
+            {
+                Thread thread = new Thread(UpdateDevise);
+                thread.Start();
+
+                HART_conection.Scan_start(0);
+            }
+         
+        }
+        private void UpdateDevise()
+        {
+            while (!HART_conection.scan)
+            {
+                Thread.Sleep(1000);
+              
+                this.Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    HART_dev_list.Clear();
+                    foreach (Conect.Read_Fraim item in HART_conection.Net_config())
+                    {
+                        devaise temp = new devaise();
+                        temp.name = item.DT[1].ToString("X2") + '-' +
+                                    item.DT[2].ToString("X2") + '-' +
+                                    item.DT[9].ToString("X2") + '-' +
+                                    item.DT[10].ToString("X2") + '-' +
+                                    item.DT[11].ToString("X2");
+                        temp.num = BitConverter.ToString(item.DT, 9);
+                        temp.vers_po = item.DT[6].ToString("X2");
+                        temp.vers_pribor = item.DT[7].ToString("X2");
+                        HART_dev_list.Add(temp);
+                    }
+
+                }));
             }
         }
     }

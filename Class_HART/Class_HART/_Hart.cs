@@ -39,18 +39,18 @@ namespace Class_HART
         public int Master = 1;           ///< индитификатор мастера 
         public struct Read_Fraim ///<структура принемаемого кадра 
         {
-            public byte SD; ///<признак старта (0x06-короткий фрейм) (0х86-длиный фрейм) (0х01-короткий фреим в пакетном режиме) (0х81-длиный фреим в пакетном режиме)
-            public byte AD_master; ///<адрес мастера 1 или 0 
+            public byte SD;        ///<признак старта (0x06-короткий фрейм) (0х86-длиный фрейм) (0х01-короткий фреим в пакетном режиме) (0х81-длиный фреим в пакетном режиме)
+            public byte AD_master;  ///<адрес мастера 1 или 0 
             public byte[] AD_slaiv;  ///<адрес (7 бит в коротком фрейме)(38 бит в длином фрейме)
-            public byte AD_Short;  ///<адрес rjhjnrbq (7 бит в коротком фрейме)
-            public byte CD; ///<Команда 
-            public byte BC; ///<Количество байт ST+DT
-            public byte[] ST; ///<статус (2 байта)
-            public byte[] DT; ///<даные  (0..25 байт)
-            public byte CHK;///<контролиная сумма
-            public string Statys_1; ///<раскодирываный статус хранящийся в 1 байте 
-            public string Statys_2; ///<раскодирываный статус хранящийся в 2 байте 
-            public string temp; ///<заметка 
+            public byte AD_Short ;   ///<адрес rjhjnrbq (7 бит в коротком фрейме)
+            public byte CD ;         ///<Команда 
+            public byte BC ;         ///<Количество байт ST+DT
+            public byte[] ST;       ///<статус (2 байта)
+            public byte[] DT;///<даные  (0..25 байт)
+            public byte CHK ;       ///<контролиная сумма
+            public string Statys_1;  ///<раскодирываный статус хранящийся в 1 байте 
+            public string Statys_2;  ///<раскодирываный статус хранящийся в 2 байте 
+            public string temp;      ///<заметка 
         }
       
         public Conect(string ID,int Spid) // 1 конструктор 
@@ -350,6 +350,7 @@ namespace Class_HART
             return Read;
 
         }
+        
         /// <summary>
         /// базовая команда для получения длиного адреса устройства
         /// </summary>

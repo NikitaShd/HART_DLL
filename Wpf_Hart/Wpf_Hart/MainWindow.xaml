@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf_Hart"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+       
         mc:Ignorable="d" Height="600" Width="1080" ShowInTaskbar="True" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen"  Foreground="white" BorderThickness="0,5,5,5" AllowsTransparency="True" WindowStyle="None">
     <Window.Effect>
         <DropShadowEffect BlurRadius="5" ShadowDepth="5" Opacity="0.9" />
@@ -38,7 +39,7 @@
     </Window.Triggers>
 
     <Grid >
-        <Grid Height="40" MouseLeftButtonDown="Grid_MouseLeftButtonDown" VerticalAlignment="Top" Background="#FF15A4A6">
+        <Grid Height="40" MouseLeftButtonDown="Grid_MouseLeftButtonDown" VerticalAlignment="Top" Background="#FF2196F3">
             <TextBlock  Text="HART" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
                 <materialDesign:PopupBox Margin="1" PlacementMode="BottomAndAlignRightEdges" ForceCursor="false" StaysOpen="false" UnfurlOrientation="Vertical">
@@ -61,18 +62,18 @@
                 <Button Style="{StaticResource exit_s}" VerticalAlignment="Center" Margin="5" x:Name="Exit" Click="Exit_Click"/>
             </StackPanel>
         </Grid>
-        <Grid x:Name="GridMenu" Width="200" HorizontalAlignment="Left" Background="#FF0B8385">
+        <Grid x:Name="GridMenu" Width="200" HorizontalAlignment="Left" Background="#FF2196F3">
             <StackPanel>
-                <Grid Height="40" Background="#FF076A6F">
-                    <Button Margin="10 0" x:Name="ButtonCloseMenu" Style="{StaticResource Def}" Focusable="False" Width="40" Height="40" HorizontalAlignment="Right" VerticalAlignment="Top"  Click="ButtonCloseMenu_Click" BorderBrush="{x:Null}" Background="#FF076A6F">
+                <Grid Height="40" Background="#FF0069C0">
+                    <Button Margin="10 0" x:Name="ButtonCloseMenu" Style="{StaticResource Def}" Focusable="False" Width="40" Height="40" HorizontalAlignment="Right" VerticalAlignment="Top"  Click="ButtonCloseMenu_Click" BorderBrush="{x:Null}" Background="#FF0069C0">
                         <materialDesign:PackIcon Kind="ArrowLeft" Width="30" Height="30" Foreground="#FFFDFDFD"/>
                     </Button>
-                    <Button  Margin="10 0" x:Name="ButtonOpenMenu" Style="{StaticResource Def}" Focusable="False" Width="40" Height="40" HorizontalAlignment="Right" VerticalAlignment="Top"  Click="ButtonOpenMenu_Click" Visibility="Collapsed" BorderBrush="{x:Null}" Background="#FF076A6F">
+                    <Button  Margin="10 0" x:Name="ButtonOpenMenu" Style="{StaticResource Def}" Focusable="False" Width="40" Height="40" HorizontalAlignment="Right" VerticalAlignment="Top"  Click="ButtonOpenMenu_Click" Visibility="Collapsed" BorderBrush="{x:Null}" Background="#FF0069C0">
                         <materialDesign:PackIcon Kind="Menu" Width="30" Height="30" Foreground="White"/>
                     </Button>
                 </Grid>
                 <ListView ItemContainerStyle="{StaticResource ListBoxItemStyle1}" x:Name="List_menu" PreviewMouseUp="List_menu_MouseDown" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFC2F2FD" SelectionMode="Single">
-                    <ListViewItem Height="60" Margin="1" >
+                    <ListViewItem Height="60" Margin="1" Background="#00000000" >
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Usb" Margin="10" Width="30" Height="30" VerticalAlignment="Center"/>
                             <TextBlock Text="Conect" FontSize="18" Margin="10 10" VerticalAlignment="Center"/>
@@ -116,9 +117,28 @@
             <TabItem Header="TabItem" Margin="-2,-2,-2,2" VerticalAlignment="Top">
                 <Grid Background="White">
 
-                    <ComboBox x:Name="ComboBox_UsbDevaise" SelectionChanged="ComboBox_UsbDevaise_SelectionChanged" ItemsSource="{Binding usb}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="140"/>
-                    <Label Content="USB Devaise list" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
-                    <materialDesign:Badged x:Name="usb_stats" Content="" Margin="155,37,0,0"/>
+
+                    <ComboBox x:Name="ComboBox_UsbDevaise" SelectionChanged="ComboBox_UsbDevaise_SelectionChanged" ItemsSource="{Binding usb}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" Margin="110,5,0,0" VerticalAlignment="Top" Width="140" Grid.Column="1" FontSize="18" AutomationProperties.HelpText="Serial Port"/>
+                    <Label Content="Serial Port :" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.ColumnSpan="2"/>
+                    <materialDesign:Badged x:Name="usb_stats" Content="" Margin="264,25,0,0" Grid.Column="1"/>
+                    <Button x:Name="B_findDevaise" Click="B_findDevaise_Click" Content="Start find devaise" HorizontalAlignment="Left" Margin="340,10,0,0" VerticalAlignment="Top"/>
+                    <ListBox Margin="20,60,20,20" ItemsSource="{Binding HART_dev_list}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="5">
+                                    <TextBlock Text="{Binding name}" Width="130"/>
+
+                                    <TextBlock Text="{Binding num}"  Width="130" />
+                                    <TextBlock Text="{Binding vers_po}"  Width="50" />
+                                    <TextBlock Text="{Binding vers_pribor}"  Width="50" />
+
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+
+
 
 
                 </Grid>
