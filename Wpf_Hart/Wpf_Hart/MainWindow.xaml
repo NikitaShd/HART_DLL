@@ -39,6 +39,7 @@
     </Window.Triggers>
 
     <Grid >
+     
         <Grid Height="40" MouseLeftButtonDown="Grid_MouseLeftButtonDown" VerticalAlignment="Top" Background="#FF2196F3">
             <TextBlock  Text="HART" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
@@ -115,30 +116,38 @@
         </Grid>
         <TabControl x:Name="Tab_control_main"  Margin="{Binding ElementName =GridMenu , Path=Width ,  Converter={StaticResource MarginConverter}}" HorizontalContentAlignment="Center" Foreground="Black" BorderThickness="0,0,0,0">
             <TabItem Header="TabItem" Margin="-2,-2,-2,2" VerticalAlignment="Top">
-                <Grid Background="White">
+                <Grid x:Name="grid" Background="White">
+
+                    <StackPanel Orientation="Horizontal" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left">
+                        <Label HorizontalContentAlignment="Center" Content="Serial Port :" HorizontalAlignment="Left" Margin="20,5,0,0" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
+                        <ComboBox Style="{StaticResource MaterialDesignDataGridComboBox}" x:Name="ComboBox_UsbDevaise" SelectionChanged="ComboBox_UsbDevaise_SelectionChanged" ItemsSource="{Binding usb}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="140" FontSize="18" AutomationProperties.HelpText="Serial Port"/>
+                        <materialDesign:Badged x:Name="usb_stats" Content="" Margin="5,20,0,0" Width="90"/>
+                       
+                        <Button x:Name="B_findDevaise" Click="B_findDevaise_Click" Content="Start Search Devices" HorizontalAlignment="Left" Margin="30,5,5,5" VerticalAlignment="Top" Cursor="Hand"/>
+                        <Button IsEnabled="False" x:Name="B_findDevaiseStop" Click="B_findDevaiseStop_Click" Content="Stop " HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" Background="#FFF42C65" BorderBrush="#FFF41062" Cursor="Hand"/>
+                    </StackPanel>
 
 
-                    <ComboBox x:Name="ComboBox_UsbDevaise" SelectionChanged="ComboBox_UsbDevaise_SelectionChanged" ItemsSource="{Binding usb}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" Margin="110,5,0,0" VerticalAlignment="Top" Width="140" Grid.Column="1" FontSize="18" AutomationProperties.HelpText="Serial Port"/>
-                    <Label Content="Serial Port :" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.ColumnSpan="2"/>
-                    <materialDesign:Badged x:Name="usb_stats" Content="" Margin="264,25,0,0" Grid.Column="1"/>
-                    <Button x:Name="B_findDevaise" Click="B_findDevaise_Click" Content="Start find devaise" HorizontalAlignment="Left" Margin="340,10,0,0" VerticalAlignment="Top"/>
-                    <ListBox Margin="20,60,20,20" ItemsSource="{Binding HART_dev_list}">
-                        <ListBox.ItemTemplate>
+
+
+                    <DataGrid   x:Name="listBox_dev" Margin="20,40,4,20" IsReadOnly="True" ItemsSource="{Binding HART_dev_list}" Background="White">
+                        <DataGrid.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Orientation="Horizontal" Margin="5">
-                                    <TextBlock Text="{Binding name}" Width="130"/>
-
-                                    <TextBlock Text="{Binding num}"  Width="130" />
-                                    <TextBlock Text="{Binding vers_po}"  Width="50" />
-                                    <TextBlock Text="{Binding vers_pribor}"  Width="50" />
-
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Short_Address}" Width="30" TextAlignment="Center"/>
+                                    <TextBlock Text="{Binding Long_Address}" Width="130" TextAlignment="Center"/>
+                                    <TextBlock Text="{Binding Device_Version}"  Width="50" TextAlignment="Center" />
+                                    <TextBlock Text="{Binding Software_Version}"  Width="50" TextAlignment="Center" />
+                                    <TextBlock Text="{Binding Assembly_Number}"  Width="130" TextAlignment="Center" />
                                 </StackPanel>
                             </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                        </DataGrid.ItemTemplate>
+                       
+                    </DataGrid>
 
 
-
+                    <ProgressBar x:Name="Skan_progres" HorizontalAlignment="Center" Height="10" Margin="5" VerticalAlignment="Bottom" Width="{Binding ActualWidth, ElementName=listBox_dev, Mode=OneWay}" Maximum="15"/>
+                   
 
 
                 </Grid>
@@ -146,12 +155,12 @@
             <TabItem Header="TabItem" Margin="-2,-2,-2,2">
                 <Grid Background="White">
 
-                    <Slider HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" />
+                  
 
                 </Grid>
             </TabItem>
         </TabControl>
-
+    
     </Grid>
 
 </Window>

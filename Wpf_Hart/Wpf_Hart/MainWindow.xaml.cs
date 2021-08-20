@@ -19,7 +19,7 @@ using System.IO.Ports;
 using Class_HART;
 using System.Management;
 using System.Threading;
-
+using MaterialDesignThemes.Wpf;
 
 namespace Wpf_Hart
 {
@@ -48,12 +48,16 @@ namespace Wpf_Hart
         public ObservableCollection<string> usb { get; set; } = new ObservableCollection<string> { };
 
         public struct devaise {
-            public string name { get; set; }
-            public string vers_pribor { get; set; }
-            public string vers_po { get; set; }
-            public string num { get; set; }
 
-        } 
+            public string Short_Address { get; set; }
+            public string Long_Address { get; set; }
+            public string Device_Version { get; set; }
+            public string Software_Version { get; set; }
+            public string Assembly_Number { get; set; }
+
+        }
+        
+
 
         public ObservableCollection<devaise> HART_dev_list { get; set; } = new ObservableCollection<devaise> { };
         private const int WM_DEVICECHANGE = 0x0219;  // int = 537
@@ -214,7 +218,7 @@ namespace Wpf_Hart
             this.DragMove();
         }
 
-        private void ComboBox_UsbDevaise_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private  void ComboBox_UsbDevaise_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ComboBox_UsbDevaise.SelectedItem != null)
             {
@@ -230,6 +234,7 @@ namespace Wpf_Hart
                     else
                     {
                         usb_stats.Content = "Disconect";
+                       
                     }
                 }
             }
@@ -250,29 +255,55 @@ namespace Wpf_Hart
         }
         private void UpdateDevise()
         {
-            while (!HART_conection.scan)
+            Thread.Sleep(1000);
+            this.Dispatcher.BeginInvoke(new Action(() =>
             {
-                Thread.Sleep(1000);
+                listBox_dev.IsEnabled = false;
+                ComboBox_UsbDevaise.IsEnabled = false;
+                B_findDevaise.IsEnabled = false;
+                B_findDevaiseStop.IsEnabled = true;
+            }));
+
+            while (HART_conection.scan)
+            {
+                Thread.Sleep(500);
               
                 this.Dispatcher.BeginInvoke(new Action(() =>
                 {
                     HART_dev_list.Clear();
+                    this.Skan_progres.Value = HART_conection.scan_step;
                     foreach (Conect.Read_Fraim item in HART_conection.Net_config())
                     {
                         devaise temp = new devaise();
-                        temp.name = item.DT[1].ToString("X2") + '-' +
+                        temp.Long_Address = item.DT[1].ToString("X2") + '-' +
                                     item.DT[2].ToString("X2") + '-' +
                                     item.DT[9].ToString("X2") + '-' +
                                     item.DT[10].ToString("X2") + '-' +
                                     item.DT[11].ToString("X2");
-                        temp.num = BitConverter.ToString(item.DT, 9);
-                        temp.vers_po = item.DT[6].ToString("X2");
-                        temp.vers_pribor = item.DT[7].ToString("X2");
+                        temp.Assembly_Number = BitConverter.ToString(item.DT, 9);
+                        temp.Software_Version = item.DT[6].ToString("X2");
+                        temp.Device_Version = item.DT[7].ToString("X2");
+                        temp.Short_Address = item.AD_Short.ToString();
                         HART_dev_list.Add(temp);
                     }
-
+                    
                 }));
             }
+
+            this.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                this.Skan_progres.Value = 0;
+                listBox_dev.IsEnabled = true;
+                ComboBox_UsbDevaise.IsEnabled = true;
+                B_findDevaise.IsEnabled = true;
+                B_findDevaiseStop.IsEnabled = false;
+            }));
+           
+        }
+
+        private void B_findDevaiseStop_Click(object sender, RoutedEventArgs e)
+        {
+            HART_conection.Scan_stop();
         }
     }
 }
