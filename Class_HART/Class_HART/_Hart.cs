@@ -1779,46 +1779,36 @@ namespace Class_HART
             */
         private void Scan(object upperCase)
         {
-            try
+            int upper = (int)upperCase;
+           lock_ = false;
+           scan = true;
+             Byte[] a = {};          
+            for (int j = 0; j <= 15; j++)
             {
-                int upper = (int)upperCase;
-                lock_ = false;
-                scan = true;
-                Byte[] a = { };
-                for (int j = 0; j <= 15; j++)
-                {
-                    scan_step = j;
-                    Read_Fraim[] temp = Write_short(8, upper, j, 0, a);
+                scan_step = j;
+                Read_Fraim[] temp = Write_short(8, upper, j, 0, a);
 
-                    for (int i = 0; i < temp.Length; i++)
-                    {
-                        Array.Resize(ref Read, Read.Length + 1);
-                        Read[Read.Length - 1].AD_master = temp[i].AD_master;
-                        Read[Read.Length - 1].BC = temp[i].BC;
-                        Read[Read.Length - 1].CD = temp[i].CD;
-                        Read[Read.Length - 1].CHK = temp[i].CHK;
-                        Read[Read.Length - 1].DT = temp[i].DT;
-                        Read[Read.Length - 1].SD = temp[i].SD;
-                        Read[Read.Length - 1].ST = temp[i].ST;
-                        Read[Read.Length - 1].AD_Short = (byte)j;
-                        Read[Read.Length - 1].AD_slaiv = new Byte[] { temp[i].DT[0], temp[i].DT[1], temp[i].DT[8], temp[i].DT[9], temp[i].DT[10] };
-                        Read[Read.Length - 1].temp = temp[i].temp;
-                    }
-                    if (stop_skan == true)
-                    {
-                        stop_skan = false;
-                        break;
-                    }
+                for (int i = 0; i < temp.Length; i++)
+                {
+                    Array.Resize(ref  Read, Read.Length + 1);
+                    Read[Read.Length - 1].AD_master = temp[i].AD_master;
+                    Read[Read.Length - 1].BC = temp[i].BC;
+                    Read[Read.Length - 1].CD = temp[i].CD;
+                    Read[Read.Length - 1].CHK = temp[i].CHK;
+                    Read[Read.Length - 1].DT = temp[i].DT;
+                    Read[Read.Length - 1].SD = temp[i].SD;
+                    Read[Read.Length - 1].ST = temp[i].ST;
+                    Read[Read.Length - 1].AD_Short = (byte)j;
+                    Read[Read.Length - 1].AD_slaiv = new Byte[] { temp[i].DT[0], temp[i].DT[1], temp[i].DT[8], temp[i].DT[9], temp[i].DT[10] };
+                    Read[Read.Length - 1].temp = temp[i].temp;
                 }
-                scan = false;
-                lock_ = true;
+                if (stop_skan == true) {
+                    stop_skan = false;
+                    break;
+                }
             }
-            catch
-            {
-                scan = false;
-                lock_ = true;
-                stop_skan = false;
-            }
+            scan = false;
+            lock_ = true;
         }
         public Read_Fraim[] Net_config()
         {
