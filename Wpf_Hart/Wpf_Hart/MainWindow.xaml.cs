@@ -23,7 +23,7 @@ using System.Threading;
 
 namespace Wpf_Hart
 {
-   
+  
     public class MarginConverter : IValueConverter
     {
 
@@ -69,26 +69,28 @@ namespace Wpf_Hart
             return IntPtr.Zero;
         }
 
+        
        
         public string[] GetSerialPort()
         {
-            List<string> dev = new List<string> { };
-
-
-            for % 1 in (% windir %\system32\*.dll) do regsvr32 / s % 1
-            for % 1 in (% windir %\system32\*.ocx) do regsvr32 / s % 1
-   
-
-               ManagementClass mc = new ManagementClass("WIN32_SerialPort");
-            ManagementObjectCollection moc = mc.GetInstances();
-
-            foreach (ManagementObject mo in moc)
+            string[] ports = SerialPort.GetPortNames();
+            try
             {
-                Console.WriteLine(mo.ToString());
+                // ManagementClass mc = new ManagementClass("WIN32_SerialPort");
+                //ManagementObjectCollection moc = mc.GetInstances();
+                // foreach (ManagementObject mo in moc)
+                //если порт был открыт а мы вытянули usb то функцыя GetPortNames дцблирует название потра 
+                // поэтому мы получаем спсок всех портов и проверяем их зате снова вызываем GetPortNames
+                foreach (string mo in ports)
+                {
+                    SerialPort temp = new SerialPort(mo);
+                    bool t = temp.IsOpen;
+                    temp.Dispose();
+                }
+            }catch{ }
 
-            }
-
-            return dev.ToArray();
+            ports = SerialPort.GetPortNames();
+            return ports;
             
           
 
