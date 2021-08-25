@@ -5,16 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf_Hart"
         mc:Ignorable="d"
-        Title="Setings" SizeToContent="Manual" AllowsTransparency="True"  WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" Height="138" Width="375"  BorderThickness="5,5,5,5" VerticalContentAlignment="Top">
+        Title="Setings" SizeToContent="Manual" AllowsTransparency="True"  WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" Height="400" Width="375"  BorderThickness="5,5,5,5" VerticalContentAlignment="Top">
     <Window.Effect>
         <DropShadowEffect BlurRadius="5" ShadowDepth="0" Opacity="0.9" RenderingBias="Performance" Direction="300" />
     </Window.Effect>
-    <Grid Margin="0" Background="{DynamicResource Custom_Background2}">
+    <Grid x:Name="grid" Margin="0" Background="{DynamicResource Custom_Background2}">
 
 
 
 
-
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" Width="{Binding ActualWidth, ElementName=grid, Mode=OneWay}">
+            <Label Content="Setings " HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MinWidth="150" Margin="0,0,0,0"/>
+            <Separator Margin="5"></Separator>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Port spid " HorizontalContentAlignment="Center" MinWidth="150" Margin="0,0,0,0"/>
+                <ComboBox Style="{DynamicResource MaterialDesignDataGridComboBox}" x:Name="ComboBox_PortSpid" ItemsSource="{Binding port_spid}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Center" Width="140" FontSize="18" Foreground="{DynamicResource Custom_textcolor}"/>
+            </StackPanel>
+            <Separator  Margin="5"></Separator>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="write taim " HorizontalContentAlignment="Center" MinWidth="150" Margin="0,0,0,0"/>
+                <ComboBox Style="{DynamicResource MaterialDesignDataGridComboBox}" x:Name="ComboBox_write_taim" ItemsSource="{Binding taumautadd_s}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Center" Width="140" FontSize="18" Foreground="{DynamicResource Custom_textcolor}"/>
+            </StackPanel>
+            <Separator  Margin="5"></Separator>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="write taimout" HorizontalContentAlignment="Center" MinWidth="150" Margin="0,0,0,0"/>
+                <ComboBox Style="{DynamicResource MaterialDesignDataGridComboBox}" x:Name="ComboBox_write_taimout" ItemsSource="{Binding taumaut_s}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Center" Width="140" FontSize="18" Foreground="{DynamicResource Custom_textcolor}"/>
+            </StackPanel>
+            <Separator  Margin="5"></Separator>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="preambula leng " HorizontalContentAlignment="Center" MinWidth="150" Margin="0,0,0,0"/>
+                <ComboBox Style="{DynamicResource MaterialDesignDataGridComboBox}" x:Name="ComboBox_preambula_leng" ItemsSource="{Binding Preambula}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Center" Width="140" FontSize="18" Foreground="{DynamicResource Custom_textcolor}"/>
+            </StackPanel>
+            <Separator  Margin="5"></Separator>
+            <StackPanel Orientation="Horizontal" >
+                <RadioButton GroupName="Languages" Content="Master 0" IsChecked="True"  Margin="5"/>
+                <RadioButton GroupName="Languages" Content="Master 1"  Margin="5"/>
+            </StackPanel>
+        </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5">
 
             <Button IsCancel="True" MinWidth="60" Margin="0,0,10,0" BorderBrush="{DynamicResource Custom_red2}" Background="{DynamicResource Custom_red1}">not save changes</Button>
