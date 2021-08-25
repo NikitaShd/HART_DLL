@@ -1,0 +1,25 @@
+﻿<Window x:Class="Wpf_Hart.Window_setings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_Hart"
+        mc:Ignorable="d"
+        Title="Setings" SizeToContent="Manual" AllowsTransparency="True"  WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" Height="138" Width="375"  BorderThickness="5,5,5,5" VerticalContentAlignment="Top">
+    <Window.Effect>
+        <DropShadowEffect BlurRadius="5" ShadowDepth="0" Opacity="0.9" RenderingBias="Performance" Direction="300" />
+    </Window.Effect>
+    <Grid Margin="0" Background="{DynamicResource Custom_Background2}">
+
+
+
+
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5">
+
+            <Button IsCancel="True" MinWidth="60" Margin="0,0,10,0" BorderBrush="{DynamicResource Custom_red2}" Background="{DynamicResource Custom_red1}">not save changes</Button>
+            <Button IsDefault="True" Click="Accept_Click" MinWidth="60" Margin="0,0,0,0" BorderBrush="{DynamicResource Custom_button1}" Background="{DynamicResource Custom_button1}">Accept</Button>
+        </StackPanel>
+
+    </Grid>
+</Window>

@@ -20,6 +20,7 @@ using Class_HART;
 using System.Management;
 using System.Threading;
 using MaterialDesignThemes.Wpf;
+using System.Resources;
 
 namespace Wpf_Hart
 {
@@ -134,11 +135,37 @@ namespace Wpf_Hart
         public MainWindow()
         {
             this.DataContext = this;
+            ResourceDictionary dictionary = new ResourceDictionary();
+            if (!Properties.Settings.Default.Darkmode)
+            {
+                var uri = new Uri("Dictionary_Lite.xaml", UriKind.Relative);
+                dictionary = Application.LoadComponent(uri) as ResourceDictionary;
+                Application.Current.Resources.Clear();
+                Application.Current.Resources.MergedDictionaries.Clear();
+                Application.Current.Resources.MergedDictionaries.Add(dictionary);
+
+
+            }
+            else
+            {
+                var uri = new Uri("Dictionary_dark.xaml", UriKind.Relative);
+                dictionary = Application.LoadComponent(uri) as ResourceDictionary;
+                Application.Current.Resources.Clear();
+                Application.Current.Resources.MergedDictionaries.Clear();
+                Application.Current.Resources.MergedDictionaries.Add(dictionary);
+
+            }
+
             InitializeComponent();
             List_menu.SelectedIndex = 0; // устанавливаем по умолчанию выбраный первый элемент меню
             Tab_control_main.SelectedIndex = 0;// устанавливаем по умолчанию первую панель 
+            ///  Properties.Settings.Default.Master;
+           
+
 
             ReadDongleHeader();
+
+          
 
             // ========== нужно чтобы в редакторе вкладки отображались а в програме нет ==================
             Style s = new Style();
@@ -304,6 +331,57 @@ namespace Wpf_Hart
         private void B_findDevaiseStop_Click(object sender, RoutedEventArgs e)
         {
             HART_conection.Scan_stop();
+        }
+
+        private void Setings_Click(object sender, RoutedEventArgs e)
+        {
+            Window_setings passwordWindow = new Window_setings();
+
+            if (passwordWindow.ShowDialog() == true)
+            {
+               
+            }
+            else
+            {
+               
+            }
+
+
+        }
+
+        private void Darkmode_Click(object sender, RoutedEventArgs e)
+        {
+
+            Set_them();
+
+        }
+        void Set_them()
+        {
+            ResourceDictionary dictionary = new ResourceDictionary();
+
+
+            // Динамически меняем коллекцию MergedDictionaries
+            // Application.Current.Resources.MergedDictionaries. = dictionary;
+            if (Properties.Settings.Default.Darkmode)
+            {
+                var uri = new Uri("Dictionary_Lite.xaml", UriKind.Relative);
+                dictionary = Application.LoadComponent(uri) as ResourceDictionary;
+                Application.Current.Resources.Clear();
+                Application.Current.Resources.MergedDictionaries.Clear();
+                Application.Current.Resources.MergedDictionaries.Add(dictionary);
+                Properties.Settings.Default.Darkmode = false;
+
+            }
+            else
+            {
+                var uri = new Uri("Dictionary_dark.xaml", UriKind.Relative);
+                dictionary = Application.LoadComponent(uri) as ResourceDictionary;
+                Application.Current.Resources.Clear();
+                Application.Current.Resources.MergedDictionaries.Clear();
+                Application.Current.Resources.MergedDictionaries.Add(dictionary);
+                Properties.Settings.Default.Darkmode = true;
+            }
+            Properties.Settings.Default.Save();
         }
     }
 }

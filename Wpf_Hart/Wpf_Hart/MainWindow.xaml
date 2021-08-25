@@ -29,108 +29,100 @@
     <Window.Triggers>
 
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
-            <BeginStoryboard Storyboard="{StaticResource MenuClose}"/>
+            <BeginStoryboard Storyboard="{DynamicResource MenuClose}"/>
         </EventTrigger>
 
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">
-            <BeginStoryboard Storyboard="{StaticResource MenuOpen}"/>
+            <BeginStoryboard Storyboard="{DynamicResource MenuOpen}"/>
         </EventTrigger>
 
     </Window.Triggers>
 
     <Grid >
      
-        <Grid Height="40" MouseLeftButtonDown="Grid_MouseLeftButtonDown" VerticalAlignment="Top" Background="#FF2196F3">
+        <Grid Height="40" MouseLeftButtonDown="Grid_MouseLeftButtonDown" VerticalAlignment="Top" Background="{DynamicResource Custom_blu2}">
             <TextBlock  Text="HART" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
-                <materialDesign:PopupBox Margin="1" PlacementMode="BottomAndAlignRightEdges" ForceCursor="false" StaysOpen="false" UnfurlOrientation="Vertical">
-
-                    <materialDesign:PopupBox.ToggleContent>
-                        <materialDesign:PackIcon Kind="Settings" Foreground="#FFEBFEFF" Width="25" Height="25" />
-                    </materialDesign:PopupBox.ToggleContent>
-                    <StackPanel Width="150" Opacity="0.8" Margin="1" >
-                        <Button Content="USB Setings" FontSize="13"/>
-                        <Button Content="Hart Setings" FontSize="13"/>
-                        <Button Content="Program Setings" FontSize="13"/>
-                        <Separator/>
-                        <Button Content="Help?" FontSize="13"/>
-                        <Button Content="Exit" FontSize="13"/>
-                    </StackPanel>
-                </materialDesign:PopupBox>
-                <Separator Margin="7"/>
-                <Button Style="{StaticResource srec_s}" VerticalAlignment="Center" Margin="5" x:Name="Minimaize" Click="Minimaize_Click"/>
-                <Button Style="{StaticResource expand_s}" VerticalAlignment="Center" Margin="5" x:Name="Chande" Click="stateChanged" />
-                <Button Style="{StaticResource exit_s}" VerticalAlignment="Center" Margin="5" x:Name="Exit" Click="Exit_Click"/>
+                
+               
+                <Button Style="{DynamicResource Daytem_s}" VerticalAlignment="Center" Margin="5" x:Name="Darkmode" Click="Darkmode_Click"/>
+                <Separator Margin="2"/>
+                <Button Style="{DynamicResource Setings_s}" VerticalAlignment="Center" Margin="5" x:Name="Setings" Click="Setings_Click"/>
+                <Separator Margin="10"/>
+               
+                <Button Style="{DynamicResource srec_s}" VerticalAlignment="Center" Margin="5" x:Name="Minimaize" Click="Minimaize_Click"/>
+                <Button Style="{DynamicResource expand_s}" VerticalAlignment="Center" Margin="5" x:Name="Chande" Click="stateChanged" />
+                <Button Style="{DynamicResource exit_s}" VerticalAlignment="Center" Margin="5" x:Name="Exit" Click="Exit_Click"/>
             </StackPanel>
         </Grid>
-        <Grid x:Name="GridMenu" Width="200" HorizontalAlignment="Left" Background="#FF2196F3">
+        <Grid x:Name="GridMenu" Width="200" HorizontalAlignment="Left" Background="{DynamicResource Custom_blu2}">
             <StackPanel>
-                <Grid Height="40" Background="#FF0069C0">
-                    <Button Margin="10 0" x:Name="ButtonCloseMenu" Style="{StaticResource Def}" Focusable="False" Width="40" Height="40" HorizontalAlignment="Right" VerticalAlignment="Top"  Click="ButtonCloseMenu_Click" BorderBrush="{x:Null}" Background="#FF0069C0">
+                <Grid Height="40" Background="{DynamicResource Custom_blu1}">
+                    <Button Margin="10 0" x:Name="ButtonCloseMenu" Style="{DynamicResource Def}" Focusable="False" Width="40" Height="40" HorizontalAlignment="Right" VerticalAlignment="Top"  Click="ButtonCloseMenu_Click" BorderBrush="{x:Null}" Background="{DynamicResource Custom_blu1}">
                         <materialDesign:PackIcon Kind="ArrowLeft" Width="30" Height="30" Foreground="#FFFDFDFD"/>
                     </Button>
-                    <Button  Margin="10 0" x:Name="ButtonOpenMenu" Style="{StaticResource Def}" Focusable="False" Width="40" Height="40" HorizontalAlignment="Right" VerticalAlignment="Top"  Click="ButtonOpenMenu_Click" Visibility="Collapsed" BorderBrush="{x:Null}" Background="#FF0069C0">
+                    <Button  Margin="10 0" x:Name="ButtonOpenMenu" Style="{DynamicResource Def}" Focusable="False" Width="40" Height="40" HorizontalAlignment="Right" VerticalAlignment="Top"  Click="ButtonOpenMenu_Click" Visibility="Collapsed" BorderBrush="{x:Null}" Background="{DynamicResource Custom_blu1}">
                         <materialDesign:PackIcon Kind="Menu" Width="30" Height="30" Foreground="White"/>
                     </Button>
                 </Grid>
-                <ListView ItemContainerStyle="{StaticResource ListBoxItemStyle1}" x:Name="List_menu" PreviewMouseUp="List_menu_MouseDown" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFC2F2FD" SelectionMode="Single">
-                    <ListViewItem Height="60" Margin="1" Background="#00000000" >
+                <ListView ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" x:Name="List_menu" PreviewMouseUp="List_menu_MouseDown" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="{x:Null}" BorderBrush="{x:Null}" SelectionMode="Single">
+                    <ListViewItem Height="65" Margin="0,1,0,1" Background="#00000000" >
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Usb" Margin="10" Width="30" Height="30" VerticalAlignment="Center"/>
-                            <TextBlock Text="Conect" FontSize="18" Margin="10 10" VerticalAlignment="Center"/>
+                            <materialDesign:PackIcon Kind="Usb" Margin="6" Width="30" Height="30" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
+                            <TextBlock Text="Conect" FontSize="18" Margin="10 10" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60" Margin="1">
+                    <ListViewItem Height="65" Margin="0,1,0,1">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ViewArray" Margin="10" Width="30" Height="30" VerticalAlignment="Center"/>
-                            <TextBlock Text="test" FontSize="18" Margin="10 10" VerticalAlignment="Center"/>
+                            <materialDesign:PackIcon Kind="ThemeLightDark" Margin="6" Width="30" Height="30" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
+                            <TextBlock Text="test" FontSize="18" Margin="10 10" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60" Margin="1">
+                    <ListViewItem Height="65" Margin="0,1,0,1">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ViewArray" Margin="10" Width="30" Height="30" VerticalAlignment="Center"/>
-                            <TextBlock Text="test" FontSize="18" Margin="10 10" VerticalAlignment="Center"/>
+                            <materialDesign:PackIcon Kind="ViewArray" Margin="6" Width="30" Height="30" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
+                            <TextBlock Text="test" FontSize="18" Margin="10 10" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60" Margin="1">
+                    <ListViewItem Height="65" Margin="0,1,0,1">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ViewArray" Margin="10" Width="30" Height="30" VerticalAlignment="Center"/>
-                            <TextBlock Text="test" FontSize="18" Margin="10 10" VerticalAlignment="Center"/>
+                            <materialDesign:PackIcon Kind="ViewArray" Margin="6" Width="30" Height="30" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
+                            <TextBlock Text="test" FontSize="18" Margin="10 10" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
                         </StackPanel>
                     </ListViewItem>
                     <Separator/>
-                    <ListViewItem Height="60" Margin="1">
+                    <ListViewItem Height="65" Margin="0,1,0,1">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ViewArray" Margin="10" Width="30" Height="30" VerticalAlignment="Center"/>
-                            <TextBlock Text="test" FontSize="18" Margin="10 10" VerticalAlignment="Center"/>
+                            <materialDesign:PackIcon Kind="ViewArray" Margin="6" Width="30" Height="30" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
+                            <TextBlock Text="test" FontSize="18" Margin="10 10" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60" Margin="1">
+                    <ListViewItem Height="65" Margin="0,1,0,1">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ViewArray" Margin="10" Width="30" Height="30" VerticalAlignment="Center"/>
-                            <TextBlock Text="test" FontSize="18" Margin="10 10" VerticalAlignment="Center"/>
+                            <materialDesign:PackIcon Kind="ViewArray" Margin="6" Width="30" Height="30" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
+                            <TextBlock Text="test" FontSize="18" Margin="10 10" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
                         </StackPanel>
                     </ListViewItem>
                 </ListView>
             </StackPanel>
         </Grid>
-        <TabControl x:Name="Tab_control_main"  Margin="{Binding ElementName =GridMenu , Path=Width ,  Converter={StaticResource MarginConverter}}" HorizontalContentAlignment="Center" Foreground="Black" BorderThickness="0,0,0,0">
-            <TabItem Header="TabItem" Margin="-2,-2,-2,2" VerticalAlignment="Top">
-                <Grid x:Name="grid" Background="White">
+        <TabControl Background="{DynamicResource Custom_Background}" x:Name="Tab_control_main"  Margin="{Binding ElementName =GridMenu , Path=Width ,  Converter={StaticResource MarginConverter}}" HorizontalContentAlignment="Center" Foreground="Black" BorderThickness="0,0,0,0">
+            <TabItem  Header="TabItem" Margin="-2" VerticalAlignment="Top">
+                <Grid Margin="-2,-5,-2,0" x:Name="grid" Background="{DynamicResource Custom_Background}">
 
-                    <StackPanel Orientation="Horizontal" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <StackPanel Margin="0,5,0,0" Orientation="Horizontal" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Width="{Binding ActualWidth, ElementName=grid, Mode=OneWay}">
                         <Label HorizontalContentAlignment="Center" Content="Serial Port :" HorizontalAlignment="Left" Margin="20,5,0,0" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
-                        <ComboBox Style="{StaticResource MaterialDesignDataGridComboBox}" x:Name="ComboBox_UsbDevaise" SelectionChanged="ComboBox_UsbDevaise_SelectionChanged" ItemsSource="{Binding usb}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="140" FontSize="18" AutomationProperties.HelpText="Serial Port"/>
-                        <materialDesign:Badged x:Name="usb_stats" Content="" Margin="5,20,0,0" Width="90"/>
+                        <ComboBox Style="{DynamicResource MaterialDesignDataGridComboBox}" x:Name="ComboBox_UsbDevaise" SelectionChanged="ComboBox_UsbDevaise_SelectionChanged" ItemsSource="{Binding usb}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="140" FontSize="18" AutomationProperties.HelpText="Serial Port" Foreground="{DynamicResource Custom_textcolor}"/>
+                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" x:Name="usb_stats" Content="" Margin="5,20,0,0" Width="90"/>
                        
-                        <Button x:Name="B_findDevaise" Click="B_findDevaise_Click" Content="Start Search Devices" HorizontalAlignment="Left" Margin="30,5,5,5" VerticalAlignment="Top" Cursor="Hand"/>
-                        <Button IsEnabled="False" x:Name="B_findDevaiseStop" Click="B_findDevaiseStop_Click" Content="Stop " HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" Background="#FFF42C65" BorderBrush="#FFF41062" Cursor="Hand"/>
+                        <Button x:Name="B_findDevaise" BorderBrush="{DynamicResource Custom_button1}" Click="B_findDevaise_Click" Background="{DynamicResource Custom_button1}" Content="Start Search Devices" HorizontalAlignment="Left" Margin="30,5,5,5" VerticalAlignment="Top" Cursor="Hand"/>
+                        <Button IsEnabled="False" x:Name="B_findDevaiseStop" Click="B_findDevaiseStop_Click" Content="Stop " HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" Background="{DynamicResource Custom_red1}" BorderBrush="{DynamicResource Custom_red2}" Cursor="Hand"/>
                     </StackPanel>
 
 
 
 
-                    <DataGrid   x:Name="listBox_dev" Margin="20,40,4,20" IsReadOnly="True" ItemsSource="{Binding HART_dev_list}" Background="White">
+                    <DataGrid   x:Name="listBox_dev" Margin="20,60,4,20" IsReadOnly="True" ItemsSource="{Binding HART_dev_list}" Background="{DynamicResource Custom_Background}">
                         <DataGrid.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
@@ -146,13 +138,13 @@
                     </DataGrid>
 
 
-                    <ProgressBar x:Name="Skan_progres" HorizontalAlignment="Center" Height="10" Margin="5" VerticalAlignment="Bottom" Width="{Binding ActualWidth, ElementName=listBox_dev, Mode=OneWay}" Maximum="15"/>
-                   
+                    <ProgressBar Background="{DynamicResource Custom_progres}" BorderBrush="{DynamicResource Custom_progres}" Foreground="{DynamicResource Custom_progresF}" x:Name="Skan_progres" HorizontalAlignment="Center" Height="10" Margin="5" VerticalAlignment="Bottom" Width="{Binding ActualWidth, ElementName=listBox_dev, Mode=OneWay}" Maximum="15"/>
+                    
 
 
                 </Grid>
             </TabItem>
-            <TabItem Header="TabItem" Margin="-2,-2,-2,2">
+            <TabItem Header="TabItem" Margin="0">
                 <Grid Background="White">
 
                   
