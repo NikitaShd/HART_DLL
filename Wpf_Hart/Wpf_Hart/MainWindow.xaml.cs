@@ -34,6 +34,7 @@ namespace Wpf_Hart
     {
         Conect HART_conection = new Conect();
         string this_usb = "";
+        Byte[] Devise_long_adres = { };
         public ObservableCollection<string> usb { get; set; } = new ObservableCollection<string> { };
 
         public struct devaise
@@ -326,9 +327,9 @@ namespace Wpf_Hart
 
         private void Setings_Click(object sender, RoutedEventArgs e) // вызов диалогового окна с настройками 
         {     
-            Window_setings passwordWindow = new Window_setings();
+            Window_setings SetingsWindow = new Window_setings();
 
-            if (passwordWindow.ShowDialog() == true)
+            if (SetingsWindow.ShowDialog() == true)
             {
                 HART_conection.close();
 
@@ -344,12 +345,6 @@ namespace Wpf_Hart
 
                 }
             }
-            else
-            {
-
-            }
-
-
         }
 
         private void Load_propertis()
@@ -394,5 +389,15 @@ namespace Wpf_Hart
             }
             Properties.Settings.Default.Save();
         } // функцыя смены темы приложения 
+
+        private void listBox_dev_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (listBox_dev.SelectedItem != null)
+            {
+                devaise a = (devaise)listBox_dev.SelectedItem;
+                Devise_long_adres = _Convert.GetBytes(a.Long_Address);
+                Label_DevLongAdres.Text = "HART Device [ " + Devise_long_adres +" ]";
+            }
+        }
     }
 }
