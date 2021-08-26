@@ -74,8 +74,8 @@
                     </ListViewItem>
                     <ListViewItem Height="65" Margin="0,1,0,1">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ThemeLightDark" Margin="6" Width="30" Height="30" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
-                            <TextBlock Text="test" FontSize="18" Margin="10 10" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
+                            <materialDesign:PackIcon Kind="MonitorDashboard" Margin="6" Width="30" Height="30" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
+                            <TextBlock Text="Dev Info" FontSize="18" Margin="10 10" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="65" Margin="0,1,0,1">
@@ -106,7 +106,7 @@
                 </ListView>
             </StackPanel>
         </Grid>
-        <TabControl Background="{DynamicResource Custom_Background}" x:Name="Tab_control_main"  Margin="{Binding ElementName =GridMenu , Path=Width ,  Converter={StaticResource MarginConverter}}" HorizontalContentAlignment="Center" Foreground="Black" BorderThickness="0,0,0,0">
+        <TabControl  Background="{DynamicResource Custom_Background}" x:Name="Tab_control_main"  Margin="{Binding ElementName =GridMenu , Path=Width ,  Converter={StaticResource MarginConverter}}" HorizontalContentAlignment="Center" Foreground="Black" BorderThickness="0,0,0,0">
             <TabItem  Header="TabItem" Margin="-2" VerticalAlignment="Top">
                 <Grid Margin="-2,-5,-2,0" x:Name="grid" Background="{DynamicResource Custom_Background}">
 
@@ -144,12 +144,66 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="TabItem" Margin="0">
-                <Grid Background="White">
+            <TabItem Header="TabItem"  Margin="-2" VerticalAlignment="Top">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="-2,-4,-2,15">
+                    <Grid Background="{DynamicResource Custom_Background}" >
+                        <WrapPanel>
+                            <Border  BorderBrush="{DynamicResource Custom_blu1}" BorderThickness="2" Margin="20,20,0,0"  CornerRadius="8,8,8,8">
+                                <StackPanel>
+                                    <Label  Content="Basic Parameters" Margin="10,-19,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" Width="145"/>
+                                   
+                                    <StackPanel MinHeight="300" MinWidth="300" Margin="1">
+                                        <Label Name="L_Manufacturer_Code" Content="Manufacturer Code : ??" Margin="1"/>
+                                        <Label Name="L_Device_Type_Code" Content="Device Type Code : ??" Margin="1"/>
+                                        <Label Name="L_Preambul_leng"  Content="Preambul leng : ??" Margin="1"/>
+                                        <Label Name="L_Universal_commands" Content="version of universal commands : ??" Margin="1"/>
+                                        <Label Name="L_Specific_commands" Content="version of specific commands : ??" Margin="1"/>
+                                        <Label Name="L_Software_version" Content="software version : ??" Margin="1"/>
+                                        <Label Name="L_Hardware_version" Content="hardware version : ??" Margin="1"/>
+                                        <Label Name="L_Device_function" Content="device function flags : ??" Margin="1"/>
+                                    </StackPanel>
+                                    <Separator></Separator>
+                                    <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right" >
+                                        <Button Click="B_Comand_0_Click" x:Name="B_Comand_0" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="Read" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                            <Border  BorderBrush="{DynamicResource Custom_blu1}" BorderThickness="2"  Margin="20,20,0,0"  CornerRadius="8,8,8,8">
+                                <StackPanel>
+                                    <Label  Content="Info" Margin="10,-19,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" Width="43"/>
 
-                  
+                                    <StackPanel MinHeight="300" MinWidth="300" Margin="1">
+                                        <Label Content="Manufacturer Code : ??" Margin="1"/>
+                                        
+                                    </StackPanel>
+                                    <Separator></Separator>
+                                    <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right" >
+                                        <Button x:Name="B_Comand_1" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="Read" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom"/>
+                                        <Button x:Name="B_Comand_2" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Write" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                            <Border  BorderBrush="{DynamicResource Custom_blu1}" BorderThickness="2"  Margin="20,20,0,0"  CornerRadius="8,8,8,8">
+                                <StackPanel>
+                                    <Label  Content="Info" Margin="10,-19,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" Width="43"/>
 
-                </Grid>
+                                    <StackPanel MinHeight="300" MinWidth="300" Margin="1">
+                                        <Label Content="Manufacturer Code : ??" Margin="1"/>
+
+                                    </StackPanel>
+                                    <Separator></Separator>
+                                    <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right" >
+                                        <Button x:Name="B_Comand_3" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="Read" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom"/>
+                                        <Button x:Name="B_Comand_4" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Write" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </WrapPanel>
+
+               
+
+                   </Grid>
+                </ScrollViewer>
             </TabItem>
         </TabControl>
     

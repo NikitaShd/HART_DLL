@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO.Ports;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -396,8 +397,27 @@ namespace Wpf_Hart
             {
                 devaise a = (devaise)listBox_dev.SelectedItem;
                 Devise_long_adres = _Convert.GetBytes(a.Long_Address);
-                Label_DevLongAdres.Text = "HART Device [ " + Devise_long_adres +" ]";
+                Label_DevLongAdres.Text = "HART Device [ " + BitConverter.ToString(Devise_long_adres) +" ]";
             }
+        }
+
+        private async void B_Comand_0_Click(object sender, RoutedEventArgs e)
+        {
+            string[] temp = { };
+            ((Button)sender).IsEnabled = false;
+            await Task.Factory.StartNew(() =>
+            {
+                HART_conection.Comand_0(Properties.Settings.Default.Master,Devise_long_adres,ref temp);
+            });
+            ((Button)sender).IsEnabled = true;
+            L_Manufacturer_Code.Content = "Manufacturer Code : " + temp[0];
+            L_Device_Type_Code.Content = "Device Type Code : " + temp[1];
+            L_Preambul_leng.Content = "Preambul leng : " + temp[2];
+            L_Universal_commands.Content = "version of universal commands : " + temp[3];
+            L_Specific_commands.Content = "version of specific commands : " + temp[4];
+            L_Software_version.Content = "software version : " + temp[5];
+            L_Hardware_version.Content = "hardware_version : " + temp[6];
+            L_Device_function.Content = "device function flags : " +  temp[8];
         }
     }
 }

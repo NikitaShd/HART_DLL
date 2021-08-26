@@ -388,10 +388,10 @@ namespace Class_HART
         /// <param name="data">- содержит 9 строк с параметрами устройсва см. HCF_SPEC-127_(Revision_6.0) </param>
         public void Comand_0(int id_master, Byte[] id_slaiv, ref string[] data)
         {
-            
+            string[] te = new string[10];
            try
             {
-                string[] te = new string[10];
+               
                 Read_Fraim[] temp = Write_long(preambula_leng, id_master, id_slaiv, 0, new Byte[] { });
 
                 try { te[0] = temp[0].DT[1].ToString("X2");} catch { te[0] = "eror"; }
@@ -410,6 +410,7 @@ namespace Class_HART
             catch
             {
                 EROR = "READ_EROR";
+                data = te;
             }
         }
         /// <summary>
