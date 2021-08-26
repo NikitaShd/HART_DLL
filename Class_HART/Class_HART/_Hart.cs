@@ -17,7 +17,7 @@ namespace Class_HART
         private static SerialPort port;      ///< клас USB порта 
         // =========== стандартные настройки usb ========================================
         private string     Port_id = "COM0"; ///< ID порта 
-        private int Spide = 9600;     ///< Скортость обмена 
+        public int Spide = 9600;     ///< Скортость обмена 
         private Parity P = Parity.Odd;  ///< Паритет 
         private int Data_bits = 8;    ///< Количетсво бит
         private StopBits S = StopBits.One; ///< Стоп бит  
@@ -115,6 +115,7 @@ namespace Class_HART
             try
             {
                 port = new SerialPort(_Port_id, Spide, P, Data_bits, S);
+                port.Close();
                 port.ReadTimeout = write_taim;
                 port.WriteTimeout = 200;
                 port.Open();
@@ -1788,7 +1789,7 @@ namespace Class_HART
                 for (int j = 0; j <= 15; j++)
                 {
                     scan_step = j;
-                    Read_Fraim[] temp = Write_short(8, upper, j, 0, a);
+                    Read_Fraim[] temp = Write_short(preambula_leng, upper, j, 0, a);
 
                     for (int i = 0; i < temp.Length; i++)
                     {

@@ -24,12 +24,12 @@
             <Separator  Margin="5"></Separator>
             <StackPanel Orientation="Horizontal">
                 <Label Content="write taim " HorizontalContentAlignment="Center" MinWidth="150" Margin="0,0,0,0"/>
-                <ComboBox Style="{DynamicResource MaterialDesignDataGridComboBox}" x:Name="ComboBox_write_taim" ItemsSource="{Binding taumautadd_s}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Center" Width="140" FontSize="18" Foreground="{DynamicResource Custom_textcolor}"/>
+                <ComboBox Style="{DynamicResource MaterialDesignDataGridComboBox}" x:Name="ComboBox_write_taimout" ItemsSource="{Binding taumaut_s }" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Center" Width="140" FontSize="18" Foreground="{DynamicResource Custom_textcolor}"/>
             </StackPanel>
             <Separator  Margin="5"></Separator>
             <StackPanel Orientation="Horizontal">
                 <Label Content="write taimout" HorizontalContentAlignment="Center" MinWidth="150" Margin="0,0,0,0"/>
-                <ComboBox Style="{DynamicResource MaterialDesignDataGridComboBox}" x:Name="ComboBox_write_taimout" ItemsSource="{Binding taumaut_s}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Center" Width="140" FontSize="18" Foreground="{DynamicResource Custom_textcolor}"/>
+                <ComboBox Style="{DynamicResource MaterialDesignDataGridComboBox}" x:Name="ComboBox_write_taim" ItemsSource="{Binding taumautadd_s}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Center" Width="140" FontSize="18" Foreground="{DynamicResource Custom_textcolor}"/>
             </StackPanel>
             <Separator  Margin="5"></Separator>
             <StackPanel Orientation="Horizontal">
@@ -38,8 +38,8 @@
             </StackPanel>
             <Separator  Margin="5"></Separator>
             <StackPanel Orientation="Horizontal" >
-                <RadioButton GroupName="Languages" Content="Master 0" IsChecked="True"  Margin="5"/>
-                <RadioButton GroupName="Languages" Content="Master 1"  Margin="5"/>
+                <RadioButton GroupName="Master" Name="R_master1" Content="Master 0" IsChecked="True"  Margin="10" Foreground="{DynamicResource Custom_textcolor}" FontSize="18"/>
+                <RadioButton GroupName="Master" Name="R_master2" Content="Master 1"  Margin="10" Foreground="{DynamicResource Custom_textcolor}" FontSize="18"/>
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5">

@@ -1,36 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Class_HART;
+using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO.Ports;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Interop;
-using System.Collections.ObjectModel;
-using System.IO.Ports;
-using Class_HART;
-using System.Management;
-using System.Threading;
-using MaterialDesignThemes.Wpf;
-using System.Resources;
 
 namespace Wpf_Hart
 {
-  
+
     public class MarginConverter : IValueConverter
     {
 
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            return new Thickness(System.Convert.ToDouble(value),40, 0, 0);
+            return new Thickness(System.Convert.ToDouble(value), 40, 0, 0);
         }
 
         public object ConvertBack(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
@@ -48,7 +36,8 @@ namespace Wpf_Hart
         string this_usb = "";
         public ObservableCollection<string> usb { get; set; } = new ObservableCollection<string> { };
 
-        public struct devaise {
+        public struct devaise
+        {
 
             public string Short_Address { get; set; }
             public string Long_Address { get; set; }
@@ -57,17 +46,14 @@ namespace Wpf_Hart
             public string Assembly_Number { get; set; }
 
         }
-        
+
 
 
         public ObservableCollection<devaise> HART_dev_list { get; set; } = new ObservableCollection<devaise> { };
         private const int WM_DEVICECHANGE = 0x0219;  // int = 537
         private const int DEVICE_NOTIFY_ALL_INTERFACE_CLASSES = 0x00000004;
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="e"></param>
+        
         protected override void OnSourceInitialized(EventArgs e)
         {
             base.OnSourceInitialized(e);
@@ -84,8 +70,8 @@ namespace Wpf_Hart
             return IntPtr.Zero;
         }
 
-        
-       
+
+
         public string[] GetSerialPort()
         {
             string[] ports = SerialPort.GetPortNames();
@@ -102,12 +88,13 @@ namespace Wpf_Hart
                     bool t = temp.IsOpen;
                     temp.Dispose();
                 }
-            }catch{ }
+            }
+            catch { }
 
             ports = SerialPort.GetPortNames();
             return ports;
-            
-          
+
+
 
         }
         private void ReadDongleHeader() // срабатывает при подключении\отключении usb
@@ -116,7 +103,7 @@ namespace Wpf_Hart
             usb.Clear();
             foreach (string port in ports)
             {
-               usb.Add(port);
+                usb.Add(port);
             }
 
             if (usb.Contains(this_usb))
@@ -160,12 +147,12 @@ namespace Wpf_Hart
             List_menu.SelectedIndex = 0; // устанавливаем по умолчанию выбраный первый элемент меню
             Tab_control_main.SelectedIndex = 0;// устанавливаем по умолчанию первую панель 
             ///  Properties.Settings.Default.Master;
-           
 
 
+            Load_propertis();
             ReadDongleHeader();
 
-          
+
 
             // ========== нужно чтобы в редакторе вкладки отображались а в програме нет ==================
             Style s = new Style();
@@ -173,7 +160,7 @@ namespace Wpf_Hart
             Tab_control_main.ItemContainerStyle = s;// присваеваем стил нашей панельке 
             // ===========================================================================================
         }
-     
+
 
         //изменение размена окна 
         private void stateChanged(object sender, EventArgs e)
@@ -215,7 +202,7 @@ namespace Wpf_Hart
             {
                 Application.Current.Shutdown();
             }
- 
+
             base.OnClosing(e);
         }
 
@@ -234,7 +221,7 @@ namespace Wpf_Hart
         private void List_menu_MouseDown(object sender, MouseButtonEventArgs e)
         {
             int item = List_menu.SelectedIndex;
-           // List_menu.SelectedIndex = item;
+            // List_menu.SelectedIndex = item;
             if (item != -1) Tab_control_main.SelectedIndex = item;
 
         }
@@ -245,7 +232,7 @@ namespace Wpf_Hart
             this.DragMove();
         }
 
-        private  void ComboBox_UsbDevaise_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ComboBox_UsbDevaise_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ComboBox_UsbDevaise.SelectedItem != null)
             {
@@ -253,6 +240,7 @@ namespace Wpf_Hart
                 {
                     this_usb = ComboBox_UsbDevaise.SelectedItem.ToString();
                     HART_conection.close();
+                    Load_propertis();
                     string conect_usb_staite = HART_conection.init(this_usb);
                     if (conect_usb_staite == "True")
                     {
@@ -261,7 +249,7 @@ namespace Wpf_Hart
                     else
                     {
                         usb_stats.Content = "Disconect";
-                       
+
                     }
                 }
             }
@@ -269,8 +257,8 @@ namespace Wpf_Hart
 
         private void B_findDevaise_Click(object sender, RoutedEventArgs e)
         {
-            
-            
+
+
             if (HART_conection.scan == false)
             {
                 Thread thread = new Thread(UpdateDevise);
@@ -278,23 +266,24 @@ namespace Wpf_Hart
 
                 HART_conection.Scan_start(0);
             }
-         
+
         }
-        private void UpdateDevise()
+        private void UpdateDevise() // обновляем список устройств в отдельном потоке 
         {
-            Thread.Sleep(1000);
-            this.Dispatcher.BeginInvoke(new Action(() =>
+          
+            this.Dispatcher.BeginInvoke(new Action(() => //блокируем кнопки 
             {
                 listBox_dev.IsEnabled = false;
                 ComboBox_UsbDevaise.IsEnabled = false;
                 B_findDevaise.IsEnabled = false;
                 B_findDevaiseStop.IsEnabled = true;
             }));
+            Thread.Sleep(1000);
 
             while (HART_conection.scan)
             {
                 Thread.Sleep(500);
-              
+
                 this.Dispatcher.BeginInvoke(new Action(() =>
                 {
                     HART_dev_list.Clear();
@@ -302,22 +291,24 @@ namespace Wpf_Hart
                     foreach (Conect.Read_Fraim item in HART_conection.Net_config())
                     {
                         devaise temp = new devaise();
-                        temp.Long_Address = item.DT[1].ToString("X2") + '-' +
-                                    item.DT[2].ToString("X2") + '-' +
-                                    item.DT[9].ToString("X2") + '-' +
-                                    item.DT[10].ToString("X2") + '-' +
-                                    item.DT[11].ToString("X2");
+                        temp.Long_Address = 
+                        item.DT[1].ToString("X2") + '-' +
+                        item.DT[2].ToString("X2") + '-' +
+                        item.DT[9].ToString("X2") + '-' +
+                        item.DT[10].ToString("X2") + '-' +
+                        item.DT[11].ToString("X2");
+
                         temp.Assembly_Number = BitConverter.ToString(item.DT, 9);
                         temp.Software_Version = item.DT[6].ToString("X2");
                         temp.Device_Version = item.DT[7].ToString("X2");
                         temp.Short_Address = item.AD_Short.ToString();
                         HART_dev_list.Add(temp);
                     }
-                    
+
                 }));
             }
 
-            this.Dispatcher.BeginInvoke(new Action(() =>
+            this.Dispatcher.BeginInvoke(new Action(() => //разблакируем кнопки кнопки
             {
                 this.Skan_progres.Value = 0;
                 listBox_dev.IsEnabled = true;
@@ -325,7 +316,7 @@ namespace Wpf_Hart
                 B_findDevaise.IsEnabled = true;
                 B_findDevaiseStop.IsEnabled = false;
             }));
-           
+
         }
 
         private void B_findDevaiseStop_Click(object sender, RoutedEventArgs e)
@@ -333,22 +324,42 @@ namespace Wpf_Hart
             HART_conection.Scan_stop();
         }
 
-        private void Setings_Click(object sender, RoutedEventArgs e)
-        {
+        private void Setings_Click(object sender, RoutedEventArgs e) // вызов диалогового окна с настройками 
+        {     
             Window_setings passwordWindow = new Window_setings();
 
             if (passwordWindow.ShowDialog() == true)
             {
-               
+                HART_conection.close();
+
+                Load_propertis();
+                string conect_usb_staite = HART_conection.init(this_usb);
+                if (conect_usb_staite == "True")
+                {
+                    usb_stats.Content = "Conect";
+                }
+                else
+                {
+                    usb_stats.Content = "Disconect";
+
+                }
             }
             else
             {
-               
+
             }
 
 
         }
 
+        private void Load_propertis()
+        {
+            HART_conection.Master = Properties.Settings.Default.Master;
+            HART_conection.Spide = Properties.Settings.Default.Spide;
+            HART_conection.preambula_leng = Properties.Settings.Default.preambula_leng;
+            HART_conection.write_taimout = Properties.Settings.Default.write_taim;
+            HART_conection.write_taim = Properties.Settings.Default.write_taimout;
+        }
         private void Darkmode_Click(object sender, RoutedEventArgs e)
         {
 
@@ -382,6 +393,6 @@ namespace Wpf_Hart
                 Properties.Settings.Default.Darkmode = true;
             }
             Properties.Settings.Default.Save();
-        }
+        } // функцыя смены темы приложения 
     }
 }
