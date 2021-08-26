@@ -412,12 +412,13 @@ namespace Wpf_Hart
             ((Button)sender).IsEnabled = true;
             L_Manufacturer_Code.Content = "Manufacturer Code : " + temp[0];
             L_Device_Type_Code.Content = "Device Type Code : " + temp[1];
-            L_Preambul_leng.Content = "Preambul leng : " + temp[2];
-            L_Universal_commands.Content = "version of universal commands : " + temp[3];
-            L_Specific_commands.Content = "version of specific commands : " + temp[4];
-            L_Software_version.Content = "software version : " + temp[5];
-            L_Hardware_version.Content = "hardware_version : " + temp[6];
-            L_Device_function.Content = "device function flags : " +  temp[8];
+            L_Preambul_leng.Content = "Preambul Leng : " + temp[2];
+            L_Universal_commands.Content = "Version of Universal Commands : " + temp[3];
+            L_Specific_commands.Content = "Version of Specific Commands : " + temp[4];
+            L_Software_version.Content = "Software Version : " + temp[5];
+            L_Hardware_version.Content = "Hardware Version : " + temp[6];
+            L_Device_function.Content = "Device Function Flags : " +  temp[8];
+            
         }
     }
 }

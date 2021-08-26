@@ -11,8 +11,8 @@
 
 
     <local:MarginConverter x:Key="MarginConverter"></local:MarginConverter>
-    <SolidColorBrush x:Key="Custom_red1">#FFF42C65</SolidColorBrush>
-    <SolidColorBrush x:Key="Custom_red2">#FFF41062</SolidColorBrush>
+    <SolidColorBrush x:Key="Custom_red1" Color="#f44336"></SolidColorBrush>
+    <SolidColorBrush x:Key="Custom_red2" Color="#FFF41041"></SolidColorBrush>
 
     <SolidColorBrush x:Key="Custom_button1">#FF2196F3</SolidColorBrush>
 
