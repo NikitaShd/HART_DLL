@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf_Hart"
-         xmlns:res= "clr-namespace:Wpf_Hart.Properties"
+        xmlns:res= "clr-namespace:Wpf_Hart.Properties"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
        
         mc:Ignorable="d" Height="600" Width="1080" ShowInTaskbar="True" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen"  Foreground="white" BorderThickness="0,5,5,5" AllowsTransparency="True" WindowStyle="None">
@@ -116,8 +116,8 @@
                         <ComboBox Style="{DynamicResource MaterialDesignDataGridComboBox}" x:Name="ComboBox_UsbDevaise" SelectionChanged="ComboBox_UsbDevaise_SelectionChanged" ItemsSource="{Binding usb}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="140" FontSize="18" AutomationProperties.HelpText="Serial Port" Foreground="{DynamicResource Custom_textcolor}"/>
                         <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" x:Name="usb_stats" Content="" Margin="5,20,0,0" Width="90"/>
 
-                        <Button x:Name="B_findDevaise" BorderBrush="{DynamicResource Custom_button1}" Click="B_findDevaise_Click" Background="{DynamicResource Custom_button1}" Content="Start Search Devices" HorizontalAlignment="Left" Margin="30,5,5,5" VerticalAlignment="Top" Cursor="Hand" Foreground="{DynamicResource Custom_textcolor}"/>
-                        <Button IsEnabled="False" x:Name="B_findDevaiseStop" Click="B_findDevaiseStop_Click" Content="Stop " HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" Background="{DynamicResource Custom_red1}" BorderBrush="{DynamicResource Custom_red2}" Cursor="Hand" Foreground="{DynamicResource Custom_textcolor}"/>
+                        <Button x:Name="B_findDevaise" BorderBrush="{DynamicResource Custom_button1}" Click="B_findDevaise_Click" Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Start_Search_Devices}" HorizontalAlignment="Left" Margin="30,5,5,5" VerticalAlignment="Top" Cursor="Hand" Foreground="{DynamicResource Custom_Botton_tex}"/>
+                        <Button IsEnabled="False" x:Name="B_findDevaiseStop" Click="B_findDevaiseStop_Click" Content="{x:Static res:Resource.R_Stop}" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" Background="{DynamicResource Custom_red1}" BorderBrush="{DynamicResource Custom_red2}" Cursor="Hand" Foreground="{DynamicResource Custom_Botton_tex}"/>
                     </StackPanel>
 
 
@@ -153,18 +153,18 @@
                                 <DockPanel>
                                     <Label DockPanel.Dock="Top"  Content="Basic Parameters" Margin="10,-19,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" Width="145"/>
                                     <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" >
-                                        <Button Click="B_Comand_0_Click" Foreground="{DynamicResource Custom_textcolor}" x:Name="B_Comand_0" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="Read" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom"/>
+                                        <Button Click="B_Comand_0_Click" Foreground="{DynamicResource Custom_Botton_tex}" x:Name="B_Comand_0" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="{x:Static res:Resource.R_Read}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
                                     </StackPanel>
                                     <Separator DockPanel.Dock="Bottom"></Separator>
                                     <StackPanel MinHeight="300" MinWidth="300" Margin="1">
-                                        <Label Name="L_Manufacturer_Code" Content="Manufacturer_Code" Margin="1"/>
-                                        <Label Name="L_Device_Type_Code" Content="Device Type Code : ??" Margin="1"/>
-                                        <Label Name="L_Preambul_leng"  Content="Preambul Leng : ??" Margin="1"/>
-                                        <Label Name="L_Universal_commands" Content="Version of Universal Commands : ??" Margin="1"/>
-                                        <Label Name="L_Specific_commands" Content="Version of Specific Commands : ??" Margin="1"/>
-                                        <Label Name="L_Software_version" Content="Software Version : ??" Margin="1"/>
-                                        <Label Name="L_Hardware_version" Content="Hardware Version : ??" Margin="1"/>
-                                        <Label Name="L_Device_function" Content="Device Function Flags : ??" Margin="1"/>
+                                        <Label Name="L_Manufacturer_Code" Content="{x:Static res:Resource.R_Manufacturer_Code}" Margin="1"/>
+                                        <Label Name="L_Device_Type_Code" Content="{x:Static res:Resource.R_Device_Type_Code}" Margin="1"/>
+                                        <Label Name="L_Preambul_leng"  Content="{x:Static res:Resource.R_Preambul_leng}" Margin="1"/>
+                                        <Label Name="L_Universal_commands" Content="{x:Static res:Resource.R_Universal_commands}" Margin="1"/>
+                                        <Label Name="L_Specific_commands" Content="{x:Static res:Resource.R_Specific_commands}" Margin="1"/>
+                                        <Label Name="L_Software_version" Content="{x:Static res:Resource.R_Software_version}" Margin="1"/>
+                                        <Label Name="L_Hardware_version" Content="{x:Static res:Resource.R_Hardware_version}" Margin="1"/>
+                                        <Label Name="L_Device_function" Content="{x:Static res:Resource.R_Device_function}" Margin="1"/>
                                     </StackPanel>
                                     
                                    
@@ -175,8 +175,8 @@
                                     <Label DockPanel.Dock="Top" Content="Info" Margin="10,-19,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" Width="43"/>
 
                                     <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" >
-                                        <Button x:Name="B_Comand_1" Foreground="{DynamicResource Custom_textcolor}" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="Read" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom"/>
-                                        <Button x:Name="B_Comand_2" Foreground="{DynamicResource Custom_textcolor}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Write" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom"/>
+                                        <Button x:Name="B_Comand_1" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="{x:Static res:Resource.R_Read}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom"/>
+                                        <Button x:Name="B_Comand_2" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Write}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
                                     </StackPanel>
                                     <Separator DockPanel.Dock="Bottom"></Separator>
                                     <StackPanel MinHeight="300" MinWidth="300" Margin="1">
@@ -190,7 +190,7 @@
                                         <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Description :" Margin="25,0,0,0" Width="90"/>
                                         <TextBox Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}"/>
                                         <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Date :" Margin="25,0,0,0" Width="90"/>
-                                        <DatePicker Margin="20,-17,20,10" FontSize="16" Name="datePicker1" IsDropDownOpen="True" SelectedDateFormat="Short" Style="{StaticResource MaterialDesignFilledDatePicker}" Foreground="{DynamicResource Custom_textcolor}"/>
+                                        <DatePicker Margin="20,-17,20,10" FontSize="16" Name="datePicker1" IsDropDownOpen="False" SelectedDateFormat="Short" Style="{StaticResource MaterialDesignFilledDatePicker}" Foreground="{DynamicResource Custom_textcolor}"/>
                                         <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Number of Preambles :" Margin="25,0,0,0" Width="150"/>
                                         <TextBox Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}"/>
                                     </StackPanel>

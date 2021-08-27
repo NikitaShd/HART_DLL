@@ -16,6 +16,14 @@
         },
         "runtime": {
           "Wpf_Hart.dll": {}
+        },
+        "resources": {
+          "en-US/Wpf_Hart.resources.dll": {
+            "locale": "en-US"
+          },
+          "ru-RU/Wpf_Hart.resources.dll": {
+            "locale": "ru-RU"
+          }
         }
       },
       "MaterialDesignColors/2.0.1": {

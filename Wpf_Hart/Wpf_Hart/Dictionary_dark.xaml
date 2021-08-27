@@ -11,11 +11,13 @@
     </ResourceDictionary.MergedDictionaries>
         
     <local:MarginConverter x:Key="MarginConverter"></local:MarginConverter>
-            
-    <SolidColorBrush x:Key="Custom_red1">#b71c1c</SolidColorBrush>
-    <SolidColorBrush x:Key="Custom_red2">#7f0000</SolidColorBrush>
 
-    <SolidColorBrush x:Key="Custom_button1" Color="#FF00A030"></SolidColorBrush>
+    <SolidColorBrush x:Key="Custom_red1" Color="#FFF01D1D"></SolidColorBrush>
+    <SolidColorBrush x:Key="Custom_red2" Color="#FFCA0000"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="Custom_button1" Color="#FF00DA41"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="Custom_Botton_tex" Color="White"></SolidColorBrush>
 
     <SolidColorBrush x:Key="Custom_panel" Color="#FF24F763"></SolidColorBrush>
 

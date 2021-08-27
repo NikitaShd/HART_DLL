@@ -2,6 +2,8 @@
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
+using System.IO;
 using System.IO.Ports;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,10 +12,11 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Interop;
+using System.Windows.Markup;
 
 namespace Wpf_Hart
 {
-
+   
     public class MarginConverter : IValueConverter
     {
 
@@ -37,7 +40,7 @@ namespace Wpf_Hart
         string this_usb = "";
         Byte[] Devise_long_adres = { };
         public ObservableCollection<string> usb { get; set; } = new ObservableCollection<string> { };
-
+        
         public struct devaise
         {
 
@@ -123,8 +126,10 @@ namespace Wpf_Hart
 
         public MainWindow()
         {
+           
             this.DataContext = this;
             ResourceDictionary dictionary = new ResourceDictionary();
+            
             if (!Properties.Settings.Default.Darkmode)
             {
                 var uri = new Uri("Dictionary_Lite.xaml", UriKind.Relative);
@@ -144,7 +149,7 @@ namespace Wpf_Hart
                 Application.Current.Resources.MergedDictionaries.Add(dictionary);
 
             }
-
+            System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Langue);
             InitializeComponent();
             List_menu.SelectedIndex = 0; // устанавливаем по умолчанию выбраный первый элемент меню
             Tab_control_main.SelectedIndex = 0;// устанавливаем по умолчанию первую панель 
@@ -410,15 +415,17 @@ namespace Wpf_Hart
                 HART_conection.Comand_0(Properties.Settings.Default.Master,Devise_long_adres,ref temp);
             });
             ((Button)sender).IsEnabled = true;
-            L_Manufacturer_Code.Content = "Manufacturer Code : " + temp[0];
-            L_Device_Type_Code.Content = "Device Type Code : " + temp[1];
-            L_Preambul_leng.Content = "Preambul Leng : " + temp[2];
-            L_Universal_commands.Content = "Version of Universal Commands : " + temp[3];
-            L_Specific_commands.Content = "Version of Specific Commands : " + temp[4];
-            L_Software_version.Content = "Software Version : " + temp[5];
-            L_Hardware_version.Content = "Hardware Version : " + temp[6];
-            L_Device_function.Content = "Device Function Flags : " +  temp[8];
-            
+            L_Manufacturer_Code.Content = Properties.Resource.R_Manufacturer_Code + temp[0];
+            L_Device_Type_Code.Content = Properties.Resource.R_Device_Type_Code + temp[1];
+            L_Preambul_leng.Content = Properties.Resource.R_Preambul_leng + temp[2];
+            L_Universal_commands.Content = Properties.Resource.R_Universal_commands + temp[3];
+            L_Specific_commands.Content = Properties.Resource.R_Specific_commands+ temp[4];
+            L_Software_version.Content = Properties.Resource.R_Software_version + temp[5];
+            L_Hardware_version.Content = Properties.Resource.R_Hardware_version+ temp[6];
+            L_Device_function.Content = Properties.Resource.R_Device_function +  temp[8];
+           
         }
+
+        
     }
 }

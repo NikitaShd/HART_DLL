@@ -26,7 +26,6 @@ D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Debug\net5.0-windows\GeneratedInternalType
 D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Debug\net5.0-windows\Wpf_Hart_MarkupCompile.cache
 D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Debug\net5.0-windows\Wpf_Hart_MarkupCompile.lref
 D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Debug\net5.0-windows\MainWindow.baml
-D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Debug\net5.0-windows\Wpf_Hart.g.resources
 D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Debug\net5.0-windows\Wpf_Hart.GeneratedMSBuildEditorConfig.editorconfig
 D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Debug\net5.0-windows\Wpf_Hart.AssemblyInfoInputs.cache
 D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Debug\net5.0-windows\Wpf_Hart.AssemblyInfo.cs
@@ -41,3 +40,12 @@ D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Debug\net5.0-windows\Window_setings.baml
 D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Debug\net5.0-windows\Dictionary_dark.baml
 D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Debug\net5.0-windows\Dictionary_Lite.baml
 D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Debug\net5.0-windows\App.baml
+D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Debug\net5.0-windows\Wpf_Hart.Properties.Resource.resources
+D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Debug\net5.0-windows\Wpf_Hart.csproj.GenerateResource.cache
+D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\bin\Debug\net5.0-windows\en-US\Wpf_Hart.resources.dll
+D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Debug\net5.0-windows\en-US\Wpf_Hart.resources.dll
+D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Debug\net5.0-windows\Wpf_Hart.Properties.Resource.en-US.resources
+D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\bin\Debug\net5.0-windows\ru-RU\Wpf_Hart.resources.dll
+D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Debug\net5.0-windows\Wpf_Hart.Properties.Resource.ru-RU.resources
+D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Debug\net5.0-windows\ru-RU\Wpf_Hart.resources.dll
+D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Debug\net5.0-windows\Wpf_Hart.g.resources

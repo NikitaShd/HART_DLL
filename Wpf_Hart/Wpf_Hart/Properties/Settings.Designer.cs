@@ -94,5 +94,17 @@ namespace Wpf_Hart.Properties {
                 this["Darkmode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("en-US")]
+        public string Langue {
+            get {
+                return ((string)(this["Langue"]));
+            }
+            set {
+                this["Langue"] = value;
+            }
+        }
     }
 }

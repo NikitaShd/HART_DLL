@@ -11,13 +11,14 @@
 
 
     <local:MarginConverter x:Key="MarginConverter"></local:MarginConverter>
-    <SolidColorBrush x:Key="Custom_red1" Color="#f44336"></SolidColorBrush>
+    <SolidColorBrush x:Key="Custom_red1" Color="#FFF92A1B"></SolidColorBrush>
     <SolidColorBrush x:Key="Custom_red2" Color="#FFF41041"></SolidColorBrush>
 
     <SolidColorBrush x:Key="Custom_button1">#FF2196F3</SolidColorBrush>
 
     <SolidColorBrush x:Key="Custom_panel" Color="#FFDBF8FF"></SolidColorBrush>
 
+    <SolidColorBrush x:Key="Custom_Botton_tex" Color="White"></SolidColorBrush>
 
     <SolidColorBrush x:Key="Custom_progres" Color="#FF90CAF9"></SolidColorBrush>
     <SolidColorBrush x:Key="Custom_progresF" Color="#FF1976D2"></SolidColorBrush>
