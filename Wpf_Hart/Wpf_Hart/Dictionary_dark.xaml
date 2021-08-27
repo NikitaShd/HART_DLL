@@ -7,7 +7,7 @@
         <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" /> 
         <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Green.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Green.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Blue.xaml" />
     </ResourceDictionary.MergedDictionaries>
         
     <local:MarginConverter x:Key="MarginConverter"></local:MarginConverter>
@@ -31,7 +31,12 @@
     <SolidColorBrush x:Key="Custom_textcolor" Color="White"></SolidColorBrush>
     <SolidColorBrush x:Key="Custom_Background" >#62727b</SolidColorBrush>
     <SolidColorBrush x:Key="Custom_Background2" >#37474f</SolidColorBrush>
-
+        
+    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="White"/>
+    <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent"/>
+    <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="White"/>
+   
 
     <Style x:Key="VerticalSeparatorStyle" 
        TargetType="{x:Type Separator}"
@@ -202,8 +207,37 @@
     <Style TargetType="{x:Type Label}">
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="Foreground" Value="White"/>
+        <Style.Triggers>
+            <!-- this customizes the foreground color when the item is selected but inactive -->
+            <Trigger Property="Selector.IsEnabled" Value="False">
+                <Setter Property="TextElement.Foreground">
+                    <Setter.Value>
+                        <SolidColorBrush  Color="White" Opacity="0.5"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
     </Style>
-
+    <Style TargetType="{x:Type DataGridCell}">
+        <Setter Property="MinHeight" Value="30"/>
+        <Setter Property="TextBlock.Margin" Value="0,7,0,0"/>
+        <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+        <Style.Triggers>
+            <!-- this customizes the foreground color when the item is selected but inactive -->
+            <Trigger Property="Selector.IsEnabled" Value="False">
+                <Setter Property="TextElement.Foreground">
+                    <Setter.Value>
+                        <SolidColorBrush  Color="White" Opacity="0.5"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="TextBlock.Margin" Value="0,8,0,0"/>
+                <Setter Property="TextBlock.Foreground" Value="#FF24F763"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
     <Style TargetType="{x:Type Button}" x:Key="srec_s">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="{StaticResource Custom_blu1}"/>

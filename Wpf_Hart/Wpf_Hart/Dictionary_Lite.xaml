@@ -31,6 +31,11 @@
 
     <SolidColorBrush x:Key="Custom_Background2" Color="WhiteSmoke"></SolidColorBrush>
 
+    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
+    <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent"/>
+    <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="Black"/>
+
     <Style x:Key="VerticalSeparatorStyle" 
        TargetType="{x:Type Separator}"
        BasedOn="{StaticResource {x:Type Separator}}">
@@ -130,7 +135,28 @@
         <Setter Property="FontSize" Value="18"/>
 
     </Style>
-
+    <Style TargetType="{x:Type DataGridCell}">
+        <Setter Property="MinHeight" Value="30"/>
+        <Setter Property="TextBlock.Margin" Value="0,7,0,0"/>
+        <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Style.Triggers>
+            <!-- this customizes the foreground color when the item is selected but inactive -->
+            <Trigger Property="Selector.IsEnabled" Value="False">
+                <Setter Property="TextElement.Foreground">
+                    <Setter.Value>
+                        <SolidColorBrush  Color="Black" Opacity="0.5"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="TextBlock.Margin" Value="0,8,0,0"/>
+                <Setter Property="TextBlock.Foreground" Value="#FF0069C0"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
     <Style TargetType="{x:Type Button}" x:Key="srec_s">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="#0277bd"/>

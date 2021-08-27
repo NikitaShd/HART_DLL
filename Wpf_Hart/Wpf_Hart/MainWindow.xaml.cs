@@ -38,6 +38,7 @@ namespace Wpf_Hart
     {
         Conect HART_conection = new Conect();
         string this_usb = "";
+        private readonly object balanceLock = new object();
         Byte[] Devise_long_adres = { };
         public ObservableCollection<string> usb { get; set; } = new ObservableCollection<string> { };
         
@@ -155,11 +156,8 @@ namespace Wpf_Hart
             Tab_control_main.SelectedIndex = 0;// устанавливаем по умолчанию первую панель 
             ///  Properties.Settings.Default.Master;
 
-
             Load_propertis();
             ReadDongleHeader();
-
-
 
             // ========== нужно чтобы в редакторе вкладки отображались а в програме нет ==================
             Style s = new Style();
@@ -264,8 +262,6 @@ namespace Wpf_Hart
 
         private void B_findDevaise_Click(object sender, RoutedEventArgs e)
         {
-
-
             if (HART_conection.scan == false)
             {
                 Thread thread = new Thread(UpdateDevise);
@@ -363,9 +359,7 @@ namespace Wpf_Hart
         }
         private void Darkmode_Click(object sender, RoutedEventArgs e)
         {
-
             Set_them();
-
         }
         void Set_them()
         {
@@ -393,6 +387,7 @@ namespace Wpf_Hart
                 Application.Current.Resources.MergedDictionaries.Add(dictionary);
                 Properties.Settings.Default.Darkmode = true;
             }
+            listBox_dev.SelectedIndex = -1;
             Properties.Settings.Default.Save();
         } // функцыя смены темы приложения 
 
@@ -403,18 +398,23 @@ namespace Wpf_Hart
                 devaise a = (devaise)listBox_dev.SelectedItem;
                 Devise_long_adres = _Convert.GetBytes(a.Long_Address);
                 Label_DevLongAdres.Text = "HART Device [ " + BitConverter.ToString(Devise_long_adres) +" ]";
+                listBox_dev.SelectedIndex = -1;
             }
         }
 
         private async void B_Comand_0_Click(object sender, RoutedEventArgs e)
         {
             string[] temp = { };
-            ((Button)sender).IsEnabled = false;
-            await Task.Factory.StartNew(() =>
+            P_basic_param.IsEnabled = false;
+           
+            await Task.Factory.StartNew(async () =>
             {
-                HART_conection.Comand_0(Properties.Settings.Default.Master,Devise_long_adres,ref temp);
+                lock (balanceLock)
+                {
+                    HART_conection.Comand_0(Properties.Settings.Default.Master, Devise_long_adres, ref temp);
+                }     
             });
-            ((Button)sender).IsEnabled = true;
+            P_basic_param.IsEnabled = true;
             L_Manufacturer_Code.Content = Properties.Resource.R_Manufacturer_Code + temp[0];
             L_Device_Type_Code.Content = Properties.Resource.R_Device_Type_Code + temp[1];
             L_Preambul_leng.Content = Properties.Resource.R_Preambul_leng + temp[2];
@@ -426,6 +426,76 @@ namespace Wpf_Hart
            
         }
 
-        
+        private async void B_dev_info_read_Click(object sender, RoutedEventArgs e)
+        {
+            P_info.IsEnabled = false;
+            string mes = "";
+            string[] teg_discriptor_data = { };
+            string long_teg = "";
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    mes = HART_conection.Comand_12(Properties.Settings.Default.Master, Devise_long_adres);
+                }
+            }); 
+            T_dev_mes.Text = mes;
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    teg_discriptor_data = HART_conection.Comand_13(Properties.Settings.Default.Master, Devise_long_adres);
+                }
+            });
+            T_s_teg.Text = teg_discriptor_data[0];
+            T_discriptor.Text = teg_discriptor_data[1];
+            T_data.Text = teg_discriptor_data[2];
+
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    HART_conection.Comand_20(Properties.Settings.Default.Master, Devise_long_adres,ref long_teg);
+                }
+            });
+            T_L_teg.Text = long_teg;
+            P_info.IsEnabled = true;
+
+        }
+
+        private async void B_dev_info_write_Click(object sender, RoutedEventArgs e)
+        {
+            P_info.IsEnabled = false;
+            string mes = T_dev_mes.Text;
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                   HART_conection.Comand_17(Properties.Settings.Default.Master, Devise_long_adres, mes);
+                    Thread.Sleep(500);
+                }
+            });
+            string s_teg = T_s_teg.Text;
+            string discriptor = T_discriptor.Text;
+            string data = T_data.Text;
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    HART_conection.Comand_18(Properties.Settings.Default.Master, Devise_long_adres, s_teg, discriptor, data);
+                    Thread.Sleep(500);
+                }
+            });
+            string l_teg = T_L_teg.Text;
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    HART_conection.Comand_22(Properties.Settings.Default.Master, Devise_long_adres, l_teg);
+                    Thread.Sleep(500);
+                }
+            });
+            P_info.IsEnabled = true;
+        }
     }
 }
