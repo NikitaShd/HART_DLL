@@ -7,7 +7,7 @@
         xmlns:res= "clr-namespace:Wpf_Hart.Properties"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
        
-        mc:Ignorable="d" Height="600" Width="1080" ShowInTaskbar="True" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen"  Foreground="white" BorderThickness="0,5,5,5" AllowsTransparency="True" WindowStyle="None">
+        mc:Ignorable="d" MinHeight="485" MinWidth="400" Height="690" Width="1280" ShowInTaskbar="True" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen"  Foreground="white" BorderThickness="0,5,5,5" AllowsTransparency="True" WindowStyle="None">
     <Window.Effect>
         <DropShadowEffect BlurRadius="5" ShadowDepth="5" Opacity="0.9" />
     </Window.Effect>
@@ -207,19 +207,25 @@
                                     <Separator DockPanel.Dock="Bottom"></Separator>
                                     <StackPanel MinHeight="300" MinWidth="300" Margin="1">
                                         <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Signal :" Margin="25,0,0,0" Width="150"/>
-                                        <ComboBox Margin="20,-17,20,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" x:Name="ComboBox_PortSpid" ItemsSource="{Binding S_Alarm_cods}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="260" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
+                                        <ComboBox Margin="20,-17,20,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" x:Name="ComboBox_Signal" ItemsSource="{Binding S_Alarm_cods}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="260" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
+                                      
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Function :" Margin="25,0,0,0" Width="150"/>
+                                        <ComboBox Margin="20,-17,20,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" x:Name="ComboBox_Function" ItemsSource="{Binding S_Alarm_cods}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="260" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
 
-                                       
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Message :" Margin="25,0,0,0" Width="90"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Units :" Margin="25,0,0,0" Width="150"/>
+                                        <ComboBox Margin="20,-17,20,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" x:Name="ComboBox_Units" ItemsSource="{Binding S_Alarm_cods}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="260" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
+                                        
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Min :" Margin="25,0,0,0" Width="90"/>
                                         <TextBox  Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Long Teg :" Margin="25,0,0,0" Width="90"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Max :" Margin="25,0,0,0" Width="90"/>
                                         <TextBox Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}"  Cursor="Arrow"/>
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Short Teg :" Margin="25,0,0,0" Width="90"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Demp :" Margin="25,0,0,0" Width="90"/>
                                         <TextBox  Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Description :" Margin="25,0,0,0" Width="90"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Protect :" Margin="25,0,0,0" Width="150"/>
+                                        <ComboBox Margin="20,-17,20,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" x:Name="ComboBox_Protect" ItemsSource="{Binding S_Alarm_cods}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="260" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Manufacturer :" Margin="25,0,0,0" Width="90"/>
                                         <TextBox  Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Date :" Margin="25,0,0,0" Width="90"/>
-                                        <DatePicker Margin="20,-17,20,10" FontSize="16" IsDropDownOpen="False" SelectedDateFormat="Short" Style="{StaticResource MaterialDesignFilledDatePicker}" Cursor="Arrow" Foreground="{DynamicResource Custom_textcolor}" ForceCursor="True" />
+                                       
 
                                     </StackPanel>
 
