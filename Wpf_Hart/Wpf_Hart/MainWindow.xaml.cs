@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Markup;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 namespace Wpf_Hart { 
 
    
@@ -38,7 +39,9 @@ namespace Wpf_Hart {
     {
         Conect HART_conection = new Conect();
         public List<string> S_Alarm_cods { get; set; } = new List<string> { };
-
+        public List<string> S_Unit_cods { get; set; } = new List<string> { };
+        public List<string> S_Protect_cods { get; set; } = new List<string> { };
+        public List<string> S_Transfer_cods { get; set; } = new List<string> { };
         string this_usb = "";
         private readonly object balanceLock = new object();
         Byte[] Devise_long_adres = { };
@@ -62,7 +65,12 @@ namespace Wpf_Hart {
         private const int WM_DEVICECHANGE = 0x0219;  // int = 537
         private const int DEVICE_NOTIFY_ALL_INTERFACE_CLASSES = 0x00000004;
 
-        
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9.]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
         protected override void OnSourceInitialized(EventArgs e)
         {
             base.OnSourceInitialized(e);
@@ -130,7 +138,10 @@ namespace Wpf_Hart {
 
         public MainWindow()
         {
-            S_Alarm_cods.AddRange(_Tables.unit_arr());
+            S_Alarm_cods.AddRange(_Tables.Alarm_Cods_arr());
+            S_Protect_cods.AddRange(_Tables.Protect_Cods_arr());
+            S_Transfer_cods.AddRange(_Tables.Transfer_Cods_arr());
+            S_Unit_cods.AddRange(_Tables.unit_arr());
             this.DataContext = this;
             ResourceDictionary dictionary = new ResourceDictionary();
             
@@ -161,6 +172,11 @@ namespace Wpf_Hart {
             ///  Properties.Settings.Default.Master;
 
             Load_propertis();
+            if (!Properties.Settings.Default.Staite)
+            {
+                ButtonCloseMenu.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+            }
+            if (Properties.Settings.Default.Maximaize == true) this.WindowState = WindowState.Maximized;
             ReadDongleHeader();
 
             // ========== нужно чтобы в редакторе вкладки отображались а в програме нет ==================
@@ -177,10 +193,12 @@ namespace Wpf_Hart {
             if (WindowState == WindowState.Maximized)
             {
                 this.WindowState = WindowState.Normal;
+                Properties.Settings.Default.Maximaize = false;
             }
             else
             {
                 this.WindowState = WindowState.Maximized;
+                Properties.Settings.Default.Maximaize = true;
             }
         }
 
@@ -189,6 +207,7 @@ namespace Wpf_Hart {
         {
             ButtonCloseMenu.Visibility = Visibility.Collapsed;
             ButtonOpenMenu.Visibility = Visibility.Visible;
+            Properties.Settings.Default.Staite = false;
         }
 
         //меняем местами кнопки выдвижного меню
@@ -196,21 +215,18 @@ namespace Wpf_Hart {
         {
             ButtonCloseMenu.Visibility = Visibility.Visible;
             ButtonOpenMenu.Visibility = Visibility.Collapsed;
+            Properties.Settings.Default.Staite = true;
         }
 
         //диалог на закрытиие
         protected override void OnClosing(CancelEventArgs e)
         {
-            var response = MessageBox.Show("Do you really want to exit?", "Exiting...",
-                MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
-            if (response == MessageBoxResult.No)
+            if (this.WindowState != WindowState.Maximized)
             {
-                e.Cancel = true;
+                Properties.Settings.Default.Width = Application.Current.MainWindow.Width;
+                Properties.Settings.Default.Height = Application.Current.MainWindow.Height;
             }
-            else
-            {
-                Application.Current.Shutdown();
-            }
+            Properties.Settings.Default.Save();
 
             base.OnClosing(e);
         }
@@ -328,6 +344,7 @@ namespace Wpf_Hart {
 
         private void B_findDevaiseStop_Click(object sender, RoutedEventArgs e)
         {
+            B_findDevaiseStop.IsEnabled = false;
             HART_conection.Scan_stop();
         }
 
@@ -360,6 +377,9 @@ namespace Wpf_Hart {
             HART_conection.preambula_leng = Properties.Settings.Default.preambula_leng;
             HART_conection.write_taimout = Properties.Settings.Default.write_taim;
             HART_conection.write_taim = Properties.Settings.Default.write_taimout;
+            Application.Current.MainWindow.Width = Properties.Settings.Default.Width;
+            Application.Current.MainWindow.Height = Properties.Settings.Default.Height;
+           
         }
         private void Darkmode_Click(object sender, RoutedEventArgs e)
         {
@@ -501,6 +521,70 @@ namespace Wpf_Hart {
                 }
             });
             P_info.IsEnabled = true;
+        }
+
+        private async void B_dev_Extended_Info_read_Click(object sender, RoutedEventArgs e)
+        {
+            P_Extended_Info.IsEnabled = false;
+            int Alarm = 0;
+            int Transfer = 0;
+            int Unit = 0;
+            float U_renge = 0;
+            float L_renge = 0;
+            float Damfing = 0;
+            int Protect = 0;
+            int Manufacturer = 0;
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                   HART_conection.Comand_15(Properties.Settings.Default.Master, Devise_long_adres,ref Alarm,ref Transfer,ref Unit,ref U_renge,ref L_renge,ref Damfing,ref Protect,ref Manufacturer);
+                }
+            });
+            ComboBox_Signal.SelectedItem = _Tables.Alarm_Cods(Alarm);
+            ComboBox_Function.SelectedItem = _Tables.Transfer_Cods(Transfer);
+            ComboBox_Protect.SelectedItem = _Tables.Protect_Cods(Protect);
+            ComboBox_Units.SelectedItem = _Tables.Encod_unit(Unit);
+            T_U_renge.Text = U_renge.ToString();
+            T_L_renge.Text = L_renge.ToString();
+            T_Demp.Text = Damfing.ToString();
+            T_Manufacturer.Text = Manufacturer.ToString();
+            P_Extended_Info.IsEnabled = true;
+        }
+
+        private async void B_dev_Extended_Info_write_Click(object sender, RoutedEventArgs e)
+        {
+            P_Extended_Info.IsEnabled = false;
+            int Alarm = _Tables.Alarm_Cods(ComboBox_Signal.SelectedItem.ToString());
+            int Transfer = _Tables.Transfer_Cods(ComboBox_Function.SelectedItem.ToString());
+            int Unit = _Tables.Encod_unit(ComboBox_Units.SelectedItem.ToString()); 
+            float U_renge = Convert.ToSingle(T_U_renge.Text);
+            float L_renge = Convert.ToSingle(T_L_renge.Text);
+            float Damfing = Convert.ToSingle(T_Demp.Text);
+            int Protect = _Tables.Protect_Cods(ComboBox_Protect.SelectedItem.ToString());
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    HART_conection.Comand_35(Properties.Settings.Default.Master, Devise_long_adres,Unit,U_renge,L_renge);
+                }
+            });
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    HART_conection.Comand_34(Properties.Settings.Default.Master, Devise_long_adres, Damfing);
+                }
+            });
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    HART_conection.Comand_47(Properties.Settings.Default.Master, Devise_long_adres, Transfer);
+                }
+            });
+
+            P_Extended_Info.IsEnabled = true;
         }
     }
 }

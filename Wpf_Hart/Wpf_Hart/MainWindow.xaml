@@ -81,8 +81,8 @@
                     </ListViewItem>
                     <ListViewItem Height="65" Margin="0,1,0,1">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ViewArray" Margin="6" Width="30" Height="30" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
-                            <TextBlock Text="test" FontSize="18" Margin="10 10" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
+                            <materialDesign:PackIcon Kind="ConsoleNetworkOutline" Margin="6" Width="30" Height="30" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
+                            <TextBlock Text="Сommands" FontSize="18" Margin="10 10" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="65" Margin="0,1,0,1">
@@ -100,8 +100,8 @@
                     </ListViewItem>
                     <ListViewItem Height="65" Margin="0,1,0,1">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ViewArray" Margin="6" Width="30" Height="30" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
-                            <TextBlock Text="test" FontSize="18" Margin="10 10" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
+                            <materialDesign:PackIcon Kind="Github" Margin="6" Width="30" Height="30" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
+                            <TextBlock Text="Github" FontSize="18" Margin="10 10" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
                         </StackPanel>
                     </ListViewItem>
                 </ListView>
@@ -197,34 +197,34 @@
                                 </DockPanel>
                             </Border>
                             <Border  BorderBrush="{DynamicResource Custom_blu1}" BorderThickness="2"  Margin="20,20,0,0"  CornerRadius="8,8,8,8">
-                                <DockPanel >
+                                <DockPanel x:Name="P_Extended_Info">
                                     <Label DockPanel.Dock="Top" Content="Extended Info" Margin="10,-19,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" Width="120"/>
 
                                     <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" >
-                                        <Button x:Name="B_dev_os_read" Click="B_dev_info_read_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="{x:Static res:Resource.R_Read}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom"/>
-                                        <Button x:Name="B_dev_os_write" Click="B_dev_info_write_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Write}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
+                                        <Button x:Name="B_dev_Extended_Info_read" Click="B_dev_Extended_Info_read_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="{x:Static res:Resource.R_Read}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom"/>
+                                        <Button x:Name="B_dev_Extended_Info_write" Click="B_dev_Extended_Info_write_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Write}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
                                     </StackPanel>
                                     <Separator DockPanel.Dock="Bottom"></Separator>
                                     <StackPanel MinHeight="300" MinWidth="300" Margin="1">
                                         <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Signal :" Margin="25,0,0,0" Width="150"/>
-                                        <ComboBox Margin="20,-17,20,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" x:Name="ComboBox_Signal" ItemsSource="{Binding S_Alarm_cods}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="260" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
+                                        <ComboBox Margin="20,-17,20,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" x:Name="ComboBox_Signal" ItemsSource="{Binding S_Alarm_cods}" IsSynchronizedWithCurrentItem ="False"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="260" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
                                       
                                         <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Function :" Margin="25,0,0,0" Width="150"/>
-                                        <ComboBox Margin="20,-17,20,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" x:Name="ComboBox_Function" ItemsSource="{Binding S_Alarm_cods}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="260" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
+                                        <ComboBox Margin="20,-17,20,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" x:Name="ComboBox_Function" ItemsSource="{Binding S_Transfer_cods}" IsSynchronizedWithCurrentItem ="False"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="260" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
 
                                         <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Units :" Margin="25,0,0,0" Width="150"/>
-                                        <ComboBox Margin="20,-17,20,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" x:Name="ComboBox_Units" ItemsSource="{Binding S_Alarm_cods}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="260" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
-                                        
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Min :" Margin="25,0,0,0" Width="90"/>
-                                        <TextBox  Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Max :" Margin="25,0,0,0" Width="90"/>
-                                        <TextBox Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}"  Cursor="Arrow"/>
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Demp :" Margin="25,0,0,0" Width="90"/>
-                                        <TextBox  Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
+                                        <ComboBox Margin="20,-17,20,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" x:Name="ComboBox_Units" ItemsSource="{Binding S_Unit_cods}" IsSynchronizedWithCurrentItem ="False"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="260" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
+
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="Max :" Margin="25,0,0,0" Width="90"/>
+                                        <TextBox PreviewTextInput="NumberValidationTextBox"  Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" x:Name="T_U_renge" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="Min :" Margin="25,0,0,0" Width="90"/>
+                                        <TextBox PreviewTextInput="NumberValidationTextBox" Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}"  x:Name="T_L_renge" Style="{StaticResource MaterialDesignFilledTextBox}"  Cursor="Arrow"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="Demp :" Margin="25,0,0,0" Width="90"/>
+                                        <TextBox PreviewTextInput="NumberValidationTextBox" Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" x:Name="T_Demp" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
                                         <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Protect :" Margin="25,0,0,0" Width="150"/>
-                                        <ComboBox Margin="20,-17,20,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" x:Name="ComboBox_Protect" ItemsSource="{Binding S_Alarm_cods}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="260" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Manufacturer :" Margin="25,0,0,0" Width="90"/>
-                                        <TextBox  Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
+                                        <ComboBox Margin="20,-17,20,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" x:Name="ComboBox_Protect" ItemsSource="{Binding S_Protect_cods}" IsSynchronizedWithCurrentItem ="False"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="260" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="Manufacturer :" Margin="25,0,0,0" Width="90"/>
+                                        <TextBox IsReadOnly="True"  Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}"  x:Name="T_Manufacturer" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
                                        
 
                                     </StackPanel>
@@ -235,6 +235,31 @@
 
 
 
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="TabItem"  Margin="-2" VerticalAlignment="Top">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="-2,-4,-2,15">
+                    <Grid Background="{DynamicResource Custom_Background}" >
+                        <WrapPanel>
+                            <Border  BorderBrush="{DynamicResource Custom_blu1}" BorderThickness="2"  Margin="20,20,0,0"  CornerRadius="8,8,8,8">
+                                <DockPanel x:Name="P_">
+                                    <Label DockPanel.Dock="Top" Content="Fixed Current" Margin="10,-19,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" Width="120"/>
+
+                                    <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" >
+                                        <Button x:Name="B_dev_fixed_current_set" Click="B_dev_Extended_Info_read_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="{x:Static res:Resource.R_Read}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom"/>
+                                        <Button x:Name="B_dev_fixed_current_exit" Click="B_dev_Extended_Info_write_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Write}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
+                                    </StackPanel>
+                                    <Separator DockPanel.Dock="Bottom"></Separator>
+                                    <StackPanel MinHeight="10" MinWidth="300" Margin="1">
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="Value :" Margin="25,0,0,0" Width="90"/>
+                                        <TextBox PreviewTextInput="NumberValidationTextBox"  Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" x:Name="T_fixed_current" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
+                                    </StackPanel>
+                                    
+
+                                </DockPanel>
+                            </Border>
+                        </WrapPanel>
                     </Grid>
                 </ScrollViewer>
             </TabItem>
