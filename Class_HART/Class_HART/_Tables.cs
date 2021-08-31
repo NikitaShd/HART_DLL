@@ -14,165 +14,42 @@ namespace Class_HART
                                '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/',
                                '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';',
                                '<', '=', '>', '?'};
-       static public string Alarm_Cods(int cod)
-        {
-            switch (cod)
-            {
+        static private string[] Encod_unit_array = new string[255];
+        static private string[] Alarm_Cods_array = new string[255];
+        static private string[] Protect_Cods_array = new string[255];
+        static private string[] Transfer_Cods_array = new string[255];
 
-                case 0: return "High";
-                case 1: return "Low";
-                case 239: return "Hold Last";
-                case 240:
-                case 241:
-                case 242:
-                case 243:
-                case 244:
-                case 245:
-                case 246:
-                case 247:
-                case 248:
-                case 249:
-                    return cod.ToString();
-                case 250: return "Not Used";
-                case 251: return "None";
-                case 252: return "Unclown";
-                case 253: return "Special";
-            }
-            return "-1";
-        }
-       static public int Alarm_Cods(string cod)
-        {
-            switch (cod)
-            {
-
-                case "High": return 0;
-                case "Low": return 1;
-                case "Hold Last": return 239;
-                case "Not Used": return 250;
-                case "None": return 251;
-                case "Unclown": return 252;
-                case "Special": return 253;
-            }
-            return Convert.ToInt32(cod);
-        }
-       static public string Transfer_Cods(int cod)
-        {
-            switch (cod)
-            {
-
-                case 0: return "Линейная (y=mx+b)";
-                case 1: return "Квадратный корень (y=sqrt(x))";
-                case 2: return "Квадратный корень 3 порядка (y=sqrt(x^3))";
-                case 3: return "Квадратный корень 5 порядка (y=sqrt(x^5))";
-                case 4: return "Специальная кривая";
-                case 5: return "Возведение в степинь (y=x^2)";
-                case 230: return "Дискретная (on/off)";
-                case 231: return "Квадратный корень + Специальная кривая";
-                case 232: return "Квадратный корень 3 порядка + Специальная кривая";
-                case 233: return "Квадратный корень 5 порядка + Специальная кривая";
-                case 240:
-                case 241:
-                case 242:
-                case 243:
-                case 244:
-                case 245:
-                case 246:
-                case 247:
-                case 248:
-                case 249:
-                    return cod.ToString();
-                case 250: return "Not Used";
-                case 251: return "None";
-                case 252: return "Unclown";
-                case 253: return "Special";
-            }
-            return "-1";
-        }
-       static public int Transfer_Cods(string cod)
-        {
-            switch (cod)
-            {
-
-                case "Линейная (y=mx+b)": return 0;
-                case "Квадратный корень (y=sqrt(x))": return 1;
-                case "Квадратный корень 3 порядка (y=sqrt(x^3))": return 2;
-                case "Квадратный корень 5 порядка (y=sqrt(x^5))": return 4;
-                case "Специальная кривая": return 4;
-                case "Возведение в степинь (y=x^2)": return 5;
-                case "Дискретная (on/off)": return 230;
-                case "Квадратный корень + Специальная кривая": return 231;
-                case "Квадратный корень 3 порядка + Специальная кривая": return 232;
-                case "Квадратный корень 5 порядка + Специальная кривая": return 233;
-                case "Not Used": return 250;
-                case "None": return 251;
-                case "Unclown": return 252;
-                case "Special": return 253;
-
-            }
-            return Convert.ToInt32(cod);
-        }
-       static public string Protect_Cods(int cod)
-        {
-            switch (cod)
-            {
-
-                case 0: return "No";
-                case 1: return "Yes";
-                case 250: return "Not Used";
-                case 251: return "None";
-                case 252: return "Unclown";
-                case 253: return "Special";
-            }
-            return "-1";
-        }
-       static public int Protect_Cods(string cod)
-        {
-            switch (cod)
-            {
-
-                case "No": return 0;
-                case "Yes": return 1;
-                case "Not Used": return 250;
-                case "None": return 251;
-                case "Unclown": return 252;
-                case "Special": return 253;
-            }
-            return -1;
-        }
-       static private string[] Encod_unit_array = new string[255];
-        static public string Encod_unit(int kod)
-        {
-
-            try
-            {
-                return Encod_unit_array[kod];
-            }
-            catch
-            {
-                return "";
-            }
-        }
-        static public int Encod_unit(string kod)
-        {
-
-            return Array.IndexOf(Encod_unit_array, kod);
-        }
-        static public string[] unit_array()
-        {
-            string[] temp = { };
-            for (int i = 0; i < Encod_unit_array.Length; i++)
-            {
-                if ((Encod_unit_array[i] != "") && (Encod_unit_array[i] != null))
-                {
-                    Array.Resize(ref temp, temp.Length + 1);
-                    temp[temp.Length - 1] = Encod_unit_array[i];
-                }
-            }
-            return temp;
-        }
         static public void init_Encod_unit()
         {
-
+            Transfer_Cods_array[0] = "Линейная (y=mx+b)";
+            Transfer_Cods_array[1] = "Квадратный корень (y=sqrt(x))";
+            Transfer_Cods_array[2] = "Квадратный корень 3 порядка (y=sqrt(x^3))";
+            Transfer_Cods_array[3] = "Квадратный корень 5 порядка (y=sqrt(x^5))";
+            Transfer_Cods_array[4] = "Специальная кривая";
+            Transfer_Cods_array[5] = "Возведение в степинь (y=x^2)";
+            Transfer_Cods_array[230] = "Дискретная (on/off)";
+            Transfer_Cods_array[231] = "Квадратный корень + Специальная кривая";
+            Transfer_Cods_array[232] = "Квадратный корень 3 порядка + Специальная кривая";
+            Transfer_Cods_array[233] = "Квадратный корень 5 порядка + Специальная кривая";
+            Transfer_Cods_array[250] = "Not Used";
+            Transfer_Cods_array[251] = "None";
+            Transfer_Cods_array[252] = "Unclown";
+            Transfer_Cods_array[253] = "Special";
+            //=================================================================================
+            Protect_Cods_array[0] ="No";
+            Protect_Cods_array[1] = "Yes";
+            Protect_Cods_array[250] = "Not Used";
+            Protect_Cods_array[251] = "None";
+            Protect_Cods_array[252] = "Unclown";
+            Protect_Cods_array[253] = "Special";
+            //=================================================================================
+            Alarm_Cods_array[0] = "High";
+            Alarm_Cods_array[1] = "Low";
+            Alarm_Cods_array[239] = "Hold Last";
+            Alarm_Cods_array[250] = "Not Used";
+            Alarm_Cods_array[251] = "None";
+            Alarm_Cods_array[252] = "Unclown";
+            Alarm_Cods_array[253] = "Special";
             // ==== давление ======
             Encod_unit_array[1] = "Дюймы воды при 68°F";
             Encod_unit_array[2] = "Дюймы ртути при 0°С";
@@ -362,9 +239,114 @@ namespace Class_HART
             Encod_unit_array[251] = "None";
             Encod_unit_array[252] = "Unknown";
             Encod_unit_array[253] = "Special";
-
-
-
+        }
+ 
+     
+        //=================================================================================
+        static public string Encod_unit(int kod)
+        {
+              init_Encod_unit();
+              try {return Encod_unit_array[kod];}
+            catch {return "";}
+        }
+        static public int Encod_unit(string kod)
+        {
+            init_Encod_unit();
+            return Array.IndexOf(Encod_unit_array, kod);
+        }
+        static public string[] unit_arr()
+        {
+            init_Encod_unit();
+            string[] temp = { };
+            for (int i = 0; i < Encod_unit_array.Length; i++)
+            {
+                if ((Encod_unit_array[i] != "") && (Encod_unit_array[i] != null))
+                {
+                    Array.Resize(ref temp, temp.Length + 1);
+                    temp[temp.Length - 1] = Encod_unit_array[i];
+                }
+            }
+            return temp;
+        }
+        //=================================================================================
+        static public string[] Alarm_Cods_arr()
+        {
+            init_Encod_unit();
+            string[] temp = { };
+            for (int i = 0; i < Alarm_Cods_array.Length; i++)
+            {
+                if ((Alarm_Cods_array[i] != "") && (Alarm_Cods_array[i] != null))
+                {
+                    Array.Resize(ref temp, temp.Length + 1);
+                    temp[temp.Length - 1] = Alarm_Cods_array[i];
+                }
+            }
+            return temp;
+        }
+        static public int Alarm_Cods(string kod)
+        {
+            init_Encod_unit();
+            return Array.IndexOf(Alarm_Cods_array, kod);
+        }
+        static public string Alarm_Cods(int kod)
+        {
+              init_Encod_unit();
+              try { return Alarm_Cods_array[kod]; }
+            catch { return ""; }
+        }
+        //=================================================================================
+        //=================================================================================
+        static public string[] Protect_Cods_arr()
+        {
+            init_Encod_unit();
+            string[] temp = { };
+            for (int i = 0; i < Protect_Cods_array.Length; i++)
+            {
+                if ((Protect_Cods_array[i] != "") && (Protect_Cods_array[i] != null))
+                {
+                    Array.Resize(ref temp, temp.Length + 1);
+                    temp[temp.Length - 1] = Protect_Cods_array[i];
+                }
+            }
+            return temp;
+        }
+        static public int Protect_Cods(string kod)
+        {
+            init_Encod_unit();
+            return Array.IndexOf(Protect_Cods_array, kod);
+        }
+        static public string Protect_Cods(int kod)
+        {
+            init_Encod_unit();
+            try { return Protect_Cods_array[kod]; }
+            catch { return ""; }
+        }
+        //=================================================================================
+        //=================================================================================
+        static public string[] Transfer_Cods_arr()
+        {
+            init_Encod_unit();
+            string[] temp = { };
+            for (int i = 0; i < Transfer_Cods_array.Length; i++)
+            {
+                if ((Transfer_Cods_array[i] != "") && (Transfer_Cods_array[i] != null))
+                {
+                    Array.Resize(ref temp, temp.Length + 1);
+                    temp[temp.Length - 1] = Transfer_Cods_array[i];
+                }
+            }
+            return temp;
+        }
+        static public int Transfer_Cods(string kod)
+        {
+            init_Encod_unit();
+            return Array.IndexOf(Transfer_Cods_array, kod);
+        }
+        static public string Transfer_Cods(int kod)
+        {
+            init_Encod_unit();
+            try { return Transfer_Cods_array[kod]; }
+            catch { return ""; }
         }
         //=======================================================================================================================
     }

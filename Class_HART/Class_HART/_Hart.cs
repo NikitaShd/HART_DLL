@@ -992,6 +992,7 @@ namespace Class_HART
 
             try
             {
+
                 Byte[] a = _Convert.Str_tu_byte(Teg, 6);
                 Byte[] b = _Convert.Str_tu_byte(Descriptor, 12);
                 Byte[] c = _Convert.Data_tu_bute(Data);

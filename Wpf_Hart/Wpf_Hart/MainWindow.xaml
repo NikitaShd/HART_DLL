@@ -196,7 +196,35 @@
                                     
                                 </DockPanel>
                             </Border>
-                          
+                            <Border  BorderBrush="{DynamicResource Custom_blu1}" BorderThickness="2"  Margin="20,20,0,0"  CornerRadius="8,8,8,8">
+                                <DockPanel >
+                                    <Label DockPanel.Dock="Top" Content="Extended Info" Margin="10,-19,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" Width="120"/>
+
+                                    <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" >
+                                        <Button x:Name="B_dev_os_read" Click="B_dev_info_read_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="{x:Static res:Resource.R_Read}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom"/>
+                                        <Button x:Name="B_dev_os_write" Click="B_dev_info_write_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Write}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
+                                    </StackPanel>
+                                    <Separator DockPanel.Dock="Bottom"></Separator>
+                                    <StackPanel MinHeight="300" MinWidth="300" Margin="1">
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Signal :" Margin="25,0,0,0" Width="150"/>
+                                        <ComboBox Margin="20,-17,20,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" x:Name="ComboBox_PortSpid" ItemsSource="{Binding S_Alarm_cods}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="260" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
+
+                                       
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Message :" Margin="25,0,0,0" Width="90"/>
+                                        <TextBox  Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Long Teg :" Margin="25,0,0,0" Width="90"/>
+                                        <TextBox Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}"  Cursor="Arrow"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Short Teg :" Margin="25,0,0,0" Width="90"/>
+                                        <TextBox  Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Description :" Margin="25,0,0,0" Width="90"/>
+                                        <TextBox  Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Date :" Margin="25,0,0,0" Width="90"/>
+                                        <DatePicker Margin="20,-17,20,10" FontSize="16" IsDropDownOpen="False" SelectedDateFormat="Short" Style="{StaticResource MaterialDesignFilledDatePicker}" Cursor="Arrow" Foreground="{DynamicResource Custom_textcolor}" ForceCursor="True" />
+
+                                    </StackPanel>
+
+                                </DockPanel>
+                            </Border>
                         </WrapPanel>
 
 

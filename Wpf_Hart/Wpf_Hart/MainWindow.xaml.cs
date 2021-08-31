@@ -13,9 +13,9 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Markup;
+using System.Collections.Generic;
+namespace Wpf_Hart { 
 
-namespace Wpf_Hart
-{
    
     public class MarginConverter : IValueConverter
     {
@@ -37,9 +37,12 @@ namespace Wpf_Hart
     public partial class MainWindow : Window
     {
         Conect HART_conection = new Conect();
+        public List<string> S_Alarm_cods { get; set; } = new List<string> { };
+
         string this_usb = "";
         private readonly object balanceLock = new object();
         Byte[] Devise_long_adres = { };
+
         public ObservableCollection<string> usb { get; set; } = new ObservableCollection<string> { };
         
         public struct devaise
@@ -127,7 +130,7 @@ namespace Wpf_Hart
 
         public MainWindow()
         {
-           
+            S_Alarm_cods.AddRange(_Tables.unit_arr());
             this.DataContext = this;
             ResourceDictionary dictionary = new ResourceDictionary();
             
@@ -152,6 +155,7 @@ namespace Wpf_Hart
             }
             System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Langue);
             InitializeComponent();
+          
             List_menu.SelectedIndex = 0; // устанавливаем по умолчанию выбраный первый элемент меню
             Tab_control_main.SelectedIndex = 0;// устанавливаем по умолчанию первую панель 
             ///  Properties.Settings.Default.Master;
@@ -407,7 +411,7 @@ namespace Wpf_Hart
             string[] temp = { };
             P_basic_param.IsEnabled = false;
            
-            await Task.Factory.StartNew(async () =>
+            await Task.Factory.StartNew(() =>
             {
                 lock (balanceLock)
                 {
@@ -471,19 +475,20 @@ namespace Wpf_Hart
             {
                 lock (balanceLock)
                 {
-                   HART_conection.Comand_17(Properties.Settings.Default.Master, Devise_long_adres, mes);
-                    Thread.Sleep(500);
+                   HART_conection.Comand_17(Properties.Settings.Default.Master, Devise_long_adres, mes.ToUpper());
+                   // Thread.Sleep(500);
                 }
             });
             string s_teg = T_s_teg.Text;
             string discriptor = T_discriptor.Text;
             string data = T_data.Text;
+            
             await Task.Run(() =>
             {
                 lock (balanceLock)
                 {
-                    HART_conection.Comand_18(Properties.Settings.Default.Master, Devise_long_adres, s_teg, discriptor, data);
-                    Thread.Sleep(500);
+                    HART_conection.Comand_18(Properties.Settings.Default.Master, Devise_long_adres, s_teg.ToUpper(), discriptor.ToUpper(), data);
+                    //Thread.Sleep(500);
                 }
             });
             string l_teg = T_L_teg.Text;
@@ -491,8 +496,8 @@ namespace Wpf_Hart
             {
                 lock (balanceLock)
                 {
-                    HART_conection.Comand_22(Properties.Settings.Default.Master, Devise_long_adres, l_teg);
-                    Thread.Sleep(500);
+                   // HART_conection.Comand_22(Properties.Settings.Default.Master, Devise_long_adres, l_teg);
+                   // Thread.Sleep(500);
                 }
             });
             P_info.IsEnabled = true;
