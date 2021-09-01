@@ -70,6 +70,11 @@ namespace Wpf_Hart {
             Regex regex = new Regex("[^0-9.]+");
             e.Handled = regex.IsMatch(e.Text);
         }
+        private void HexValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9A-Fa-f-]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
 
         protected override void OnSourceInitialized(EventArgs e)
         {
@@ -242,13 +247,20 @@ namespace Wpf_Hart {
         {
             this.WindowState = WindowState.Minimized;
         }
-
+        int item = 0;
         private void List_menu_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            int item = List_menu.SelectedIndex;
-            // List_menu.SelectedIndex = item;
-            if (item != -1) Tab_control_main.SelectedIndex = item;
-
+            if ((List_menu.SelectedIndex != 5)&&(List_menu.SelectedIndex != 6))
+            {
+                item = List_menu.SelectedIndex;
+                if (item != -1) Tab_control_main.SelectedIndex = item;
+            }
+            else
+            {
+               
+                if (List_menu.SelectedIndex == 6) { System.Diagnostics.Process.Start("explorer.exe", "http://github.com/TviZet/HART_DLL"); }
+                List_menu.SelectedIndex = item;
+            }
         }
 
         //перетаскивание формы
@@ -585,6 +597,233 @@ namespace Wpf_Hart {
             });
 
             P_Extended_Info.IsEnabled = true;
+        }
+
+        private async void B_dev_fixed_current_set_Click(object sender, RoutedEventArgs e)
+        {
+            P_Fixed_Current.IsEnabled = false;
+            float temp = Convert.ToSingle(T_fixed_current.Text);
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    HART_conection.Comand_40(Properties.Settings.Default.Master, Devise_long_adres, temp);
+                }
+            });
+            P_Fixed_Current.IsEnabled = true;
+        }
+
+        private async void B_dev_fixed_current_exit_Click(object sender, RoutedEventArgs e)
+        {
+            P_Fixed_Current.IsEnabled = false;
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    HART_conection.Comand_40(Properties.Settings.Default.Master, Devise_long_adres, 0);
+                }
+            });
+            P_Fixed_Current.IsEnabled = true;
+        }
+
+        private async void B_dev_zero_set_Click(object sender, RoutedEventArgs e)
+        {
+            P_Zero.IsEnabled = false;
+            float temp = Convert.ToSingle(T_Zero.Text);
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    HART_conection.Comand_45(Properties.Settings.Default.Master, Devise_long_adres, temp);
+                }
+            });
+            P_Zero.IsEnabled = true;
+        }
+
+        private async void B_dev_coficent_set_Click(object sender, RoutedEventArgs e)
+        {
+            P_Coficent.IsEnabled = false;
+            float temp = Convert.ToSingle(T_Coficent.Text);
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    HART_conection.Comand_46(Properties.Settings.Default.Master, Devise_long_adres, temp);
+                }
+            });
+            P_Coficent.IsEnabled = true;
+        }
+
+        private async void B_dev_U_range_value_Click(object sender, RoutedEventArgs e)
+        {
+            ((Button)sender).IsEnabled = false;
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    HART_conection.Comand_36(Properties.Settings.Default.Master, Devise_long_adres);
+                }
+            });
+            ((Button)sender).IsEnabled = true;
+        }
+
+        private async void B_dev_L_range_value_Click(object sender, RoutedEventArgs e)
+        {
+            ((Button)sender).IsEnabled = false;
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    HART_conection.Comand_37(Properties.Settings.Default.Master, Devise_long_adres);
+                }
+            });
+            ((Button)sender).IsEnabled = true;
+        }
+
+        private async void B_dev_Prim_value_Click(object sender, RoutedEventArgs e)
+        {
+            ((Button)sender).IsEnabled = false;
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    HART_conection.Comand_43(Properties.Settings.Default.Master, Devise_long_adres);
+                }
+            });
+            ((Button)sender).IsEnabled = true;
+        }
+
+        private async void B_dev_eeprom_burn_Click(object sender, RoutedEventArgs e)
+        {
+            ((Button)sender).IsEnabled = false;
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    HART_conection.Comand_39(Properties.Settings.Default.Master, Devise_long_adres,0);
+                }
+            });
+            ((Button)sender).IsEnabled = true;
+        }
+
+        private async void B_dev_eeprom_restor_Click(object sender, RoutedEventArgs e)
+        {
+            ((Button)sender).IsEnabled = false;
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    HART_conection.Comand_39(Properties.Settings.Default.Master, Devise_long_adres, 1);
+                }
+            });
+            ((Button)sender).IsEnabled = true;
+        }
+
+        private async void B_dev_reset_flad_Click(object sender, RoutedEventArgs e)
+        {
+            ((Button)sender).IsEnabled = false;
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    HART_conection.Comand_38(Properties.Settings.Default.Master, Devise_long_adres);
+                }
+            });
+            ((Button)sender).IsEnabled = true;
+        }
+
+        private async void B_dev_reset_Click(object sender, RoutedEventArgs e)
+        {
+            ((Button)sender).IsEnabled = false;
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    HART_conection.Comand_42(Properties.Settings.Default.Master, Devise_long_adres);
+                }
+            });
+            ((Button)sender).IsEnabled = true;
+        }
+
+        private async void B_dev_Preambul_read_Click(object sender, RoutedEventArgs e)
+        {
+            P_preambula.IsEnabled = false;
+            string[] temp = { };
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    HART_conection.Comand_0(Properties.Settings.Default.Master, Devise_long_adres,ref temp);
+                }
+            });
+            T_Preambul_l.Text = temp[2];
+            P_preambula.IsEnabled = true;
+        }
+
+        private async void B_dev_Preambul_write_Click(object sender, RoutedEventArgs e)
+        {
+            P_preambula.IsEnabled = false;
+            int temp = Convert.ToInt32(T_Preambul_l.Text);
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    HART_conection.Comand_59(Properties.Settings.Default.Master, Devise_long_adres,temp);
+                }
+            });
+           
+            P_preambula.IsEnabled = true;
+        }
+
+      
+
+        private async void B_dev_Short_ad_write_Click(object sender, RoutedEventArgs e)
+        {
+            P_short_ad.IsEnabled = false;
+            int temp = Convert.ToInt32(T_Short_ad.Text);
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    HART_conection.Comand_6(Properties.Settings.Default.Master, Devise_long_adres,temp);
+                }
+            });
+           
+            P_short_ad.IsEnabled = true;
+        }
+
+        private async void B_dev_Serial_num_read_Click(object sender, RoutedEventArgs e)
+        {
+            P_serial_num.IsEnabled = false;
+            string temp = "";
+            string kod = "";
+            float Min = 0;
+            float Max = 0;
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    HART_conection.Comand_14(Properties.Settings.Default.Master, Devise_long_adres, ref temp,ref kod,ref Min,ref Max);
+                }
+            });
+            T_Serial_num.Text = temp;
+            P_serial_num.IsEnabled = true;
+        }
+
+        private async void B_dev_Serial_num_write_Click(object sender, RoutedEventArgs e)
+        {
+            P_serial_num.IsEnabled = false;
+            string temp = T_Serial_num.Text;
+           
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    HART_conection.Comand_49(Properties.Settings.Default.Master, Devise_long_adres, _Convert.GetBytes(temp.Replace("-", "")));
+                }
+            });
+           
+            P_serial_num.IsEnabled = true;
         }
     }
 }

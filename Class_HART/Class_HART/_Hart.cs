@@ -413,6 +413,23 @@ namespace Class_HART
                 data = te;
             }
         }
+        public Read_Fraim Comand_0(int id_master, Byte[] id_slaiv)
+        {
+          
+            try
+            {
+
+                Read_Fraim[] temp = Write_long(preambula_leng, id_master, id_slaiv, 0, new Byte[] { });
+
+
+                return temp[0];
+            }
+            catch
+            {
+                EROR = "READ_EROR";
+               return new Read_Fraim();
+            }
+        }
         /// <summary>
         /// КОМАНДА #1 ЧТЕНИЕ ПЕРВИЧНОЙ ПЕРЕМЕННОЙ
         /// </summary>

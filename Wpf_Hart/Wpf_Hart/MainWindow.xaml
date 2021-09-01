@@ -247,8 +247,8 @@
                                     <Label DockPanel.Dock="Top" Content="Fixed Current" Margin="10,-19,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" Width="120"/>
 
                                     <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" >
-                                        <Button x:Name="B_dev_fixed_current_set" Click="B_dev_Extended_Info_read_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="Exit" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom"/>
-                                        <Button x:Name="B_dev_fixed_current_exit" Click="B_dev_Extended_Info_write_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Set" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
+                                        <Button x:Name="B_dev_fixed_current_exit" Click="B_dev_fixed_current_exit_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="Exit" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom"/>
+                                        <Button x:Name="B_dev_fixed_current_set" Click="B_dev_fixed_current_set_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Set" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
                                     </StackPanel>
                                     <Separator DockPanel.Dock="Bottom"></Separator>
                                     <StackPanel MinHeight="10" MinWidth="300" Margin="1">
@@ -263,7 +263,7 @@
 
                                     <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" >
                                     
-                                        <Button x:Name="B_dev_zero_set" Click="B_dev_Extended_Info_write_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Set" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
+                                        <Button x:Name="B_dev_zero_set" Click="B_dev_zero_set_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Set" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
                                     </StackPanel>
                                     <Separator DockPanel.Dock="Bottom"></Separator>
                                     <StackPanel MinHeight="10" MinWidth="300" Margin="1">
@@ -278,7 +278,7 @@
 
                                     <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" >
 
-                                        <Button x:Name="B_dev_coficent_set" Click="B_dev_Extended_Info_write_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Set" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
+                                        <Button x:Name="B_dev_coficent_set" Click="B_dev_coficent_set_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Set" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
                                     </StackPanel>
                                     <Separator DockPanel.Dock="Bottom"></Separator>
                                     <StackPanel MinHeight="10" MinWidth="300" Margin="1">
@@ -292,9 +292,9 @@
                                     <Label DockPanel.Dock="Top" Content="Variable" Margin="10,-19,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" Width="75"/>
 
                                     <StackPanel  MinHeight="10" MinWidth="300" Margin="1" >
-                                        <Button x:Name="B_dev_fix" Click="B_dev_Extended_Info_write_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Set Upper Range Value"  Margin="10,0,10,3" VerticalAlignment="Bottom" Cursor="Hand"/>
-                                        <Button x:Name="B_dev_fix2" Click="B_dev_Extended_Info_write_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Set Lower Range Value"  Margin="10,3,10,3" VerticalAlignment="Bottom" Cursor="Hand"/>
-                                        <Button x:Name="B_dev_fix3" Click="B_dev_Extended_Info_write_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Set Zero Primary Variable"  Margin="10,3,10,10" VerticalAlignment="Bottom" Cursor="Hand"/>
+                                        <Button x:Name="B_dev_U_range_value" Click="B_dev_U_range_value_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Set Upper Range Value"  Margin="10,0,10,3" VerticalAlignment="Bottom" Cursor="Hand"/>
+                                        <Button x:Name="B_dev_L_range_value" Click="B_dev_L_range_value_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Set Lower Range Value"  Margin="10,3,10,3" VerticalAlignment="Bottom" Cursor="Hand"/>
+                                        <Button x:Name="B_dev_Prim_value" Click="B_dev_Prim_value_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Set Zero Primary Variable"  Margin="10,3,10,10" VerticalAlignment="Bottom" Cursor="Hand"/>
 
                                     </StackPanel>
                                     
@@ -305,29 +305,29 @@
                                     <Label DockPanel.Dock="Top" Content="EEPROM" Margin="10,-19,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" Width="80"/>
 
                                     <StackPanel  MinHeight="10" MinWidth="300" Margin="1" >
-                                        <Button x:Name="B_dev_fix5" Click="B_dev_Extended_Info_write_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Burn EEPROM"  Margin="10,0,10,3" VerticalAlignment="Bottom" Cursor="Hand"/>
-                                        <Button x:Name="B_dev_fix6" Click="B_dev_Extended_Info_write_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Restore Shadow RAM"  Margin="10,3,10,10" VerticalAlignment="Bottom" Cursor="Hand"/>
-                                    </StackPanel>
-                                </DockPanel>
-                            </Border>
-                            <Border  BorderBrush="{DynamicResource Custom_blu1}" BorderThickness="2"  Margin="20,20,0,0"  CornerRadius="8,8,8,8">
-                                <DockPanel x:Name="P_">
-                                    <Label DockPanel.Dock="Top" Content="EEPROM" Margin="10,-19,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" Width="80"/>
-
-                                    <StackPanel  MinHeight="10" MinWidth="300" Margin="1" >
-                                        <Button x:Name="B_dev_fix7" Click="B_dev_Extended_Info_write_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Reset &lt;Configuration Changed> Flag"  Margin="10,0,10,3" VerticalAlignment="Bottom" Cursor="Hand"/>
-                                        <Button x:Name="B_dev_fix8" Click="B_dev_Extended_Info_write_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Reset Device"  Margin="10,3,10,10" VerticalAlignment="Bottom" Cursor="Hand"/>
+                                        <Button x:Name="B_dev_eeprom_burn" Click="B_dev_eeprom_burn_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Burn EEPROM"  Margin="10,0,10,3" VerticalAlignment="Bottom" Cursor="Hand"/>
+                                        <Button x:Name="B_dev_eeprom_restor" Click="B_dev_eeprom_restor_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Restore Shadow RAM"  Margin="10,3,10,10" VerticalAlignment="Bottom" Cursor="Hand"/>
                                     </StackPanel>
                                 </DockPanel>
                             </Border>
                             <Border  BorderBrush="{DynamicResource Custom_blu1}" BorderThickness="2"  Margin="20,20,0,0"  CornerRadius="8,8,8,8">
                                 <DockPanel >
+                                    <Label DockPanel.Dock="Top" Content="EEPROM" Margin="10,-19,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" Width="80"/>
+
+                                    <StackPanel  MinHeight="10" MinWidth="300" Margin="1" >
+                                        <Button x:Name="B_dev_reset_flad" Click="B_dev_reset_flad_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Reset &lt;Configuration Changed> Flag"  Margin="10,0,10,3" VerticalAlignment="Bottom" Cursor="Hand"/>
+                                        <Button x:Name="B_dev_reset" Click="B_dev_reset_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Reset Device"  Margin="10,3,10,10" VerticalAlignment="Bottom" Cursor="Hand"/>
+                                    </StackPanel>
+                                </DockPanel>
+                            </Border>
+                            <Border  BorderBrush="{DynamicResource Custom_blu1}" BorderThickness="2"  Margin="20,20,0,0"  CornerRadius="8,8,8,8">
+                                <DockPanel x:Name="P_preambula">
                                     <Label DockPanel.Dock="Top" Content="Preambula" Margin="10,-19,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" Width="95"/>
 
                                     <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" >
 
-                                        <Button x:Name="B_dev_Preambul_read" Click="B_dev_info_read_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="{x:Static res:Resource.R_Read}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom"/>
-                                        <Button x:Name="B_dev_Preambul_write" Click="B_dev_info_write_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Write}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
+                                        <Button x:Name="B_dev_Preambul_read" Click="B_dev_Preambul_read_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="{x:Static res:Resource.R_Read}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom"/>
+                                        <Button x:Name="B_dev_Preambul_write" Click="B_dev_Preambul_write_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Write}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
                                     </StackPanel>
                                     <Separator DockPanel.Dock="Bottom"></Separator>
                                     <StackPanel MinHeight="10" MinWidth="300" Margin="1">
@@ -337,18 +337,34 @@
                                 </DockPanel>
                             </Border>
                             <Border  BorderBrush="{DynamicResource Custom_blu1}" BorderThickness="2"  Margin="20,20,0,0"  CornerRadius="8,8,8,8">
-                                <DockPanel >
+                                <DockPanel x:Name="P_short_ad" >
                                     <Label DockPanel.Dock="Top" Content="Short Adres" Margin="10,-19,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" Width="105"/>
 
                                     <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" >
 
-                                        <Button x:Name="B_dev_Short_ad_read" Click="B_dev_info_read_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="{x:Static res:Resource.R_Read}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom"/>
-                                        <Button x:Name="B_dev_Short_ad_write" Click="B_dev_info_write_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Write}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
+                                      
+                                        <Button x:Name="B_dev_Short_ad_write" Click="B_dev_Short_ad_write_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Write}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
                                     </StackPanel>
                                     <Separator DockPanel.Dock="Bottom"></Separator>
                                     <StackPanel MinHeight="10" MinWidth="300" Margin="1">
                                         <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="Short Adres :" Margin="25,0,0,0" Width="150"/>
                                         <TextBox PreviewTextInput="NumberValidationTextBox"  Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" x:Name="T_Short_ad" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
+                                    </StackPanel>
+                                </DockPanel>
+                            </Border>
+                            <Border  BorderBrush="{DynamicResource Custom_blu1}" BorderThickness="2"  Margin="20,20,0,0"  CornerRadius="8,8,8,8">
+                                <DockPanel x:Name="P_serial_num">
+                                    <Label DockPanel.Dock="Top" Content="Serial Number" Margin="10,-19,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" Width="125"/>
+
+                                    <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" >
+
+                                        <Button x:Name="B_dev_Serial_num_read" Click="B_dev_Serial_num_read_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="{x:Static res:Resource.R_Read}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom"/>
+                                        <Button x:Name="B_dev_Serial_num_write" Click="B_dev_Serial_num_write_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Write}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
+                                    </StackPanel>
+                                    <Separator DockPanel.Dock="Bottom"></Separator>
+                                    <StackPanel MinHeight="10" MinWidth="300" Margin="1">
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="Serial Number (HEX) :" Margin="25,0,0,0" Width="150"/>
+                                        <TextBox PreviewTextInput="HexValidationTextBox"  Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" x:Name="T_Serial_num" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
                                     </StackPanel>
                                 </DockPanel>
                             </Border>
