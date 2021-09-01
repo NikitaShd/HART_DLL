@@ -375,78 +375,163 @@
             <TabItem Header="TabItem"  Margin="-2" VerticalAlignment="Top">
                 <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="-2,-4,-2,15">
                     <Grid Background="{DynamicResource Custom_Background}" >
-                        <Button x:Name="B_serias" Click="B_serias_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Write}" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
-                        <Grid Margin="20,60,20,20">
-                            <Grid.Effect>
-                                <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" Opacity=".2" ShadowDepth="1"/>
-                            </Grid.Effect>
-                            <Grid.Resources>
-                                <local:OpacityConverter x:Key="OpacityConverter"></local:OpacityConverter>
-                                <local:ReverseConverter x:Key="ReverseConverter"></local:ReverseConverter>
-                            </Grid.Resources>
-                            <Border CornerRadius="5" Background="{DynamicResource Custom_Background}">
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"></RowDefinition>
-                                        <RowDefinition Height="*"></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <TextBlock Grid.Row="0" FontSize="40" Foreground="{DynamicResource Custom_textcolor}" Margin="20, 10">Units Values</TextBlock>
-                                    <ListBox Name="ListBox" ItemsSource="{Binding Series, Converter={StaticResource ReverseConverter}}" PreviewMouseDown="ListBox_OnPreviewMouseDown" 
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="2*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Button Grid.Row="0" x:Name="B_serias" Click="B_serias_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Write}" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
+                            <Grid Grid.Row="1" Margin="20,5,20,5">
+                                <Grid.Effect>
+                                    <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" Opacity=".2" ShadowDepth="1"/>
+                                </Grid.Effect>
+                                <Grid.Resources>
+                                    <local:OpacityConverter x:Key="OpacityConverter"></local:OpacityConverter>
+                                    <local:ReverseConverter x:Key="ReverseConverter"></local:ReverseConverter>
+                                </Grid.Resources>
+                                <Border CornerRadius="5" Background="{DynamicResource Custom_Background}">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Grid.Row="0" FontSize="20" Foreground="{DynamicResource Custom_textcolor}" Margin="30, 5">Units Values</TextBlock>
+
+                                        <ListBox Name="ListBox" ItemsSource="{Binding Series, Converter={StaticResource ReverseConverter}}" PreviewMouseDown="ListBox_OnPreviewMouseDown" 
                              Panel.ZIndex="1" HorizontalAlignment="Right" VerticalAlignment="Center" BorderThickness="0" Background="Transparent">
-                                        <ListBox.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <StackPanel Orientation="Horizontal"/>
-                                            </ItemsPanelTemplate>
-                                        </ListBox.ItemsPanel>
-                                        <ListBox.ItemTemplate>
-      
-                                            <DataTemplate>
-                                                
-                                                <TextBlock Margin="0,0,20,0" Text="{Binding (lvc:LineSeries.Title)}" 
+                                            <ListBox.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <StackPanel Orientation="Horizontal"/>
+                                                </ItemsPanelTemplate>
+                                            </ListBox.ItemsPanel>
+                                            <ListBox.ItemTemplate>
+
+                                                <DataTemplate>
+
+                                                    <TextBlock Margin="0,0,40,0" Text="{Binding (lvc:LineSeries.Title)}" 
                                            Foreground="{Binding (lvc:LineSeries.Stroke)}"
                                            Opacity="{Binding (lvc:LineSeries.Visibility), Converter={StaticResource OpacityConverter}}"
-                                           FontSize="22"/>
-                                            </DataTemplate>
-                                           
-                                        </ListBox.ItemTemplate>
-                                        <ListBox.ItemContainerStyle>
-                                            <Style TargetType="{x:Type ListBoxItem}">
-                                                <Setter Property="Background" Value="Transparent" />
-                                                <Setter Property="Template">
-                                                    <Setter.Value>
-                                                        <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                                            <ContentPresenter />
-                                                        </ControlTemplate>
-                                                    </Setter.Value>
-                                                </Setter>
-                                            </Style>
-                                        </ListBox.ItemContainerStyle>
-                                    </ListBox>
-                                    <Canvas Grid.Row="1" Name="Canvas" Margin="-4, 0, 0, 20">
-                                        
+                                           FontSize="20"/>
+                                                </DataTemplate>
 
-                                        <lvc:CartesianChart Name="C_unit_value" Height="{Binding ElementName=Canvas, Path=ActualHeight}" Width="{Binding ElementName=Canvas, Path=ActualWidth}"
-                                     Series="{Binding Series}" Hoverable="False">
-                                            <lvc:CartesianChart.SeriesColors>
-                                                <lvc:ColorsCollection>
-                                                    <Color>#22577A</Color>
-                                                    <Color>#38A3A5</Color>
-                                                    <Color>#57CC99</Color>
-                                                    <Color>#80ED99</Color>
-                                                    <Color>#000000</Color>
-                                                </lvc:ColorsCollection>
-                                            </lvc:CartesianChart.SeriesColors>
+                                            </ListBox.ItemTemplate>
+                                            <ListBox.ItemContainerStyle>
+                                                <Style TargetType="{x:Type ListBoxItem}">
+                                                    <Setter Property="Background" Value="Transparent" />
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                                                <ContentPresenter />
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </ListBox.ItemContainerStyle>
+                                        </ListBox>
 
-                                            <lvc:CartesianChart.AxisX>
-                                                <lvc:Axis IsEnabled="True" ShowLabels="True" IsMerged="false" FontSize="14"></lvc:Axis>
-                                            </lvc:CartesianChart.AxisX>
-                                            <lvc:CartesianChart.AxisY>
-                                                <lvc:Axis IsMerged="True" FontSize="14"></lvc:Axis>
-                                            </lvc:CartesianChart.AxisY>
-                                        </lvc:CartesianChart>
-                                    </Canvas>
-                                </Grid>
-                            </Border>
+                                        <Canvas Grid.Row="1" Name="Canvas" Margin=" 2, 0, 15, 20">
+
+
+                                            <lvc:CartesianChart Name="C_unit_value" Height="{Binding ElementName=Canvas, Path=ActualHeight}" Width="{Binding ElementName=Canvas, Path=ActualWidth}"
+                                     Series="{Binding Series}"  Hoverable="False">
+                                                <lvc:CartesianChart.SeriesColors>
+                                                    <lvc:ColorsCollection>
+                                                        <Color>#ffa200</Color>
+                                                        <Color>#00a03e</Color>
+                                                        <Color>#24a8ac</Color>
+                                                        <Color>#0087cb</Color>
+                                                    </lvc:ColorsCollection>
+                                                </lvc:CartesianChart.SeriesColors>
+
+
+                                                <lvc:CartesianChart.AxisX>
+                                                    <lvc:Axis  IsEnabled="True" ShowLabels="True" IsMerged="false" FontSize="14"></lvc:Axis>
+                                                </lvc:CartesianChart.AxisX>
+                                                <lvc:CartesianChart.AxisY>
+                                                    <lvc:Axis IsMerged="false" FontSize="14"></lvc:Axis>
+                                                </lvc:CartesianChart.AxisY>
+                                            </lvc:CartesianChart>
+                                        </Canvas>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                            <Grid Grid.Row="2" Margin="20,5,20,5">
+                                <Grid.Effect>
+                                    <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" Opacity=".2" ShadowDepth="1"/>
+                                </Grid.Effect>
+                                <Grid.Resources>
+                                    <local:OpacityConverter x:Key="OpacityConverter"></local:OpacityConverter>
+                                    <local:ReverseConverter x:Key="ReverseConverter"></local:ReverseConverter>
+                                </Grid.Resources>
+                                <Border CornerRadius="5" Background="{DynamicResource Custom_Background}">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Grid.Row="0" FontSize="20" Foreground="{DynamicResource Custom_textcolor}" Margin="30, 5">Units Values</TextBlock>
+
+                                        <ListBox Name="ListBox2" ItemsSource="{Binding Series2, Converter={StaticResource ReverseConverter}}" PreviewMouseDown="ListBox_OnPreviewMouseDown2" 
+                             Panel.ZIndex="1" HorizontalAlignment="Right" VerticalAlignment="Center" BorderThickness="0" Background="Transparent">
+                                            <ListBox.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <StackPanel Orientation="Horizontal"/>
+                                                </ItemsPanelTemplate>
+                                            </ListBox.ItemsPanel>
+                                            <ListBox.ItemTemplate>
+
+                                                <DataTemplate>
+
+                                                    <TextBlock Margin="0,0,40,0" Text="{Binding (lvc:LineSeries.Title)}" 
+                                           Foreground="{Binding (lvc:LineSeries.Stroke)}"
+                                           Opacity="{Binding (lvc:LineSeries.Visibility), Converter={StaticResource OpacityConverter}}"
+                                           FontSize="20"/>
+                                                </DataTemplate>
+
+                                            </ListBox.ItemTemplate>
+                                            <ListBox.ItemContainerStyle>
+                                                <Style TargetType="{x:Type ListBoxItem}">
+                                                    <Setter Property="Background" Value="Transparent" />
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                                                <ContentPresenter />
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </ListBox.ItemContainerStyle>
+                                        </ListBox>
+
+                                        <Canvas Grid.Row="1" Name="Canvas2" Margin=" 2, 0, 15, 20">
+
+
+                                            <lvc:CartesianChart Name="C_unit_value2" Height="{Binding ElementName=Canvas2, Path=ActualHeight}" Width="{Binding ElementName=Canvas2, Path=ActualWidth}"
+                                     Series="{Binding Series2}"  Hoverable="False">
+                                                <lvc:CartesianChart.SeriesColors>
+                                                    <lvc:ColorsCollection>
+                                                        <Color>#0087cb</Color>
+                                                        <Color>#ffa200</Color>
+                                                        <Color>#24a8ac</Color>
+                                                        <Color>#00a03e</Color>
+                                                    </lvc:ColorsCollection>
+                                                </lvc:CartesianChart.SeriesColors>
+
+
+                                                <lvc:CartesianChart.AxisX>
+                                                    <lvc:Axis  IsEnabled="True" ShowLabels="True" IsMerged="false" FontSize="14"></lvc:Axis>
+                                                </lvc:CartesianChart.AxisX>
+                                                <lvc:CartesianChart.AxisY>
+                                                    <lvc:Axis IsMerged="false" FontSize="14"></lvc:Axis>
+                                                </lvc:CartesianChart.AxisY>
+                                            </lvc:CartesianChart>
+                                        </Canvas>
+                                    </Grid>
+                                </Border>
+                            </Grid>
                         </Grid>
                     </Grid>
                 </ScrollViewer>

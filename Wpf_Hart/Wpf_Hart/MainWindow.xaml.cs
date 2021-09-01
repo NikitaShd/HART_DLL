@@ -83,6 +83,7 @@ namespace Wpf_Hart {
         public SeriesCollection SeriesCollection { get; set; }
         public string[] Labels { get; set; }
         public Func<double, string> YFormatter { get; set; }
+       
         //=========
         public struct devaise
         {
@@ -177,10 +178,21 @@ namespace Wpf_Hart {
             }
         }
         public SeriesCollection Series { get; set; }
+        public SeriesCollection Series2 { get; set; }
 
         private void ListBox_OnPreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             var item = ItemsControl.ContainerFromElement(ListBox, (DependencyObject)e.OriginalSource) as ListBoxItem;
+            if (item == null) return;
+
+            var series = (LineSeries)item.Content;
+            series.Visibility = series.Visibility == Visibility.Visible
+                ? Visibility.Hidden
+                : Visibility.Visible;
+        }
+        private void ListBox_OnPreviewMouseDown2(object sender, MouseButtonEventArgs e)
+        {
+            var item = ItemsControl.ContainerFromElement(ListBox2, (DependencyObject)e.OriginalSource) as ListBoxItem;
             if (item == null) return;
 
             var series = (LineSeries)item.Content;
@@ -197,27 +209,43 @@ namespace Wpf_Hart {
                 new LineSeries
                 {
                     Values = new ChartValues<double> {20, 30, 35, 45, 65, 85},
-                    Title = "Electricity",
+                    Title = "Param-1",
                     Fill = Brushes.Transparent
                 },
                 new LineSeries
                 {
                     Values = new ChartValues<double> {10, 50, 10, 24, 22, 63},
-                    Title = "Water",
+                    Title = "Param-2",
                     Fill = Brushes.Transparent
                 },
                 new LineSeries
                 {
                     Values = new ChartValues<double> {5, 8, 12, 15, 22, 25},
-                    Title = "Solar",
+                    Title = "Param-3",
                     Fill = Brushes.Transparent
                 },
                 new LineSeries
                 {
                     Values = new ChartValues<double> {10, 12, 18, 20, 38, 40},
-                    Title = "Gas",
+                    Title = "Param-4",
                     Fill = Brushes.Transparent
                 }
+            };
+            Series2 = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Values = new ChartValues<double> {20, 30, 35, 45, 65, 85},
+                    Title = ".ma",
+                    Fill = Brushes.Transparent
+                },
+                new LineSeries
+                {
+                    Values = new ChartValues<double> {10, 50, 10, 24, 22, 63},
+                    Title = ".%",
+                    Fill = Brushes.Transparent
+                }
+               
             };
 
             //modifying the series collection will animate and update the chart
@@ -242,8 +270,7 @@ namespace Wpf_Hart {
                 Application.Current.Resources.Clear();
                 Application.Current.Resources.MergedDictionaries.Clear();
                 Application.Current.Resources.MergedDictionaries.Add(dictionary);
-
-
+                
             }
             else
             {
@@ -252,7 +279,7 @@ namespace Wpf_Hart {
                 Application.Current.Resources.Clear();
                 Application.Current.Resources.MergedDictionaries.Clear();
                 Application.Current.Resources.MergedDictionaries.Add(dictionary);
-
+                
             }
             System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Langue);
             InitializeComponent();
@@ -497,7 +524,7 @@ namespace Wpf_Hart {
                 Application.Current.Resources.MergedDictionaries.Clear();
                 Application.Current.Resources.MergedDictionaries.Add(dictionary);
                 Properties.Settings.Default.Darkmode = false;
-
+               
             }
             else
             {
@@ -507,6 +534,8 @@ namespace Wpf_Hart {
                 Application.Current.Resources.MergedDictionaries.Clear();
                 Application.Current.Resources.MergedDictionaries.Add(dictionary);
                 Properties.Settings.Default.Darkmode = true;
+
+               
             }
             listBox_dev.SelectedIndex = -1;
             Properties.Settings.Default.Save();
