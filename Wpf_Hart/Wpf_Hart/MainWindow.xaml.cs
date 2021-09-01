@@ -15,6 +15,13 @@ using System.Windows.Interop;
 using System.Windows.Markup;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using LiveCharts;
+using LiveCharts.Wpf;
+using System.Windows.Media;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Linq;
+
 namespace Wpf_Hart { 
 
    
@@ -31,7 +38,32 @@ namespace Wpf_Hart {
             return null;
         }
     }
+    public class ReverseConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return ((SeriesCollection)value).Reverse();
+        }
 
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class OpacityConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return (Visibility)value == Visibility.Visible
+                ? 2d
+                : .2d;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -47,7 +79,11 @@ namespace Wpf_Hart {
         Byte[] Devise_long_adres = { };
 
         public ObservableCollection<string> usb { get; set; } = new ObservableCollection<string> { };
-        
+        //==========
+        public SeriesCollection SeriesCollection { get; set; }
+        public string[] Labels { get; set; }
+        public Func<double, string> YFormatter { get; set; }
+        //=========
         public struct devaise
         {
 
@@ -140,9 +176,58 @@ namespace Wpf_Hart {
                 ComboBox_UsbDevaise.SelectedIndex = 0;
             }
         }
+        public SeriesCollection Series { get; set; }
 
+        private void ListBox_OnPreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var item = ItemsControl.ContainerFromElement(ListBox, (DependencyObject)e.OriginalSource) as ListBoxItem;
+            if (item == null) return;
+
+            var series = (LineSeries)item.Content;
+            series.Visibility = series.Visibility == Visibility.Visible
+                ? Visibility.Hidden
+                : Visibility.Visible;
+        }
         public MainWindow()
         {
+            //=====================
+
+            Series = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Values = new ChartValues<double> {20, 30, 35, 45, 65, 85},
+                    Title = "Electricity",
+                    Fill = Brushes.Transparent
+                },
+                new LineSeries
+                {
+                    Values = new ChartValues<double> {10, 50, 10, 24, 22, 63},
+                    Title = "Water",
+                    Fill = Brushes.Transparent
+                },
+                new LineSeries
+                {
+                    Values = new ChartValues<double> {5, 8, 12, 15, 22, 25},
+                    Title = "Solar",
+                    Fill = Brushes.Transparent
+                },
+                new LineSeries
+                {
+                    Values = new ChartValues<double> {10, 12, 18, 20, 38, 40},
+                    Title = "Gas",
+                    Fill = Brushes.Transparent
+                }
+            };
+
+            //modifying the series collection will animate and update the chart
+
+
+            //modifying any series values will also animate and update the chart
+            // SeriesCollection[3].Values.Add(5d);
+            //======================
+
+
             S_Alarm_cods.AddRange(_Tables.Alarm_Cods_arr());
             S_Protect_cods.AddRange(_Tables.Protect_Cods_arr());
             S_Transfer_cods.AddRange(_Tables.Transfer_Cods_arr());
@@ -824,6 +909,11 @@ namespace Wpf_Hart {
             });
            
             P_serial_num.IsEnabled = true;
+        }
+
+        private void B_serias_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
