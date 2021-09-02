@@ -381,7 +381,12 @@
                                 <RowDefinition Height="2*"></RowDefinition>
                                 <RowDefinition Height="*"></RowDefinition>
                             </Grid.RowDefinitions>
-                            <Button Grid.Row="0" x:Name="B_serias" Click="B_serias_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Write}" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
+                            <WrapPanel Margin="10,0" Grid.Row="0">
+                                <Button  x:Name="B_charts_add" Click="B_charts_add_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Read}" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
+                                <Button  x:Name="B_Clear_charts" Click="B_Clear_charts_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Clear Сharts" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
+                                <Button  x:Name="B_Start_timer" Click="B_Start_timer_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Start" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
+                                <Button  x:Name="B_Stop_timer" Click="B_Stop_timer_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Stop" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
+                            </WrapPanel>
                             <Grid Grid.Row="1" Margin="20,5,20,5">
                                 <Grid.Effect>
                                     <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" Opacity=".2" ShadowDepth="1"/>
@@ -396,9 +401,9 @@
                                             <RowDefinition Height="Auto"></RowDefinition>
                                             <RowDefinition Height="*"></RowDefinition>
                                         </Grid.RowDefinitions>
-
-                                        <TextBlock Grid.Row="0" FontSize="20" Foreground="{DynamicResource Custom_textcolor}" Margin="30, 5">Units Values</TextBlock>
-
+                                      
+                                        <TextBlock Grid.Row="0"  FontSize="20" Foreground="{DynamicResource Custom_textcolor}" Margin="30, 5">Units Values</TextBlock>
+                                       
                                         <ListBox Name="ListBox" ItemsSource="{Binding Series, Converter={StaticResource ReverseConverter}}" PreviewMouseDown="ListBox_OnPreviewMouseDown" 
                              Panel.ZIndex="1" HorizontalAlignment="Right" VerticalAlignment="Center" BorderThickness="0" Background="Transparent">
                                             <ListBox.ItemsPanel>
@@ -447,12 +452,23 @@
 
 
                                                 <lvc:CartesianChart.AxisX>
-                                                    <lvc:Axis  IsEnabled="True" ShowLabels="True" IsMerged="false" FontSize="14"></lvc:Axis>
+                                                    <lvc:Axis  IsEnabled="True" Labels="{Binding Labels}" ShowLabels="True" IsMerged="false" FontSize="14"></lvc:Axis>
                                                 </lvc:CartesianChart.AxisX>
                                                 <lvc:CartesianChart.AxisY>
                                                     <lvc:Axis IsMerged="false" FontSize="14"></lvc:Axis>
                                                 </lvc:CartesianChart.AxisY>
                                             </lvc:CartesianChart>
+                                            <WrapPanel Width="{Binding ElementName=Canvas, Path=ActualWidth}" Orientation="Horizontal" Canvas.Bottom="-18" Canvas.Left="20">
+                                                <TextBlock Opacity=".5" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="Param-1 :"></TextBlock>
+                                                <TextBlock Opacity=".5" x:Name="T_par_1" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="0000"></TextBlock>
+                                                <TextBlock Opacity=".5" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="Param-2 :"></TextBlock>
+                                                <TextBlock Opacity=".5" x:Name="T_par_2" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="0000"></TextBlock>
+                                                <TextBlock Opacity=".5" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="Param-3 :"></TextBlock>
+                                                <TextBlock Opacity=".5" x:Name="T_par_3" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="0000"></TextBlock>
+                                                <TextBlock Opacity=".5" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="Param-4 :"></TextBlock>
+                                                <TextBlock Opacity=".5" x:Name="T_par_4" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="0000"></TextBlock>
+
+                                            </WrapPanel>
                                         </Canvas>
                                     </Grid>
                                 </Border>
@@ -522,12 +538,20 @@
 
 
                                                 <lvc:CartesianChart.AxisX>
-                                                    <lvc:Axis  IsEnabled="True" ShowLabels="True" IsMerged="false" FontSize="14"></lvc:Axis>
+                                                    <lvc:Axis  IsEnabled="True" Labels="{Binding Labels}"  ShowLabels="True" IsMerged="false" FontSize="14"></lvc:Axis>
                                                 </lvc:CartesianChart.AxisX>
                                                 <lvc:CartesianChart.AxisY>
                                                     <lvc:Axis IsMerged="false" FontSize="14"></lvc:Axis>
                                                 </lvc:CartesianChart.AxisY>
                                             </lvc:CartesianChart>
+                                            <WrapPanel Width="{Binding ElementName=Canvas, Path=ActualWidth}" Orientation="Horizontal" Canvas.Bottom="-18" Canvas.Left="20">
+                                                <TextBlock Opacity=".5" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text=""></TextBlock>
+                                                <TextBlock Opacity=".5" x:Name="T_par_tok" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="0000"></TextBlock>
+                                                <TextBlock Opacity=".5" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text=""></TextBlock>
+                                                <TextBlock Opacity=".5" x:Name="T_par_proc" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="0000"></TextBlock>
+                                                
+
+                                            </WrapPanel>
                                         </Canvas>
                                     </Grid>
                                 </Border>

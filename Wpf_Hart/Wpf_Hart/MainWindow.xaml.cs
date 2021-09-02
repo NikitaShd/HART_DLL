@@ -18,9 +18,9 @@ using System.Text.RegularExpressions;
 using LiveCharts;
 using LiveCharts.Wpf;
 using System.Windows.Media;
-using System.Windows.Controls;
-using System.Windows.Input;
+
 using System.Linq;
+using System.Windows.Threading;
 
 namespace Wpf_Hart { 
 
@@ -78,13 +78,11 @@ namespace Wpf_Hart {
         private readonly object balanceLock = new object();
         Byte[] Devise_long_adres = { };
 
-        public ObservableCollection<string> usb { get; set; } = new ObservableCollection<string> { };
-        //==========
-        public SeriesCollection SeriesCollection { get; set; }
-        public string[] Labels { get; set; }
-        public Func<double, string> YFormatter { get; set; }
+        DispatcherTimer timer = new DispatcherTimer();
        
-        //=========
+
+        public ObservableCollection<string> usb { get; set; } = new ObservableCollection<string> { };
+       
         public struct devaise
         {
 
@@ -179,7 +177,7 @@ namespace Wpf_Hart {
         }
         public SeriesCollection Series { get; set; }
         public SeriesCollection Series2 { get; set; }
-
+        public List<string> Labels { get; set; } = new List<string>();
         private void ListBox_OnPreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             var item = ItemsControl.ContainerFromElement(ListBox, (DependencyObject)e.OriginalSource) as ListBoxItem;
@@ -203,30 +201,32 @@ namespace Wpf_Hart {
         public MainWindow()
         {
             //=====================
+            timer.Interval = TimeSpan.FromMilliseconds(10000);
+            timer.Tick += timer_Tick;
 
             Series = new SeriesCollection
             {
                 new LineSeries
                 {
-                    Values = new ChartValues<double> {20, 30, 35, 45, 65, 85},
+                    Values = new ChartValues<float> {20, 30, 35, 45, 20, 35},
                     Title = "Param-1",
                     Fill = Brushes.Transparent
                 },
                 new LineSeries
                 {
-                    Values = new ChartValues<double> {10, 50, 10, 24, 22, 63},
+                    Values = new ChartValues<float> {10, 50, 10, 24, 22, 63},
                     Title = "Param-2",
                     Fill = Brushes.Transparent
                 },
                 new LineSeries
                 {
-                    Values = new ChartValues<double> {5, 8, 12, 15, 22, 25},
+                    Values = new ChartValues<float> {5, 3, 45, 35, 35, 25},
                     Title = "Param-3",
                     Fill = Brushes.Transparent
                 },
                 new LineSeries
                 {
-                    Values = new ChartValues<double> {10, 12, 18, 20, 38, 40},
+                    Values = new ChartValues<float> {50, 10, 24, 22, 63, 20},
                     Title = "Param-4",
                     Fill = Brushes.Transparent
                 }
@@ -235,13 +235,13 @@ namespace Wpf_Hart {
             {
                 new LineSeries
                 {
-                    Values = new ChartValues<double> {20, 30, 35, 45, 65, 85},
+                    Values = new ChartValues<float> {20, 30, 35, 45, 65, 85},
                     Title = ".ma",
                     Fill = Brushes.Transparent
                 },
                 new LineSeries
                 {
-                    Values = new ChartValues<double> {10, 50, 10, 24, 22, 63},
+                    Values = new ChartValues<float> {10, 50, 10, 24, 22, 63},
                     Title = ".%",
                     Fill = Brushes.Transparent
                 }
@@ -249,8 +249,8 @@ namespace Wpf_Hart {
             };
 
             //modifying the series collection will animate and update the chart
-
-
+            Labels.Add("00:00:00");
+            Labels.Add("01:01:01");
             //modifying any series values will also animate and update the chart
             // SeriesCollection[3].Values.Add(5d);
             //======================
@@ -940,9 +940,90 @@ namespace Wpf_Hart {
             P_serial_num.IsEnabled = true;
         }
 
-        private void B_serias_Click(object sender, RoutedEventArgs e)
+        bool isferst= true ;
+        private async void Dat_chart_ubdate()
         {
+            if (isferst)
+            {
+                C_unit_value.Series[0].Values.Clear();
+                C_unit_value.Series[1].Values.Clear();
+                C_unit_value.Series[2].Values.Clear();
+                C_unit_value.Series[3].Values.Clear();
+                C_unit_value2.Series[0].Values.Clear();
+                C_unit_value2.Series[1].Values.Clear();
+                Labels.Clear();
+                isferst = false;
+            }
+
+            Labels.Add(DateTime.Now.ToString());
+            float tok = 0; float proc = 0;
+            string kod_1 = ""; float par_1 = 0;
+            string kod_2 = ""; float par_2 = 0;
+            string kod_3 = ""; float par_3 = 0;
+            string kod_4 = ""; float par_4 = 0;
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    HART_conection.Comand_3(Properties.Settings.Default.Master, Devise_long_adres, ref tok, ref kod_1, ref par_1, ref kod_2, ref par_2, ref kod_3, ref par_3, ref kod_4, ref par_4);
+                }
+            });
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    HART_conection.Comand_2(Properties.Settings.Default.Master, Devise_long_adres, ref tok, ref proc);
+                }
+            });
+
+            if (par_1 != -1) C_unit_value.Series[0].Values.Add(par_1); else C_unit_value.Series[0].Values.Add(float.NaN);
+            if (par_2 != -1) C_unit_value.Series[1].Values.Add(par_2); else C_unit_value.Series[1].Values.Add(float.NaN);
+            if (par_3 != -1) C_unit_value.Series[2].Values.Add(par_3); else C_unit_value.Series[2].Values.Add(float.NaN);
+            if (par_4 != -1) C_unit_value.Series[3].Values.Add(par_4); else C_unit_value.Series[3].Values.Add(float.NaN);
+            T_par_1.Text = par_1.ToString() + "(" + kod_1 + ")  ";
+            T_par_2.Text = par_2.ToString() + "(" + kod_2 + ")  ";
+            T_par_3.Text = par_3.ToString() + "(" + kod_3 + ")  ";
+            T_par_4.Text = par_4.ToString() + "(" + kod_4 + ")  ";
+
+            if (tok != -1)  C_unit_value2.Series[0].Values.Add(tok); else C_unit_value2.Series[0].Values.Add(float.NaN);
+            if (proc != -1) C_unit_value2.Series[1].Values.Add(proc);else C_unit_value2.Series[1].Values.Add(float.NaN);
+            T_par_tok.Text = tok.ToString() + "(.ma)  ";
+            T_par_proc.Text = proc.ToString() + "(.%)  ";
+        }
+        private async void B_charts_add_Click(object sender, RoutedEventArgs e)
+        {
+            ((Button)sender).IsEnabled = false;
             
+                Dat_chart_ubdate();
+            
+            ((Button)sender).IsEnabled = true;
+        }
+
+        private void B_Clear_charts_Click(object sender, RoutedEventArgs e)
+        {
+            C_unit_value.Series[0].Values.Clear();
+            C_unit_value.Series[1].Values.Clear();
+            C_unit_value.Series[2].Values.Clear();
+            C_unit_value.Series[3].Values.Clear();
+            C_unit_value2.Series[0].Values.Clear();
+            C_unit_value2.Series[1].Values.Clear();
+            Labels.Clear();
+        }
+        async void timer_Tick(object sender, EventArgs e)
+        {
+          
+                Dat_chart_ubdate();
+           
+        }
+
+        private void B_Start_timer_Click(object sender, RoutedEventArgs e)
+        {
+            timer.Start();
+        }
+
+        private void B_Stop_timer_Click(object sender, RoutedEventArgs e)
+        {
+            timer.Stop();
         }
     }
 }
