@@ -51,3 +51,5 @@ D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Debug\net5.0-windows\ru-RU\Wpf_Hart.resour
 D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Debug\net5.0-windows\Wpf_Hart.g.resources
 D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\bin\Debug\net5.0-windows\LiveCharts.dll
 D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\bin\Debug\net5.0-windows\LiveCharts.Wpf.dll
+D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Debug\net5.0-windows\Devise\P_MTM701_7.g.cs
+D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Debug\net5.0-windows\Devise\P_MTM701_7.baml

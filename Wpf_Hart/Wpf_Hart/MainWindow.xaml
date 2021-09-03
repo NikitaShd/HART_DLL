@@ -91,6 +91,12 @@
                             <TextBlock Text="Parameters" FontSize="18" Margin="10 10" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
                         </StackPanel>
                     </ListViewItem>
+                    <ListViewItem Height="65" Margin="0,1,0,1">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="DnsOutline" Margin="6" Width="30" Height="30" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
+                            <TextBlock Text="Devices" FontSize="18" Margin="10 10" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
+                        </StackPanel>
+                    </ListViewItem>
                     <Separator/>
                     <ListViewItem Height="65" Margin="0,1,0,1">
                         <StackPanel Orientation="Horizontal">
@@ -166,8 +172,8 @@
                                         <Label Name="L_Hardware_version" Content="{x:Static res:Resource.R_Hardware_version}" Margin="1"/>
                                         <Label Name="L_Device_function" Content="{x:Static res:Resource.R_Device_function}" Margin="1"/>
                                     </StackPanel>
-                                    
-                                   
+
+
                                 </DockPanel>
                             </Border>
                             <Border  BorderBrush="{DynamicResource Custom_blu1}" BorderThickness="2"  Margin="20,20,0,0"  CornerRadius="8,8,8,8">
@@ -191,9 +197,9 @@
                                         <TextBox x:Name="T_discriptor" Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
                                         <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Date :" Margin="25,0,0,0" Width="90"/>
                                         <DatePicker x:Name="T_data" Margin="20,-17,20,10" FontSize="16" IsDropDownOpen="False" SelectedDateFormat="Short" Style="{StaticResource MaterialDesignFilledDatePicker}" Cursor="Arrow" Foreground="{DynamicResource Custom_textcolor}" ForceCursor="True" />
-                                       
+
                                     </StackPanel>
-                                    
+
                                 </DockPanel>
                             </Border>
                             <Border  BorderBrush="{DynamicResource Custom_blu1}" BorderThickness="2"  Margin="20,20,0,0"  CornerRadius="8,8,8,8">
@@ -208,7 +214,7 @@
                                     <StackPanel MinHeight="300" MinWidth="300" Margin="1">
                                         <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Signal :" Margin="25,0,0,0" Width="150"/>
                                         <ComboBox Margin="20,-17,20,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" x:Name="ComboBox_Signal" ItemsSource="{Binding S_Alarm_cods}" IsSynchronizedWithCurrentItem ="False"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="260" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
-                                      
+
                                         <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Function :" Margin="25,0,0,0" Width="150"/>
                                         <ComboBox Margin="20,-17,20,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" x:Name="ComboBox_Function" ItemsSource="{Binding S_Transfer_cods}" IsSynchronizedWithCurrentItem ="False"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="260" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
 
@@ -225,7 +231,7 @@
                                         <ComboBox Margin="20,-17,20,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" x:Name="ComboBox_Protect" ItemsSource="{Binding S_Protect_cods}" IsSynchronizedWithCurrentItem ="False"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="260" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
                                         <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="Manufacturer :" Margin="25,0,0,0" Width="90"/>
                                         <TextBox IsReadOnly="True"  Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}"  x:Name="T_Manufacturer" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
-                                       
+
 
                                     </StackPanel>
 
@@ -262,7 +268,7 @@
                                     <Label DockPanel.Dock="Top" Content="ACP" Margin="10,-19,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" Width="45"/>
 
                                     <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" >
-                                    
+
                                         <Button x:Name="B_dev_zero_set" Click="B_dev_zero_set_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Set" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
                                     </StackPanel>
                                     <Separator DockPanel.Dock="Bottom"></Separator>
@@ -297,7 +303,7 @@
                                         <Button x:Name="B_dev_Prim_value" Click="B_dev_Prim_value_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Set Zero Primary Variable"  Margin="10,3,10,10" VerticalAlignment="Bottom" Cursor="Hand"/>
 
                                     </StackPanel>
-                                    
+
                                 </DockPanel>
                             </Border>
                             <Border  BorderBrush="{DynamicResource Custom_blu1}" BorderThickness="2"  Margin="20,20,0,0"  CornerRadius="8,8,8,8">
@@ -338,11 +344,12 @@
                             </Border>
                             <Border  BorderBrush="{DynamicResource Custom_blu1}" BorderThickness="2"  Margin="20,20,0,0"  CornerRadius="8,8,8,8">
                                 <DockPanel x:Name="P_short_ad" >
+
                                     <Label DockPanel.Dock="Top" Content="Short Adres" Margin="10,-19,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" Width="105"/>
 
                                     <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" >
 
-                                      
+
                                         <Button x:Name="B_dev_Short_ad_write" Click="B_dev_Short_ad_write_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Write}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
                                     </StackPanel>
                                     <Separator DockPanel.Dock="Bottom"></Separator>
@@ -384,8 +391,13 @@
                             <WrapPanel Margin="10,0" Grid.Row="0">
                                 <Button  x:Name="B_charts_add" Click="B_charts_add_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Read}" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
                                 <Button  x:Name="B_Clear_charts" Click="B_Clear_charts_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Clear Сharts" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
+                                <Separator Margin="10"></Separator>
                                 <Button  x:Name="B_Start_timer" Click="B_Start_timer_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Start" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
-                                <Button  x:Name="B_Stop_timer" Click="B_Stop_timer_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Stop" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
+                                <Button  x:Name="B_Stop_timer" Click="B_Stop_timer_Click" IsEnabled="false" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="Stop" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
+
+                                <materialDesign:Badged FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource Custom_textcolor}" Content="Timer Interval :" Margin="10"/>
+                                <ComboBox Margin="10" FontSize="16" Style="{DynamicResource MaterialDesignComboBox}"  ItemsSource="{Binding S_timer_s}" x:Name="ComboBox_timer_s" IsSynchronizedWithCurrentItem ="False"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="120" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
+
                             </WrapPanel>
                             <Grid Grid.Row="1" Margin="20,5,20,5">
                                 <Grid.Effect>
@@ -401,9 +413,9 @@
                                             <RowDefinition Height="Auto"></RowDefinition>
                                             <RowDefinition Height="*"></RowDefinition>
                                         </Grid.RowDefinitions>
-                                      
+
                                         <TextBlock Grid.Row="0"  FontSize="20" Foreground="{DynamicResource Custom_textcolor}" Margin="30, 5">Units Values</TextBlock>
-                                       
+
                                         <ListBox Name="ListBox" ItemsSource="{Binding Series, Converter={StaticResource ReverseConverter}}" PreviewMouseDown="ListBox_OnPreviewMouseDown" 
                              Panel.ZIndex="1" HorizontalAlignment="Right" VerticalAlignment="Center" BorderThickness="0" Background="Transparent">
                                             <ListBox.ItemsPanel>
@@ -436,7 +448,7 @@
                                             </ListBox.ItemContainerStyle>
                                         </ListBox>
 
-                                        <Canvas Grid.Row="1" Name="Canvas" Margin=" 2, 0, 15, 20">
+                                        <Canvas Grid.Row="1" Name="Canvas" Margin=" 2, 0, 15, 25">
 
 
                                             <lvc:CartesianChart Name="C_unit_value" Height="{Binding ElementName=Canvas, Path=ActualHeight}" Width="{Binding ElementName=Canvas, Path=ActualWidth}"
@@ -458,17 +470,21 @@
                                                     <lvc:Axis IsMerged="false" FontSize="14"></lvc:Axis>
                                                 </lvc:CartesianChart.AxisY>
                                             </lvc:CartesianChart>
-                                            <WrapPanel Width="{Binding ElementName=Canvas, Path=ActualWidth}" Orientation="Horizontal" Canvas.Bottom="-18" Canvas.Left="20">
-                                                <TextBlock Opacity=".5" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="Param-1 :"></TextBlock>
-                                                <TextBlock Opacity=".5" x:Name="T_par_1" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="0000"></TextBlock>
-                                                <TextBlock Opacity=".5" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="Param-2 :"></TextBlock>
-                                                <TextBlock Opacity=".5" x:Name="T_par_2" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="0000"></TextBlock>
-                                                <TextBlock Opacity=".5" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="Param-3 :"></TextBlock>
-                                                <TextBlock Opacity=".5" x:Name="T_par_3" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="0000"></TextBlock>
-                                                <TextBlock Opacity=".5" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="Param-4 :"></TextBlock>
-                                                <TextBlock Opacity=".5" x:Name="T_par_4" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="0000"></TextBlock>
+                                            <DockPanel Width="{Binding ElementName=Canvas, Path=ActualWidth}"  Canvas.Bottom="-18" Canvas.Left="20">
+                                                <WrapPanel Margin="10,15,10,0">
+                                                    <TextBlock Opacity=".5" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="Param-1 :"></TextBlock>
+                                                    <TextBlock Opacity=".5" x:Name="T_par_1" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="0000"></TextBlock>
+                                                    <TextBlock Opacity=".5" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="Param-2 :"></TextBlock>
+                                                    <TextBlock Opacity=".5" x:Name="T_par_2" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="0000"></TextBlock>
+                                                    <TextBlock Opacity=".5" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="Param-3 :"></TextBlock>
+                                                    <TextBlock Opacity=".5" x:Name="T_par_3" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="0000"></TextBlock>
+                                                    <TextBlock Opacity=".5" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="Param-4 :"></TextBlock>
+                                                    <TextBlock Opacity=".5" x:Name="T_par_4" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="0000"></TextBlock>
+                                                </WrapPanel>
+                                                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right" >
 
-                                            </WrapPanel>
+                                                </StackPanel>
+                                            </DockPanel>
                                         </Canvas>
                                     </Grid>
                                 </Border>
@@ -544,19 +560,44 @@
                                                     <lvc:Axis IsMerged="false" FontSize="14"></lvc:Axis>
                                                 </lvc:CartesianChart.AxisY>
                                             </lvc:CartesianChart>
-                                            <WrapPanel Width="{Binding ElementName=Canvas, Path=ActualWidth}" Orientation="Horizontal" Canvas.Bottom="-18" Canvas.Left="20">
-                                                <TextBlock Opacity=".5" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text=""></TextBlock>
-                                                <TextBlock Opacity=".5" x:Name="T_par_tok" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="0000"></TextBlock>
-                                                <TextBlock Opacity=".5" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text=""></TextBlock>
-                                                <TextBlock Opacity=".5" x:Name="T_par_proc" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="0000"></TextBlock>
-                                                
+                                            <DockPanel Width="{Binding ElementName=Canvas, Path=ActualWidth}" Canvas.Bottom="-18" Canvas.Left="20">
+                                                <WrapPanel Margin="10,15,10,0">
+                                                    <TextBlock Opacity=".5" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text=""></TextBlock>
+                                                    <TextBlock Opacity=".5" x:Name="T_par_tok" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="0000"></TextBlock>
+                                                    <TextBlock Opacity=".5" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text=""></TextBlock>
+                                                    <TextBlock Opacity=".5" x:Name="T_par_proc" Margin="2" FontSize="14" Foreground="{DynamicResource Custom_textcolor}" Text="0000"></TextBlock>
+                                                </WrapPanel>
+                                                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right" >
 
-                                            </WrapPanel>
+                                                </StackPanel>
+                                            </DockPanel>
                                         </Canvas>
                                     </Grid>
                                 </Border>
                             </Grid>
                         </Grid>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="TabItem"  Margin="-2" VerticalAlignment="Top">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="-2,-4,-2,15">
+                    <Grid Background="{DynamicResource Custom_Background}" >
+                        <Frame x:Name="Frame_devise"></Frame>
+                        <WrapPanel Name="P_dev_list">
+                            <Border  BorderBrush="{DynamicResource Custom_blu1}" BorderThickness="2"  Margin="20,20,0,0"  CornerRadius="8,8,8,8">
+                                <DockPanel x:Name="P_S_1">
+                                    <Label DockPanel.Dock="Top" Content="MTM701_7" Margin="10,10,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" />
+                                    <Button  DockPanel.Dock="Bottom" x:Name="B_Select_1" Click="B_Select_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="250" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Select" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Bottom" Cursor="Hand" />
+                                    <Separator DockPanel.Dock="Bottom"></Separator>
+                                    <StackPanel MinHeight="250" MinWidth="250" Margin="1">
+                                        <Image></Image>
+
+                                    </StackPanel>
+                                </DockPanel>
+                            </Border>
+                            
+                        </WrapPanel>
+                        
                     </Grid>
                 </ScrollViewer>
             </TabItem>

@@ -1,0 +1,25 @@
+﻿<Page x:Class="Wpf_Hart.Devise.P_MTM701_7"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Wpf_Hart.Devise"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="P_MTM701_7">
+
+    <Grid>
+        <DockPanel>
+            <Grid DockPanel.Dock="Top">
+                
+                <Button Content="EXIT" Name="exit" Click="exit_Click" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Top" Background="{DynamicResource Custom_red1}" BorderBrush="{DynamicResource Custom_red2}" Foreground="{DynamicResource Custom_Botton_tex}"/>
+                <Button Content="Read data"  HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Background="{DynamicResource Custom_button1}" BorderBrush="{DynamicResource Custom_button1}" Foreground="{DynamicResource Custom_Botton_tex}"/>
+            </Grid>
+            <ProgressBar DockPanel.Dock="Bottom" Background="{DynamicResource Custom_progres}" BorderBrush="{DynamicResource Custom_progres}" Foreground="{DynamicResource Custom_progresF}" x:Name="Skan_progres" Height="10" Margin="5"  Maximum="15" ></ProgressBar>
+            <Grid>
+                
+            </Grid>
+            
+        </DockPanel>
+    </Grid>
+</Page>

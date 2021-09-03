@@ -7,11 +7,17 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Devise\P_MTM701_7.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Window_setings.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Devise\P_MTM701_7.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Dictionary_dark.xaml">
       <SubType>Designer</SubType>
     </Page>

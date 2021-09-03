@@ -69,18 +69,17 @@ namespace Wpf_Hart {
     /// </summary>
     public partial class MainWindow : Window
     {
-        Conect HART_conection = new Conect();
+        public Conect HART_conection = new Conect();
         public List<string> S_Alarm_cods { get; set; } = new List<string> { };
         public List<string> S_Unit_cods { get; set; } = new List<string> { };
         public List<string> S_Protect_cods { get; set; } = new List<string> { };
         public List<string> S_Transfer_cods { get; set; } = new List<string> { };
         string this_usb = "";
-        private readonly object balanceLock = new object();
-        Byte[] Devise_long_adres = { };
+        public readonly object balanceLock = new object();
+        public Byte[] Devise_long_adres = { };
 
         DispatcherTimer timer = new DispatcherTimer();
-       
-
+        public List<string> S_timer_s { get; set; } = new List<string> {"10s","20s","40s","1m","5m","10m","20m","30m","1h"};
         public ObservableCollection<string> usb { get; set; } = new ObservableCollection<string> { };
        
         public struct devaise
@@ -362,7 +361,7 @@ namespace Wpf_Hart {
         int item = 0;
         private void List_menu_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if ((List_menu.SelectedIndex != 5)&&(List_menu.SelectedIndex != 6))
+            if ((List_menu.SelectedIndex != List_menu.Items.Count-2) &&(List_menu.SelectedIndex != List_menu.Items.Count-1))
             {
                 item = List_menu.SelectedIndex;
                 if (item != -1) Tab_control_main.SelectedIndex = item;
@@ -370,7 +369,7 @@ namespace Wpf_Hart {
             else
             {
                
-                if (List_menu.SelectedIndex == 6) { System.Diagnostics.Process.Start("explorer.exe", "http://github.com/TviZet/HART_DLL"); }
+                if (List_menu.SelectedIndex == List_menu.Items.Count-1) { System.Diagnostics.Process.Start("explorer.exe", "http://github.com/TviZet/HART_DLL"); }
                 List_menu.SelectedIndex = item;
             }
         }
@@ -990,7 +989,7 @@ namespace Wpf_Hart {
             T_par_tok.Text = tok.ToString() + "(.ma)  ";
             T_par_proc.Text = proc.ToString() + "(.%)  ";
         }
-        private async void B_charts_add_Click(object sender, RoutedEventArgs e)
+        private void B_charts_add_Click(object sender, RoutedEventArgs e)
         {
             ((Button)sender).IsEnabled = false;
             
@@ -1018,12 +1017,33 @@ namespace Wpf_Hart {
 
         private void B_Start_timer_Click(object sender, RoutedEventArgs e)
         {
+            B_Start_timer.IsEnabled = false;
+            B_Stop_timer.IsEnabled = true;
+            Dat_chart_ubdate();
             timer.Start();
         }
 
         private void B_Stop_timer_Click(object sender, RoutedEventArgs e)
         {
+            B_Start_timer.IsEnabled = true;
+            B_Stop_timer.IsEnabled = false;
             timer.Stop();
+        }
+
+        private void B_Select_Click(object sender, RoutedEventArgs e)
+        {
+           P_dev_list.Visibility = Visibility.Collapsed;
+            //  Wpf_Hart.Devise._MTM701_7 мТМ701_7 = new Wpf_Hart.Devise._MTM701_7();
+            // мТМ701_7.Show();
+            Frame_devise.Visibility = Visibility.Visible;
+            Frame_devise.Navigate(new Uri("/Devise/P_MTM701_7.xaml", UriKind.Relative));
+            //Frame_devise.Navigate(мТМ701_7);
+        }
+        public void Frame_close()
+        {
+            P_dev_list.Visibility = Visibility.Visible;
+            Frame_devise.Visibility = Visibility.Collapsed;
+
         }
     }
 }
