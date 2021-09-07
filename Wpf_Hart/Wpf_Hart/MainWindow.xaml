@@ -7,7 +7,7 @@
         xmlns:res= "clr-namespace:Wpf_Hart.Properties"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-        mc:Ignorable="d" MinHeight="485" MinWidth="400" Height="690" Width="1280" ShowInTaskbar="True" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen"  Foreground="white" BorderThickness="0,5,5,5" AllowsTransparency="True" WindowStyle="None">
+        mc:Ignorable="d" MinHeight="685" MinWidth="739" Height="690" Width="1280" ShowInTaskbar="True" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen"  Foreground="white" BorderThickness="0,5,5,5" AllowsTransparency="True" WindowStyle="None">
     <Window.Effect>
         <DropShadowEffect BlurRadius="5" ShadowDepth="5" Opacity="0.9" />
     </Window.Effect>
@@ -580,9 +580,9 @@
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="TabItem"  Margin="-2" VerticalAlignment="Top">
-                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="-2,-4,-2,15">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="-2,-4,-2,0">
                     <Grid Background="{DynamicResource Custom_Background}" >
-                        <Frame x:Name="Frame_devise"></Frame>
+                       
                         <WrapPanel Name="P_dev_list">
                             <Border  BorderBrush="{DynamicResource Custom_blu1}" BorderThickness="2"  Margin="20,20,0,0"  CornerRadius="8,8,8,8">
                                 <DockPanel x:Name="P_S_1">
@@ -597,9 +597,10 @@
                             </Border>
                             
                         </WrapPanel>
-                        
+                        <Frame x:Name="Frame_devise"></Frame>
                     </Grid>
                 </ScrollViewer>
+                
             </TabItem>
         </TabControl>
 

@@ -1032,12 +1032,11 @@ namespace Wpf_Hart {
 
         private void B_Select_Click(object sender, RoutedEventArgs e)
         {
-           P_dev_list.Visibility = Visibility.Collapsed;
-            //  Wpf_Hart.Devise._MTM701_7 мТМ701_7 = new Wpf_Hart.Devise._MTM701_7();
-            // мТМ701_7.Show();
+            P_dev_list.Visibility = Visibility.Collapsed;
+            
             Frame_devise.Visibility = Visibility.Visible;
             Frame_devise.Navigate(new Uri("/Devise/P_MTM701_7.xaml", UriKind.Relative));
-            //Frame_devise.Navigate(мТМ701_7);
+           
         }
         public void Frame_close()
         {

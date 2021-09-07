@@ -3,23 +3,128 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Wpf_Hart.Devise"
+       xmlns:res= "clr-namespace:Wpf_Hart.Properties"
+      xmlns:local="clr-namespace:Wpf_Hart.Devise" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="660.355" d:DesignWidth="840.179"
       Title="P_MTM701_7">
 
     <Grid>
         <DockPanel>
             <Grid DockPanel.Dock="Top">
-                
+
                 <Button Content="EXIT" Name="exit" Click="exit_Click" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Top" Background="{DynamicResource Custom_red1}" BorderBrush="{DynamicResource Custom_red2}" Foreground="{DynamicResource Custom_Botton_tex}"/>
                 <Button Content="Read data"  HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Background="{DynamicResource Custom_button1}" BorderBrush="{DynamicResource Custom_button1}" Foreground="{DynamicResource Custom_Botton_tex}"/>
             </Grid>
-            <ProgressBar DockPanel.Dock="Bottom" Background="{DynamicResource Custom_progres}" BorderBrush="{DynamicResource Custom_progres}" Foreground="{DynamicResource Custom_progresF}" x:Name="Skan_progres" Height="10" Margin="5"  Maximum="15" ></ProgressBar>
+            <ProgressBar DockPanel.Dock="Bottom" Background="{DynamicResource Custom_progres}" BorderBrush="{DynamicResource Custom_progres}" Foreground="{DynamicResource Custom_progresF}" x:Name="Skan_progres" Height="10" Margin="10 5"  Maximum="15" ></ProgressBar>
             <Grid>
-                
+                <ScrollViewer VerticalScrollBarVisibility="Auto" >
+                    <WrapPanel>
+
+                        <Border CornerRadius="5" Margin="10">
+                            <Grid  Background="{DynamicResource  Custom_Background}">
+                                <Grid.Effect >
+                                    <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" Opacity=".2" ShadowDepth="1"/>
+                                </Grid.Effect>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition ></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+
+                                </Grid.ColumnDefinitions>
+                                <StackPanel HorizontalAlignment="Right" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal">
+                                    <Button x:Name="B_dev_Contrast_read" Click="B_dev_Contrast_read_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="{x:Static res:Resource.R_Read}" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Bottom"/>
+                                    <Button x:Name="B_dev_Contrast_write" Click="B_dev_Contrast_write_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Write}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
+
+                                </StackPanel>
+                                <Grid  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
+                                    <TextBlock x:Name="T_contrast" Foreground="{DynamicResource Custom_textcolor}" Margin="160,5,5,5" HorizontalAlignment="Left" FontSize="20">00</TextBlock>
+                                    <TextBlock Foreground="{DynamicResource Custom_textcolor}" Margin="5" HorizontalAlignment="Left" FontSize="20">Display Contrast:</TextBlock>
+                                    <Slider ValueChanged="slider_ValueChanged" x:Name="slider" VerticalAlignment="Top" Margin="5,45,5,0" Maximum="63" Value="10" Height="20"></Slider>
+                                </Grid>
+                                <StackPanel  Grid.Column="0" Grid.Row="1" Orientation="Vertical">
+                                    <Label Content="Уставка 1" HorizontalAlignment="Center"/>
+                                    <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Logic :" Margin="10,0,0,0" Width="150"/>
+                                    <ComboBox Margin="5,-17,5,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" ItemsSource="{Binding S_Alarm_cods}" IsSynchronizedWithCurrentItem ="False"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="190" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
+
+                                    <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Technological Parameter  :" Margin="10,0,0,0" Width="150"/>
+                                    <ComboBox Margin="5,-17,5,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" ItemsSource="{Binding S_Alarm_cods}" IsSynchronizedWithCurrentItem ="False"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="190" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
+
+                                    <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="Lower Response Threshold  :" Margin="10,0,0,0" Width="150"/>
+                                    <TextBox PreviewTextInput="NumberValidationTextBox"  Margin="5,-17,5,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
+
+                                    <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="Upper Response Threshold  :" Margin="10,0,0,0" Width="150"/>
+                                    <TextBox PreviewTextInput="NumberValidationTextBox"  Margin="5,-17,5,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
+
+                                    <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="Hysteresis :" Margin="10,0,0,0" Width="150"/>
+                                    <TextBox PreviewTextInput="NumberValidationTextBox"  Margin="5,-17,5,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
+                                </StackPanel>
+                                <StackPanel  Grid.Column="1" Grid.Row="1" Orientation="Vertical">
+                                    <Label Content="Уставка 2" HorizontalAlignment="Center"/>
+                                    <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Logic :" Margin="10,0,0,0" Width="150"/>
+                                    <ComboBox Margin="5,-17,5,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" ItemsSource="{Binding S_Alarm_cods}" IsSynchronizedWithCurrentItem ="False"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="190" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
+
+                                    <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Technological Parameter  :" Margin="10,0,0,0" Width="150"/>
+                                    <ComboBox Margin="5,-17,5,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" ItemsSource="{Binding S_Alarm_cods}" IsSynchronizedWithCurrentItem ="False"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="190" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
+
+                                    <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="Lower Response Threshold  :" Margin="10,0,0,0" Width="150"/>
+                                    <TextBox PreviewTextInput="NumberValidationTextBox"  Margin="5,-17,5,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
+
+                                    <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="Upper Response Threshold  :" Margin="10,0,0,0" Width="150"/>
+                                    <TextBox PreviewTextInput="NumberValidationTextBox"  Margin="5,-17,5,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
+
+                                    <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="Hysteresis :" Margin="10,0,0,0" Width="150"/>
+                                    <TextBox PreviewTextInput="NumberValidationTextBox"  Margin="5,-17,5,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <Border  CornerRadius="5" Margin="10">
+                            <Grid  Background="{DynamicResource  Custom_Background}">
+                                <Grid.Effect >
+                                    <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" Opacity=".2" ShadowDepth="1"/>
+                                </Grid.Effect>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                
+                                <StackPanel HorizontalAlignment="Right"  Grid.Row="3"  Orientation="Horizontal">
+                                    <Button x:Name="B_dev_Table_read" Click="B_dev_Table_read_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="{x:Static res:Resource.R_Read}" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Bottom"/>
+                                    <Button x:Name="B_dev_Table_write" Click="B_dev_Table_write_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Write}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
+
+                                </StackPanel>
+                                <Label Grid.Row="0"  Content="test"/>
+
+                                <DataGrid  x:Name="test1"  Grid.Row="1" Margin="5" RowDetailsVisibilityMode="VisibleWhenSelected" ItemsSource="{Binding myViews}" AutoGenerateColumns="False" EnableRowVirtualization="False" >
+
+                                    <DataGrid.RowDetailsTemplate>
+                                        <DataTemplate >
+                                            <DataGrid x:Name="test12" AutoGenerateColumns="True" ItemsSource="{Binding items}">
+                                                
+                                            </DataGrid>
+                                        </DataTemplate>
+                                    </DataGrid.RowDetailsTemplate >
+
+                                    <DataGrid.Columns>
+                                        
+                                        <DataGridTextColumn Header="Name" Width="*" FontSize="16"
+                        Binding="{Binding Path=Name}" />
+                                        <DataGridTextColumn Header="Quantity" Width="*" FontSize="16"
+                        Binding="{Binding Path=Quantity}" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+                                
+                        </Border>
+                    </WrapPanel>
+                </ScrollViewer>
             </Grid>
-            
+
         </DockPanel>
     </Grid>
 </Page>
