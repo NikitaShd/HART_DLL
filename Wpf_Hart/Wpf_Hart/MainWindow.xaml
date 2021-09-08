@@ -597,7 +597,8 @@
                             </Border>
                             
                         </WrapPanel>
-                        <Frame x:Name="Frame_devise"></Frame>
+                        
+                        <Frame x:Name="Frame_devise"></Frame> 
                     </Grid>
                 </ScrollViewer>
                 

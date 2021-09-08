@@ -7,12 +7,11 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                
-              
+
+
                 <ResourceDictionary Source="Dictionary_dark.xaml"/>
-                
+
             </ResourceDictionary.MergedDictionaries>
-           
 
             <Style x:Key="ListBoxItemStyle1" TargetType="{x:Type ListBoxItem}">
                 <Setter Property="Background" Value="Transparent"/>

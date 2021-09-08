@@ -55,7 +55,7 @@ namespace Wpf_Hart {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return (Visibility)value == Visibility.Visible
-                ? 2d
+                ? 1d
                 : .2d;
         }
 
@@ -106,7 +106,7 @@ namespace Wpf_Hart {
         }
         private void HexValidationTextBox(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9A-Fa-f-]+");
+            Regex regex = new Regex("[^0-9A-Fa-f-x]+");
             e.Handled = regex.IsMatch(e.Text);
         }
 
@@ -1035,8 +1035,11 @@ namespace Wpf_Hart {
             P_dev_list.Visibility = Visibility.Collapsed;
             
             Frame_devise.Visibility = Visibility.Visible;
-            Frame_devise.Navigate(new Uri("/Devise/P_MTM701_7.xaml", UriKind.Relative));
-           
+
+            Frame_devise.Navigate(new Uri("/Devise/P_MTM701_7.xaml", UriKind.RelativeOrAbsolute));
+          
+
+
         }
         public void Frame_close()
         {
