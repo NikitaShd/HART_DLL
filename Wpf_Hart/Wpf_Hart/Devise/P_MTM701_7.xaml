@@ -12,11 +12,12 @@
     <Grid>
         <DockPanel>
             <Grid DockPanel.Dock="Top">
-
-                <Button Content="EXIT" Name="exit" Click="exit_Click" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Top" Background="{DynamicResource Custom_red1}" BorderBrush="{DynamicResource Custom_red2}" Foreground="{DynamicResource Custom_Botton_tex}"/>
-                <Button Content="Read data"  HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Background="{DynamicResource Custom_button1}" BorderBrush="{DynamicResource Custom_button1}" Foreground="{DynamicResource Custom_Botton_tex}"/>
+                <ProgressBar Background="{DynamicResource Custom_progres}" VerticalAlignment="Top" BorderBrush="{DynamicResource Custom_progres}" Foreground="{DynamicResource Custom_progresF}" x:Name="Skan_progres" Height="10" Margin="10 5"  Maximum="0" ></ProgressBar>
+                <Button Content="Close" Name="exit" Click="exit_Click" HorizontalAlignment="Right" Margin="10,20,10,10" VerticalAlignment="Top" Background="{DynamicResource Custom_red1}" BorderBrush="{DynamicResource Custom_red2}" Foreground="{DynamicResource Custom_Botton_tex}"/>
+                <Button x:Name="B_Saive" Click="B_Saive_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Saive to faile" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
+               
             </Grid>
-            <ProgressBar DockPanel.Dock="Bottom" Background="{DynamicResource Custom_progres}" BorderBrush="{DynamicResource Custom_progres}" Foreground="{DynamicResource Custom_progresF}" x:Name="Skan_progres" Height="10" Margin="10 5"  Maximum="0" ></ProgressBar>
+           
             <Grid>
                <ScrollViewer VerticalScrollBarVisibility="Auto" >
                     <WrapPanel >
@@ -90,6 +91,40 @@
 
                                     <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="Hysteresis :" Margin="10,0,0,0" Width="150"/>
                                     <TextBox x:Name="T_ys2_Hyster" PreviewTextInput="NumberValidationTextBox"  Margin="5,-17,5,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <Border  CornerRadius="5"  Margin="10">
+                            <Grid x:Name="P_ACP" Background="{DynamicResource  Custom_Background}">
+                                <Grid.Effect >
+                                    <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" Opacity=".2" ShadowDepth="1"/>
+                                </Grid.Effect>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0">
+                                    <Label Content="ACP Cods"/>
+                                </Grid>
+                                <StackPanel HorizontalAlignment="Right"  Grid.Row="2"  Orientation="Horizontal">
+                                    <Button x:Name="B_dev_Acp_read" Click="B_dev_Acp_read_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="{x:Static res:Resource.R_Read}" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Bottom"/>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Orientation="Vertical">
+                                    <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="ACP1 :" Margin="10,10,0,0" Width="150"/>
+                                    <TextBox x:Name="T_ACP_1" IsReadOnly="True" Margin="5,-17,5,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
+
+                                    <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="ACP2 :" Margin="10,0,0,0" Width="150"/>
+                                    <TextBox x:Name="T_ACP_2" IsReadOnly="True" Margin="5,-17,5,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
+
+                                    <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="ACP3 :" Margin="10,0,0,0" Width="150"/>
+                                    <TextBox  x:Name="T_ACP_3" IsReadOnly="True" Margin="5,-17,5,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
+
+                                    <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="ACP4 :" Margin="10,0,0,0" Width="150"/>
+                                    <TextBox x:Name="T_ACP_4" IsReadOnly="True" Margin="5,-17,5,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
+
+                                    <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="ACP5 :" Margin="10,0,0,0" Width="150"/>
+                                    <TextBox x:Name="T_ACP_5" IsReadOnly="True" Margin="5,-17,5,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
                                 </StackPanel>
                             </Grid>
                         </Border>

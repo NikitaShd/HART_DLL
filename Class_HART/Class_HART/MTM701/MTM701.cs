@@ -46,11 +46,11 @@ namespace Class_HART
             try
             {
                 Read_Fraim[] temp = Write_long(preambula_leng, id_master, id_slaiv, 130, new Byte[] { });
-                res[0] = BitConverter.ToString(temp[0].DT, 0, 2);
-                res[1] = BitConverter.ToString(temp[0].DT, 2, 2);
-                res[2] = BitConverter.ToString(temp[0].DT, 4, 2);
-                res[3] = BitConverter.ToString(temp[0].DT, 6, 2);
-                res[4] = BitConverter.ToString(temp[0].DT, 8, 2);
+                res[0] = "0x" + BitConverter.ToString(temp[0].DT, 0, 2).Replace("-", "");
+                res[1] = "0x" + BitConverter.ToString(temp[0].DT, 2, 2).Replace("-", "");
+                res[2] = "0x" + BitConverter.ToString(temp[0].DT, 4, 2).Replace("-", "");
+                res[3] = "0x" + BitConverter.ToString(temp[0].DT, 6, 2).Replace("-", "");
+                res[4] = "0x" + BitConverter.ToString(temp[0].DT, 8, 2).Replace("-", "");
             }
             catch
             {

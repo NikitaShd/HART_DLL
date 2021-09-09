@@ -1,7 +1,9 @@
 ﻿using Class_HART;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -35,6 +37,7 @@ namespace Wpf_Hart.Devise
             public string Kod_ACP_Voltage_Sensor { get; set; }
             public string Kod_ACP_Сurrent_Sensor { get; set; }
             public ObservableCollection<Calib_dav> _Davs { get; set; }
+          
         }
        public class Calib_dav
         {
@@ -62,10 +65,10 @@ namespace Wpf_Hart.Devise
             MTM_Presure_sensor.AddRange(Conect.MTM701_Cods_Pressure);
             MTM_tupe_ys.AddRange(Conect.MTM701_Cods_Type);
             MTM_priv_ys.AddRange(Conect.MTM701_Cods_Priv);
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i <= 4; i++)
             {
                 ObservableCollection<Calib_dav> temp = new ObservableCollection<Calib_dav>();
-                for (int j = 0; j < 9; j++)
+                for (int j = 0; j <= 9; j++)
                 {
                     Calib_dav temp2 = new Calib_dav();
                     temp2.ID = j;
@@ -102,11 +105,13 @@ namespace Wpf_Hart.Devise
             Regex regex = new Regex("[^0-9A-Fa-f-x]+");
             e.Handled = regex.IsMatch(e.Text);
         }
-       
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+
+        void Saive()
         {
-
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            if (saveFileDialog.ShowDialog() == true)
+                File.WriteAllText(saveFileDialog.FileName, "123");
         }
 
         private void exit_Click(object sender, RoutedEventArgs e)
@@ -187,9 +192,66 @@ namespace Wpf_Hart.Devise
             P_Ystavki.IsEnabled = true;
         }
 
-        private void B_dev_Contrast_write_Click(object sender, RoutedEventArgs e)
+        private async void B_dev_Contrast_write_Click(object sender, RoutedEventArgs e)
         {
+            P_Ystavki.IsEnabled = false;
+            Skan_progres.Maximum += 4;
+            int display = (int)slider.Value;
 
+            await Task.Run(() =>
+            {
+                lock (window.balanceLock)
+                {
+                    window.HART_conection.MTM701_Comand_131(Properties.Settings.Default.Master, window.Devise_long_adres, 1,
+                        ref display);
+                }
+            });
+            Skan_progres.Value += 1;
+           
+            int cod_dt = C_Temp_sensor.SelectedIndex;
+            int cod_iz = C_Pres_sensor.SelectedIndex;
+            await Task.Run(() =>
+            {
+                lock (window.balanceLock)
+                {
+                    window.HART_conection.MTM701_Comand_133(Properties.Settings.Default.Master, window.Devise_long_adres, 1,
+                        ref cod_dt, ref cod_iz);
+                }
+            });
+            Skan_progres.Value += 1;
+          
+            int tupe = C_ys1_log.SelectedIndex;
+            int tupe2 = C_ys1_tec.SelectedIndex;
+            float lou = Convert.ToSingle(T_ys1_Lower.Text);
+            float upp = Convert.ToSingle(T_ys1_Upper.Text);
+            float dum = Convert.ToSingle(T_ys1_Hyster.Text);
+            await Task.Run(() =>
+            {
+                lock (window.balanceLock)
+                {
+                    window.HART_conection.MTM701_Comand_132(Properties.Settings.Default.Master, window.Devise_long_adres, 1, 0,
+                        ref tupe, ref tupe2, ref lou, ref upp, ref dum);
+                }
+            });
+            Skan_progres.Value += 1;
+             tupe = C_ys2_log.SelectedIndex;
+             tupe2 = C_ys2_tec.SelectedIndex;
+             lou = Convert.ToSingle(T_ys2_Lower.Text);
+             upp = Convert.ToSingle(T_ys2_Upper.Text);
+             dum = Convert.ToSingle(T_ys2_Hyster.Text);
+            await Task.Run(() =>
+            {
+                lock (window.balanceLock)
+                {
+                    window.HART_conection.MTM701_Comand_132(Properties.Settings.Default.Master, window.Devise_long_adres, 1, 1,
+                        ref tupe, ref tupe2, ref lou, ref upp, ref dum);
+                }
+            });
+            Skan_progres.Value += 1;
+         
+            Skan_progres.Value -= 4;
+            Skan_progres.Maximum -= 4;
+            P_Ystavki.IsEnabled = true;
         }
 
         private async void B_dev_Table_read_Click(object sender, RoutedEventArgs e)
@@ -199,7 +261,7 @@ namespace Wpf_Hart.Devise
             test1.IsEnabled = false;
             B_dev_Table_read.IsEnabled = false;
             B_dev_Table_write.IsEnabled = false;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i <= 4; i++)
             {
                 float temp = 0;
                 string kod1 = "";
@@ -222,7 +284,7 @@ namespace Wpf_Hart.Devise
                 Calib[i].Kod_ACP_Voltage_Sensor = kod2;
                 Calib[i].Kod_ACP_Сurrent_Sensor = kod3;
                 test1.Items.Refresh();
-                for (int j = 0; j < 9; j++)
+                for (int j = 0; j <= 9; j++)
                 {
                     float pres = 0;
                     string kod_1 = "", kod_2 = "", kod_3 = "", kod_4 = "";
@@ -257,9 +319,63 @@ namespace Wpf_Hart.Devise
             B_dev_Table_write.IsEnabled = true;
         }
 
-        private void B_dev_Table_write_Click(object sender, RoutedEventArgs e)
+        private async void B_dev_Table_write_Click(object sender, RoutedEventArgs e)
         {
+            Skan_progres.Maximum += 36;
+            test1.IsEnabled = false;
+            B_dev_Table_read.IsEnabled = false;
+            B_dev_Table_write.IsEnabled = false;
+            for (int i = 0; i <= 4; i++)
+            {
+                float temp = Calib[i].Temperature;
+                string kod1 = Calib[i].Kod_ACP_Temperature_Sensor;
+                string kod2 = Calib[i].Kod_ACP_Voltage_Sensor;
+                string kod3 = Calib[i].Kod_ACP_Сurrent_Sensor;
+                await Task.Run(() =>
+                {
+                    lock (window.balanceLock)
+                    {
+                        window.HART_conection.MTM701_Comand_134(Properties.Settings.Default.Master, window.Devise_long_adres, 1, i,
+                            ref temp,
+                            ref kod1,
+                            ref kod2,
+                            ref kod3);
+                    }
+                });
+                for (int j = 0; j <= 9; j++)
+                {
+                    float pres = Calib[i]._Davs[j].Pressure;
+                    string kod_1 = Calib[i]._Davs[j].Kod_ACP_1,
+                           kod_2 = Calib[i]._Davs[j].Kod_ACP_2,
+                           kod_3 = Calib[i]._Davs[j].Kod_ACP_3,
+                           kod_4 = Calib[i]._Davs[j].Kod_ACP_4;
 
+                    await Task.Run(() =>
+                    {
+                        lock (window.balanceLock)
+                        {
+                            window.HART_conection.MTM701_Comand_135(Properties.Settings.Default.Master, window.Devise_long_adres, 1, i, j,
+                            ref pres,
+                            ref kod_1,
+                            ref kod_2,
+                            ref kod_3,
+                            ref kod_4);
+                        }
+                    });
+                    
+                  
+                    Skan_progres.Value = Skan_progres.Value + 1;
+                    
+                }
+
+            }
+
+
+            Skan_progres.Value -= 36;
+            Skan_progres.Maximum -= 36;
+            test1.IsEnabled = true;
+            B_dev_Table_read.IsEnabled = true;
+            B_dev_Table_write.IsEnabled = true;
         }
 
         
@@ -295,9 +411,58 @@ namespace Wpf_Hart.Devise
             P_Curent.IsEnabled = true;
         }
 
-        private void B_dev_Curent_write_Click(object sender, RoutedEventArgs e)
+        private async void B_dev_Curent_write_Click(object sender, RoutedEventArgs e)
         {
+            P_Curent.IsEnabled = false;
+            float min = Convert.ToSingle(T_min.Text);
+            string min_a = T_min_A.Text;
+            string min_c = T_min_D.Text;
+            float max = Convert.ToSingle(T_max.Text);
+            string max_a = T_max_A.Text;
+            string max_c = T_max_D.Text;
+            await Task.Run(() =>
+            {
+                lock (window.balanceLock)
+                {
+                    window.HART_conection.MTM701_Comand_136(Properties.Settings.Default.Master, window.Devise_long_adres, 1,
+                        ref min,
+                        ref max,
+                        ref min_c,
+                        ref min_a,
+                        ref max_c,
+                        ref max_a);
+                }
+            });
+           
+            P_Curent.IsEnabled = true;
+        }
 
+        private async void B_dev_Acp_read_Click(object sender, RoutedEventArgs e)
+        {
+            P_ACP.IsEnabled = false;
+
+            string[] s_res = { };
+
+            await Task.Run(() =>
+            {
+                lock (window.balanceLock)
+                {
+                    window.HART_conection.MTM701_Comand_130(Properties.Settings.Default.Master, window.Devise_long_adres,
+                        ref s_res);
+                }
+            });
+
+            T_ACP_1.Text = s_res[0];
+            T_ACP_2.Text = s_res[1];
+            T_ACP_3.Text = s_res[2];
+            T_ACP_4.Text = s_res[3];
+            T_ACP_5.Text = s_res[4];
+            P_ACP.IsEnabled = true;
+        }
+
+        private void B_Saive_Click(object sender, RoutedEventArgs e)
+        {
+            Saive();
         }
     }
 }
