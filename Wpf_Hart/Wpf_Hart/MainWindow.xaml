@@ -93,6 +93,12 @@
                     </ListViewItem>
                     <ListViewItem Height="65" Margin="0,1,0,1">
                         <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="gauge" Margin="6" Width="30" Height="30" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
+                            <TextBlock Text="Sensors" FontSize="18" Margin="10 10" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="65" Margin="0,1,0,1">
+                        <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="DnsOutline" Margin="6" Width="30" Height="30" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
                             <TextBlock Text="Devices" FontSize="18" Margin="10 10" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
                         </StackPanel>
@@ -379,6 +385,7 @@
                     </Grid>
                 </ScrollViewer>
             </TabItem>
+            
             <TabItem Header="TabItem"  Margin="-2" VerticalAlignment="Top">
                 <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="-2,-4,-2,15">
                     <Grid Background="{DynamicResource Custom_Background}" >
@@ -396,7 +403,7 @@
                                 <Button  x:Name="B_Stop_timer" Click="B_Stop_timer_Click" IsEnabled="false" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="Stop" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
 
                                 <materialDesign:Badged FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource Custom_textcolor}" Content="Timer Interval :" Margin="10"/>
-                                <ComboBox Margin="10" FontSize="16" Style="{DynamicResource MaterialDesignComboBox}"  ItemsSource="{Binding S_timer_s}" x:Name="ComboBox_timer_s" IsSynchronizedWithCurrentItem ="False"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="120" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
+                                <ComboBox Margin="10" FontSize="16" Style="{DynamicResource MaterialDesignComboBox}"  ItemsSource="{Binding S_timer_s}" x:Name="ComboBox_timer_s" SelectionChanged="ComboBox_timer_s_SelectionChanged" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="120" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
 
                             </WrapPanel>
                             <Grid Grid.Row="1" Margin="20,5,20,5">
@@ -574,6 +581,57 @@
                                         </Canvas>
                                     </Grid>
                                 </Border>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="TabItem"  Margin="-2" VerticalAlignment="Top">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="-2,-4,-2,15">
+                    <Grid Background="{DynamicResource Custom_Background}" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                          
+                        </Grid.RowDefinitions>
+                        <WrapPanel Grid.Row="0">
+                            
+                        </WrapPanel>
+                        <Grid Grid.Row="1">
+                            <Grid Grid.Row="1" Margin="20,5,20,5">
+                                <Grid.Effect>
+                                    <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" Opacity=".2" ShadowDepth="1"/>
+                                </Grid.Effect>
+                                <StackPanel>
+                                <lvc:Gauge Margin="5"
+                                      Uses360Mode="True"
+                                      From="0" To="100" Value="50"
+                                      HighFontSize="60" Foreground="#424242"
+                                      FromColor="White" ToColor="Black"
+                                      InnerRadius="0" GaugeBackground="Transparent">
+                                </lvc:Gauge>
+                                    <lvc:Gauge Margin="5"
+                                      Uses360Mode="True"
+                                      From="0" To="100" Value="50"
+                                      HighFontSize="60" Foreground="#424242"
+                                      FromColor="White" ToColor="Black"
+                                      InnerRadius="0" GaugeBackground="Transparent">
+                                    </lvc:Gauge>
+                                    <lvc:Gauge Margin="5"
+                                      Uses360Mode="True"
+                                      From="0" To="100" Value="50"
+                                      HighFontSize="60" Foreground="#424242"
+                                      FromColor="White" ToColor="Black"
+                                      InnerRadius="0" GaugeBackground="Transparent">
+                                    </lvc:Gauge>
+                                    <lvc:Gauge Margin="5"
+                                      Uses360Mode="True"
+                                      From="0" To="100" Value="50"
+                                      HighFontSize="60" Foreground="#424242"
+                                      FromColor="White" ToColor="Black"
+                                      InnerRadius="0" GaugeBackground="Transparent">
+                                    </lvc:Gauge>
+                                </StackPanel>
                             </Grid>
                         </Grid>
                     </Grid>

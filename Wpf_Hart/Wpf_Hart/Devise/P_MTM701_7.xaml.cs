@@ -110,13 +110,130 @@ namespace Wpf_Hart.Devise
         void Saive()
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Text file (*.txt)|*.txt";
+            saveFileDialog.FileName = "MTM701_7(" + DateTime.Now.ToString() + ")";
             if (saveFileDialog.ShowDialog() == true)
-                File.WriteAllText(saveFileDialog.FileName, "123");
-        }
+            {
+                List<string> temp = new List<string>();
+                
+                for (int i = 0; i <= 4; i++)
+                {
+                    temp.Add(Calib[i].Temperature.ToString() + ":" +
+                             Calib[i].Kod_ACP_Temperature_Sensor.ToString() + ":" +
+                             Calib[i].Kod_ACP_Voltage_Sensor.ToString() + ":" +
+                             Calib[i].Kod_ACP_Сurrent_Sensor.ToString()
+                        );
 
+                    for (int j = 0; j <= 9; j++)
+                    {
+                        temp.Add(Calib[i]._Davs[j].Pressure.ToString() + ":" +
+                            Calib[i]._Davs[j].Kod_ACP_1.ToString() + ":" +
+                            Calib[i]._Davs[j].Kod_ACP_2.ToString() + ":" +
+                            Calib[i]._Davs[j].Kod_ACP_3.ToString() + ":" +
+                            Calib[i]._Davs[j].Kod_ACP_4.ToString()
+                       );
+                    }
+                }
+                temp.Add("[Param]");
+                temp.Add(slider.Value.ToString());
+                temp.Add(C_Temp_sensor.SelectedIndex.ToString());
+                temp.Add(C_Pres_sensor.SelectedIndex.ToString());
+                temp.Add(C_ys1_log.SelectedIndex.ToString());
+                temp.Add(C_ys1_tec.SelectedIndex.ToString());
+                temp.Add(T_ys1_Lower.Text);
+                temp.Add(T_ys1_Upper.Text);
+                temp.Add(T_ys1_Hyster.Text);
+                temp.Add(C_ys2_log.SelectedIndex.ToString());
+                temp.Add(C_ys2_tec.SelectedIndex.ToString());
+                temp.Add(T_ys2_Lower.Text);
+                temp.Add(T_ys2_Upper.Text);
+                temp.Add(T_ys2_Hyster.Text);
+                temp.Add("[ACP]");
+                temp.Add(T_ACP_1.Text);
+                temp.Add(T_ACP_2.Text);
+                temp.Add(T_ACP_3.Text);
+                temp.Add(T_ACP_4.Text);
+                temp.Add(T_ACP_5.Text);
+                temp.Add("[Current]");
+                temp.Add(T_max.Text);
+                temp.Add(T_max_D.Text);
+                temp.Add(T_max_A.Text);
+                temp.Add(T_min.Text);
+                temp.Add(T_min_D.Text);
+                temp.Add(T_min_A.Text);
+
+                File.WriteAllLines(saveFileDialog.FileName, temp.ToArray());
+            }
+        }
+        void Load()
+        {
+            List<string> temp = new List<string>();
+            string[] subs;
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Text file (*.txt)|*.txt";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                int x = -1;
+                int y = 0;
+                temp = File.ReadAllLines(openFileDialog.FileName).ToList();
+                for (int i = 0; i <= 54; i++)
+                {
+                    
+                    if ((i % 11) == 0)
+                    {
+                        x++;
+                        y = 0;
+                        subs = temp[i].Split(':');
+                        Calib[x].Temperature = Convert.ToSingle(subs[0]);
+                        Calib[x].Kod_ACP_Temperature_Sensor = subs[1];
+                        Calib[x].Kod_ACP_Voltage_Sensor = subs[2];
+                        Calib[x].Kod_ACP_Сurrent_Sensor = subs[3];
+                       
+                    }
+                    else
+                    {
+                        subs = temp[i].Split(':');
+                        Calib[x]._Davs[y].Pressure = Convert.ToSingle(subs[0]);
+                        Calib[x]._Davs[y].Kod_ACP_1 = subs[1];
+                        Calib[x]._Davs[y].Kod_ACP_2 = subs[2];
+                        Calib[x]._Davs[y].Kod_ACP_3 = subs[3];
+                        Calib[x]._Davs[y].Kod_ACP_4 = subs[4];
+                        y++;
+                    }
+
+                }
+                slider.Value = Convert.ToDouble(temp[56]);
+                C_Temp_sensor.SelectedIndex = Convert.ToInt32(temp[57]);
+                C_Pres_sensor.SelectedIndex = Convert.ToInt32(temp[58]);
+                C_ys1_log.SelectedIndex = Convert.ToInt32(temp[59]);
+                C_ys1_tec.SelectedIndex = Convert.ToInt32(temp[60]);
+                T_ys1_Lower.Text = temp[61];
+                T_ys1_Upper.Text = temp[62];
+                T_ys1_Hyster.Text = temp[63];
+                C_ys2_log.SelectedIndex = Convert.ToInt32(temp[64]);
+                C_ys2_tec.SelectedIndex = Convert.ToInt32(temp[65]);
+                T_ys2_Lower.Text = temp[66];
+                T_ys2_Upper.Text = temp[67];
+                T_ys2_Hyster.Text = temp[68];
+
+                 T_ACP_1.Text = temp[70];
+                 T_ACP_2.Text = temp[71];
+                 T_ACP_3.Text = temp[72];
+                 T_ACP_4.Text = temp[73];
+                 T_ACP_5.Text = temp[74];
+
+                 T_max.Text = temp[76];
+                 T_max_D.Text = temp[77];
+                 T_max_A.Text = temp[78];
+                 T_min.Text = temp[79];
+                 T_min_D.Text = temp[80];
+                 T_min_A.Text = temp[81];
+            }
+            test1.Items.Refresh();
+        }
         private void exit_Click(object sender, RoutedEventArgs e)
         {
-            window.Frame_close();
+         window.Frame_close();
             
         }
 
@@ -463,6 +580,11 @@ namespace Wpf_Hart.Devise
         private void B_Saive_Click(object sender, RoutedEventArgs e)
         {
             Saive();
+        }
+
+        private void B_Load_Click(object sender, RoutedEventArgs e)
+        {
+            Load();
         }
     }
 }

@@ -1047,5 +1047,21 @@ namespace Wpf_Hart {
             Frame_devise.Visibility = Visibility.Collapsed;
 
         }
+
+        private void ComboBox_timer_s_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ComboBox_timer_s.SelectedItem.ToString().Contains('s'))
+            {
+                timer.Interval = TimeSpan.FromSeconds( Convert.ToDouble(ComboBox_timer_s.SelectedItem.ToString().Replace("s", "")));
+            }
+            if (ComboBox_timer_s.SelectedItem.ToString().Contains('m'))
+            {
+                timer.Interval = TimeSpan.FromMinutes(Convert.ToDouble(ComboBox_timer_s.SelectedItem.ToString().Replace("m", "")));
+            }
+            if (ComboBox_timer_s.SelectedItem.ToString().Contains('h'))
+            {
+                timer.Interval = TimeSpan.FromHours(Convert.ToDouble(ComboBox_timer_s.SelectedItem.ToString().Replace("h", "")));
+            }
+        }
     }
 }
