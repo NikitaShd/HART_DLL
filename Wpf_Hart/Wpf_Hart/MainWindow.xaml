@@ -423,7 +423,7 @@
 
                                         <TextBlock Grid.Row="0"  FontSize="20" Foreground="{DynamicResource Custom_textcolor}" Margin="30, 5">Units Values</TextBlock>
 
-                                        <ListBox Name="ListBox" ItemsSource="{Binding Series, Converter={StaticResource ReverseConverter}}" PreviewMouseDown="ListBox_OnPreviewMouseDown" 
+                                        <ListBox Name="ListBox1" ItemsSource="{Binding Series, Converter={StaticResource ReverseConverter}}" PreviewMouseDown="ListBox_OnPreviewMouseDown" 
                              Panel.ZIndex="1" HorizontalAlignment="Right" VerticalAlignment="Center" BorderThickness="0" Background="Transparent">
                                             <ListBox.ItemsPanel>
                                                 <ItemsPanelTemplate>
@@ -458,16 +458,9 @@
                                         <Canvas Grid.Row="1" Name="Canvas" Margin=" 2, 0, 15, 25">
 
 
-                                            <lvc:CartesianChart Name="C_unit_value" Height="{Binding ElementName=Canvas, Path=ActualHeight}" Width="{Binding ElementName=Canvas, Path=ActualWidth}"
+                                            <lvc:CartesianChart  Name="C_unit_value" Height="{Binding ElementName=Canvas, Path=ActualHeight}" Width="{Binding ElementName=Canvas, Path=ActualWidth}"
                                      Series="{Binding Series}"  Hoverable="False">
-                                                <lvc:CartesianChart.SeriesColors>
-                                                    <lvc:ColorsCollection>
-                                                        <Color>#ffa200</Color>
-                                                        <Color>#00a03e</Color>
-                                                        <Color>#24a8ac</Color>
-                                                        <Color>#0087cb</Color>
-                                                    </lvc:ColorsCollection>
-                                                </lvc:CartesianChart.SeriesColors>
+                                              
 
 
                                                 <lvc:CartesianChart.AxisX>
@@ -511,7 +504,7 @@
                                             <RowDefinition Height="*"></RowDefinition>
                                         </Grid.RowDefinitions>
 
-                                        <TextBlock Grid.Row="0" FontSize="20" Foreground="{DynamicResource Custom_textcolor}" Margin="30, 5">Units Values</TextBlock>
+                                        <TextBlock Grid.Row="0" FontSize="20" Foreground="{DynamicResource Custom_textcolor}" Margin="30, 5">Current Values</TextBlock>
 
                                         <ListBox Name="ListBox2" ItemsSource="{Binding Series2, Converter={StaticResource ReverseConverter}}" PreviewMouseDown="ListBox_OnPreviewMouseDown2" 
                              Panel.ZIndex="1" HorizontalAlignment="Right" VerticalAlignment="Center" BorderThickness="0" Background="Transparent">
@@ -550,14 +543,7 @@
 
                                             <lvc:CartesianChart Name="C_unit_value2" Height="{Binding ElementName=Canvas2, Path=ActualHeight}" Width="{Binding ElementName=Canvas2, Path=ActualWidth}"
                                      Series="{Binding Series2}"  Hoverable="False">
-                                                <lvc:CartesianChart.SeriesColors>
-                                                    <lvc:ColorsCollection>
-                                                        <Color>#0087cb</Color>
-                                                        <Color>#ffa200</Color>
-                                                        <Color>#24a8ac</Color>
-                                                        <Color>#00a03e</Color>
-                                                    </lvc:ColorsCollection>
-                                                </lvc:CartesianChart.SeriesColors>
+                                                
 
 
                                                 <lvc:CartesianChart.AxisX>
@@ -591,47 +577,145 @@
                     <Grid Background="{DynamicResource Custom_Background}" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                          
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <WrapPanel Grid.Row="0">
-                            
+                        <WrapPanel Margin="10,0" Grid.Row="0">
+                            <Button  x:Name="B_Sensors_add" Click="B_Sensors_add_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Read}" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
+                          
+                            <Separator Margin="10"></Separator>
+                            <Button  x:Name="B_Start_sensortimer" Click="B_Start_sensortimer_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Start" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
+                            <Button  x:Name="B_Stop_sensortimer" Click="B_Stop_sensortimer_Click" IsEnabled="false" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="Stop" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
+
+                            <materialDesign:Badged FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource Custom_textcolor}" Content="Timer Interval :" Margin="10"/>
+                            <ComboBox Margin="10" FontSize="16" Style="{DynamicResource MaterialDesignComboBox}"  ItemsSource="{Binding S_timer2_s}" x:Name="ComboBox_sensortimer_s" SelectionChanged="ComboBox_sensortimer_s_SelectionChanged" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="120" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
+
                         </WrapPanel>
                         <Grid Grid.Row="1">
-                            <Grid Grid.Row="1" Margin="20,5,20,5">
+                            <Grid Margin="20,5,20,5">
                                 <Grid.Effect>
                                     <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" Opacity=".2" ShadowDepth="1"/>
                                 </Grid.Effect>
-                                <StackPanel>
-                                <lvc:Gauge Margin="5"
-                                      Uses360Mode="True"
-                                      From="0" To="100" Value="50"
-                                      HighFontSize="60" Foreground="#424242"
-                                      FromColor="White" ToColor="Black"
-                                      InnerRadius="0" GaugeBackground="Transparent">
-                                </lvc:Gauge>
-                                    <lvc:Gauge Margin="5"
-                                      Uses360Mode="True"
-                                      From="0" To="100" Value="50"
-                                      HighFontSize="60" Foreground="#424242"
-                                      FromColor="White" ToColor="Black"
-                                      InnerRadius="0" GaugeBackground="Transparent">
-                                    </lvc:Gauge>
-                                    <lvc:Gauge Margin="5"
-                                      Uses360Mode="True"
-                                      From="0" To="100" Value="50"
-                                      HighFontSize="60" Foreground="#424242"
-                                      FromColor="White" ToColor="Black"
-                                      InnerRadius="0" GaugeBackground="Transparent">
-                                    </lvc:Gauge>
-                                    <lvc:Gauge Margin="5"
-                                      Uses360Mode="True"
-                                      From="0" To="100" Value="50"
-                                      HighFontSize="60" Foreground="#424242"
-                                      FromColor="White" ToColor="Black"
-                                      InnerRadius="0" GaugeBackground="Transparent">
-                                    </lvc:Gauge>
-                                </StackPanel>
+                              
+                                <Border CornerRadius="5" Background="{DynamicResource Custom_Background}">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Grid.Row="0"  FontSize="20" Foreground="{DynamicResource Custom_textcolor}" Margin="30, 5">Units Values</TextBlock>
+                                        <WrapPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Horizontal">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <lvc:Gauge x:Name="G_test"  Grid.Row="0" Height="200" Uses360Mode="True" Width="200" Margin="10"
+                                               From="0" To="100" Value="50" GaugeActiveFill="{DynamicResource Custom_button1}" Stroke="{DynamicResource Custom_textcolor}" Foreground="{DynamicResource Custom_textcolor}">
+                                                    <lvc:Gauge.GaugeBackground>
+                                                        <SolidColorBrush Color="Black" Opacity=".07"/>
+                                                    </lvc:Gauge.GaugeBackground>
+                                                    
+                                                </lvc:Gauge>
+                                                <Label x:Name="L_test" HorizontalAlignment="Center" Grid.Row="1" Content=""></Label>
+                                            </Grid>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <lvc:Gauge x:Name="G_test2"  Grid.Row="0" Height="200" Uses360Mode="True" Width="200" Margin="10"
+                                               From="0" To="100" Value="50" GaugeActiveFill="{DynamicResource Custom_button1}" Stroke="{DynamicResource Custom_textcolor}" Foreground="{DynamicResource Custom_textcolor}">
+                                                    <lvc:Gauge.GaugeBackground>
+                                                        <SolidColorBrush Color="Black" Opacity=".07"/>
+                                                    </lvc:Gauge.GaugeBackground>
+
+                                                </lvc:Gauge>
+                                                <Label  x:Name="L_test2" HorizontalAlignment="Center" Grid.Row="1" Content=""></Label>
+                                            </Grid>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <lvc:Gauge x:Name="G_test3"  Grid.Row="0" Height="200" Uses360Mode="True" Width="200" Margin="10"
+                                               From="0" To="100" Value="50" GaugeActiveFill="{DynamicResource Custom_button1}" Stroke="{DynamicResource Custom_textcolor}" Foreground="{DynamicResource Custom_textcolor}">
+                                                    <lvc:Gauge.GaugeBackground>
+                                                        <SolidColorBrush Color="Black" Opacity=".07"/>
+                                                    </lvc:Gauge.GaugeBackground>
+
+                                                </lvc:Gauge>
+                                                <Label  x:Name="L_test3" HorizontalAlignment="Center" Grid.Row="1" Content=""></Label>
+                                            </Grid>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <lvc:Gauge x:Name="G_test4"  Grid.Row="0" Height="200" Uses360Mode="True" Width="200" Margin="10"
+                                                           From="0" To="100" Value="50" GaugeActiveFill="{DynamicResource Custom_button1}" Stroke="{DynamicResource Custom_textcolor}" Foreground="{DynamicResource Custom_textcolor}">
+                                                    <lvc:Gauge.GaugeBackground>
+                                                        <SolidColorBrush Color="Black" Opacity=".07"/>
+                                                    </lvc:Gauge.GaugeBackground>
+                                                </lvc:Gauge>
+                                                <Label  x:Name="L_test4" HorizontalAlignment="Center" Grid.Row="1" Content=""></Label>
+                                            </Grid>
+
+                                        </WrapPanel>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                          
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Grid Margin="20,5,20,5">
+                                <Grid.Effect>
+                                    <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" Opacity=".2" ShadowDepth="1"/>
+                                </Grid.Effect>
+
+                                <Border CornerRadius="5" Background="{DynamicResource Custom_Background}">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Grid.Row="0"  FontSize="20" Foreground="{DynamicResource Custom_textcolor}" Margin="30, 5">Current Values</TextBlock>
+                                        <WrapPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Horizontal">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <lvc:Gauge x:Name="G_test5"  Grid.Row="0" Height="200" Uses360Mode="True" Width="200" Margin="10"
+                                               From="0" To="100" Value="50" GaugeActiveFill="{DynamicResource Custom_button1}" Stroke="{DynamicResource Custom_textcolor}" Foreground="{DynamicResource Custom_textcolor}">
+                                                    <lvc:Gauge.GaugeBackground>
+                                                        <SolidColorBrush Color="Black" Opacity=".07"/>
+                                                    </lvc:Gauge.GaugeBackground>
+
+                                                </lvc:Gauge>
+                                                <Label HorizontalAlignment="Center" Grid.Row="1" Content=".mA"></Label>
+                                            </Grid>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <lvc:Gauge x:Name="G_test6"  Grid.Row="0" Height="200" Uses360Mode="True" Width="200" Margin="10"
+                                               From="0" To="100" Value="50" GaugeActiveFill="{DynamicResource Custom_button1}" Stroke="{DynamicResource Custom_textcolor}" Foreground="{DynamicResource Custom_textcolor}">
+                                                    <lvc:Gauge.GaugeBackground>
+                                                        <SolidColorBrush Color="Black" Opacity=".07"/>
+                                                    </lvc:Gauge.GaugeBackground>
+
+                                                </lvc:Gauge>
+                                                <Label HorizontalAlignment="Center" Grid.Row="1" Content=".%"></Label>
+                                            </Grid>
+
+
+                                        </WrapPanel>
+                                    </Grid>
+                                </Border>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -644,7 +728,7 @@
                         <WrapPanel Name="P_dev_list">
                             <Border  BorderBrush="{DynamicResource Custom_blu1}" BorderThickness="2"  Margin="20,20,0,0"  CornerRadius="8,8,8,8">
                                 <DockPanel x:Name="P_S_1">
-                                    <Label DockPanel.Dock="Top" Content="MTM701_7" Margin="10,10,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" />
+                                    <Label DockPanel.Dock="Top" Content="MTM701.7" Margin="10,10,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" />
                                     <Button  DockPanel.Dock="Bottom" x:Name="B_Select_1" Click="B_Select_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="250" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Select" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Bottom" Cursor="Hand" />
                                     <Separator DockPanel.Dock="Bottom"></Separator>
                                     <StackPanel MinHeight="250" MinWidth="250" Margin="1">

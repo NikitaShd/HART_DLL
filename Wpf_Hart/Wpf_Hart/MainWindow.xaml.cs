@@ -21,6 +21,8 @@ using System.Windows.Media;
 
 using System.Linq;
 using System.Windows.Threading;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace Wpf_Hart { 
 
@@ -79,9 +81,11 @@ namespace Wpf_Hart {
         public Byte[] Devise_long_adres = { };
 
         DispatcherTimer timer = new DispatcherTimer();
-        public List<string> S_timer_s { get; set; } = new List<string> {"10s","20s","40s","1m","5m","10m","20m","30m","1h"};
+        DispatcherTimer timer2 = new DispatcherTimer();
+        public List<string> S_timer_s { get; set; } = new List<string> { "10s", "20s", "40s", "1m", "5m", "10m", "20m", "30m", "1h" };
+        public List<string> S_timer2_s { get; set; } = new List<string> { "5s", "10s", "15s", "20s", "40s", "1m", "5m", "10m", "30m" };
         public ObservableCollection<string> usb { get; set; } = new ObservableCollection<string> { };
-       
+
         public struct devaise
         {
 
@@ -179,7 +183,7 @@ namespace Wpf_Hart {
         public List<string> Labels { get; set; } = new List<string>();
         private void ListBox_OnPreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            var item = ItemsControl.ContainerFromElement(ListBox, (DependencyObject)e.OriginalSource) as ListBoxItem;
+            var item = ItemsControl.ContainerFromElement(ListBox1, (DependencyObject)e.OriginalSource) as ListBoxItem;
             if (item == null) return;
 
             var series = (LineSeries)item.Content;
@@ -203,6 +207,9 @@ namespace Wpf_Hart {
             timer.Interval = TimeSpan.FromMilliseconds(10000);
             timer.Tick += timer_Tick;
 
+            timer2.Interval = TimeSpan.FromMilliseconds(10000);
+            timer2.Tick += timer_Tick2;
+
             Series = new SeriesCollection
             {
                 new LineSeries
@@ -215,7 +222,7 @@ namespace Wpf_Hart {
                 {
                     Values = new ChartValues<float> {10, 50, 10, 24, 22, 63},
                     Title = "Param-2",
-                    Fill = Brushes.Transparent
+                    Fill = Brushes.Transparent,
                 },
                 new LineSeries
                 {
@@ -228,6 +235,7 @@ namespace Wpf_Hart {
                     Values = new ChartValues<float> {50, 10, 24, 22, 63, 20},
                     Title = "Param-4",
                     Fill = Brushes.Transparent
+
                 }
             };
             Series2 = new SeriesCollection
@@ -244,7 +252,7 @@ namespace Wpf_Hart {
                     Title = ".%",
                     Fill = Brushes.Transparent
                 }
-               
+
             };
 
             //modifying the series collection will animate and update the chart
@@ -261,7 +269,7 @@ namespace Wpf_Hart {
             S_Unit_cods.AddRange(_Tables.unit_arr());
             this.DataContext = this;
             ResourceDictionary dictionary = new ResourceDictionary();
-            
+
             if (!Properties.Settings.Default.Darkmode)
             {
                 var uri = new Uri("Dictionary_Lite.xaml", UriKind.Relative);
@@ -269,7 +277,7 @@ namespace Wpf_Hart {
                 Application.Current.Resources.Clear();
                 Application.Current.Resources.MergedDictionaries.Clear();
                 Application.Current.Resources.MergedDictionaries.Add(dictionary);
-                
+
             }
             else
             {
@@ -278,11 +286,11 @@ namespace Wpf_Hart {
                 Application.Current.Resources.Clear();
                 Application.Current.Resources.MergedDictionaries.Clear();
                 Application.Current.Resources.MergedDictionaries.Add(dictionary);
-                
+
             }
             System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Langue);
             InitializeComponent();
-          
+
             List_menu.SelectedIndex = 0; // устанавливаем по умолчанию выбраный первый элемент меню
             Tab_control_main.SelectedIndex = 0;// устанавливаем по умолчанию первую панель 
             ///  Properties.Settings.Default.Master;
@@ -361,15 +369,15 @@ namespace Wpf_Hart {
         int item = 0;
         private void List_menu_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if ((List_menu.SelectedIndex != List_menu.Items.Count-2) &&(List_menu.SelectedIndex != List_menu.Items.Count-1))
+            if ((List_menu.SelectedIndex != List_menu.Items.Count - 2) && (List_menu.SelectedIndex != List_menu.Items.Count - 1))
             {
                 item = List_menu.SelectedIndex;
                 if (item != -1) Tab_control_main.SelectedIndex = item;
             }
             else
             {
-               
-                if (List_menu.SelectedIndex == List_menu.Items.Count-1) { System.Diagnostics.Process.Start("explorer.exe", "http://github.com/TviZet/HART_DLL"); }
+
+                if (List_menu.SelectedIndex == List_menu.Items.Count - 1) { System.Diagnostics.Process.Start("explorer.exe", "http://github.com/TviZet/HART_DLL"); }
                 List_menu.SelectedIndex = item;
             }
         }
@@ -416,7 +424,7 @@ namespace Wpf_Hart {
         }
         private void UpdateDevise() // обновляем список устройств в отдельном потоке 
         {
-          
+
             this.Dispatcher.BeginInvoke(new Action(() => //блокируем кнопки 
             {
                 listBox_dev.IsEnabled = false;
@@ -437,7 +445,7 @@ namespace Wpf_Hart {
                     foreach (Conect.Read_Fraim item in HART_conection.Net_config())
                     {
                         devaise temp = new devaise();
-                        temp.Long_Address = 
+                        temp.Long_Address =
                         item.DT[1].ToString("X2") + '-' +
                         item.DT[2].ToString("X2") + '-' +
                         item.DT[9].ToString("X2") + '-' +
@@ -472,7 +480,7 @@ namespace Wpf_Hart {
         }
 
         private void Setings_Click(object sender, RoutedEventArgs e) // вызов диалогового окна с настройками 
-        {     
+        {
             Window_setings SetingsWindow = new Window_setings();
 
             if (SetingsWindow.ShowDialog() == true)
@@ -502,7 +510,7 @@ namespace Wpf_Hart {
             HART_conection.write_taim = Properties.Settings.Default.write_taimout;
             Application.Current.MainWindow.Width = Properties.Settings.Default.Width;
             Application.Current.MainWindow.Height = Properties.Settings.Default.Height;
-           
+
         }
         private void Darkmode_Click(object sender, RoutedEventArgs e)
         {
@@ -523,7 +531,7 @@ namespace Wpf_Hart {
                 Application.Current.Resources.MergedDictionaries.Clear();
                 Application.Current.Resources.MergedDictionaries.Add(dictionary);
                 Properties.Settings.Default.Darkmode = false;
-               
+
             }
             else
             {
@@ -534,10 +542,14 @@ namespace Wpf_Hart {
                 Application.Current.Resources.MergedDictionaries.Add(dictionary);
                 Properties.Settings.Default.Darkmode = true;
 
-               
+
             }
+
             listBox_dev.SelectedIndex = -1;
             Properties.Settings.Default.Save();
+            var currentExecutablePath = Process.GetCurrentProcess().MainModule.FileName;
+            Process.Start(currentExecutablePath);
+            Application.Current.Shutdown();
         } // функцыя смены темы приложения 
 
         private void listBox_dev_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -546,7 +558,7 @@ namespace Wpf_Hart {
             {
                 devaise a = (devaise)listBox_dev.SelectedItem;
                 Devise_long_adres = _Convert.GetBytes(a.Long_Address);
-                Label_DevLongAdres.Text = "HART Device [ " + BitConverter.ToString(Devise_long_adres) +" ]";
+                Label_DevLongAdres.Text = "HART Device [ " + BitConverter.ToString(Devise_long_adres) + " ]";
                 listBox_dev.SelectedIndex = -1;
             }
         }
@@ -555,24 +567,24 @@ namespace Wpf_Hart {
         {
             string[] temp = { };
             P_basic_param.IsEnabled = false;
-           
+
             await Task.Factory.StartNew(() =>
             {
                 lock (balanceLock)
                 {
                     HART_conection.Comand_0(Properties.Settings.Default.Master, Devise_long_adres, ref temp);
-                }     
+                }
             });
             P_basic_param.IsEnabled = true;
             L_Manufacturer_Code.Content = Properties.Resource.R_Manufacturer_Code + temp[0];
             L_Device_Type_Code.Content = Properties.Resource.R_Device_Type_Code + temp[1];
             L_Preambul_leng.Content = Properties.Resource.R_Preambul_leng + temp[2];
             L_Universal_commands.Content = Properties.Resource.R_Universal_commands + temp[3];
-            L_Specific_commands.Content = Properties.Resource.R_Specific_commands+ temp[4];
+            L_Specific_commands.Content = Properties.Resource.R_Specific_commands + temp[4];
             L_Software_version.Content = Properties.Resource.R_Software_version + temp[5];
-            L_Hardware_version.Content = Properties.Resource.R_Hardware_version+ temp[6];
-            L_Device_function.Content = Properties.Resource.R_Device_function +  temp[8];
-           
+            L_Hardware_version.Content = Properties.Resource.R_Hardware_version + temp[6];
+            L_Device_function.Content = Properties.Resource.R_Device_function + temp[8];
+
         }
 
         private async void B_dev_info_read_Click(object sender, RoutedEventArgs e)
@@ -587,7 +599,7 @@ namespace Wpf_Hart {
                 {
                     mes = HART_conection.Comand_12(Properties.Settings.Default.Master, Devise_long_adres);
                 }
-            }); 
+            });
             T_dev_mes.Text = mes;
             await Task.Run(() =>
             {
@@ -604,7 +616,7 @@ namespace Wpf_Hart {
             {
                 lock (balanceLock)
                 {
-                    HART_conection.Comand_20(Properties.Settings.Default.Master, Devise_long_adres,ref long_teg);
+                    HART_conection.Comand_20(Properties.Settings.Default.Master, Devise_long_adres, ref long_teg);
                 }
             });
             T_L_teg.Text = long_teg;
@@ -620,14 +632,14 @@ namespace Wpf_Hart {
             {
                 lock (balanceLock)
                 {
-                   HART_conection.Comand_17(Properties.Settings.Default.Master, Devise_long_adres, mes.ToUpper());
-                   // Thread.Sleep(500);
+                    HART_conection.Comand_17(Properties.Settings.Default.Master, Devise_long_adres, mes.ToUpper());
+                    // Thread.Sleep(500);
                 }
             });
             string s_teg = T_s_teg.Text;
             string discriptor = T_discriptor.Text;
             string data = T_data.Text;
-            
+
             await Task.Run(() =>
             {
                 lock (balanceLock)
@@ -641,8 +653,8 @@ namespace Wpf_Hart {
             {
                 lock (balanceLock)
                 {
-                   // HART_conection.Comand_22(Properties.Settings.Default.Master, Devise_long_adres, l_teg);
-                   // Thread.Sleep(500);
+                    // HART_conection.Comand_22(Properties.Settings.Default.Master, Devise_long_adres, l_teg);
+                    // Thread.Sleep(500);
                 }
             });
             P_info.IsEnabled = true;
@@ -663,7 +675,7 @@ namespace Wpf_Hart {
             {
                 lock (balanceLock)
                 {
-                   HART_conection.Comand_15(Properties.Settings.Default.Master, Devise_long_adres,ref Alarm,ref Transfer,ref Unit,ref U_renge,ref L_renge,ref Damfing,ref Protect,ref Manufacturer);
+                    HART_conection.Comand_15(Properties.Settings.Default.Master, Devise_long_adres, ref Alarm, ref Transfer, ref Unit, ref U_renge, ref L_renge, ref Damfing, ref Protect, ref Manufacturer);
                 }
             });
             ComboBox_Signal.SelectedItem = _Tables.Alarm_Cods(Alarm);
@@ -682,7 +694,7 @@ namespace Wpf_Hart {
             P_Extended_Info.IsEnabled = false;
             int Alarm = _Tables.Alarm_Cods(ComboBox_Signal.SelectedItem.ToString());
             int Transfer = _Tables.Transfer_Cods(ComboBox_Function.SelectedItem.ToString());
-            int Unit = _Tables.Encod_unit(ComboBox_Units.SelectedItem.ToString()); 
+            int Unit = _Tables.Encod_unit(ComboBox_Units.SelectedItem.ToString());
             float U_renge = Convert.ToSingle(T_U_renge.Text);
             float L_renge = Convert.ToSingle(T_L_renge.Text);
             float Damfing = Convert.ToSingle(T_Demp.Text);
@@ -691,7 +703,7 @@ namespace Wpf_Hart {
             {
                 lock (balanceLock)
                 {
-                    HART_conection.Comand_35(Properties.Settings.Default.Master, Devise_long_adres,Unit,U_renge,L_renge);
+                    HART_conection.Comand_35(Properties.Settings.Default.Master, Devise_long_adres, Unit, U_renge, L_renge);
                 }
             });
             await Task.Run(() =>
@@ -813,7 +825,7 @@ namespace Wpf_Hart {
             {
                 lock (balanceLock)
                 {
-                    HART_conection.Comand_39(Properties.Settings.Default.Master, Devise_long_adres,0);
+                    HART_conection.Comand_39(Properties.Settings.Default.Master, Devise_long_adres, 0);
                 }
             });
             ((Button)sender).IsEnabled = true;
@@ -866,7 +878,7 @@ namespace Wpf_Hart {
             {
                 lock (balanceLock)
                 {
-                    HART_conection.Comand_0(Properties.Settings.Default.Master, Devise_long_adres,ref temp);
+                    HART_conection.Comand_0(Properties.Settings.Default.Master, Devise_long_adres, ref temp);
                 }
             });
             T_Preambul_l.Text = temp[2];
@@ -881,14 +893,14 @@ namespace Wpf_Hart {
             {
                 lock (balanceLock)
                 {
-                    HART_conection.Comand_59(Properties.Settings.Default.Master, Devise_long_adres,temp);
+                    HART_conection.Comand_59(Properties.Settings.Default.Master, Devise_long_adres, temp);
                 }
             });
-           
+
             P_preambula.IsEnabled = true;
         }
 
-      
+
 
         private async void B_dev_Short_ad_write_Click(object sender, RoutedEventArgs e)
         {
@@ -898,10 +910,10 @@ namespace Wpf_Hart {
             {
                 lock (balanceLock)
                 {
-                    HART_conection.Comand_6(Properties.Settings.Default.Master, Devise_long_adres,temp);
+                    HART_conection.Comand_6(Properties.Settings.Default.Master, Devise_long_adres, temp);
                 }
             });
-           
+
             P_short_ad.IsEnabled = true;
         }
 
@@ -916,7 +928,7 @@ namespace Wpf_Hart {
             {
                 lock (balanceLock)
                 {
-                    HART_conection.Comand_14(Properties.Settings.Default.Master, Devise_long_adres, ref temp,ref kod,ref Min,ref Max);
+                    HART_conection.Comand_14(Properties.Settings.Default.Master, Devise_long_adres, ref temp, ref kod, ref Min, ref Max);
                 }
             });
             T_Serial_num.Text = temp;
@@ -927,7 +939,7 @@ namespace Wpf_Hart {
         {
             P_serial_num.IsEnabled = false;
             string temp = T_Serial_num.Text;
-           
+
             await Task.Run(() =>
             {
                 lock (balanceLock)
@@ -935,11 +947,11 @@ namespace Wpf_Hart {
                     HART_conection.Comand_49(Properties.Settings.Default.Master, Devise_long_adres, _Convert.GetBytes(temp.Replace("-", "")));
                 }
             });
-           
+
             P_serial_num.IsEnabled = true;
         }
 
-        bool isferst= true ;
+        bool isferst = true;
         private async void Dat_chart_ubdate()
         {
             if (isferst)
@@ -984,17 +996,17 @@ namespace Wpf_Hart {
             T_par_3.Text = par_3.ToString() + "(" + kod_3 + ")  ";
             T_par_4.Text = par_4.ToString() + "(" + kod_4 + ")  ";
 
-            if (tok != -1)  C_unit_value2.Series[0].Values.Add(tok); else C_unit_value2.Series[0].Values.Add(float.NaN);
-            if (proc != -1) C_unit_value2.Series[1].Values.Add(proc);else C_unit_value2.Series[1].Values.Add(float.NaN);
+            if (tok != -1) C_unit_value2.Series[0].Values.Add(tok); else C_unit_value2.Series[0].Values.Add(float.NaN);
+            if (proc != -1) C_unit_value2.Series[1].Values.Add(proc); else C_unit_value2.Series[1].Values.Add(float.NaN);
             T_par_tok.Text = tok.ToString() + "(.ma)  ";
             T_par_proc.Text = proc.ToString() + "(.%)  ";
         }
         private void B_charts_add_Click(object sender, RoutedEventArgs e)
         {
             ((Button)sender).IsEnabled = false;
-            
-                Dat_chart_ubdate();
-            
+
+            Dat_chart_ubdate();
+
             ((Button)sender).IsEnabled = true;
         }
 
@@ -1010,9 +1022,9 @@ namespace Wpf_Hart {
         }
         async void timer_Tick(object sender, EventArgs e)
         {
-          
-                Dat_chart_ubdate();
-           
+
+            Dat_chart_ubdate();
+
         }
 
         private void B_Start_timer_Click(object sender, RoutedEventArgs e)
@@ -1033,11 +1045,11 @@ namespace Wpf_Hart {
         private void B_Select_Click(object sender, RoutedEventArgs e)
         {
             P_dev_list.Visibility = Visibility.Collapsed;
-            
+
             Frame_devise.Visibility = Visibility.Visible;
 
             Frame_devise.Navigate(new Uri("/Devise/P_MTM701_7.xaml", UriKind.RelativeOrAbsolute));
-          
+
 
 
         }
@@ -1052,7 +1064,7 @@ namespace Wpf_Hart {
         {
             if (ComboBox_timer_s.SelectedItem.ToString().Contains('s'))
             {
-                timer.Interval = TimeSpan.FromSeconds( Convert.ToDouble(ComboBox_timer_s.SelectedItem.ToString().Replace("s", "")));
+                timer.Interval = TimeSpan.FromSeconds(Convert.ToDouble(ComboBox_timer_s.SelectedItem.ToString().Replace("s", "")));
             }
             if (ComboBox_timer_s.SelectedItem.ToString().Contains('m'))
             {
@@ -1061,6 +1073,87 @@ namespace Wpf_Hart {
             if (ComboBox_timer_s.SelectedItem.ToString().Contains('h'))
             {
                 timer.Interval = TimeSpan.FromHours(Convert.ToDouble(ComboBox_timer_s.SelectedItem.ToString().Replace("h", "")));
+            }
+        }
+
+     
+
+        private async void SensorsRead()
+        {
+            B_Sensors_add.IsEnabled = false;
+            float tok = 0; float proc = 0;
+            string kod_1 = ""; float par_1 = 0;
+            string kod_2 = ""; float par_2 = 0;
+            string kod_3 = ""; float par_3 = 0;
+            string kod_4 = ""; float par_4 = 0;
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    HART_conection.Comand_3(Properties.Settings.Default.Master, Devise_long_adres, ref tok, ref kod_1, ref par_1, ref kod_2, ref par_2, ref kod_3, ref par_3, ref kod_4, ref par_4);
+                }
+            });
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    HART_conection.Comand_2(Properties.Settings.Default.Master, Devise_long_adres, ref tok, ref proc);
+                }
+            });
+           
+            G_test.Value  = Math.Round(par_1, 2);
+            G_test2.Value = Math.Round(par_2,2);
+            G_test3.Value = Math.Round(par_3,2);
+            G_test4.Value = Math.Round(par_4,2);
+            G_test5.Value = Math.Round(tok,2);
+            G_test6.Value = Math.Round(proc,2);
+            L_test.Content  = kod_1;
+            L_test2.Content = kod_2;
+            L_test3.Content = kod_3;
+            L_test4.Content = kod_4;
+            B_Sensors_add.IsEnabled = true;
+        }
+        private void B_Sensors_add_Click(object sender, RoutedEventArgs e)
+        {
+           
+            SensorsRead();
+           
+        }
+        void timer_Tick2(object sender, EventArgs e)
+        {
+
+            SensorsRead();
+
+        }
+        private void B_Start_sensortimer_Click(object sender, RoutedEventArgs e)
+        {
+            B_Start_sensortimer.IsEnabled = false;
+            B_Stop_sensortimer.IsEnabled = true;
+            SensorsRead();
+            timer2.Start();
+        }
+
+        private void B_Stop_sensortimer_Click(object sender, RoutedEventArgs e)
+        {
+            B_Start_sensortimer.IsEnabled = true;
+            B_Stop_sensortimer.IsEnabled = false;
+            
+            timer2.Stop();
+        }
+
+        private void ComboBox_sensortimer_s_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ComboBox_sensortimer_s.SelectedItem.ToString().Contains('s'))
+            {
+                timer2.Interval = TimeSpan.FromSeconds(Convert.ToDouble(ComboBox_sensortimer_s.SelectedItem.ToString().Replace("s", "")));
+            }
+            if (ComboBox_sensortimer_s.SelectedItem.ToString().Contains('m'))
+            {
+                timer2.Interval = TimeSpan.FromMinutes(Convert.ToDouble(ComboBox_sensortimer_s.SelectedItem.ToString().Replace("m", "")));
+            }
+            if (ComboBox_sensortimer_s.SelectedItem.ToString().Contains('h'))
+            {
+                timer2.Interval = TimeSpan.FromHours(Convert.ToDouble(ComboBox_sensortimer_s.SelectedItem.ToString().Replace("h", "")));
             }
         }
     }

@@ -22,8 +22,8 @@
 
     <SolidColorBrush x:Key="Custom_panel" Color="#FF24F763"></SolidColorBrush>
 
-    <SolidColorBrush x:Key="Custom_progres" Color="#FF24F763"></SolidColorBrush>
-    <SolidColorBrush x:Key="Custom_progresF" Color="#FF00A030"></SolidColorBrush>
+    <SolidColorBrush x:Key="Custom_progres" Color="#FF00A030"></SolidColorBrush>
+    <SolidColorBrush x:Key="Custom_progresF" Color="#FF24F763"></SolidColorBrush>
 
     <SolidColorBrush x:Key="Custom_blu1">#102027</SolidColorBrush>
     <SolidColorBrush x:Key="Custom_blu2">#37474f</SolidColorBrush>
@@ -38,7 +38,26 @@
     <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent"/>
     <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="White"/>
 
-   
+    <Style TargetType="lvc:Separator">
+        <Setter Property="Stroke" Value="#3E5059"/>
+    </Style>
+    <Style TargetType="lvc:LineSeries">
+        <Setter Property="PointForeground" Value="#62727b"/>
+    </Style>
+    <Style TargetType="lvc:CartesianChart">
+            
+        <Setter Property="SeriesColors">
+            <Setter.Value>
+                <lvc:ColorsCollection>
+                    <Color>#08F1FD</Color>
+                    <Color>#07E3B0</Color>
+                    <Color>#07E333</Color>
+                    <Color>#21FD08</Color>
+                </lvc:ColorsCollection>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
 
     <Style x:Key="VerticalSeparatorStyle" 
        TargetType="{x:Type Separator}"

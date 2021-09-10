@@ -37,6 +37,19 @@
     <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent"/>
     <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="Black"/>
 
+    <Style TargetType="lvc:CartesianChart">
+        <Setter Property="SeriesColors">
+            <Setter.Value>
+            <lvc:ColorsCollection>
+                <Color>#0087cb</Color>
+                <Color>#ffa200</Color>
+                <Color>#24a8ac</Color>
+                <Color>#00a03e</Color>
+            </lvc:ColorsCollection>
+            </Setter.Value>
+        </Setter>
+       
+    </Style>
     
     
     <Style x:Key="VerticalSeparatorStyle" 
