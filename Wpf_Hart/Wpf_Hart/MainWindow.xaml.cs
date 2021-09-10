@@ -23,6 +23,7 @@ using System.Linq;
 using System.Windows.Threading;
 using System.Diagnostics;
 using System.Reflection;
+using Microsoft.Win32;
 
 namespace Wpf_Hart { 
 
@@ -1076,7 +1077,7 @@ namespace Wpf_Hart {
             }
         }
 
-     
+
 
         private async void SensorsRead()
         {
@@ -1100,14 +1101,14 @@ namespace Wpf_Hart {
                     HART_conection.Comand_2(Properties.Settings.Default.Master, Devise_long_adres, ref tok, ref proc);
                 }
             });
-           
-            G_test.Value  = Math.Round(par_1, 2);
-            G_test2.Value = Math.Round(par_2,2);
-            G_test3.Value = Math.Round(par_3,2);
-            G_test4.Value = Math.Round(par_4,2);
-            G_test5.Value = Math.Round(tok,2);
-            G_test6.Value = Math.Round(proc,2);
-            L_test.Content  = kod_1;
+
+            G_test.Value = Math.Round(par_1, 2);
+            G_test2.Value = Math.Round(par_2, 2);
+            G_test3.Value = Math.Round(par_3, 2);
+            G_test4.Value = Math.Round(par_4, 2);
+            G_test5.Value = Math.Round(tok, 2);
+            G_test6.Value = Math.Round(proc, 2);
+            L_test.Content = kod_1;
             L_test2.Content = kod_2;
             L_test3.Content = kod_3;
             L_test4.Content = kod_4;
@@ -1115,9 +1116,9 @@ namespace Wpf_Hart {
         }
         private void B_Sensors_add_Click(object sender, RoutedEventArgs e)
         {
-           
+
             SensorsRead();
-           
+
         }
         void timer_Tick2(object sender, EventArgs e)
         {
@@ -1137,7 +1138,7 @@ namespace Wpf_Hart {
         {
             B_Start_sensortimer.IsEnabled = true;
             B_Stop_sensortimer.IsEnabled = false;
-            
+
             timer2.Stop();
         }
 
@@ -1155,6 +1156,77 @@ namespace Wpf_Hart {
             {
                 timer2.Interval = TimeSpan.FromHours(Convert.ToDouble(ComboBox_sensortimer_s.SelectedItem.ToString().Replace("h", "")));
             }
+        }
+
+        private void B_read_file_Click(object sender, RoutedEventArgs e)
+        {
+            List<string> temp = new List<string>();
+            string[] subs;
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Data (*.dat)|*.dat";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                C_unit_value.Series[0].Values.Clear();
+                C_unit_value.Series[1].Values.Clear();
+                C_unit_value.Series[2].Values.Clear();
+                C_unit_value.Series[3].Values.Clear();
+                C_unit_value2.Series[0].Values.Clear();
+                C_unit_value2.Series[1].Values.Clear();
+                Labels.Clear();
+
+                temp = File.ReadAllLines(openFileDialog.FileName).ToList();
+                subs = temp[0].Split('#');
+                T_par_1.Text = subs[0];
+                T_par_2.Text = subs[1];
+                T_par_3.Text = subs[2];
+                T_par_4.Text = subs[3];
+                T_par_tok.Text = subs[4];
+                T_par_proc.Text = subs[5];
+                for (int i = 1; i < temp.Count; i++)
+                {
+                    subs = temp[i].Split('#');
+
+                    C_unit_value.Series[0].Values.Add(Convert.ToSingle( subs[0]));
+                    C_unit_value.Series[1].Values.Add(Convert.ToSingle(subs[1]));
+                    C_unit_value.Series[2].Values.Add(Convert.ToSingle(subs[2]));
+                    C_unit_value.Series[3].Values.Add(Convert.ToSingle(subs[3]));
+                    C_unit_value2.Series[0].Values.Add(Convert.ToSingle(subs[4]));
+                    C_unit_value2.Series[1].Values.Add(Convert.ToSingle(subs[5]));
+                    Labels.Add(subs[6]);
+                }
+            }
+        }
+
+        private void B_write_file_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Data (*.dat)|*.dat";
+            saveFileDialog.FileName = "Graphic(" + DateTime.Now.ToShortDateString() + ")";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                
+
+                List<string> temp = new List<string>();
+                temp.Add(T_par_1.Text + "#" +
+                         T_par_2.Text + "#" +
+                         T_par_3.Text + "#" +
+                         T_par_4.Text + "#"+
+                         T_par_tok.Text + "#"+
+                         T_par_proc.Text);
+                for (int i = 0; i < C_unit_value.Series[0].Values.Count; i++)
+                {
+                    temp.Add(
+                             C_unit_value.Series[0].Values[i].ToString() + "#" +
+                             C_unit_value.Series[1].Values[i].ToString() + "#" +
+                             C_unit_value.Series[2].Values[i].ToString() + "#" +
+                             C_unit_value.Series[3].Values[i].ToString() + "#" +
+                             C_unit_value2.Series[0].Values[i].ToString() + "#" +
+                             C_unit_value2.Series[1].Values[i].ToString() + "#" +
+                             Labels[i]);
+                }
+                File.WriteAllLines(saveFileDialog.FileName, temp.ToArray());
+            }
+           
         }
     }
 }
