@@ -15,8 +15,12 @@
                 <ProgressBar Background="{DynamicResource Custom_progres}" VerticalAlignment="Top" BorderBrush="{DynamicResource Custom_progres}" Foreground="{DynamicResource Custom_progresF}" x:Name="Skan_progres" Height="10" Margin="10 5"  Maximum="0" ></ProgressBar>
                 <Button Content="Close" Name="exit" Click="exit_Click" HorizontalAlignment="Right" Margin="10,20,10,10" VerticalAlignment="Top" Background="{DynamicResource Custom_red1}" BorderBrush="{DynamicResource Custom_red2}" Foreground="{DynamicResource Custom_Botton_tex}"/>
                 <StackPanel Orientation="Horizontal">
-                <Button x:Name="B_Saive" Click="B_Saive_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Saive to faile" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
-                <Button x:Name="B_Load" Click="B_Load_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Load to faile" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
+                <Button x:Name="B_Saive" Click="B_Saive_Click" Foreground="{DynamicResource Custom_Botton_tex}" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Bottom" Cursor="Hand">
+                        <materialDesign:PackIcon Kind="noteedit"  Width="30" Height="30" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
+                </Button>
+                    <Button x:Name="B_Load" Click="B_Load_Click" Foreground="{DynamicResource Custom_Botton_tex}" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}"  HorizontalAlignment="Left" Margin="10" VerticalAlignment="Bottom" Cursor="Hand">
+                        <materialDesign:PackIcon Kind="NoteSearch"  Width="30" Height="30" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
+                    </Button>
                 </StackPanel>
             </Grid>
            

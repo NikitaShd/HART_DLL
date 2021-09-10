@@ -16,7 +16,7 @@
     <SolidColorBrush x:Key="Custom_red1" Color="#FFF01D1D"></SolidColorBrush>
     <SolidColorBrush x:Key="Custom_red2" Color="#FFCA0000"></SolidColorBrush>
 
-    <SolidColorBrush x:Key="Custom_button1" Color="#FF00DA41"></SolidColorBrush>
+    <SolidColorBrush x:Key="Custom_button1" Color="#00C93C"></SolidColorBrush>
 
     <SolidColorBrush x:Key="Custom_Botton_tex" Color="White"></SolidColorBrush>
 
@@ -39,7 +39,7 @@
     <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="White"/>
 
     <Style TargetType="lvc:Separator">
-        <Setter Property="Stroke" Value="#3E5059"/>
+        <Setter Property="Stroke" Value="#36454D"/>
     </Style>
     <Style TargetType="lvc:LineSeries">
         <Setter Property="PointForeground" Value="#62727b"/>
