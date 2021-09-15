@@ -8,12 +8,14 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Management;
+using Plugin.BluetoothLE;
 using System;
 
 namespace Class_HART
 {
     public partial class Conect
     {
+        
         private static SerialPort port;      ///< клас USB порта 
         // =========== стандартные настройки usb ========================================
         private string     Port_id = "COM0"; ///< ID порта 
@@ -224,10 +226,8 @@ namespace Class_HART
         }
 
         Stopwatch sw = new Stopwatch();
-        /*! \addtogroup <Write> [(Отправка даных)]
-             * \brief Данный модуль содержит список функцый отправки.
-          @{
-            */
+     
+
         /// <summary>
         /// отправка кадра 
         /// </summary>
@@ -238,8 +238,8 @@ namespace Class_HART
         /// <returns>масив даных ответивших приборов </returns>
         private Byte[][] Write(Byte[] a)
         {
-                   
-                port.DiscardInBuffer();
+          #if USB
+            port.DiscardInBuffer();
                 port.ReadTimeout = 0;
                 port.Write(a, 0, a.Length);
                 int i = 0;
@@ -272,8 +272,6 @@ namespace Class_HART
                 int size = 0;
                 for (int j = 1; j < temp.Length ; j++) // я уже и сам не нимаю что тут происходит 
                 {
-                   // try { if ((temp[j + 1] == 0xFF) && (temp[j] == 0xFF) && (temp[j - 1] != 0xFF)) { F = false; } }
-                   // catch { }
                     try
                     {
                         if (((temp[j] == 0x06) || (temp[j] == 0x86)) && (temp[j - 1] == 0xFF) && (temp[j - 2] == 0xFF))
@@ -300,10 +298,10 @@ namespace Class_HART
                              size = 8;
                          }
                         
-                             if (((tmp == 3) && (size == 4)) || ((tmp == 7) && (size == 8)))
-                             {
+                         if (((tmp == 3) && (size == 4)) || ((tmp == 7) && (size == 8)))
+                         {
                                  size += temp[j];
-                             }
+                         }
                          
                          if (size == tmp)
                          {
@@ -312,31 +310,25 @@ namespace Class_HART
                              size = 0;
 
                          }
-                          tmp++;
-                    
-                         
+                          tmp++;      
                      }
                 }
-
-              
                 return read;
-
-            
-         
+           #endif
         }
         /*! @} */
-        
-           /*! \addtogroup <COMAND> [(Базовые команды)]
-            * \brief Данный модуль содержит список базовых команд и их описание.
-         @{
-           */
-           // =======================< Базовые команды >========================================================================== 
-       /// <summary>
-       /// базовая команда для получения длиного адреса устройства
-       /// </summary>
-       /// <param name="id_master">- Адрес отправителя </param>
-       /// <param name="id_slaiv">- Короткий адрес получателя</param>
-       /// <returns> Двхмерный масив байт где каждая стока ответ от 1 устройства </returns>
+
+        /*! \addtogroup <COMAND> [(Базовые команды)]
+         * \brief Данный модуль содержит список базовых команд и их описание.
+      @{
+        */
+        // =======================< Базовые команды >========================================================================== 
+        /// <summary>
+        /// базовая команда для получения длиного адреса устройства
+        /// </summary>
+        /// <param name="id_master">- Адрес отправителя </param>
+        /// <param name="id_slaiv">- Короткий адрес получателя</param>
+        /// <returns> Двхмерный масив байт где каждая стока ответ от 1 устройства </returns>
         public Byte[][] Comand_0(int id_master, int id_slaiv)
         {
             Byte[] a = {};

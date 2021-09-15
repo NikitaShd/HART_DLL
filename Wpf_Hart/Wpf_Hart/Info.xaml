@@ -19,7 +19,7 @@
                 <TextBlock Margin="56,20,5,45" TextWrapping="Wrap" FontSize="22" Text="{x:Static res:Resource.R_TemCh}" Foreground="{DynamicResource Custom_textcolor}"></TextBlock>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5,5,10,10">
                     <Button IsCancel="True" MinWidth="60" Margin="0,0,20,0" Foreground="{DynamicResource Custom_Botton_tex}" BorderBrush="{DynamicResource Custom_red2}" Background="{DynamicResource Custom_red1}" Content="{x:Static res:Resource.R_NO}"></Button>
-                    <Button IsDefault="True" Click="Accept_Click"  Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="60" Margin="0,0,0,0" BorderBrush="{DynamicResource Custom_button1}" Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_YES}"></Button>
+                    <Button IsDefault="True" Click="Button_Click"  Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="60" Margin="0,0,0,0" BorderBrush="{DynamicResource Custom_button1}" Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_YES}"></Button>
                 </StackPanel>
             </Grid>
         </Border>

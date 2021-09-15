@@ -1,0 +1,6 @@
+D:\GIT\HART_DLL\Class_HART\Class_HART\bin\Bluetooth\Class_HART.dll
+D:\GIT\HART_DLL\Class_HART\Class_HART\bin\Bluetooth\Class_HART.pdb
+D:\GIT\HART_DLL\Class_HART\Class_HART\obj\Bluetooth\Class_HART.csprojAssemblyReference.cache
+D:\GIT\HART_DLL\Class_HART\Class_HART\obj\Bluetooth\Class_HART.csproj.CoreCompileInputs.cache
+D:\GIT\HART_DLL\Class_HART\Class_HART\obj\Bluetooth\Class_HART.dll
+D:\GIT\HART_DLL\Class_HART\Class_HART\obj\Bluetooth\Class_HART.pdb

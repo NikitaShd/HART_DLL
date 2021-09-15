@@ -32,7 +32,7 @@
 
   <ItemGroup>
     <Reference Include="Class_HART">
-      <HintPath>..\..\Class_HART\Class_HART\bin\Debug\Class_HART.dll</HintPath>
+      <HintPath>..\..\Class_HART\Class_HART\bin\USB\Class_HART.dll</HintPath>
     </Reference>
   </ItemGroup>
 

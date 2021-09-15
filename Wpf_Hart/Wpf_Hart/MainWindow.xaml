@@ -45,7 +45,6 @@
             <TextBlock x:Name="Label_DevLongAdres" Text="" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
 
-
                 <Button Style="{DynamicResource Daytem_s}" VerticalAlignment="Center" Margin="5" x:Name="Darkmode" Click="Darkmode_Click"/>
                 <Separator Margin="2"/>
                 <Button Style="{DynamicResource Setings_s}" VerticalAlignment="Center" Margin="5" x:Name="Setings" Click="Setings_Click"/>

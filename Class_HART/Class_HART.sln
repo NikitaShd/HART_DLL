@@ -1,22 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Class_HART", "Class_HART\Class_HART.csproj", "{DE60BD25-48CE-4B33-B7D1-91305C25B90B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
+		Bluetooth|Any CPU = Bluetooth|Any CPU
+		USB|Any CPU = USB|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DE60BD25-48CE-4B33-B7D1-91305C25B90B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DE60BD25-48CE-4B33-B7D1-91305C25B90B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DE60BD25-48CE-4B33-B7D1-91305C25B90B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DE60BD25-48CE-4B33-B7D1-91305C25B90B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE60BD25-48CE-4B33-B7D1-91305C25B90B}.Bluetooth|Any CPU.ActiveCfg = Bluetooth|Any CPU
+		{DE60BD25-48CE-4B33-B7D1-91305C25B90B}.Bluetooth|Any CPU.Build.0 = Bluetooth|Any CPU
+		{DE60BD25-48CE-4B33-B7D1-91305C25B90B}.USB|Any CPU.ActiveCfg = USB|Any CPU
+		{DE60BD25-48CE-4B33-B7D1-91305C25B90B}.USB|Any CPU.Build.0 = USB|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D64A2A3-8AF4-4E67-9752-A3C183C2BEC3}
 	EndGlobalSection
 EndGlobal

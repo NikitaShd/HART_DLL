@@ -23,9 +23,10 @@ namespace Wpf_Hart
         {
             InitializeComponent();
         }
-        private void Accept_Click(object sender, RoutedEventArgs e)
+      
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-           
             this.DialogResult = true;
         }
     }
