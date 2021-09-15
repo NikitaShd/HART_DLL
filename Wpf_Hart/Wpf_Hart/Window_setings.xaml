@@ -30,7 +30,7 @@
                         <RadioButton GroupName="Master" Name="R_master2" Content="Master 1"  Margin="10" Foreground="{DynamicResource Custom_textcolor}" FontSize="18"/>
                     </StackPanel>
                     <Separator Margin="5,5,5,10"></Separator>
-                    <CheckBox x:Name="Ch_COM_port" Margin="5,0,0,10" Foreground="{DynamicResource Custom_textcolor}" FontSize="18" Content="Avto conect to COM Port"></CheckBox>
+                    <CheckBox x:Name="Ch_COM_port" Margin="5,0,0,10" Foreground="{DynamicResource Custom_textcolor}" FontSize="18" Content="{x:Static res:Resource.R_AvtoConect}"></CheckBox>
                     <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="{x:Static res:Resource.R_langue}" Margin="10,0,0,0" Width="150"/>
                     <ComboBox Margin="5,-18,5,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" x:Name="ComboBox_langue" ItemsSource="{Binding Langues}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left"  VerticalAlignment="Center" Width="340" Foreground="{DynamicResource Custom_textcolor}"/>
                 </StackPanel>

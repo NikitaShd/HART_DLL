@@ -106,8 +106,8 @@
                     <Separator/>
                     <ListViewItem Height="65" Margin="0,1,0,1">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ViewArray" Margin="6" Width="30" Height="30" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
-                            <TextBlock Text="test" FontSize="18" Margin="10 10" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
+                            <materialDesign:PackIcon Kind="BookOpenVariant" Margin="6" Width="30" Height="30" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
+                            <TextBlock Text="Wiki" FontSize="18" Margin="10 10" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="65" Margin="0,1,0,1">
@@ -127,11 +127,11 @@
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <WrapPanel Grid.Row="0" Margin="0,5,0,0" Orientation="Horizontal"  VerticalAlignment="Top" HorizontalAlignment="Left" Width="{Binding ActualWidth, ElementName=grid, Mode=OneWay}">
-                        <Label HorizontalContentAlignment="Center" Content="Serial Port :" HorizontalAlignment="Left" Margin="20,5,0,0" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
+                        <Label HorizontalContentAlignment="Center" Content="{x:Static res:Resource.R_SerialPort}" HorizontalAlignment="Left" Margin="20,5,0,0" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
                         <ComboBox Style="{DynamicResource MaterialDesignDataGridComboBox}" x:Name="ComboBox_UsbDevaise" SelectionChanged="ComboBox_UsbDevaise_SelectionChanged" ItemsSource="{Binding usb}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="140" FontSize="18" AutomationProperties.HelpText="Serial Port" Foreground="{DynamicResource Custom_textcolor}"/>
                         <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" x:Name="usb_stats" Content="" Margin="5,20,0,0" Width="90"/>
-                        <Button x:Name="B_OpenPort" BorderBrush="{DynamicResource Custom_button1}" Click="B_OpenPort_Click" Background="{DynamicResource Custom_button1}" Content="Open Port" HorizontalAlignment="Left" Margin="5,5,5,5" VerticalAlignment="Top" Cursor="Hand" Foreground="{DynamicResource Custom_Botton_tex}"/>
-                        <Button x:Name="B_ClosePort" Click="B_ClosePort_Click" Content="Close Port" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" Background="{DynamicResource Custom_red1}" BorderBrush="{DynamicResource Custom_red2}" Cursor="Hand" Foreground="{DynamicResource Custom_Botton_tex}"/>
+                        <Button x:Name="B_OpenPort" BorderBrush="{DynamicResource Custom_button1}" Click="B_OpenPort_Click" Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_OpenPort}" HorizontalAlignment="Left" Margin="5,5,5,5" VerticalAlignment="Top" Cursor="Hand" Foreground="{DynamicResource Custom_Botton_tex}"/>
+                        <Button x:Name="B_ClosePort" Click="B_ClosePort_Click" Content="{x:Static res:Resource.R_ClosePort}" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" Background="{DynamicResource Custom_red1}" BorderBrush="{DynamicResource Custom_red2}" Cursor="Hand" Foreground="{DynamicResource Custom_Botton_tex}"/>
                         <Button x:Name="B_findDevaise" BorderBrush="{DynamicResource Custom_button1}" Click="B_findDevaise_Click" Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Start_Search_Devices}" HorizontalAlignment="Left" Margin="30,5,5,5" VerticalAlignment="Top" Cursor="Hand" Foreground="{DynamicResource Custom_Botton_tex}"/>
                         <Button IsEnabled="False" x:Name="B_findDevaiseStop" Click="B_findDevaiseStop_Click" Content="{x:Static res:Resource.R_Stop}" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" Background="{DynamicResource Custom_red1}" BorderBrush="{DynamicResource Custom_red2}" Cursor="Hand" Foreground="{DynamicResource Custom_Botton_tex}"/>
                     </WrapPanel>
@@ -185,15 +185,15 @@
                                     </StackPanel>
                                     <Separator DockPanel.Dock="Bottom"></Separator>
                                     <StackPanel MinHeight="300" MinWidth="300" Margin="1">
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Message :" Margin="25,0,0,0" Width="90"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="{x:Static res:Resource.R_Message}" Margin="25,0,0,0" Width="90"/>
                                         <TextBox x:Name="T_dev_mes" Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Long Teg :" Margin="25,0,0,0" Width="90"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="{x:Static res:Resource.R_LongTeg}" Margin="25,0,0,0" Width="90"/>
                                         <TextBox x:Name="T_L_teg" Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}"  Cursor="Arrow"/>
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Short Teg :" Margin="25,0,0,0" Width="90"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="{x:Static res:Resource.R_ShortTeg}" Margin="25,0,0,0" Width="90"/>
                                         <TextBox x:Name="T_s_teg" Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Description :" Margin="25,0,0,0" Width="90"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="{x:Static res:Resource.R_Description}" Margin="25,0,0,0" Width="90"/>
                                         <TextBox x:Name="T_discriptor" Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Date :" Margin="25,0,0,0" Width="90"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="{x:Static res:Resource.R_Date}" Margin="25,0,0,0" Width="90"/>
                                         <DatePicker x:Name="T_data" Margin="20,-17,20,10" FontSize="16" IsDropDownOpen="False" SelectedDateFormat="Short" Style="{StaticResource MaterialDesignFilledDatePicker}" Cursor="Arrow" Foreground="{DynamicResource Custom_textcolor}" ForceCursor="True" />
                                     </StackPanel>
                                 </DockPanel>
@@ -207,21 +207,21 @@
                                     </StackPanel>
                                     <Separator DockPanel.Dock="Bottom"></Separator>
                                     <StackPanel MinHeight="300" MinWidth="300" Margin="1">
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Signal :" Margin="25,0,0,0" Width="150"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="{x:Static res:Resource.R_Signal}" Margin="25,0,0,0" Width="150"/>
                                         <ComboBox Margin="20,-17,20,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" x:Name="ComboBox_Signal" ItemsSource="{Binding S_Alarm_cods}" IsSynchronizedWithCurrentItem ="False"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="260" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Function :" Margin="25,0,0,0" Width="150"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="{x:Static res:Resource.R_Function}" Margin="25,0,0,0" Width="150"/>
                                         <ComboBox Margin="20,-17,20,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" x:Name="ComboBox_Function" ItemsSource="{Binding S_Transfer_cods}" IsSynchronizedWithCurrentItem ="False"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="260" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Units :" Margin="25,0,0,0" Width="150"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="{x:Static res:Resource.R_Units}" Margin="25,0,0,0" Width="150"/>
                                         <ComboBox Margin="20,-17,20,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" x:Name="ComboBox_Units" ItemsSource="{Binding S_Unit_cods}" IsSynchronizedWithCurrentItem ="False"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="260" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="Max :" Margin="25,0,0,0" Width="90"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="{x:Static res:Resource.R_Max}" Margin="25,0,0,0" Width="90"/>
                                         <TextBox PreviewTextInput="NumberValidationTextBox"  Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" x:Name="T_U_renge" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="Min :" Margin="25,0,0,0" Width="90"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="{x:Static res:Resource.R_Min}" Margin="25,0,0,0" Width="90"/>
                                         <TextBox PreviewTextInput="NumberValidationTextBox" Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}"  x:Name="T_L_renge" Style="{StaticResource MaterialDesignFilledTextBox}"  Cursor="Arrow"/>
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="Demp :" Margin="25,0,0,0" Width="90"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="{x:Static res:Resource.R_Demp}" Margin="25,0,0,0" Width="90"/>
                                         <TextBox PreviewTextInput="NumberValidationTextBox" Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" x:Name="T_Demp" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="Protect :" Margin="25,0,0,0" Width="150"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="{x:Static res:Resource.R_Protect}" Margin="25,0,0,0" Width="150"/>
                                         <ComboBox Margin="20,-17,20,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" x:Name="ComboBox_Protect" ItemsSource="{Binding S_Protect_cods}" IsSynchronizedWithCurrentItem ="False"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="260" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="Manufacturer :" Margin="25,0,0,0" Width="90"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="{x:Static res:Resource.R_Manufacturer}" Margin="25,0,0,0" Width="90"/>
                                         <TextBox IsReadOnly="True"  Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}"  x:Name="T_Manufacturer" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
                                     </StackPanel>
                                 </DockPanel>
@@ -238,12 +238,12 @@
                                 <DockPanel x:Name="P_Fixed_Current">
                                     <Label DockPanel.Dock="Top" Content="Fixed Current" Margin="10,-19,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" Width="120"/>
                                     <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" >
-                                        <Button x:Name="B_dev_fixed_current_exit" Click="B_dev_fixed_current_exit_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="Exit" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom"/>
-                                        <Button x:Name="B_dev_fixed_current_set" Click="B_dev_fixed_current_set_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Set" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
+                                        <Button x:Name="B_dev_fixed_current_exit" Click="B_dev_fixed_current_exit_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="{x:Static res:Resource.R_Exit}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom"/>
+                                        <Button x:Name="B_dev_fixed_current_set" Click="B_dev_fixed_current_set_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Set}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
                                     </StackPanel>
                                     <Separator DockPanel.Dock="Bottom"></Separator>
                                     <StackPanel MinHeight="10" MinWidth="300" Margin="1">
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="Value :" Margin="25,0,0,0" Width="90"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="{x:Static res:Resource.R_Value}" Margin="25,0,0,0" Width="90"/>
                                         <TextBox PreviewTextInput="NumberValidationTextBox"  Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" x:Name="T_fixed_current" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
                                     </StackPanel>
                                 </DockPanel>
@@ -252,11 +252,11 @@
                                 <DockPanel x:Name="P_Zero">
                                     <Label DockPanel.Dock="Top" Content="ACP" Margin="10,-19,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" Width="45"/>
                                     <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" >
-                                        <Button x:Name="B_dev_zero_set" Click="B_dev_zero_set_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Set" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
+                                        <Button x:Name="B_dev_zero_set" Click="B_dev_zero_set_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Set}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
                                     </StackPanel>
                                     <Separator DockPanel.Dock="Bottom"></Separator>
                                     <StackPanel MinHeight="10" MinWidth="300" Margin="1">
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="Set Zero ACP :" Margin="25,0,0,0" Width="90"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="{x:Static res:Resource.R_SetZeroACP}" Margin="25,0,0,0" Width="120"/>
                                         <TextBox PreviewTextInput="NumberValidationTextBox"  Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" x:Name="T_Zero" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
                                     </StackPanel>
                                 </DockPanel>
@@ -265,11 +265,11 @@
                                 <DockPanel x:Name="P_Coficent">
                                     <Label DockPanel.Dock="Top" Content="ACP" Margin="10,-19,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" Width="45"/>
                                     <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" >
-                                        <Button x:Name="B_dev_coficent_set" Click="B_dev_coficent_set_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Set" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
+                                        <Button x:Name="B_dev_coficent_set" Click="B_dev_coficent_set_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Set}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Cursor="Hand"/>
                                     </StackPanel>
                                     <Separator DockPanel.Dock="Bottom"></Separator>
                                     <StackPanel MinHeight="10" MinWidth="300" Margin="1">
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="Configure Gain ACP :" Margin="25,0,0,0" Width="150"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="{x:Static res:Resource.R_ConfGainACP}" Margin="25,0,0,0" Width="150"/>
                                         <TextBox PreviewTextInput="NumberValidationTextBox"  Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" x:Name="T_Coficent" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
                                     </StackPanel>
                                 </DockPanel>
@@ -278,9 +278,9 @@
                                 <DockPanel x:Name="P_Variable">
                                     <Label DockPanel.Dock="Top" Content="Variable" Margin="10,-19,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" Width="75"/>
                                     <StackPanel  MinHeight="10" MinWidth="300" Margin="1" >
-                                        <Button x:Name="B_dev_U_range_value" Click="B_dev_U_range_value_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Set Upper Range Value"  Margin="10,0,10,3" VerticalAlignment="Bottom" Cursor="Hand"/>
-                                        <Button x:Name="B_dev_L_range_value" Click="B_dev_L_range_value_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Set Lower Range Value"  Margin="10,3,10,3" VerticalAlignment="Bottom" Cursor="Hand"/>
-                                        <Button x:Name="B_dev_Prim_value" Click="B_dev_Prim_value_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Set Zero Primary Variable"  Margin="10,3,10,10" VerticalAlignment="Bottom" Cursor="Hand"/>
+                                        <Button x:Name="B_dev_U_range_value" Click="B_dev_U_range_value_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_SetUpperRenge}"  Margin="10,0,10,3" VerticalAlignment="Bottom" Cursor="Hand"/>
+                                        <Button x:Name="B_dev_L_range_value" Click="B_dev_L_range_value_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_SetLowerReng}"  Margin="10,3,10,3" VerticalAlignment="Bottom" Cursor="Hand"/>
+                                        <Button x:Name="B_dev_Prim_value" Click="B_dev_Prim_value_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_SetZeroPrimary}"  Margin="10,3,10,10" VerticalAlignment="Bottom" Cursor="Hand"/>
                                     </StackPanel>
                                 </DockPanel>
                             </Border>
@@ -288,8 +288,8 @@
                                 <DockPanel x:Name="P_EEPROM">
                                     <Label DockPanel.Dock="Top" Content="EEPROM" Margin="10,-19,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" Width="80"/>
                                     <StackPanel  MinHeight="10" MinWidth="300" Margin="1" >
-                                        <Button x:Name="B_dev_eeprom_burn" Click="B_dev_eeprom_burn_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Burn EEPROM"  Margin="10,0,10,3" VerticalAlignment="Bottom" Cursor="Hand"/>
-                                        <Button x:Name="B_dev_eeprom_restor" Click="B_dev_eeprom_restor_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Restore Shadow RAM"  Margin="10,3,10,10" VerticalAlignment="Bottom" Cursor="Hand"/>
+                                        <Button x:Name="B_dev_eeprom_burn" Click="B_dev_eeprom_burn_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_BurnEEPROM}"  Margin="10,0,10,3" VerticalAlignment="Bottom" Cursor="Hand"/>
+                                        <Button x:Name="B_dev_eeprom_restor" Click="B_dev_eeprom_restor_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_RestoreRAM}"  Margin="10,3,10,10" VerticalAlignment="Bottom" Cursor="Hand"/>
                                     </StackPanel>
                                 </DockPanel>
                             </Border>
@@ -297,8 +297,8 @@
                                 <DockPanel >
                                     <Label DockPanel.Dock="Top" Content="EEPROM" Margin="10,-19,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" Width="80"/>
                                     <StackPanel  MinHeight="10" MinWidth="300" Margin="1" >
-                                        <Button x:Name="B_dev_reset_flad" Click="B_dev_reset_flad_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Reset &lt;Configuration Changed> Flag"  Margin="10,0,10,3" VerticalAlignment="Bottom" Cursor="Hand"/>
-                                        <Button x:Name="B_dev_reset" Click="B_dev_reset_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Reset Device"  Margin="10,3,10,10" VerticalAlignment="Bottom" Cursor="Hand"/>
+                                        <Button x:Name="B_dev_reset_flad" Click="B_dev_reset_flad_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_RestFlag}"  Margin="10,0,10,3" VerticalAlignment="Bottom" Cursor="Hand"/>
+                                        <Button x:Name="B_dev_reset" Click="B_dev_reset_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_ResetDevice}"  Margin="10,3,10,10" VerticalAlignment="Bottom" Cursor="Hand"/>
                                     </StackPanel>
                                 </DockPanel>
                             </Border>
@@ -311,7 +311,7 @@
                                     </StackPanel>
                                     <Separator DockPanel.Dock="Bottom"></Separator>
                                     <StackPanel MinHeight="10" MinWidth="300" Margin="1">
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="Preambula Count :" Margin="25,0,0,0" Width="150"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="{x:Static res:Resource.R_Preambul_leng}" Margin="25,0,0,0" Width="150"/>
                                         <TextBox PreviewTextInput="NumberValidationTextBox"  Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" x:Name="T_Preambul_l" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
                                     </StackPanel>
                                 </DockPanel>
@@ -324,7 +324,7 @@
                                     </StackPanel>
                                     <Separator DockPanel.Dock="Bottom"></Separator>
                                     <StackPanel MinHeight="10" MinWidth="300" Margin="1">
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="Short Adres :" Margin="25,0,0,0" Width="150"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="{x:Static res:Resource.R_ShortAdres}" Margin="25,0,0,0" Width="150"/>
                                         <TextBox PreviewTextInput="NumberValidationTextBox"  Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" x:Name="T_Short_ad" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
                                     </StackPanel>
                                 </DockPanel>
@@ -338,7 +338,7 @@
                                     </StackPanel>
                                     <Separator DockPanel.Dock="Bottom"></Separator>
                                     <StackPanel MinHeight="10" MinWidth="300" Margin="1">
-                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="Serial Number (HEX) :" Margin="25,0,0,0" Width="150"/>
+                                        <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="{x:Static res:Resource.R_SerialNumber}" Margin="25,0,0,0" Width="150"/>
                                         <TextBox PreviewTextInput="HexValidationTextBox"  Margin="20,-17,20,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" x:Name="T_Serial_num" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
                                     </StackPanel>
                                 </DockPanel>
@@ -358,18 +358,18 @@
                             </Grid.RowDefinitions>
                             <WrapPanel Margin="10,0" Grid.Row="0">
                                 <Button  x:Name="B_charts_add" Click="B_charts_add_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Read}" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
-                                <Button  x:Name="B_Clear_charts" Click="B_Clear_charts_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Clear Сharts" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
+                                <Button  x:Name="B_Clear_charts" Click="B_Clear_charts_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_ClearChart}" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
                                 <Separator Margin="10"></Separator>
                                 <Button  x:Name="B_write_file" Click="B_write_file_Click" Foreground="{DynamicResource Custom_Botton_tex}" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand">
-                                    <materialDesign:PackIcon Kind="noteedit"  Width="30" Height="30" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
+                                    <materialDesign:PackIcon Kind="noteedit"  Width="30" Height="30" VerticalAlignment="Center" Foreground="{DynamicResource Custom_Botton_tex}"/>
                                 </Button>
                                 <Button  x:Name="B_read_file" Click="B_read_file_Click" Foreground="{DynamicResource Custom_Botton_tex}" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand">
-                                    <materialDesign:PackIcon Kind="NoteSearch"  Width="30" Height="30" VerticalAlignment="Center" Foreground="{DynamicResource Custom_panel}"/>
+                                    <materialDesign:PackIcon Kind="NoteSearch"  Width="30" Height="30" VerticalAlignment="Center" Foreground="{DynamicResource Custom_Botton_tex}"/>
                                 </Button>
                                 <Separator Margin="10"></Separator>
-                                <Button  x:Name="B_Start_timer" Click="B_Start_timer_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Start" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
-                                <Button  x:Name="B_Stop_timer" Click="B_Stop_timer_Click" IsEnabled="false" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="Stop" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
-                                <materialDesign:Badged FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource Custom_textcolor}" Content="Timer Interval :" Margin="10"/>
+                                <Button  x:Name="B_Start_timer" Click="B_Start_timer_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Start}" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
+                                <Button  x:Name="B_Stop_timer" Click="B_Stop_timer_Click" IsEnabled="false" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="{x:Static res:Resource.R_Stop}" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
+                                <materialDesign:Badged FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource Custom_textcolor}" Content="{x:Static res:Resource.R_TimerInterval}" Margin="10"/>
                                 <ComboBox Margin="10" FontSize="16" Style="{DynamicResource MaterialDesignComboBox}"  ItemsSource="{Binding S_timer_s}" x:Name="ComboBox_timer_s" SelectionChanged="ComboBox_timer_s_SelectionChanged" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="120" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
                             </WrapPanel>
                             <Grid Grid.Row="1" Margin="20,5,20,5">
@@ -386,7 +386,7 @@
                                             <RowDefinition Height="Auto"></RowDefinition>
                                             <RowDefinition Height="*"></RowDefinition>
                                         </Grid.RowDefinitions>
-                                        <TextBlock Grid.Row="0"  FontSize="20" Foreground="{DynamicResource Custom_textcolor}" Margin="30, 5">Units Values</TextBlock>
+                                        <TextBlock Grid.Row="0"  FontSize="20" Foreground="{DynamicResource Custom_textcolor}" Margin="30, 5" Text="{x:Static res:Resource.R_UnitValues}"></TextBlock>
                                         <ListBox Name="ListBox1" ItemsSource="{Binding Series, Converter={StaticResource ReverseConverter}}" PreviewMouseDown="ListBox_OnPreviewMouseDown" 
                                                  Panel.ZIndex="1" HorizontalAlignment="Right" VerticalAlignment="Center" BorderThickness="0" Background="Transparent">
                                             <ListBox.ItemsPanel>
@@ -457,7 +457,7 @@
                                             <RowDefinition Height="Auto"></RowDefinition>
                                             <RowDefinition Height="*"></RowDefinition>
                                         </Grid.RowDefinitions>
-                                        <TextBlock Grid.Row="0" FontSize="20" Foreground="{DynamicResource Custom_textcolor}" Margin="30, 5">Current Values</TextBlock>
+                                        <TextBlock Grid.Row="0" FontSize="20" Foreground="{DynamicResource Custom_textcolor}" Margin="30, 5" Text="{x:Static res:Resource.R_CurrentValues}"></TextBlock>
                                         <ListBox Name="ListBox2" ItemsSource="{Binding Series2, Converter={StaticResource ReverseConverter}}" PreviewMouseDown="ListBox_OnPreviewMouseDown2" 
                                                  Panel.ZIndex="1" HorizontalAlignment="Right" VerticalAlignment="Center" BorderThickness="0" Background="Transparent">
                                             <ListBox.ItemsPanel>
@@ -525,9 +525,9 @@
                         <WrapPanel Margin="10,0" Grid.Row="0">
                             <Button  x:Name="B_Sensors_add" Click="B_Sensors_add_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Read}" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
                             <Separator Margin="10"></Separator>
-                            <Button  x:Name="B_Start_sensortimer" Click="B_Start_sensortimer_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Start" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
-                            <Button  x:Name="B_Stop_sensortimer" Click="B_Stop_sensortimer_Click" IsEnabled="false" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="Stop" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
-                            <materialDesign:Badged FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource Custom_textcolor}" Content="Timer Interval :" Margin="10"/>
+                            <Button  x:Name="B_Start_sensortimer" Click="B_Start_sensortimer_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Start}" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
+                            <Button  x:Name="B_Stop_sensortimer" Click="B_Stop_sensortimer_Click" IsEnabled="false" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="{x:Static res:Resource.R_Stop}" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Cursor="Hand"/>
+                            <materialDesign:Badged FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource Custom_textcolor}" Content="{x:Static res:Resource.R_TimerInterval}" Margin="10"/>
                             <ComboBox Margin="10" FontSize="16" Style="{DynamicResource MaterialDesignComboBox}"  ItemsSource="{Binding S_timer2_s}" x:Name="ComboBox_sensortimer_s" SelectionChanged="ComboBox_sensortimer_s_SelectionChanged" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="120" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
                         </WrapPanel>
                         <Grid Grid.Row="1">
@@ -541,7 +541,7 @@
                                             <RowDefinition Height="Auto"></RowDefinition>
                                             <RowDefinition Height="*"></RowDefinition>
                                         </Grid.RowDefinitions>
-                                        <TextBlock Grid.Row="0"  FontSize="20" Foreground="{DynamicResource Custom_textcolor}" Margin="30, 5">Units Values</TextBlock>
+                                        <TextBlock Grid.Row="0"  FontSize="20" Foreground="{DynamicResource Custom_textcolor}" Margin="30, 5" Text="{x:Static res:Resource.R_UnitValues}"></TextBlock>
                                         <WrapPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Horizontal">
                                             <Grid>
                                                 <Grid.RowDefinitions>
@@ -611,7 +611,7 @@
                                             <RowDefinition Height="Auto"></RowDefinition>
                                             <RowDefinition Height="*"></RowDefinition>
                                         </Grid.RowDefinitions>
-                                        <TextBlock Grid.Row="0"  FontSize="20" Foreground="{DynamicResource Custom_textcolor}" Margin="30, 5">Current Values</TextBlock>
+                                        <TextBlock Grid.Row="0"  FontSize="20" Foreground="{DynamicResource Custom_textcolor}" Margin="30, 5" Text="{x:Static res:Resource.R_CurrentValues}"></TextBlock>
                                         <WrapPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Horizontal">
                                             <Grid>
                                                 <Grid.RowDefinitions>
@@ -654,7 +654,7 @@
                             <Border  BorderBrush="{DynamicResource Custom_blu1}" BorderThickness="2"  Margin="20,20,0,0"  CornerRadius="8,8,8,8">
                                 <DockPanel x:Name="P_S_1">
                                     <Label DockPanel.Dock="Top" Content="MTM701.7" Margin="10,10,0,10" Background="{DynamicResource Custom_Background}" HorizontalAlignment="Left" />
-                                    <Button  DockPanel.Dock="Bottom" x:Name="B_Select_1" Click="B_Select_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="250" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="Select" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Bottom" Cursor="Hand" />
+                                    <Button  DockPanel.Dock="Bottom" x:Name="B_Select_1" Click="B_Select_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="250" BorderBrush="{DynamicResource Custom_button1}"  Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Select}" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Bottom" Cursor="Hand" />
                                     <Separator DockPanel.Dock="Bottom"></Separator>
                                     <StackPanel MinHeight="250" MinWidth="250" Margin="1">
                                         <Image></Image>

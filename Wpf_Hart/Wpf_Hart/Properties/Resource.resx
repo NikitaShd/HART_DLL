@@ -117,11 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="R_AvtoConect" xml:space="preserve">
+    <value>Avto conect to COM Port</value>
+  </data>
+  <data name="R_BurnEEPROM" xml:space="preserve">
+    <value>Burn EEPROM</value>
+  </data>
+  <data name="R_ClearChart" xml:space="preserve">
+    <value>Clear Charts</value>
+  </data>
+  <data name="R_ClosePort" xml:space="preserve">
+    <value>Close Port</value>
+  </data>
+  <data name="R_ConfGainACP" xml:space="preserve">
+    <value>Configure Gain ACP :</value>
+  </data>
+  <data name="R_CurrentValues" xml:space="preserve">
+    <value>Current Values</value>
+  </data>
+  <data name="R_Date" xml:space="preserve">
+    <value>Date :</value>
+  </data>
+  <data name="R_Demp" xml:space="preserve">
+    <value>Demp :</value>
+  </data>
+  <data name="R_Description" xml:space="preserve">
+    <value>Description :</value>
+  </data>
   <data name="R_Device_function" xml:space="preserve">
     <value>Device Function Flags : </value>
   </data>
   <data name="R_Device_Type_Code" xml:space="preserve">
     <value>Device Type Code : </value>
+  </data>
+  <data name="R_Exit" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="R_Function" xml:space="preserve">
+    <value>Function :</value>
   </data>
   <data name="R_Hardware_version" xml:space="preserve">
     <value>Hardware Version : </value>
@@ -129,8 +162,29 @@
   <data name="R_langue" xml:space="preserve">
     <value>Langue :</value>
   </data>
+  <data name="R_LongTeg" xml:space="preserve">
+    <value>Long Teg :</value>
+  </data>
+  <data name="R_Manufacturer" xml:space="preserve">
+    <value>Manufacturer :</value>
+  </data>
   <data name="R_Manufacturer_Code" xml:space="preserve">
     <value>Manufacturer Code : </value>
+  </data>
+  <data name="R_Max" xml:space="preserve">
+    <value>Max :</value>
+  </data>
+  <data name="R_Message" xml:space="preserve">
+    <value>Message :</value>
+  </data>
+  <data name="R_Min" xml:space="preserve">
+    <value>Min :</value>
+  </data>
+  <data name="R_NO" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="R_OpenPort" xml:space="preserve">
+    <value>Open Port</value>
   </data>
   <data name="R_Port_spid" xml:space="preserve">
     <value>Port spid :</value>
@@ -138,8 +192,20 @@
   <data name="R_Preambul_leng" xml:space="preserve">
     <value>Preambul Leng : </value>
   </data>
+  <data name="R_Protect" xml:space="preserve">
+    <value>Protect :</value>
+  </data>
   <data name="R_Read" xml:space="preserve">
     <value>Read</value>
+  </data>
+  <data name="R_ResetDevice" xml:space="preserve">
+    <value>Reset Device</value>
+  </data>
+  <data name="R_RestFlag" xml:space="preserve">
+    <value>Reset &lt;Configuration Changed&gt; Flag</value>
+  </data>
+  <data name="R_RestoreRAM" xml:space="preserve">
+    <value>Restore Shadow RAM</value>
   </data>
   <data name="R_Saive" xml:space="preserve">
     <value>Saive</value>
@@ -147,8 +213,41 @@
   <data name="R_Saive_dont" xml:space="preserve">
     <value>Not Saive Changes</value>
   </data>
+  <data name="R_Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="R_SerialNumber" xml:space="preserve">
+    <value>Serial Number (HEX) :</value>
+  </data>
+  <data name="R_SerialPort" xml:space="preserve">
+    <value>Serial Port :</value>
+  </data>
+  <data name="R_Set" xml:space="preserve">
+    <value>Set</value>
+  </data>
   <data name="R_Setings" xml:space="preserve">
     <value>Setings</value>
+  </data>
+  <data name="R_SetLowerReng" xml:space="preserve">
+    <value>Set Lower Renge Value</value>
+  </data>
+  <data name="R_SetUpperRenge" xml:space="preserve">
+    <value>Set Upper Renge Value </value>
+  </data>
+  <data name="R_SetZeroACP" xml:space="preserve">
+    <value>Set Zero ACP :</value>
+  </data>
+  <data name="R_SetZeroPrimary" xml:space="preserve">
+    <value>Set Zero Primary Variable</value>
+  </data>
+  <data name="R_ShortAdres" xml:space="preserve">
+    <value>Short Adres :</value>
+  </data>
+  <data name="R_ShortTeg" xml:space="preserve">
+    <value>Short Teg :</value>
+  </data>
+  <data name="R_Signal" xml:space="preserve">
+    <value>Signal :</value>
   </data>
   <data name="R_Software_version" xml:space="preserve">
     <value>Software Version : </value>
@@ -156,14 +255,32 @@
   <data name="R_Specific_commands" xml:space="preserve">
     <value>Version of Specific Commands : </value>
   </data>
+  <data name="R_Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
   <data name="R_Start_Search_Devices" xml:space="preserve">
     <value>Start Search Devices</value>
   </data>
   <data name="R_Stop" xml:space="preserve">
     <value>Stop</value>
   </data>
+  <data name="R_TemCh" xml:space="preserve">
+    <value>This action will reload the application, do you want to continue?</value>
+  </data>
+  <data name="R_TimerInterval" xml:space="preserve">
+    <value>Timer Interval</value>
+  </data>
+  <data name="R_Units" xml:space="preserve">
+    <value>Units :</value>
+  </data>
+  <data name="R_UnitValues" xml:space="preserve">
+    <value>Unit Values</value>
+  </data>
   <data name="R_Universal_commands" xml:space="preserve">
     <value>Version of Universal Commands : </value>
+  </data>
+  <data name="R_Value" xml:space="preserve">
+    <value>Value :</value>
   </data>
   <data name="R_Write" xml:space="preserve">
     <value>Write</value>
@@ -173,5 +290,8 @@
   </data>
   <data name="R_Write_timeout" xml:space="preserve">
     <value>Write timeout :</value>
+  </data>
+  <data name="R_YES" xml:space="preserve">
+    <value>Yes</value>
   </data>
 </root>

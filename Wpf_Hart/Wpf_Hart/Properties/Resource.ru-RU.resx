@@ -117,20 +117,74 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="R_AvtoConect" xml:space="preserve">
+    <value>Автоматически подключать COM порт</value>
+  </data>
+  <data name="R_BurnEEPROM" xml:space="preserve">
+    <value>Записать EEPROM</value>
+  </data>
+  <data name="R_ClearChart" xml:space="preserve">
+    <value>Очистить Графики</value>
+  </data>
+  <data name="R_ClosePort" xml:space="preserve">
+    <value>Закрыть порт</value>
+  </data>
+  <data name="R_ConfGainACP" xml:space="preserve">
+    <value>Установить усиление ACP :</value>
+  </data>
+  <data name="R_CurrentValues" xml:space="preserve">
+    <value>Значения тока </value>
+  </data>
+  <data name="R_Date" xml:space="preserve">
+    <value>Дата :</value>
+  </data>
+  <data name="R_Demp" xml:space="preserve">
+    <value>Величина Демпфирования :</value>
+  </data>
+  <data name="R_Description" xml:space="preserve">
+    <value>Описание :</value>
+  </data>
   <data name="R_Device_function" xml:space="preserve">
-    <value>Device Function Flags : </value>
+    <value>Флаги функций устройства : </value>
   </data>
   <data name="R_Device_Type_Code" xml:space="preserve">
-    <value>Device Type Code : </value>
+    <value>Код типа устройства : </value>
+  </data>
+  <data name="R_Exit" xml:space="preserve">
+    <value>Выйти</value>
+  </data>
+  <data name="R_Function" xml:space="preserve">
+    <value>Функция :</value>
   </data>
   <data name="R_Hardware_version" xml:space="preserve">
-    <value>Hardware Version : </value>
+    <value>Версия оборудования : </value>
   </data>
   <data name="R_langue" xml:space="preserve">
     <value>Язык :</value>
   </data>
+  <data name="R_LongTeg" xml:space="preserve">
+    <value>Длиный тег  :</value>
+  </data>
+  <data name="R_Manufacturer" xml:space="preserve">
+    <value>Производитель :</value>
+  </data>
   <data name="R_Manufacturer_Code" xml:space="preserve">
-    <value>Manufacturer Code : </value>
+    <value>Код производителя : </value>
+  </data>
+  <data name="R_Max" xml:space="preserve">
+    <value>Максимум :</value>
+  </data>
+  <data name="R_Message" xml:space="preserve">
+    <value>Сообщение :</value>
+  </data>
+  <data name="R_Min" xml:space="preserve">
+    <value>Минимум :</value>
+  </data>
+  <data name="R_NO" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="R_OpenPort" xml:space="preserve">
+    <value>Открыть порт</value>
   </data>
   <data name="R_Port_spid" xml:space="preserve">
     <value>Скорость Порта :</value>
@@ -138,8 +192,20 @@
   <data name="R_Preambul_leng" xml:space="preserve">
     <value>Количество Преамбул : </value>
   </data>
+  <data name="R_Protect" xml:space="preserve">
+    <value>Защита от записи :</value>
+  </data>
   <data name="R_Read" xml:space="preserve">
     <value>Прочитать</value>
+  </data>
+  <data name="R_ResetDevice" xml:space="preserve">
+    <value>Сбросить устройство</value>
+  </data>
+  <data name="R_RestFlag" xml:space="preserve">
+    <value>Сброс флага &lt;Конфигурация изменена&gt;</value>
+  </data>
+  <data name="R_RestoreRAM" xml:space="preserve">
+    <value>Восстановить RAM</value>
   </data>
   <data name="R_Saive" xml:space="preserve">
     <value>Сохранить</value>
@@ -147,14 +213,50 @@
   <data name="R_Saive_dont" xml:space="preserve">
     <value>Не Сохранять</value>
   </data>
+  <data name="R_Select" xml:space="preserve">
+    <value>Выбрать</value>
+  </data>
+  <data name="R_SerialNumber" xml:space="preserve">
+    <value>Серийный номер (HEX) :</value>
+  </data>
+  <data name="R_SerialPort" xml:space="preserve">
+    <value>Порт :</value>
+  </data>
+  <data name="R_Set" xml:space="preserve">
+    <value>Установить</value>
+  </data>
   <data name="R_Setings" xml:space="preserve">
     <value>Настройки</value>
   </data>
+  <data name="R_SetLowerReng" xml:space="preserve">
+    <value>Установить нижнее значение</value>
+  </data>
+  <data name="R_SetUpperRenge" xml:space="preserve">
+    <value>Установить верхнее значение </value>
+  </data>
+  <data name="R_SetZeroACP" xml:space="preserve">
+    <value>Установит ноль ACP :</value>
+  </data>
+  <data name="R_SetZeroPrimary" xml:space="preserve">
+    <value>Установить ноль</value>
+  </data>
+  <data name="R_ShortAdres" xml:space="preserve">
+    <value>Короткий адрес :</value>
+  </data>
+  <data name="R_ShortTeg" xml:space="preserve">
+    <value>Короткий тег :</value>
+  </data>
+  <data name="R_Signal" xml:space="preserve">
+    <value>Сигнал :</value>
+  </data>
   <data name="R_Software_version" xml:space="preserve">
-    <value>Software Version : </value>
+    <value>Версия ПО : </value>
   </data>
   <data name="R_Specific_commands" xml:space="preserve">
-    <value>Version of Specific Commands : </value>
+    <value>Версия спецефических команд : </value>
+  </data>
+  <data name="R_Start" xml:space="preserve">
+    <value>Старт</value>
   </data>
   <data name="R_Start_Search_Devices" xml:space="preserve">
     <value>Поиск Устройтсв</value>
@@ -162,16 +264,34 @@
   <data name="R_Stop" xml:space="preserve">
     <value>Стоп</value>
   </data>
+  <data name="R_TemCh" xml:space="preserve">
+    <value>Это действие привёдет к перезагрузки приложения , хотите продолжить ?</value>
+  </data>
+  <data name="R_TimerInterval" xml:space="preserve">
+    <value>Интервал опроса :</value>
+  </data>
+  <data name="R_Units" xml:space="preserve">
+    <value>Единицы измерения :</value>
+  </data>
+  <data name="R_UnitValues" xml:space="preserve">
+    <value>Значения единиц измерения</value>
+  </data>
   <data name="R_Universal_commands" xml:space="preserve">
-    <value>Version of Universal Commands : </value>
+    <value>Версия уневерсальных команд : </value>
+  </data>
+  <data name="R_Value" xml:space="preserve">
+    <value>Фиксированый ток :</value>
   </data>
   <data name="R_Write" xml:space="preserve">
     <value>Записать</value>
   </data>
   <data name="R_Write_time" xml:space="preserve">
-    <value>Время Жидания Ответа :</value>
+    <value>Время Ожидания Ответа :</value>
   </data>
   <data name="R_Write_timeout" xml:space="preserve">
     <value>Доп время  :</value>
+  </data>
+  <data name="R_YES" xml:space="preserve">
+    <value>Да</value>
   </data>
 </root>

@@ -10,6 +10,9 @@
     <Compile Update="Devise\P_MTM701_7.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Info.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Window_setings.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -22,6 +25,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Dictionary_Lite.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Info.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">

@@ -61,6 +61,87 @@ namespace Wpf_Hart.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Avto conect to COM Port.
+        /// </summary>
+        public static string R_AvtoConect {
+            get {
+                return ResourceManager.GetString("R_AvtoConect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Burn EEPROM.
+        /// </summary>
+        public static string R_BurnEEPROM {
+            get {
+                return ResourceManager.GetString("R_BurnEEPROM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Clear Charts.
+        /// </summary>
+        public static string R_ClearChart {
+            get {
+                return ResourceManager.GetString("R_ClearChart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Close Port.
+        /// </summary>
+        public static string R_ClosePort {
+            get {
+                return ResourceManager.GetString("R_ClosePort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Configure Gain ACP :.
+        /// </summary>
+        public static string R_ConfGainACP {
+            get {
+                return ResourceManager.GetString("R_ConfGainACP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Current Values.
+        /// </summary>
+        public static string R_CurrentValues {
+            get {
+                return ResourceManager.GetString("R_CurrentValues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Date :.
+        /// </summary>
+        public static string R_Date {
+            get {
+                return ResourceManager.GetString("R_Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Demp :.
+        /// </summary>
+        public static string R_Demp {
+            get {
+                return ResourceManager.GetString("R_Demp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Description :.
+        /// </summary>
+        public static string R_Description {
+            get {
+                return ResourceManager.GetString("R_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Device Function Flags : .
         /// </summary>
         public static string R_Device_function {
@@ -75,6 +156,24 @@ namespace Wpf_Hart.Properties {
         public static string R_Device_Type_Code {
             get {
                 return ResourceManager.GetString("R_Device_Type_Code", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Exit.
+        /// </summary>
+        public static string R_Exit {
+            get {
+                return ResourceManager.GetString("R_Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Function :.
+        /// </summary>
+        public static string R_Function {
+            get {
+                return ResourceManager.GetString("R_Function", resourceCulture);
             }
         }
         
@@ -97,11 +196,74 @@ namespace Wpf_Hart.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Long Teg :.
+        /// </summary>
+        public static string R_LongTeg {
+            get {
+                return ResourceManager.GetString("R_LongTeg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Manufacturer :.
+        /// </summary>
+        public static string R_Manufacturer {
+            get {
+                return ResourceManager.GetString("R_Manufacturer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Manufacturer Code : .
         /// </summary>
         public static string R_Manufacturer_Code {
             get {
                 return ResourceManager.GetString("R_Manufacturer_Code", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Max :.
+        /// </summary>
+        public static string R_Max {
+            get {
+                return ResourceManager.GetString("R_Max", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Message :.
+        /// </summary>
+        public static string R_Message {
+            get {
+                return ResourceManager.GetString("R_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Min :.
+        /// </summary>
+        public static string R_Min {
+            get {
+                return ResourceManager.GetString("R_Min", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на No.
+        /// </summary>
+        public static string R_NO {
+            get {
+                return ResourceManager.GetString("R_NO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Open Port.
+        /// </summary>
+        public static string R_OpenPort {
+            get {
+                return ResourceManager.GetString("R_OpenPort", resourceCulture);
             }
         }
         
@@ -124,11 +286,47 @@ namespace Wpf_Hart.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Protect :.
+        /// </summary>
+        public static string R_Protect {
+            get {
+                return ResourceManager.GetString("R_Protect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Read.
         /// </summary>
         public static string R_Read {
             get {
                 return ResourceManager.GetString("R_Read", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Reset Device.
+        /// </summary>
+        public static string R_ResetDevice {
+            get {
+                return ResourceManager.GetString("R_ResetDevice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Reset &lt;Configuration Changed&gt; Flag.
+        /// </summary>
+        public static string R_RestFlag {
+            get {
+                return ResourceManager.GetString("R_RestFlag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Restore Shadow RAM.
+        /// </summary>
+        public static string R_RestoreRAM {
+            get {
+                return ResourceManager.GetString("R_RestoreRAM", resourceCulture);
             }
         }
         
@@ -151,11 +349,110 @@ namespace Wpf_Hart.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Select.
+        /// </summary>
+        public static string R_Select {
+            get {
+                return ResourceManager.GetString("R_Select", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Serial Number (HEX) :.
+        /// </summary>
+        public static string R_SerialNumber {
+            get {
+                return ResourceManager.GetString("R_SerialNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Serial Port :.
+        /// </summary>
+        public static string R_SerialPort {
+            get {
+                return ResourceManager.GetString("R_SerialPort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Set.
+        /// </summary>
+        public static string R_Set {
+            get {
+                return ResourceManager.GetString("R_Set", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Setings.
         /// </summary>
         public static string R_Setings {
             get {
                 return ResourceManager.GetString("R_Setings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Set Lower Renge Value.
+        /// </summary>
+        public static string R_SetLowerReng {
+            get {
+                return ResourceManager.GetString("R_SetLowerReng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Set Upper Renge Value .
+        /// </summary>
+        public static string R_SetUpperRenge {
+            get {
+                return ResourceManager.GetString("R_SetUpperRenge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Set Zero ACP :.
+        /// </summary>
+        public static string R_SetZeroACP {
+            get {
+                return ResourceManager.GetString("R_SetZeroACP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Set Zero Primary Variable.
+        /// </summary>
+        public static string R_SetZeroPrimary {
+            get {
+                return ResourceManager.GetString("R_SetZeroPrimary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Short Adres :.
+        /// </summary>
+        public static string R_ShortAdres {
+            get {
+                return ResourceManager.GetString("R_ShortAdres", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Short Teg :.
+        /// </summary>
+        public static string R_ShortTeg {
+            get {
+                return ResourceManager.GetString("R_ShortTeg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Signal :.
+        /// </summary>
+        public static string R_Signal {
+            get {
+                return ResourceManager.GetString("R_Signal", resourceCulture);
             }
         }
         
@@ -178,6 +475,15 @@ namespace Wpf_Hart.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Start.
+        /// </summary>
+        public static string R_Start {
+            get {
+                return ResourceManager.GetString("R_Start", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Start Search Devices.
         /// </summary>
         public static string R_Start_Search_Devices {
@@ -196,11 +502,56 @@ namespace Wpf_Hart.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на This action will reload the application, do you want to continue?.
+        /// </summary>
+        public static string R_TemCh {
+            get {
+                return ResourceManager.GetString("R_TemCh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Timer Interval.
+        /// </summary>
+        public static string R_TimerInterval {
+            get {
+                return ResourceManager.GetString("R_TimerInterval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Units :.
+        /// </summary>
+        public static string R_Units {
+            get {
+                return ResourceManager.GetString("R_Units", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Unit Values.
+        /// </summary>
+        public static string R_UnitValues {
+            get {
+                return ResourceManager.GetString("R_UnitValues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Version of Universal Commands : .
         /// </summary>
         public static string R_Universal_commands {
             get {
                 return ResourceManager.GetString("R_Universal_commands", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Value :.
+        /// </summary>
+        public static string R_Value {
+            get {
+                return ResourceManager.GetString("R_Value", resourceCulture);
             }
         }
         
@@ -228,6 +579,15 @@ namespace Wpf_Hart.Properties {
         public static string R_Write_timeout {
             get {
                 return ResourceManager.GetString("R_Write_timeout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Yes.
+        /// </summary>
+        public static string R_YES {
+            get {
+                return ResourceManager.GetString("R_YES", resourceCulture);
             }
         }
     }

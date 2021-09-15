@@ -354,7 +354,7 @@ namespace Wpf_Hart
             }
             else
             {
-
+                if (List_menu.SelectedIndex == List_menu.Items.Count - 2) { System.Diagnostics.Process.Start("explorer.exe", "http://github.com/TviZet/HART_DLL/wiki"); }
                 if (List_menu.SelectedIndex == List_menu.Items.Count - 1) { System.Diagnostics.Process.Start("explorer.exe", "http://github.com/TviZet/HART_DLL"); }
                 List_menu.SelectedIndex = item;
             }
@@ -483,7 +483,12 @@ namespace Wpf_Hart
         //кнопка смены темы приложения
         private void Darkmode_Click(object sender, RoutedEventArgs e)
         {
-            Set_them();
+            Info info_ = new Info();
+            if (info_.ShowDialog() == true)
+            {
+                Set_them();
+            }
+           
         }
         void Set_them() // функцыя смены темы приложения 
         {
