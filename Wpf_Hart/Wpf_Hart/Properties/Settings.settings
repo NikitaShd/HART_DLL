@@ -18,7 +18,7 @@
       <Value Profile="(Default)">7</Value>
     </Setting>
     <Setting Name="Darkmode" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="Langue" Type="System.String" Scope="User">
       <Value Profile="(Default)">en-US</Value>
@@ -34,6 +34,9 @@
     </Setting>
     <Setting Name="Maximaize" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="AvtoCOM" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

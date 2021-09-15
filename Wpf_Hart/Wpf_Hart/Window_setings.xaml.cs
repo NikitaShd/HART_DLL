@@ -15,10 +15,8 @@ namespace Wpf_Hart
          = new ObservableCollection<string> { "200 ms", "400 ms", "700 ms", "1000 ms", "1500 ms", "2000 ms", "3000 ms", "4000 ms" };
         public ObservableCollection<string> taumautadd_s { get; set; }
          = new ObservableCollection<string> { "1 ms", "2 ms", "5 ms", "10 ms" };
-
         public ObservableCollection<string> Langues { get; set; }
          = new ObservableCollection<string> { "en-US","ru-RU" };
-
         public ObservableCollection<int> Preambula { get; set; }
          = new ObservableCollection<int> { 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
         public Window_setings()
@@ -30,6 +28,7 @@ namespace Wpf_Hart
             ComboBox_write_taim.SelectedItem = Properties.Settings.Default.write_taim + " ms";
             ComboBox_preambula_leng.SelectedItem = Properties.Settings.Default.preambula_leng;
             ComboBox_langue.SelectedItem = Properties.Settings.Default.Langue;
+            Ch_COM_port.IsChecked = Properties.Settings.Default.AvtoCOM;
             if ( Properties.Settings.Default.Master == 0)
             {
                 R_master1.IsChecked = true;
@@ -46,18 +45,17 @@ namespace Wpf_Hart
             Properties.Settings.Default.write_taim    = Convert.ToInt32(ComboBox_write_taim.SelectedItem.ToString().Replace(" ms", ""));
             Properties.Settings.Default.preambula_leng = (int)ComboBox_preambula_leng.SelectedItem;
             Properties.Settings.Default.Langue = (string)ComboBox_langue.SelectedItem;
+            Properties.Settings.Default.AvtoCOM = (bool)Ch_COM_port.IsChecked;
             if (R_master1.IsChecked == true)
             {
-                Properties.Settings.Default.Master = 0; 
+              Properties.Settings.Default.Master = 0; 
             }
             else
             {
-                Properties.Settings.Default.Master = 1;
+              Properties.Settings.Default.Master = 1;
             }
             Properties.Settings.Default.Save();
             this.DialogResult = true;
         }
-
-
     }
 }

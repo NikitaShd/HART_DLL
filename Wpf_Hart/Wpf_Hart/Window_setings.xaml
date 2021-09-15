@@ -6,44 +6,35 @@
         xmlns:res= "clr-namespace:Wpf_Hart.Properties"
         xmlns:local="clr-namespace:Wpf_Hart" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Setings" SizeToContent="Manual" AllowsTransparency="True"  WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" Height="480" Width="380"  BorderThickness="5,5,5,5" VerticalContentAlignment="Top" Background="{x:Null}">
+        Title="Setings" SizeToContent="Manual" AllowsTransparency="True"  WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" Height="515" Width="380"  BorderThickness="5,5,5,5" VerticalContentAlignment="Top" Background="{x:Null}">
     <Window.Effect>
         <DropShadowEffect BlurRadius="5" ShadowDepth="0" Opacity="0.9" RenderingBias="Performance" Direction="300" />
     </Window.Effect>
-    
-        <Grid x:Name="grid">
-        <Border Width="auto" Height="auto" BorderBrush="{DynamicResource Custom_Background2}" BorderThickness="2"
-                
+    <Grid x:Name="grid">
+        <Border Width="auto" Height="auto" BorderBrush="{DynamicResource Custom_Background2}" BorderThickness="2" 
                 CornerRadius="5" Background="{DynamicResource Custom_Background2}">
-
-            
             <Grid>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" Width="{Binding ActualWidth, ElementName=grid, Mode=OneWay}">
                     <Label Content="{x:Static res:Resource.R_Setings}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MinWidth="150" Margin="0,-10,0,0"/>
                     <Separator Margin="5,0,5,10"></Separator>
                     <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="{x:Static res:Resource.R_Port_spid}" Margin="10,0,0,0" Width="150"/>
                     <ComboBox Margin="5,-18,5,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" x:Name="ComboBox_PortSpid" ItemsSource="{Binding port_spid}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="340" Foreground="{DynamicResource Custom_textcolor}" Cursor="Arrow"/>
-
                     <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="{x:Static res:Resource.R_Write_time}" Margin="10,0,0,0" Width="150"/>
                     <ComboBox Margin="5,-18,5,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" x:Name="ComboBox_write_taimout" ItemsSource="{Binding taumaut_s }" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="340"  Foreground="{DynamicResource Custom_textcolor}"/>
-
                     <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="{x:Static res:Resource.R_Write_timeout}" Margin="10,0,0,0" Width="150"/>
                     <ComboBox Margin="5,-18,5,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" x:Name="ComboBox_write_taim" ItemsSource="{Binding taumautadd_s}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="340" Foreground="{DynamicResource Custom_textcolor}"/>
-
                     <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="{x:Static res:Resource.R_Preambul_leng}" Margin="10,0,0,0" Width="150"/>
                     <ComboBox Margin="5,-18,5,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" x:Name="ComboBox_preambula_leng" ItemsSource="{Binding Preambula}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left"  VerticalAlignment="Center" Width="340" Foreground="{DynamicResource Custom_textcolor}"/>
-                   
-                    
                     <StackPanel Orientation="Horizontal" >
                         <RadioButton GroupName="Master" Name="R_master1" Content="Master 0" IsChecked="True"  Margin="10" Foreground="{DynamicResource Custom_textcolor}" FontSize="18"/>
                         <RadioButton GroupName="Master" Name="R_master2" Content="Master 1"  Margin="10" Foreground="{DynamicResource Custom_textcolor}" FontSize="18"/>
                     </StackPanel>
                     <Separator Margin="5,5,5,10"></Separator>
+                    <CheckBox x:Name="Ch_COM_port" Margin="5,0,0,10" Foreground="{DynamicResource Custom_textcolor}" FontSize="18" Content="Avto conect to COM Port"></CheckBox>
                     <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" Content="{x:Static res:Resource.R_langue}" Margin="10,0,0,0" Width="150"/>
                     <ComboBox Margin="5,-18,5,10" FontSize="16" Style="{DynamicResource MaterialDesignFilledComboBox}" x:Name="ComboBox_langue" ItemsSource="{Binding Langues}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left"  VerticalAlignment="Center" Width="340" Foreground="{DynamicResource Custom_textcolor}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5,5,10,10">
-
                     <Button IsCancel="True" MinWidth="60" Margin="0,0,20,0" Foreground="{DynamicResource Custom_Botton_tex}" BorderBrush="{DynamicResource Custom_red2}" Background="{DynamicResource Custom_red1}" Content="{x:Static res:Resource.R_Saive_dont}"></Button>
                     <Button IsDefault="True" Click="Accept_Click"  Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="60" Margin="0,0,0,0" BorderBrush="{DynamicResource Custom_button1}" Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Saive}"></Button>
                 </StackPanel>

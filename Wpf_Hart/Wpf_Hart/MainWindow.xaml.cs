@@ -367,21 +367,24 @@ namespace Wpf_Hart
         // происходит при выборе порта 
         private void ComboBox_UsbDevaise_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (ComboBox_UsbDevaise.SelectedItem != null)
+            if ((ComboBox_UsbDevaise.SelectedItem != null))
             {
                 if (this_usb != ComboBox_UsbDevaise.SelectedItem.ToString()) // проверка не выбрали ли мы наш порт ещо раз 
                 {
                     this_usb = ComboBox_UsbDevaise.SelectedItem.ToString();// обновляем текуше выбраный порт
-                    HART_conection.close(); // закрывем предыдущий порт 
-                    Load_propertis(); // подгружаем настройки 
-                    string conect_usb_staite = HART_conection.init(this_usb);//иницеализируем наш порт
-                    if (conect_usb_staite == "True")// проверяем статус 
+                    if ((Properties.Settings.Default.AvtoCOM))
                     {
-                        usb_stats.Content = "Conect";
-                    }
-                    else
-                    {
-                        usb_stats.Content = "Disconect";
+                        HART_conection.close(); // закрывем предыдущий порт 
+                        Load_propertis(); // подгружаем настройки 
+                        string conect_usb_staite = HART_conection.init(this_usb);//иницеализируем наш порт
+                        if (conect_usb_staite == "True")// проверяем статус 
+                        {
+                            usb_stats.Content = "Conect";
+                        }
+                        else
+                        {
+                            usb_stats.Content = "Disconect";
+                        }
                     }
                 }
             }
@@ -1139,5 +1142,25 @@ namespace Wpf_Hart
             }
         }
 
+        private void B_ClosePort_Click(object sender, RoutedEventArgs e)
+        {
+            HART_conection.close(); // закрывем порт 
+            usb_stats.Content = "Disconect";
+        }
+        private void B_OpenPort_Click(object sender, RoutedEventArgs e)
+        {
+            this_usb = ComboBox_UsbDevaise.SelectedItem.ToString();// обновляем текуше выбраный порт
+            HART_conection.close(); // закрывем предыдущий порт 
+            Load_propertis(); // подгружаем настройки 
+            string conect_usb_staite = HART_conection.init(this_usb);//иницеализируем наш порт
+            if (conect_usb_staite == "True")// проверяем статус 
+            {
+                usb_stats.Content = "Conect";
+            }
+            else
+            {
+                usb_stats.Content = "Disconect";
+            }
+        }
     }
 }

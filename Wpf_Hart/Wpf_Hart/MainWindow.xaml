@@ -122,14 +122,21 @@
         <TabControl  Background="{DynamicResource Custom_Background}" x:Name="Tab_control_main"  Margin="{Binding ElementName =GridMenu , Path=Width ,  Converter={StaticResource MarginConverter}}" HorizontalContentAlignment="Center" Foreground="Black" BorderThickness="0,0,0,0">
             <TabItem  Header="TabItem" Margin="-2" VerticalAlignment="Top">
                 <Grid Margin="-2,-5,-2,0" x:Name="grid" Background="{DynamicResource Custom_Background}">
-                    <StackPanel Margin="0,5,0,0" Orientation="Horizontal" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Width="{Binding ActualWidth, ElementName=grid, Mode=OneWay}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <WrapPanel Grid.Row="0" Margin="0,5,0,0" Orientation="Horizontal"  VerticalAlignment="Top" HorizontalAlignment="Left" Width="{Binding ActualWidth, ElementName=grid, Mode=OneWay}">
                         <Label HorizontalContentAlignment="Center" Content="Serial Port :" HorizontalAlignment="Left" Margin="20,5,0,0" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
                         <ComboBox Style="{DynamicResource MaterialDesignDataGridComboBox}" x:Name="ComboBox_UsbDevaise" SelectionChanged="ComboBox_UsbDevaise_SelectionChanged" ItemsSource="{Binding usb}" IsSynchronizedWithCurrentItem ="True"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="140" FontSize="18" AutomationProperties.HelpText="Serial Port" Foreground="{DynamicResource Custom_textcolor}"/>
                         <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}" x:Name="usb_stats" Content="" Margin="5,20,0,0" Width="90"/>
+                        <Button x:Name="B_OpenPort" BorderBrush="{DynamicResource Custom_button1}" Click="B_OpenPort_Click" Background="{DynamicResource Custom_button1}" Content="Open Port" HorizontalAlignment="Left" Margin="5,5,5,5" VerticalAlignment="Top" Cursor="Hand" Foreground="{DynamicResource Custom_Botton_tex}"/>
+                        <Button x:Name="B_ClosePort" Click="B_ClosePort_Click" Content="Close Port" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" Background="{DynamicResource Custom_red1}" BorderBrush="{DynamicResource Custom_red2}" Cursor="Hand" Foreground="{DynamicResource Custom_Botton_tex}"/>
                         <Button x:Name="B_findDevaise" BorderBrush="{DynamicResource Custom_button1}" Click="B_findDevaise_Click" Background="{DynamicResource Custom_button1}" Content="{x:Static res:Resource.R_Start_Search_Devices}" HorizontalAlignment="Left" Margin="30,5,5,5" VerticalAlignment="Top" Cursor="Hand" Foreground="{DynamicResource Custom_Botton_tex}"/>
                         <Button IsEnabled="False" x:Name="B_findDevaiseStop" Click="B_findDevaiseStop_Click" Content="{x:Static res:Resource.R_Stop}" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" Background="{DynamicResource Custom_red1}" BorderBrush="{DynamicResource Custom_red2}" Cursor="Hand" Foreground="{DynamicResource Custom_Botton_tex}"/>
-                    </StackPanel>
-                    <DataGrid SelectionChanged="listBox_dev_SelectionChanged"  x:Name="listBox_dev" Margin="20,60,4,20" IsReadOnly="True" ItemsSource="{Binding HART_dev_list}" Background="{DynamicResource Custom_Background}">
+                    </WrapPanel>
+                    <Grid  Grid.Row="1">
+                    <DataGrid SelectionChanged="listBox_dev_SelectionChanged"  x:Name="listBox_dev" Margin="20,0,4,20" IsReadOnly="True" ItemsSource="{Binding HART_dev_list}" Background="{DynamicResource Custom_Background}">
                         <DataGrid.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
@@ -143,6 +150,7 @@
                         </DataGrid.ItemTemplate>
                     </DataGrid>
                     <ProgressBar Background="{DynamicResource Custom_progres}" BorderBrush="{DynamicResource Custom_progres}" Foreground="{DynamicResource Custom_progresF}" x:Name="Skan_progres" HorizontalAlignment="Center" Height="10" Margin="5" VerticalAlignment="Bottom" Width="{Binding ActualWidth, ElementName=listBox_dev, Mode=OneWay}" Maximum="15"/>
+                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem Header="TabItem"  Margin="-2" VerticalAlignment="Top">

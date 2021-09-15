@@ -40,15 +40,14 @@
     <Style TargetType="lvc:CartesianChart">
         <Setter Property="SeriesColors">
             <Setter.Value>
-            <lvc:ColorsCollection>
-                <Color>#0087cb</Color>
-                <Color>#ffa200</Color>
-                <Color>#24a8ac</Color>
-                <Color>#00a03e</Color>
-            </lvc:ColorsCollection>
+                <lvc:ColorsCollection>
+                    <Color>#0087cb</Color>
+                    <Color>#ffa200</Color>
+                    <Color>#24a8ac</Color>
+                    <Color>#00a03e</Color>
+                </lvc:ColorsCollection>
             </Setter.Value>
         </Setter>
-       
     </Style>
     
     
@@ -86,18 +85,16 @@
                         <EventTrigger RoutedEvent="MouseEnter">
                             <BeginStoryboard>
                                 <Storyboard>
-
                                     <ColorAnimation Storyboard.TargetProperty="Foreground.Color"
-                                        To="Red"  Duration="0:0:.3" />
+                                                    To="Red"  Duration="0:0:.3" />
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
                         <EventTrigger RoutedEvent="MouseLeave">
                             <BeginStoryboard>
                                 <Storyboard>
-
                                     <ColorAnimation Storyboard.TargetProperty="Foreground.Color"
-                                        To="#0277bd"  Duration="0:0:.3" />
+                                                    To="#0277bd"  Duration="0:0:.3" />
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
@@ -127,18 +124,16 @@
                         <EventTrigger RoutedEvent="MouseEnter">
                             <BeginStoryboard>
                                 <Storyboard>
-
                                     <ColorAnimation Storyboard.TargetProperty="Foreground.Color"
-                                        To="White"  Duration="0:0:.3" />
+                                                    To="White"  Duration="0:0:.3" />
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
                         <EventTrigger RoutedEvent="MouseLeave">
                             <BeginStoryboard>
                                 <Storyboard>
-
                                     <ColorAnimation Storyboard.TargetProperty="Foreground.Color"
-                                        To="#0277bd"  Duration="0:0:.3" />
+                                                    To="#0277bd"  Duration="0:0:.3" />
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
@@ -147,9 +142,9 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
     <Style TargetType="{x:Type Label}">
         <Setter Property="FontSize" Value="18"/>
-
     </Style>
 
     <Style TargetType="{x:Type DataGridCell}">
@@ -158,7 +153,6 @@
         <Setter Property="TextBlock.TextAlignment" Value="Center"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Style.Triggers>
-
             <Trigger Property="Selector.IsEnabled" Value="False">
                 <Setter Property="TextElement.Foreground">
                     <Setter.Value>
@@ -174,6 +168,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    
     <Style TargetType="{x:Type Button}" x:Key="srec_s">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="#0277bd"/>
@@ -183,7 +178,6 @@
                     <Border Background="{TemplateBinding Background}">
                         <Viewbox>
                             <Canvas Width="320" Height="320" x:Name="Canvas">
-
                                 <Rectangle Canvas.Top="230" Canvas.Left="10" Width="298.667" Height="42.667" Fill="{TemplateBinding Foreground}"/>
                             </Canvas>
                         </Viewbox>
@@ -192,18 +186,16 @@
                         <EventTrigger RoutedEvent="MouseEnter">
                             <BeginStoryboard>
                                 <Storyboard>
-
                                     <ColorAnimation Storyboard.TargetProperty="Foreground.Color"
-                                        To="White"  Duration="0:0:.3" />
+                                                    To="White"  Duration="0:0:.3" />
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
                         <EventTrigger RoutedEvent="MouseLeave">
                             <BeginStoryboard>
                                 <Storyboard>
-
                                     <ColorAnimation Storyboard.TargetProperty="Foreground.Color"
-                                        To="#0277bd"  Duration="0:0:.3" />
+                                                    To="#0277bd"  Duration="0:0:.3" />
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
@@ -212,6 +204,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
     <Style TargetType="{x:Type Button}" x:Key="Setings_s">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="#0277bd"/>
@@ -227,18 +220,16 @@
                         <EventTrigger RoutedEvent="MouseEnter">
                             <BeginStoryboard>
                                 <Storyboard>
-
                                     <ColorAnimation Storyboard.TargetProperty="Foreground.Color"
-                                        To="White"  Duration="0:0:.3" />
+                                                    To="White"  Duration="0:0:.3" />
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
                         <EventTrigger RoutedEvent="MouseLeave">
                             <BeginStoryboard>
                                 <Storyboard>
-
                                     <ColorAnimation Storyboard.TargetProperty="Foreground.Color"
-                                        To="#0277bd"  Duration="0:0:.3" />
+                                                    To="#0277bd"  Duration="0:0:.3" />
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
@@ -263,18 +254,16 @@
                         <EventTrigger RoutedEvent="MouseEnter">
                             <BeginStoryboard>
                                 <Storyboard>
-
                                     <ColorAnimation Storyboard.TargetProperty="Foreground.Color"
-                                        To="White"  Duration="0:0:.3" />
+                                                    To="White"  Duration="0:0:.3" />
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
                         <EventTrigger RoutedEvent="MouseLeave">
                             <BeginStoryboard>
                                 <Storyboard>
-
                                     <ColorAnimation Storyboard.TargetProperty="Foreground.Color"
-                                        To="#0277bd"  Duration="0:0:.3" />
+                                                    To="#0277bd"  Duration="0:0:.3" />
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
@@ -293,26 +282,19 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-
-
-
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
-
                                         <DoubleAnimation Duration="0:0:0.550" To="0.7" 
-                                                            Storyboard.TargetProperty="Opacity" />
-
+                                                         Storyboard.TargetProperty="Opacity" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
                             <Trigger.ExitActions>
                                 <BeginStoryboard>
                                     <Storyboard>
-
                                         <DoubleAnimation Duration="0:0:0.550" To="1" 
-                                                            Storyboard.TargetProperty="Opacity" />
-
+                                                         Storyboard.TargetProperty="Opacity" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
@@ -322,7 +304,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-   
 
 </ResourceDictionary>

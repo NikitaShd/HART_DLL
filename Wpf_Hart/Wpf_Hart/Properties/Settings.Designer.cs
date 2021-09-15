@@ -85,7 +85,7 @@ namespace Wpf_Hart.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool Darkmode {
             get {
                 return ((bool)(this["Darkmode"]));
@@ -152,6 +152,18 @@ namespace Wpf_Hart.Properties {
             }
             set {
                 this["Maximaize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AvtoCOM {
+            get {
+                return ((bool)(this["AvtoCOM"]));
+            }
+            set {
+                this["AvtoCOM"] = value;
             }
         }
     }
