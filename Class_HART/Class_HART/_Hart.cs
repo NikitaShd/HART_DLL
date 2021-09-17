@@ -15,7 +15,7 @@ namespace Class_HART
 {
     public partial class Conect
     {
-        
+#if USB
         private static SerialPort port;      ///< клас USB порта 
         // =========== стандартные настройки usb ========================================
         private string     Port_id = "COM0"; ///< ID порта 
@@ -23,11 +23,11 @@ namespace Class_HART
         private Parity P = Parity.Odd;  ///< Паритет 
         private int Data_bits = 8;    ///< Количетсво бит
         private StopBits S = StopBits.One; ///< Стоп бит  
-        // private int ReadTimeout = 2000;
-     	private int WriteTimeout = 2000;
-        private string EROR;         ///< код ошибки
-        //   port = new SerialPort("COM5", 9600, Parity.None, 8, StopBits.One);
+#elif Bluetooth
+        IAdapter adapter;
+#endif
         //============ состояние класа ====================================================  
+        private string EROR;         ///< код ошибки
         public bool scan = false; ///< true - если идет сканирывание сети 
         protected Read_Fraim[] Read = { }; ///<содержит в себе список длиных адрисов после выполнения функцыи skan
         private bool lock_ = true; ///< предотврощяет создание второго потоков
@@ -39,6 +39,7 @@ namespace Class_HART
         public int write_taimout = 1;    ///<Добовлять времени за каждый принатый байт
         public int preambula_leng = 7;   ///< Длина преамбулы  
         public int Master = 1;           ///< индитификатор мастера 
+        private int WriteTimeout = 2000;
         public struct Read_Fraim ///<структура принемаемого кадра 
         {
             public byte SD;        ///<признак старта (0x06-короткий фрейм) (0х86-длиный фрейм) (0х01-короткий фреим в пакетном режиме) (0х81-длиный фреим в пакетном режиме)
@@ -238,7 +239,7 @@ namespace Class_HART
         /// <returns>масив даных ответивших приборов </returns>
         private Byte[][] Write(Byte[] a)
         {
-          #if USB
+#if USB
             port.DiscardInBuffer();
                 port.ReadTimeout = 0;
                 port.Write(a, 0, a.Length);
@@ -314,7 +315,7 @@ namespace Class_HART
                      }
                 }
                 return read;
-           #endif
+#endif
         }
         /*! @} */
 
