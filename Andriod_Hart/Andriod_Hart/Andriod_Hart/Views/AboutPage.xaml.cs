@@ -12,7 +12,7 @@ namespace Andriod_Hart.Views
         public AboutPage()
         {
             InitializeComponent();
-            
+           
         }
     }
 }

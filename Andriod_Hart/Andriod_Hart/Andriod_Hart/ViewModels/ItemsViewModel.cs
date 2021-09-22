@@ -1,6 +1,14 @@
 ﻿using Andriod_Hart.Models;
 using Andriod_Hart.Views;
+using Android.App;
+using Android.Bluetooth;
+using Android.Content;
+using Android.OS;
+using Android.Support.V4.Content;
+using Android.Views;
+using Android.Widget;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -8,49 +16,59 @@ using Xamarin.Forms;
 
 namespace Andriod_Hart.ViewModels
 {
-    public class ItemsViewModel : BaseViewModel
+    public class ItemsViewModel :  BaseViewModel
     {
         private Item _selectedItem;
     
 
         public ObservableCollection<Item> Items { get; }
+        public ObservableCollection<Item> Items_fond { get; }
         public Command LoadItemsCommand { get; }
         public Command AddItemCommand { get; }
         public Command<Item> ItemTapped { get; }
-
+     
         public ItemsViewModel()
         {
-            Title = "Browse";
+            Title = "Bluetooth";
             Items = new ObservableCollection<Item>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            Items_fond = new ObservableCollection<Item>();
 
+            IsBusy = true;
             ItemTapped = new Command<Item>(OnItemSelected);
-
+           
             AddItemCommand = new Command(OnAddItem); 
             
         }
 
         async Task ExecuteLoadItemsCommand()
         {
-            IsBusy = true;
+            Visable = true;
+           
           
             try
             {
                 Items.Clear();
-                
-                
+                Items_fond.Clear();
+
                 var items = await DataStore.GetItemsAsync(true);
                 foreach (var item in items)
                 {
                     Items.Add(item);
                 }
+                List<Item> items_ = (List<Item>)await DataStore.GetItemsFingAsync(true);
+                foreach (var item in items_)
+                {
+                    Items_fond.Add(item);
+                }
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex);
+              //  Debug.WriteLine(ex);
             }
             finally
             {
+                Visable = false;
                 IsBusy = false;
             }
         }
@@ -73,18 +91,33 @@ namespace Andriod_Hart.ViewModels
 
         private async void OnAddItem(object obj)
         {
-            await Shell.Current.GoToAsync(nameof(NewItemPage));
+            Visable = true;
+            IsBusy = true;
+            //await Shell.Current.GoToAsync(nameof(NewItemPage));
         }
 
         async void OnItemSelected(Item item)
         {
             if (item == null)
                 return;
-
-            var connectedDevice = await adapter.ConnectToKnownDeviceAsync(Guid.Parse(item.Description));
-            var service = await connectedDevice.GetServiceAsync(Guid.Parse("ffe0ecd2-3d16-4f8d-90de-e89e7fc396a5"));
-            var characteristic = await service.GetCharacteristicAsync(Guid.Parse("d8de624e-140f-4a22-8594-e2216b84a5f2"));
-            await characteristic.WriteAsync(new byte[] { 0xFF, 0xFF, 0xFF});
+            BluetoothDevice device = bluetoothAdapter.GetRemoteDevice(item.Description);
+            btSocket = device.CreateRfcommSocketToServiceRecord(MY_UUID);
+            try
+            {
+                
+                if (btSocket.IsConnected)
+                {
+                    btSocket.Close();
+                    btSocket.Connect();
+                }
+                else
+                {
+                    btSocket.Connect();
+                }
+                Hart_conection = new _Conect(btSocket);
+                await Task.Delay(10);
+            }
+            catch { }
             // This will push the ItemDetailPage onto the navigation stack
             // await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={item.Id}");
         }

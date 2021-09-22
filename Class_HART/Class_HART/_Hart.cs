@@ -3,28 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 //using System.Threading.Tasks;
-using System.IO.Ports;
+
 using System.Threading;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Management;
-using Plugin.BluetoothLE;
 using System;
+#if USB
+using System.IO.Ports;
+#endif
 
 namespace Class_HART
 {
+   
     public partial class Conect
     {
+
 #if USB
         private static SerialPort port;      ///< клас USB порта 
+     
         // =========== стандартные настройки usb ========================================
         private string     Port_id = "COM0"; ///< ID порта 
         public int Spide = 9600;     ///< Скортость обмена 
         private Parity P = Parity.Odd;  ///< Паритет 
         private int Data_bits = 8;    ///< Количетсво бит
         private StopBits S = StopBits.One; ///< Стоп бит  
-#elif Bluetooth
-        IAdapter adapter;
 #endif
         //============ состояние класа ====================================================  
         private string EROR;         ///< код ошибки
@@ -55,16 +58,17 @@ namespace Class_HART
             public string Statys_2;  ///<раскодирываный статус хранящийся в 2 байте 
             public string temp;      ///<заметка 
         }
-      
+        public Conect() // 1 конструктор 
+        {
+
+        }
+#if USB
         public Conect(string ID,int Spid) // 1 конструктор 
         {
             Port_id = ID;
             Spide   = Spid;
         }
-        public Conect() // 1 конструктор 
-        {
-            
-        }
+       
         public Conect(string ID, int Spid, Parity p, int Databits, StopBits Stop_Bits) // 2 конструктор 
         {
             Port_id   = ID;
@@ -83,15 +87,17 @@ namespace Class_HART
             write_taim = ReadTim;
             WriteTimeout = WriteTim;
         }
-      
+#endif
         public string init() 
         {
             try
             {
+#if USB
                 port = new SerialPort(Port_id, Spide, P, Data_bits, S);
                 port.ReadTimeout = write_taim;
                 port.WriteTimeout = 200;
                 port.Open();
+#endif
                 _Tables.init_Encod_unit();
                 return "True";
                
@@ -111,18 +117,22 @@ namespace Class_HART
        
         static void c_ThresholdReached(object sender, EventArgs e)
         {
+#if USB
             port.Close();
+#endif
         }
         public string init(string _Port_id)
         {
             try
             {
+#if USB
                 port = new SerialPort(_Port_id, Spide, P, Data_bits, S);
                 port.Close();
                 port.ReadTimeout = write_taim;
                 port.WriteTimeout = 200;
                 port.Open();
                 port.ErrorReceived += c_ThresholdReached;
+#endif
                 _Tables.init_Encod_unit();
                 return "True";
 
@@ -146,7 +156,9 @@ namespace Class_HART
         {
             try
             {
-                port.Close();
+#if USB
+              USB  port.Close(); 
+#endif
                 return "True";
             }
             catch (Exception ex)
@@ -169,9 +181,9 @@ namespace Class_HART
         */
 
         //========================== Функцыи для работы с байтами ===========================================================================================================================================================================================================================
-    
-     
-       
+
+
+
 
         public string Eror_cod()
         {
@@ -237,10 +249,10 @@ namespace Class_HART
         /// </remarks>
         /// <param name="a">- даные на отправку</param>
         /// <returns>масив даных ответивших приборов </returns>
-        private Byte[][] Write(Byte[] a)
+        public virtual Byte[][] Write(Byte[] a)
         {
 #if USB
-            port.DiscardInBuffer();
+                port.DiscardInBuffer();
                 port.ReadTimeout = 0;
                 port.Write(a, 0, a.Length);
                 int i = 0;
@@ -316,6 +328,7 @@ namespace Class_HART
                 }
                 return read;
 #endif
+            return null;
         }
         /*! @} */
 

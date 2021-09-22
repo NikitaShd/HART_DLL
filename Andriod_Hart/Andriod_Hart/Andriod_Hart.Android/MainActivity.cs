@@ -7,6 +7,8 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Android;
+using Android.Content;
+using Android.Bluetooth;
 
 namespace Andriod_Hart.Droid
 {
@@ -31,7 +33,7 @@ namespace Andriod_Hart.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             CheckPermissions();
-
+            
             LoadApplication(new App());
         }
         private void CheckPermissions()

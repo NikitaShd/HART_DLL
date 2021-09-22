@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Plugin.Bluetooth</name>
+    </assembly>
+    <members>
+        <member name="T:Plugin.Bluetooth.CrossBluetooth">
+            <summary>
+            Cross Bluetooth
+            </summary>
+        </member>
+        <member name="P:Plugin.Bluetooth.CrossBluetooth.IsSupported">
+            <summary>
+            Gets if the plugin is supported on the current platform.
+            </summary>
+        </member>
+        <member name="P:Plugin.Bluetooth.CrossBluetooth.Current">
+            <summary>
+            Current plugin implementation to use
+            </summary>
+        </member>
+        <member name="T:Plugin.Bluetooth.BluetoothImplementation">
+            <summary>
+            Interface for Bluetooth
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -21,3 +21,6 @@ D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart\bin\Debug\netstandard2.0\
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart\bin\Debug\netstandard2.0\Mono.Android.pdb
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart\bin\Debug\netstandard2.0\Mono.Android.xml
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart\obj\Debug\netstandard2.0\Andriod_Hart.csproj.CopyComplete
+D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart\bin\Debug\netstandard2.0\Xamarin.Android.Support.LocalBroadcastManager.dll
+D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart\bin\Debug\netstandard2.0\Class_HART.dll
+D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart\bin\Debug\netstandard2.0\Class_HART.pdb

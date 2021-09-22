@@ -3,12 +3,9 @@ public class MonoPackageManager_Resources {
 	public static String[] Assemblies = new String[]{
 		/* We need to ensure that "Andriod_Hart.Android.dll" comes first in this list. */
 		"Andriod_Hart.Android.dll",
+		"Class_HART.dll",
 		"Andriod_Hart.dll",
 		"FormsViewGroup.dll",
-		"Plugin.BLE.Abstractions.dll",
-		"Plugin.BLE.dll",
-		"Plugin.BluetoothLE.dll",
-		"System.Reactive.dll",
 		"Xamarin.Android.Arch.Core.Common.dll",
 		"Xamarin.Android.Arch.Core.Runtime.dll",
 		"Xamarin.Android.Arch.Lifecycle.Common.dll",

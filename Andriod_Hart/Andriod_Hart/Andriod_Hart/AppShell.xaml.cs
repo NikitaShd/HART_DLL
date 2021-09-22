@@ -2,6 +2,7 @@
 using Andriod_Hart.Views;
 using System;
 using System.Collections.Generic;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Andriod_Hart
@@ -17,7 +18,7 @@ namespace Andriod_Hart
 
         private async void OnMenuItemClicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("//LoginPage");
+            await Browser.OpenAsync("https://github.com/TviZet/HART_DLL");
         }
     }
 }

@@ -11,5 +11,6 @@ namespace Andriod_Hart.Services
         Task<bool> DeleteItemAsync(string id);
         Task<T> GetItemAsync(string id);
         Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false);
+        Task<IEnumerable<T>> GetItemsFingAsync(bool forceRefresh = false);
     }
 }
