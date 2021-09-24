@@ -11,11 +11,14 @@ using Xamarin.Forms;
 using Class_HART;
 using System.Threading.Tasks;
 using System.Threading;
+using Xamarin.Forms.Platform.Android;
 
 namespace Andriod_Hart.ViewModels
 {
+  
     public class BaseViewModel : INotifyPropertyChanged
     {
+       
 
         public class _Conect : Class_HART.Conect
         {
@@ -24,6 +27,9 @@ namespace Andriod_Hart.ViewModels
              {
                 input = temp;
              }
+            static int T = 0;
+            static Byte[] temp2 = { };
+            static bool tread = false;
             public override Byte[][] Write(Byte[] a)
             {
                  try
@@ -41,27 +47,39 @@ namespace Andriod_Hart.ViewModels
                 input.OutputStream.Write(a, 0, a.Length);
 
 
-                 int i = 0;
-                 Byte[] temp = { };
-                 Byte[][] read = { };
-                 int T = (int)write_taim;
+                int i = 0;
+                Array.Resize(ref temp2,0);
+                Byte[] temp = { };
+                Byte[][] read = { };
+                 T = (int)write_taim;
                  int FF_Start = 0;
                  bool F = false;
                  bool F_ = true;
-                 Thread myThread2 = new Thread(() =>
-                 {
-                     while (true)
-                     {
-                         Byte b = (byte)input.InputStream.ReadByte();
-                         Array.Resize(ref temp, temp.Length + 1);
-                         temp[temp.Length - 1] = b;
+                if (tread == false)
+                {
+                    Task.Run(() =>
+                    {
+                        tread = true;
+                        try
+                        {
+                            while (true)
+                            {
 
-                         T += (int)(write_taimout);
-                     }
-                 });
-                 myThread2.Start();
+                                Byte b = (byte)input.InputStream.ReadByte();
+                                Array.Resize(ref temp2, temp2.Length + 1);
+                                temp2[temp2.Length - 1] = b;
+                                T += (int)(write_taimout);
 
-                 Task.Run(async () =>
+                            }
+                        }
+                        catch
+                        {
+                            tread = false;
+                        }
+                    });
+                }
+
+                 Task test = Task.Factory.StartNew(async () =>
                  {
                      int l = 0;
                      while (l < T)
@@ -70,18 +88,18 @@ namespace Andriod_Hart.ViewModels
                          await Task.Delay(1);
                      }
                      // port.InputStream.Close();
-
-                     myThread2.Abort();
+                     F_ = false;
+                   
                      
                      T = 1;
-                     F_ = false;
+                     
                  });
 
                  while (F_)
                  {
 
                  }
-
+                 temp = temp2;
 
                  int tmp = 0;
                  int size = 0;
@@ -143,22 +161,40 @@ namespace Andriod_Hart.ViewModels
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
 
         bool isBusy = false;
-        bool visable = false;
+       
         public bool IsBusy
         {
             get { return isBusy; }
             set { SetProperty(ref isBusy, value); }
         }
+        bool visable = false;
         public bool Visable
         {
             get { return visable; }
             set { SetProperty(ref visable, value); }
         }
+        bool visable_Bluet = true;
+        public bool Visable_Bluet
+        {
+            get { return visable_Bluet; }
+            set { SetProperty(ref visable_Bluet, value); }
+        }
+        bool visable_DEV = false;
+        public bool Visable_DEV
+        {
+            get { return visable_Bluet; }
+            set { SetProperty(ref visable_Bluet, value); }
+        }
+        public bool Visable_DEV_rev
+        {
+            get { return !visable_Bluet; } 
+        }
         public BluetoothAdapter bluetoothAdapter { get; } = BluetoothAdapter.DefaultAdapter;
         public static UUID MY_UUID = UUID.FromString("00001101-0000-1000-8000-00805F9B34FB");
-
+        public static int Master_ID = 0;
         public static BluetoothSocket btSocket = null;
         public static _Conect Hart_conection ;
+       
         public object balanceLock { get; } = new object();
         string title = string.Empty;
         public string Title

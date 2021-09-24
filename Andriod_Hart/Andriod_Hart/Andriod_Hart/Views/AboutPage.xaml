@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Andriod_Hart.Views.AboutPage"
              xmlns:vm="clr-namespace:Andriod_Hart.ViewModels"
+             xmlns:model="clr-namespace:Andriod_Hart.Models" xmlns:sh="http://sharpnado.com" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              Title="{Binding Title}">
     
     <ContentPage.BindingContext>
@@ -15,22 +16,109 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-      
-        <ScrollView Grid.Row="1">
-            <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
+    <Grid x:Name="G_HART_DEV">
 
-                <Button Margin="0,10,0,0" Text="Learn more"
-                        Command="{Binding Comand_0}"
-                        BackgroundColor="{StaticResource Primary}"
-                        TextColor="White" />
+        <CollectionView x:Name="controlsGrid" BackgroundColor="White" Grid.Row="0" Grid.Column="0"
+                ItemsSource="{Binding DEV_list}"
+                SelectionMode="None" 
+                VerticalOptions="Center" 
+                SelectionChanged="controlsGrid_SelectionChanged" >
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                    Span="2" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="1">
 
-            </StackLayout>
-        </ScrollView>
+                        <Frame BackgroundColor="#F5F7FA" HasShadow="True" CornerRadius="20" Margin="4,4,4,20" Padding="6"  x:DataType="model:DEVISE">
+                            
+                            <StackLayout HorizontalOptions="StartAndExpand" IsTabStop="False" Padding="3">
+                              
+                                <Label Text="{Binding Long_Address}" 
+                            LineBreakMode="NoWrap" 
+                            IsTabStop="False"
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="16" 
+                            TextColor="Black"/>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label  Text="Short adres :" 
+                            LineBreakMode="NoWrap"
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="12" 
+                            TextColor="Black"/>
+                                    <Label  Text="{Binding Short_Address}" 
+                            LineBreakMode="NoWrap"
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="12" 
+                            TextColor="Black"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label  Text="Assembly :" 
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="12" 
+                            TextColor="Black"/>
+                                    <Label Text="{Binding Assembly_Number}" 
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="12" 
+                            TextColor="Black"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label  Text="Dev. Version :" 
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="12" 
+                            TextColor="Black"/>
+                                    <Label Text="{Binding Device_Version}" 
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="12" 
+                            TextColor="Black"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label  Text="Soft. Version :" 
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="12" 
+                            TextColor="Black"/>
+                                    <Label Text="{Binding Software_Version}" 
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="12" 
+                            TextColor="Black"/>
+                                </StackLayout>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                NumberOfTapsRequired="1"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AboutViewModel}}, Path=ItemTapped_dev}"		
+                                CommandParameter="{Binding .}">
+                                    </TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <yummy:PancakeView BackgroundColor="#F5F7FA" Margin="0,-20,0,0"  x:Name="controlsGrid_butons" CornerRadius="20,20,0,0" HorizontalOptions="FillAndExpand" Shadow="{yummy:ShadowMarkup BlurRadius=5, Offset='-10,-10'}" HeightRequest="150">
+       
+            <ScrollView>
+
+                <StackLayout Orientation="Vertical" Padding="30,15,30,24" Spacing="0">
+
+                    <Button Margin="0,0,0,0" Text="Start skan" Command="{Binding _Comand_0_F}" />
+
+                    <Button Margin="0,10,0,0" Text="Stop" Style="{StaticResource Red}" Command="{Binding _Comand_0_F_stop}"/>
+                    <Button Margin="0,30,0,0" Text="Skan Sdres" Command="{Binding _Comand_0_F_adres}" />
+
+
+                </StackLayout>
+                
+
+            </ScrollView>
+
+  
+        </yummy:PancakeView>
     </Grid>
 
 </ContentPage>

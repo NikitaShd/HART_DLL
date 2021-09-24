@@ -28,5 +28,42 @@ namespace Andriod_Hart.Views
             base.OnAppearing();
             _viewModel.OnAppearing();
         }
+
+        private double width;
+        private double height;
+
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height);
+            if (width != this.width || height != this.height)
+            {
+                this.width = width;
+                this.height = height;
+                if (width > height)
+                {
+                    G_bluet.RowDefinitions.Clear();
+                    G_bluet.ColumnDefinitions.Clear();
+                    G_bluet.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+                    G_bluet.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+                    G_bluet.Children.Remove(G_bluet_bundet);
+                    G_bluet.Children.Remove(G_bluet_skan);
+                    G_bluet.Children.Add(G_bluet_bundet, 0, 0);
+                    G_bluet.Children.Add(G_bluet_skan, 1, 0);
+                }
+                else
+                {
+                    G_bluet.RowDefinitions.Clear();
+                    G_bluet.ColumnDefinitions.Clear();
+                    G_bluet.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1.5, GridUnitType.Star) });
+                    G_bluet.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
+
+                    G_bluet.Children.Remove(G_bluet_bundet);
+                    G_bluet.Children.Remove(G_bluet_skan);
+                    G_bluet.Children.Add(G_bluet_bundet, 0, 0);
+                    G_bluet.Children.Add(G_bluet_skan, 0, 1);
+                }
+            }
+        }
+
     }
 }

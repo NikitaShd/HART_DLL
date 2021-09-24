@@ -65,7 +65,7 @@ namespace Wpf_Hart {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Wpf_Hart;component/info.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Wpf_Hart;V1.0.0.0;component/info.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Info.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

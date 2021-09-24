@@ -377,7 +377,7 @@ namespace Wpf_Hart.Devise {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Wpf_Hart;component/devise/p_mtm701_7.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Wpf_Hart;V1.0.0.0;component/devise/p_mtm701_7.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Devise\P_MTM701_7.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -157,7 +157,7 @@ namespace Class_HART
             try
             {
 #if USB
-              USB  port.Close(); 
+               port.Close(); 
 #endif
                 return "True";
             }
@@ -371,7 +371,7 @@ namespace Class_HART
             try
             {
                 Read_Fraim[] temp = Write_short(preambula_leng, id_master, id_slaiv, 0, a);
-               
+                
                 return temp;
             }
             catch
@@ -1961,7 +1961,8 @@ namespace Class_HART
                   Fraim[i].DT = temp2;
                   Fraim[i].temp = id_slaiv.ToString();
                   Fraim[i].CHK = read[i][read[i].Length-1];
-                    Fraim[i].Statys_1 = "";
+                  Fraim[i].Statys_1 = "";
+                  Fraim[i].AD_Short = (byte)id_slaiv;
                 if (Fraim[i].ST[0] >> 7 == 1)
                 {
                     Fraim[i].Statys_1 = "Ошибка Передачи Даных : \n";

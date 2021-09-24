@@ -17,3 +17,4 @@ D:\GIT\HART_DLL\Class_HART\Class_HART\bin\USB\System.Runtime.CompilerServices.Un
 D:\GIT\HART_DLL\Class_HART\Class_HART\bin\USB\System.Threading.Tasks.Extensions.xml
 D:\GIT\HART_DLL\Class_HART\Class_HART\bin\USB\System.ValueTuple.xml
 D:\GIT\HART_DLL\Class_HART\Class_HART\obj\USB\Class_HART.csproj.CopyComplete
+D:\GIT\HART_DLL\Class_HART\Class_HART\obj\USB\Class_HART.csprojAssemblyReference.cache

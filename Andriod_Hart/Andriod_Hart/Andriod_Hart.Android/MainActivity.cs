@@ -33,8 +33,9 @@ namespace Andriod_Hart.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             CheckPermissions();
-            
+          
             LoadApplication(new App());
+          
         }
         private void CheckPermissions()
         {

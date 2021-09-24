@@ -26,7 +26,8 @@ namespace Andriod_Hart.ViewModels
         public Command LoadItemsCommand { get; }
         public Command AddItemCommand { get; }
         public Command<Item> ItemTapped { get; }
-     
+
+        public bool item_blok { get; set; } = true;
         public ItemsViewModel()
         {
             Title = "Bluetooth";
@@ -35,7 +36,12 @@ namespace Andriod_Hart.ViewModels
             Items_fond = new ObservableCollection<Item>();
 
             IsBusy = true;
-            ItemTapped = new Command<Item>(OnItemSelected);
+            ItemTapped = new Command<Item>(execute: (Item dEVISE) =>
+            {
+                OnItemSelected(dEVISE);
+                ItemTapped.ChangeCanExecute();
+            },
+            canExecute: (Item dEVISE) => item_blok);
            
             AddItemCommand = new Command(OnAddItem); 
             
@@ -95,29 +101,43 @@ namespace Andriod_Hart.ViewModels
             IsBusy = true;
             //await Shell.Current.GoToAsync(nameof(NewItemPage));
         }
-
+      
         async void OnItemSelected(Item item)
         {
             if (item == null)
                 return;
-            BluetoothDevice device = bluetoothAdapter.GetRemoteDevice(item.Description);
-            btSocket = device.CreateRfcommSocketToServiceRecord(MY_UUID);
-            try
+            bool action = await Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Conect ?", item.Text , "Yes", "No");
+            if (action)
             {
-                
-                if (btSocket.IsConnected)
+                BluetoothDevice device = bluetoothAdapter.GetRemoteDevice(item.Description);
+                btSocket = device.CreateRfcommSocketToServiceRecord(MY_UUID);
+                item_blok = false;
+                ItemTapped.ChangeCanExecute();
+                try
                 {
-                    btSocket.Close();
+
                     btSocket.Connect();
+                   
+                    if (btSocket.IsConnected == false) btSocket.Connect();
+                    //  await Task.Delay(10);
                 }
-                else
+                catch { Title = "Socket Error"; }
+                finally
                 {
-                    btSocket.Connect();
+                    if (btSocket.IsConnected)
+                    {
+                        Title = item.Text;
+                    }
+                    else
+                    {
+                        Title = "Not Conected";
+                    }
+
+                    Hart_conection = new _Conect(btSocket);
                 }
-                Hart_conection = new _Conect(btSocket);
-                await Task.Delay(10);
+                item_blok = true;
+                ItemTapped.ChangeCanExecute();
             }
-            catch { }
             // This will push the ItemDetailPage onto the navigation stack
             // await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={item.Id}");
         }
