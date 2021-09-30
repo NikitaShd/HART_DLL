@@ -18,7 +18,7 @@ namespace Andriod_Hart.ViewModels
 {
     public class ItemsViewModel :  BaseViewModel
     {
-        private Item _selectedItem;
+        private Item _selectedItem = new Item();
     
 
         public ObservableCollection<Item> Items { get; }
@@ -42,9 +42,12 @@ namespace Andriod_Hart.ViewModels
                 ItemTapped.ChangeCanExecute();
             },
             canExecute: (Item dEVISE) => item_blok);
-           
-            AddItemCommand = new Command(OnAddItem); 
-            
+
+            AddItemCommand = new Command(OnAddItem);
+            while (!bluetoothAdapter.IsEnabled)
+            {
+                bluetoothAdapter.Enable();
+            }
         }
 
         async Task ExecuteLoadItemsCommand()
@@ -60,6 +63,7 @@ namespace Andriod_Hart.ViewModels
                 var items = await DataStore.GetItemsAsync(true);
                 foreach (var item in items)
                 {
+                    if (item.Description == SelectedItem.Description) { item.IsConected = true; }
                     Items.Add(item);
                 }
                 List<Item> items_ = (List<Item>)await DataStore.GetItemsFingAsync(true);
@@ -70,7 +74,7 @@ namespace Andriod_Hart.ViewModels
             }
             catch (Exception ex)
             {
-              //  Debug.WriteLine(ex);
+                await Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Task :", ex.Message, "Cancel");
             }
             finally
             {
@@ -91,11 +95,10 @@ namespace Andriod_Hart.ViewModels
             set
             {
                 SetProperty(ref _selectedItem, value);
-                OnItemSelected(value);
             }
         }
 
-        private async void OnAddItem(object obj)
+        private void OnAddItem(object obj)
         {
             Visable = true;
             IsBusy = true;
@@ -106,6 +109,8 @@ namespace Andriod_Hart.ViewModels
         {
             if (item == null)
                 return;
+            if ((item.Description == _selectedItem.Description)&&(item.Text == _selectedItem.Text))
+                return;
             bool action = await Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Conect ?", item.Text , "Yes", "No");
             if (action)
             {
@@ -115,25 +120,45 @@ namespace Andriod_Hart.ViewModels
                 ItemTapped.ChangeCanExecute();
                 try
                 {
+                    if (btSocket.IsConnected == true) { btSocket.Close(); }
 
-                    btSocket.Connect();
-                   
-                    if (btSocket.IsConnected == false) btSocket.Connect();
+                    try { btSocket.Connect(); } catch { }
+
+                    if (btSocket.IsConnected == false) { try { btSocket.Connect(); } catch { } }
                     //  await Task.Delay(10);
                 }
-                catch { Title = "Socket Error"; }
+                catch (Exception ex)
+                {
+                    await Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Bluetooth :", ex.Message, "Cancel");
+                    //Title = "Soket Error";
+                }
                 finally
                 {
-                    if (btSocket.IsConnected)
+                    try
                     {
-                        Title = item.Text;
-                    }
-                    else
-                    {
-                        Title = "Not Conected";
-                    }
+                        
+                        if (btSocket.IsConnected)
+                        {
+                           // Title = item.Text;
+                            int ind = Items.IndexOf(item);
 
-                    Hart_conection = new _Conect(btSocket);
+                            Items.Remove(item);
+                            item.IsConected = true;
+                            Items.Insert(ind, item);
+                            SelectedItem = item;
+
+                        }
+                        else
+                        {
+                         await Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Bluetooth :", "Failed to connect to device. The device does not respond or is out of range ", "Cancel");
+                            //  Title = "Not Conected";
+                            SelectedItem = new Item();
+                         await ExecuteLoadItemsCommand();
+                        }
+
+                        Hart_conection = new _Conect(btSocket);
+                    }
+                    catch { }
                 }
                 item_blok = true;
                 ItemTapped.ChangeCanExecute();

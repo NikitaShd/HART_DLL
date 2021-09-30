@@ -179,7 +179,6 @@ namespace Andriod_Hart.ViewModels
             get { return visable_Bluet; }
             set { SetProperty(ref visable_Bluet, value); }
         }
-        bool visable_DEV = false;
         public bool Visable_DEV
         {
             get { return visable_Bluet; }
@@ -194,6 +193,7 @@ namespace Andriod_Hart.ViewModels
         public static int Master_ID = 0;
         public static BluetoothSocket btSocket = null;
         public static _Conect Hart_conection ;
+        public static byte[] Dev_Adres ;
        
         public object balanceLock { get; } = new object();
         string title = string.Empty;

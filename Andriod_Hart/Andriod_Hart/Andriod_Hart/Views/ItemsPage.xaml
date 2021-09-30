@@ -35,16 +35,28 @@
                     
                            
                             <StackLayout Padding="10,0,0,0" x:DataType="model:Item">
-                                <Label Padding="0,0,0,0" Text="{Binding Text}" 
+                            <Label Padding="0,0,0,0" Text="{Binding Text}" 
                             LineBreakMode="NoWrap" 
                             Style="{DynamicResource ListItemTextStyle}" 
                             FontSize="16" 
-                            TextColor="Black"/>
-                                <Label Padding="0,-4,0,11" Text="{Binding Description}" 
+                            TextColor="Black">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding IsConected}" Value="true">
+                                        <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                            <Label Padding="0,-4,0,11" Text="{Binding Description}" 
                             LineBreakMode="NoWrap"
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="13" 
-                            TextColor="Black"/>
+                            TextColor="Black">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding IsConected}" Value="true">
+                                        <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                                </Label>
 
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer 

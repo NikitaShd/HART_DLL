@@ -9,6 +9,8 @@ using Android.OS;
 using Android;
 using Android.Content;
 using Android.Bluetooth;
+using Xamarin.Forms;
+using Android.Support.V7.App;
 
 namespace Andriod_Hart.Droid
 {
@@ -25,6 +27,7 @@ namespace Andriod_Hart.Droid
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            AppCompatDelegate.DefaultNightMode = AppCompatDelegate.ModeNightNo;
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
@@ -33,7 +36,7 @@ namespace Andriod_Hart.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             CheckPermissions();
-          
+            
             LoadApplication(new App());
           
         }

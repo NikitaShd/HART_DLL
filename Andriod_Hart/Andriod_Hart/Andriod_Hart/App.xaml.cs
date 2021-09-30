@@ -13,7 +13,7 @@ namespace Andriod_Hart
 
         public App()
         {
-            
+          
             InitializeComponent();
            
             DependencyService.Register<MockDataStore>();

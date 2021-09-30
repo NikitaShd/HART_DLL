@@ -7,6 +7,7 @@ namespace Andriod_Hart.Models
     {
         public string Text { get; set; }
         public string Description { get; set; }
+        public bool IsConected { get; set; }
     }
     public class DEVISE
     {
@@ -15,7 +16,7 @@ namespace Andriod_Hart.Models
         public string Device_Version { get; set; }
         public string Software_Version { get; set; }
         public string Assembly_Number { get; set; }
-
+        public bool IsSelected { get; set; }
         public static DEVISE[] Converter(Class_HART.Conect.Read_Fraim[] Fraim)
         {
             List<DEVISE> arrau = new List<DEVISE>();

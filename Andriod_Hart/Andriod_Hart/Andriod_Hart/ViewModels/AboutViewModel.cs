@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-
+using Class_HART;
 namespace Andriod_Hart.ViewModels
 {
     public class AboutViewModel : BaseViewModel
@@ -54,14 +54,35 @@ namespace Andriod_Hart.ViewModels
         }
         async void OnItemSelected(Models.DEVISE item)
         {
-            Title = item.Long_Address;
-           // Application.Current.MainPage.DisplayAlert("123", "123","123S");
-           
+           // Title = item.Long_Address;
+            for (int i = 0; i < DEV_list.Count; i++)
+            {
+                if (DEV_list[i] == item) { 
+                    DEV_list[i].IsSelected = true;
+                    Models.DEVISE temp_1 = DEV_list[i];
+                    DEV_list.RemoveAt(i);
+                    DEV_list.Insert(i, temp_1);
+                } else { 
+                    if(DEV_list[i].IsSelected == true)
+                    {
+                        DEV_list[i].IsSelected = false;
+                        Models.DEVISE temp_1 = DEV_list[i];
+                        DEV_list.RemoveAt(i);
+                        DEV_list.Insert(i, temp_1);
+                    }
+                    
+                }
+               
+            }
+            byte[] temp = _Convert.GetBytes(item.Long_Address.Replace("-",""));
+            // Application.Current.MainPage.DisplayAlert("123", "123","123S");
+            Dev_Adres = new byte[temp.Length];
+            Dev_Adres = temp;
         }
         private async void Comand_0_F_adres()
         {
            
-            string action = await Application.Current.MainPage.DisplayActionSheet("ActionSheet: Send to?", "Cancel", null, numbers.ToArray());
+            string action = await Application.Current.MainPage.DisplayActionSheet("Select Short Adres :", "Cancel", null, numbers.ToArray());
             if (action != "Cancel")
             {
                 Bloc_butoon = false;
@@ -97,7 +118,7 @@ namespace Andriod_Hart.ViewModels
                     for (int i = 0; i <= 15; i++)
                     {
                         if (ckan_cancel) return;
-                        Class_HART.Conect.Read_Fraim[] temp = Hart_conection.Comand_0_F(Master_ID, 0);
+                        Class_HART.Conect.Read_Fraim[] temp = Hart_conection.Comand_0_F(Master_ID, i);
                         foreach (var item in Models.DEVISE.Converter(temp))
                         {
                             DEV_list.Add(item);

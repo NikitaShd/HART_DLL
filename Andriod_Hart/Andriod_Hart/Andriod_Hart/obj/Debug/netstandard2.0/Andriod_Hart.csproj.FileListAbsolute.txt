@@ -1,10 +1,7 @@
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart\obj\Debug\netstandard2.0\App.xaml.g.cs
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart\obj\Debug\netstandard2.0\AppShell.xaml.g.cs
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart\obj\Debug\netstandard2.0\Views\AboutPage.xaml.g.cs
-D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart\obj\Debug\netstandard2.0\Views\ItemDetailPage.xaml.g.cs
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart\obj\Debug\netstandard2.0\Views\ItemsPage.xaml.g.cs
-D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart\obj\Debug\netstandard2.0\Views\LoginPage.xaml.g.cs
-D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart\obj\Debug\netstandard2.0\Views\NewItemPage.xaml.g.cs
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart\obj\Debug\netstandard2.0\Andriod_Hart.AssemblyInfoInputs.cache
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart\obj\Debug\netstandard2.0\Andriod_Hart.AssemblyInfo.cs
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart\obj\Debug\netstandard2.0\Andriod_Hart.csproj.CoreCompileInputs.cache
@@ -28,3 +25,4 @@ D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart\bin\Debug\netstandard2.0\
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart\obj\Debug\netstandard2.0\XamlC.stamp
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart\obj\Debug\netstandard2.0\Andriod_Hart.csproj.CopyComplete
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart\obj\Debug\netstandard2.0\Andriod_Hart.csprojAssemblyReference.cache
+D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart\obj\Debug\netstandard2.0\Views\BaseInfo.xaml.g.cs

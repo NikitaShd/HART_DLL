@@ -32,59 +32,113 @@
                     <Grid Padding="1">
 
                         <Frame BackgroundColor="#F5F7FA" HasShadow="True" CornerRadius="20" Margin="4,4,4,20" Padding="6"  x:DataType="model:DEVISE">
-                            
+                           
                             <StackLayout HorizontalOptions="StartAndExpand" IsTabStop="False" Padding="3">
-                              
+                               
                                 <Label Text="{Binding Long_Address}" 
                             LineBreakMode="NoWrap" 
                             IsTabStop="False"
                             Style="{DynamicResource ListItemTextStyle}" 
                             FontSize="16" 
-                            TextColor="Black"/>
+                            TextColor="Black">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding IsSelected}" Value="true">
+                                            <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
 
                                 <StackLayout Orientation="Horizontal">
                                     <Label  Text="Short adres :" 
                             LineBreakMode="NoWrap"
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="12" 
-                            TextColor="Black"/>
+                            TextColor="Black">
+                                        <Label.Triggers>
+                                            <DataTrigger TargetType="Label" Binding="{Binding IsSelected}" Value="true">
+                                                <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                                            </DataTrigger>
+                                        </Label.Triggers>
+                                    </Label>
                                     <Label  Text="{Binding Short_Address}" 
                             LineBreakMode="NoWrap"
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="12" 
-                            TextColor="Black"/>
+                            TextColor="Black">
+                                        <Label.Triggers>
+                                            <DataTrigger TargetType="Label" Binding="{Binding IsSelected}" Value="true">
+                                                <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                                            </DataTrigger>
+                                        </Label.Triggers>
+                                    </Label>
                                 </StackLayout>
 
                                 <StackLayout Orientation="Horizontal">
                                     <Label  Text="Assembly :" 
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="12" 
-                            TextColor="Black"/>
+                            TextColor="Black">
+                                        <Label.Triggers>
+                                            <DataTrigger TargetType="Label" Binding="{Binding IsSelected}" Value="true">
+                                                <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                                            </DataTrigger>
+                                        </Label.Triggers>
+                                    </Label>
                                     <Label Text="{Binding Assembly_Number}" 
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="12" 
-                            TextColor="Black"/>
+                            TextColor="Black">
+                                        <Label.Triggers>
+                                            <DataTrigger TargetType="Label" Binding="{Binding IsSelected}" Value="true">
+                                                <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                                            </DataTrigger>
+                                        </Label.Triggers>
+                                    </Label>
                                 </StackLayout>
 
                                 <StackLayout Orientation="Horizontal">
                                     <Label  Text="Dev. Version :" 
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="12" 
-                            TextColor="Black"/>
+                            TextColor="Black">
+                                        <Label.Triggers>
+                                            <DataTrigger TargetType="Label" Binding="{Binding IsSelected}" Value="true">
+                                                <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                                            </DataTrigger>
+                                        </Label.Triggers>
+                                    </Label>
                                     <Label Text="{Binding Device_Version}" 
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="12" 
-                            TextColor="Black"/>
+                            TextColor="Black">
+                                        <Label.Triggers>
+                                            <DataTrigger TargetType="Label" Binding="{Binding IsSelected}" Value="true">
+                                                <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                                            </DataTrigger>
+                                        </Label.Triggers>
+                                    </Label>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <Label  Text="Soft. Version :" 
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="12" 
-                            TextColor="Black"/>
+                            TextColor="Black">
+                                        <Label.Triggers>
+                                            <DataTrigger TargetType="Label" Binding="{Binding IsSelected}" Value="true">
+                                                <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                                            </DataTrigger>
+                                        </Label.Triggers>
+                                    </Label>
                                     <Label Text="{Binding Software_Version}" 
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="12" 
-                            TextColor="Black"/>
+                            TextColor="Black">
+                                        <Label.Triggers>
+                                            <DataTrigger TargetType="Label" Binding="{Binding IsSelected}" Value="true">
+                                                <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                                            </DataTrigger>
+                                        </Label.Triggers>
+                                    </Label>
                                 </StackLayout>
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer 

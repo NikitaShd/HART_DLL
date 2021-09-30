@@ -2,7 +2,9 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Andriod_Hart.App"
-             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core">
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             
+             >
     <!--
         Define global resources and styles here, that apply to all pages in your app.
     -->
@@ -10,8 +12,10 @@
         <ResourceDictionary>
            
             <Color x:Key="Primary">#2196F3</Color>
-            <Color x:Key="Primary_ty">#cf3425</Color>
-
+            <Color x:Key="Primary_ty">#F92A1B</Color>
+            <Color x:Key="Color_editor">#48c2cee1</Color>
+            <Color x:Key="Panel">#F5F7FA</Color>
+            <Color x:Key="Text">#212121</Color>
             <Style TargetType="CollectionView">
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
@@ -82,7 +86,7 @@
                             </VisualState>
                             <VisualState x:Name="Disabled">
                                 <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="#59cf3425" />
+                                    <Setter Property="BackgroundColor"  Value="#59F41041" />
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>

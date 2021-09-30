@@ -3,6 +3,7 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:Andriod_Hart.Views"
        Title="Andriod_Hart"
+       
        x:Class="Andriod_Hart.AppShell">
 
     <!--
@@ -98,8 +99,8 @@
     <FlyoutItem Title="HART Devises" Icon="icon_feed.png">
         <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="TEST" Icon="icon_feed.png">
-        <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
+    <FlyoutItem Title="Base info" Icon="icon_feed.png">
+        <ShellContent Route="BaseInfo" ContentTemplate="{DataTemplate local:BaseInfo}" />
     </FlyoutItem>
     <FlyoutItem Title="TEST" Icon="icon_feed.png">
         <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
@@ -118,11 +119,11 @@
         content you can do so by calling 
         await Shell.Current.GoToAsync("//LoginPage");
     -->
-    
+    <!--
     <TabBar>
         <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
     </TabBar>
-
+    -->
     <!-- Optional Templates 
     // These may be provided inline as below or as separate classes.
 

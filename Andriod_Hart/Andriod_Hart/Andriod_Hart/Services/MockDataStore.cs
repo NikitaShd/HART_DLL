@@ -69,7 +69,7 @@ public class MockDataStore : IDataStore<Item>
                         Item temp = new Item();
                         if (newDevice.Name != null) temp.Text = newDevice.Name; else temp.Text = "{null}";
                         temp.Description = newDevice.Address;
-
+                        temp.IsConected = false;
                         if (!contain(items_find,temp)) { 
                             items_find.Add(temp); 
                         } // добавление имени
@@ -129,7 +129,7 @@ public class MockDataStore : IDataStore<Item>
                 Item temp = new Item();
                 temp.Text = device.Name;
                 temp.Description = device.Address;
-
+                temp.IsConected = false;
                 items.Add(temp); // добавление имени
             }
             

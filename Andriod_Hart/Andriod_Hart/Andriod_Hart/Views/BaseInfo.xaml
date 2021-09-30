@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Andriod_Hart.Views.BaseInfo"
+             Title="{Binding Title}"
+             xmlns:local="clr-namespace:Andriod_Hart.ViewModels"  
+             xmlns:model="clr-namespace:Andriod_Hart.Models" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"> 
+    <ContentPage.Content>
+        <ScrollView Orientation="Both"> 
+            <StackLayout x:Name="S_container" >
+                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" CornerRadius="20" Margin="4,4,4,0" Padding="1" >
+                    <Grid Padding="10" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="0" TextColor="{StaticResource Text}" Text="Manufacturer Code" FontSize="Medium" />
+                        <Label Grid.Column="1" Grid.Row="0" TextColor="{StaticResource Text}" Text="{Binding L_Manufacturer_Code , Mode=TwoWay}" FontSize="Medium" />
+                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="1" TextColor="{StaticResource Text}" Text="Device Type Code" FontSize="Medium" />
+                        <Label Grid.Column="1" Grid.Row="1" TextColor="{StaticResource Text}" Text="{Binding L_Device_Type_Code , Mode=TwoWay}" FontSize="Medium" />
+                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="2" TextColor="{StaticResource Text}" Text="Preambul Leng" FontSize="Medium" />
+                        <Label Grid.Column="1" Grid.Row="2" TextColor="{StaticResource Text}" Text="{Binding L_Preambul_leng , Mode=TwoWay}" FontSize="Medium" />
+                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="3" TextColor="{StaticResource Text}" Text="Universal Commands" FontSize="Medium" />
+                        <Label Grid.Column="1" Grid.Row="3" TextColor="{StaticResource Text}" Text="{Binding L_Universal_commands , Mode=TwoWay}" FontSize="Medium" />
+                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="4" TextColor="{StaticResource Text}" Text="Specific Commands" FontSize="Medium" />
+                        <Label Grid.Column="1" Grid.Row="4" TextColor="{StaticResource Text}" Text="{Binding L_Specific_commands , Mode=TwoWay}" FontSize="Medium" />
+                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="5" TextColor="{StaticResource Text}" Text="Software Version" FontSize="Medium" />
+                        <Label Grid.Column="1" Grid.Row="5" TextColor="{StaticResource Text}" Text="{Binding L_Software_version , Mode=TwoWay}" FontSize="Medium" />
+                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="6" TextColor="{StaticResource Text}" Text="Hardware Version" FontSize="Medium" />
+                        <Label Grid.Column="1" Grid.Row="6" TextColor="{StaticResource Text}" Text="{Binding L_Hardware_version , Mode=TwoWay}" FontSize="Medium" />
+                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="7" TextColor="{StaticResource Text}" Text="Device Function" FontSize="Medium" />
+                        <Label Grid.Column="1" Grid.Row="7" TextColor="{StaticResource Text}" Text="{Binding L_Device_function , Mode=TwoWay}" FontSize="Medium" />
+                        <StackLayout Grid.Row="8" Grid.ColumnSpan="2" Orientation="Vertical" Margin="0,0,0,0">
+                            <BoxView HeightRequest="1" Margin="-15,10,-15,5" Color="#55000000" IsVisible="true"/>
+                            <Button Text="Read" Style="{StaticResource Red}" Command="{Binding Command_0}" HorizontalOptions="FillAndExpand"></Button>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" CornerRadius="20" Margin="4,4,4,0" Padding="1" >
+                    <StackLayout Spacing="0" Padding="10">
+                        <yummy:PancakeView BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Message :" FontSize="Small" />
+                                <Entry Margin="4,-13,4,0" IsEnabled="{Binding B_info_staite}"  TextColor="{StaticResource Text}" Text="{Binding T_dev_mes, Mode=TwoWay}" FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <yummy:PancakeView Margin="0,10,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Long Teg :" FontSize="Small" />
+                                <Entry Margin="4,-13,4,0" IsEnabled="{Binding B_info_staite}" TextColor="{StaticResource Text}" Text="{Binding T_L_teg, Mode=TwoWay}" FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <yummy:PancakeView Margin="0,10,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Short Teg :" FontSize="Small" />
+                                <Entry Margin="4,-13,4,0" IsEnabled="{Binding B_info_staite}" TextColor="{StaticResource Text}" Text="{Binding T_s_teg, Mode=TwoWay}" FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <yummy:PancakeView Margin="0,10,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Description :" FontSize="Small" />
+                                <Entry Margin="4,-13,4,0" IsEnabled="{Binding B_info_staite}" TextColor="{StaticResource Text}" Text="{Binding T_discriptor, Mode=TwoWay}" FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <yummy:PancakeView  Margin="0,10,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Date :" FontSize="Small" />
+                                <DatePicker Margin="4,-13,4,0" IsEnabled="{Binding B_info_staite}" TextColor="{StaticResource Text}" Date="{Binding T_data , Mode=TwoWay}"  FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <BoxView HeightRequest="1" Margin="-15,10,-15,10" Color="#55000000" IsVisible="true"/>
+                        <StackLayout Orientation="Horizontal" Margin="0,0,0,0">
+                            <Button Text="Read" Style="{StaticResource Red}" Command="{Binding Command_info_read }" HorizontalOptions="FillAndExpand"></Button>
+                            <Button Text="Write" Command="{Binding Command_info_write}" HorizontalOptions="FillAndExpand"></Button>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" CornerRadius="20" Margin="4,4,4,4" Padding="1" >
+                    <StackLayout Spacing="0" Padding="10">
+                        <yummy:PancakeView  Margin="0,10,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Signal :" FontSize="Small" />
+                                <Picker Margin="4,-13,4,0" IsEnabled="{Binding B_info_extend}" ItemsSource="{Binding S_Alarm_cods}" SelectedItem="{Binding Selected_S_Alarm_cods,Mode=TwoWay}" TextColor="{StaticResource Text}" FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <yummy:PancakeView Margin="0,10,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Function :" FontSize="Small" />
+                                <Picker Margin="4,-13,4,0" IsEnabled="{Binding B_info_extend}" ItemsSource="{Binding S_Transfer_cods}" SelectedItem="{Binding Selected_S_Transfer_cods,Mode=TwoWay}" TextColor="{StaticResource Text}" FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <yummy:PancakeView Margin="0,10,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Units :" FontSize="Small" />
+                                <Picker Margin="4,-13,4,0" IsEnabled="{Binding B_info_extend}"  ItemsSource="{Binding S_Unit_cods}" SelectedItem="{Binding Selected_S_Unit_cods,Mode=TwoWay}"  TextColor="{StaticResource Text}" FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <yummy:PancakeView  Margin="0,10,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Max :" FontSize="Small" />
+                                <Entry Keyboard="Numeric" Margin="4,-13,4,0" IsEnabled="{Binding B_info_extend}" TextColor="{StaticResource Text}" Text="{Binding T_U_renge}"  FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <yummy:PancakeView  Margin="0,10,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Min :" FontSize="Small" />
+                                <Entry Keyboard="Numeric" Margin="4,-13,4,0" IsEnabled="{Binding B_info_extend}" TextColor="{StaticResource Text}" Text="{Binding T_L_renge}"   FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <yummy:PancakeView  Margin="0,10,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Demp :" FontSize="Small" />
+                                <Entry Keyboard="Numeric" Margin="4,-13,4,0" IsEnabled="{Binding B_info_extend}" TextColor="{StaticResource Text}" Text="{Binding T_Demp}" FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <yummy:PancakeView Margin="0,10,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Protect :" FontSize="Small" />
+                                <Picker Margin="4,-13,4,0" IsEnabled="{Binding B_info_extend}"  ItemsSource="{Binding S_Protect_cods}"  SelectedItem="{Binding Selected_Protect_cods,Mode=TwoWay}" TextColor="{StaticResource Text}" FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <yummy:PancakeView  Margin="0,10,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Manufacturer :" FontSize="Small" />
+                                <Entry Margin="4,-13,4,0" IsEnabled="{Binding B_info_extend}" TextColor="{StaticResource Text}" Text="{Binding T_Manufacturer}" FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <BoxView HeightRequest="1" Margin="-15,10,-15,10" Color="#55000000" IsVisible="true"/>
+                        <StackLayout Orientation="Horizontal" Margin="0,0,0,0">
+                            <Button Text="Read" Style="{StaticResource Red}" Command="{Binding Command_extendet_read }" HorizontalOptions="FillAndExpand"></Button>
+                            <Button Text="Write" Command="{Binding Command_info_write}" HorizontalOptions="FillAndExpand"></Button>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+    
+</ContentPage>
