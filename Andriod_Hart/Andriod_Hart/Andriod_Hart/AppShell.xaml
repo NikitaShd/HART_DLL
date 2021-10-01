@@ -102,8 +102,8 @@
     <FlyoutItem Title="Base info" Icon="icon_feed.png">
         <ShellContent Route="BaseInfo" ContentTemplate="{DataTemplate local:BaseInfo}" />
     </FlyoutItem>
-    <FlyoutItem Title="TEST" Icon="icon_feed.png">
-        <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
+    <FlyoutItem Title="Commands" Icon="icon_feed.png">
+        <ShellContent Route="Commands" ContentTemplate="{DataTemplate local:Commands}" />
     </FlyoutItem>
     <FlyoutItem Title="TEST" Icon="icon_feed.png">
         <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />

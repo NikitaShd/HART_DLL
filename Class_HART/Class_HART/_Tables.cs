@@ -21,16 +21,16 @@ namespace Class_HART
 
         static public void init_Encod_unit()
         {
-            Transfer_Cods_array[0] = "Линейная (y=mx+b)";
-            Transfer_Cods_array[1] = "Квадратный корень (y=sqrt(x))";
-            Transfer_Cods_array[2] = "Квадратный корень 3 порядка (y=sqrt(x^3))";
-            Transfer_Cods_array[3] = "Квадратный корень 5 порядка (y=sqrt(x^5))";
-            Transfer_Cods_array[4] = "Специальная кривая";
-            Transfer_Cods_array[5] = "Возведение в степинь (y=x^2)";
-            Transfer_Cods_array[230] = "Дискретная (on/off)";
-            Transfer_Cods_array[231] = "Квадратный корень + Специальная кривая";
-            Transfer_Cods_array[232] = "Квадратный корень 3 порядка + Специальная кривая";
-            Transfer_Cods_array[233] = "Квадратный корень 5 порядка + Специальная кривая";
+            Transfer_Cods_array[0] = "(y=mx+b)";
+            Transfer_Cods_array[1] = "(y=sqrt(x))";
+            Transfer_Cods_array[2] = "(y=sqrt(x^3))";
+            Transfer_Cods_array[3] = "(y=sqrt(x^5))";
+            Transfer_Cods_array[4] = "Special curve";
+            Transfer_Cods_array[5] = "(y=x^2)";
+            Transfer_Cods_array[230] = "(on/off)";
+            Transfer_Cods_array[231] = "Square Root + Special Curve";
+            Transfer_Cods_array[232] = "3rd Order Square Root + Special Curve";
+            Transfer_Cods_array[233] = "Order 5 Square Root + Special Curve ";
             Transfer_Cods_array[250] = "Not Used";
             Transfer_Cods_array[251] = "None";
             Transfer_Cods_array[252] = "Unclown";
@@ -51,22 +51,22 @@ namespace Class_HART
             Alarm_Cods_array[252] = "Unclown";
             Alarm_Cods_array[253] = "Special";
             // ==== давление ======
-            Encod_unit_array[1] = "Дюймы воды при 68°F";
-            Encod_unit_array[2] = "Дюймы ртути при 0°С";
+            Encod_unit_array[1] = "Inches of water at 68°F";
+            Encod_unit_array[2] = "Inches of mercury at 0°С";
             Encod_unit_array[3] = "";
-            Encod_unit_array[4] = "Милеметры воды при 68°F";
-            Encod_unit_array[5] = "Милеметры ртути при 0°С";
+            Encod_unit_array[4] = "Milemeters of water at 68°F";
+            Encod_unit_array[5] = "Milemeters of mercury at 0°С";
             Encod_unit_array[6] = "psi";
-            Encod_unit_array[7] = "бар";
-            Encod_unit_array[8] = "миллибар";
+            Encod_unit_array[7] = "bar";
+            Encod_unit_array[8] = "millibar";
             Encod_unit_array[9] = "gf/cm²";
             Encod_unit_array[10] = "kgf/cm²";
-            Encod_unit_array[11] = "Па";
-            Encod_unit_array[12] = "кПа";
+            Encod_unit_array[11] = "Pа";
+            Encod_unit_array[12] = "kPa";
             Encod_unit_array[13] = "торр";
-            Encod_unit_array[14] = "атм";
+            Encod_unit_array[14] = "atm";
             Encod_unit_array[145] = "";
-            Encod_unit_array[237] = "МПа";
+            Encod_unit_array[237] = "MPa";
             Encod_unit_array[238] = "";
             Encod_unit_array[239] = "";
             // ==== температуры ===

@@ -105,7 +105,7 @@ namespace Andriod_Hart.ViewModels
             Command_info_read = new Command(_Read_Info, canExecute: () => B_info_staite);
             Command_info_write = new Command(_Write_Info, canExecute: () => B_info_staite);
             Command_extendet_read = new Command(_Read_Extented, canExecute: () => B_info_extend);
-            Command_extendet_write = new Command(_Read_Extented, canExecute: () => B_info_extend);
+            Command_extendet_write = new Command(_Write_Extented, canExecute: () => B_info_extend);
             Title = "Base Info";
             S_Alarm_cods.AddRange(_Tables.Alarm_Cods_arr());
             S_Protect_cods.AddRange(_Tables.Protect_Cods_arr());
@@ -247,6 +247,45 @@ namespace Andriod_Hart.ViewModels
             T_L_renge = L_renge.ToString();
             T_Demp = Damfing.ToString();
             T_Manufacturer = Manufacturer.ToString();
+
+            B_info_extend = true;
+            Command_extendet_read.ChangeCanExecute();
+            Command_extendet_write.ChangeCanExecute();
+        }
+        private async void _Write_Extented()
+        {
+            B_info_extend = false;
+            Command_extendet_read.ChangeCanExecute();
+            Command_extendet_write.ChangeCanExecute();
+
+            int Alarm = _Tables.Alarm_Cods(Selected_S_Alarm_cods);
+            int Transfer = _Tables.Transfer_Cods(Selected_S_Transfer_cods);
+            int Unit = _Tables.Encod_unit(Selected_S_Unit_cods);
+            float U_renge = Convert.ToSingle(T_U_renge);
+            float L_renge = Convert.ToSingle(T_L_renge);
+            float Damfing = Convert.ToSingle(T_Demp);
+            int Protect = _Tables.Protect_Cods(Selected_Protect_cods);
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    Hart_conection.Comand_35(Master_ID, Dev_Adres, Unit, U_renge, L_renge);
+                }
+            });
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    Hart_conection.Comand_34(Master_ID, Dev_Adres, Damfing);
+                }
+            });
+            await Task.Run(() =>
+            {
+                lock (balanceLock)
+                {
+                    Hart_conection.Comand_47(Master_ID, Dev_Adres, Transfer);
+                }
+            });
 
             B_info_extend = true;
             Command_extendet_read.ChangeCanExecute();

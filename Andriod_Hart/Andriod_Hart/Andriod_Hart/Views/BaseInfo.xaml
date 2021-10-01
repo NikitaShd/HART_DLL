@@ -138,7 +138,7 @@
                         <BoxView HeightRequest="1" Margin="-15,10,-15,10" Color="#55000000" IsVisible="true"/>
                         <StackLayout Orientation="Horizontal" Margin="0,0,0,0">
                             <Button Text="Read" Style="{StaticResource Red}" Command="{Binding Command_extendet_read }" HorizontalOptions="FillAndExpand"></Button>
-                            <Button Text="Write" Command="{Binding Command_info_write}" HorizontalOptions="FillAndExpand"></Button>
+                            <Button Text="Write" Command="{Binding Command_extendet_write}" HorizontalOptions="FillAndExpand"></Button>
                         </StackLayout>
                     </StackLayout>
                 </Frame>

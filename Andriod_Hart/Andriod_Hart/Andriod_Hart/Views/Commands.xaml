@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Andriod_Hart.Views.Commands"
+             xmlns:vm="clr-namespace:Andriod_Hart.ViewModels"
+             xmlns:model="clr-namespace:Andriod_Hart.Models" xmlns:sh="http://sharpnado.com" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <ScrollView>
+            <FlexLayout x:Name="Flex_L" Wrap="NoWrap" JustifyContent="Start" AlignItems="Start" BackgroundColor="BlanchedAlmond">
+                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" HeightRequest="150" CornerRadius="20" Margin="6,6,6,0" Padding="1" >
+                    <Grid Padding="10" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="0" TextColor="{StaticResource Text}" Text="Manufacturer Code" FontSize="Medium" />
+                        <Label Grid.Column="1" Grid.Row="0" TextColor="{StaticResource Text}" Text="1234" FontSize="Medium" />
+                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="1" TextColor="{StaticResource Text}" Text="Device Type Code" FontSize="Medium" />
+                        <Label Grid.Column="1" Grid.Row="1" TextColor="{StaticResource Text}" Text="4567" FontSize="Medium" />
+                        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Orientation="Vertical" Margin="0,0,0,0">
+                            <BoxView HeightRequest="1" Margin="-15,10,-15,5" Color="#55000000" IsVisible="true"/>
+                            <Button Text="Read" Style="{StaticResource Red}" Command="{Binding Command_0}" HorizontalOptions="FillAndExpand"></Button>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" HeightRequest="150" CornerRadius="20" Margin="6,6,6,0" Padding="1" >
+                    <Grid Padding="10" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="0" TextColor="{StaticResource Text}" Text="Manufacturer Code" FontSize="Medium" />
+                        <Label Grid.Column="1" Grid.Row="0" TextColor="{StaticResource Text}" Text="1234" FontSize="Medium" />
+                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="1" TextColor="{StaticResource Text}" Text="Device Type Code" FontSize="Medium" />
+                        <Label Grid.Column="1" Grid.Row="1" TextColor="{StaticResource Text}" Text="4567" FontSize="Medium" />
+                        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Orientation="Vertical" Margin="0,0,0,0">
+                            <BoxView HeightRequest="1" Margin="-15,10,-15,5" Color="#55000000" IsVisible="true"/>
+                            <Button Text="Read" Style="{StaticResource Red}" Command="{Binding Command_0}" HorizontalOptions="FillAndExpand"></Button>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" HeightRequest="150" CornerRadius="20" Margin="6,6,6,0" Padding="1" >
+                    <Grid Padding="10" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="0" TextColor="{StaticResource Text}" Text="Manufacturer Code" FontSize="Medium" />
+                        <Label Grid.Column="1" Grid.Row="0" TextColor="{StaticResource Text}" Text="1234" FontSize="Medium" />
+                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="1" TextColor="{StaticResource Text}" Text="Device Type Code" FontSize="Medium" />
+                        <Label Grid.Column="1" Grid.Row="1" TextColor="{StaticResource Text}" Text="4567" FontSize="Medium" />
+                        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Orientation="Vertical" Margin="0,0,0,0">
+                            <BoxView HeightRequest="1" Margin="-15,10,-15,5" Color="#55000000" IsVisible="true"/>
+                            <Button Text="Read" Style="{StaticResource Red}" Command="{Binding Command_0}" HorizontalOptions="FillAndExpand"></Button>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" HeightRequest="150" CornerRadius="20" Margin="6,6,6,0" Padding="1" >
+                    <Grid Padding="10" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="0" TextColor="{StaticResource Text}" Text="Manufacturer Code" FontSize="Medium" />
+                        <Label Grid.Column="1" Grid.Row="0" TextColor="{StaticResource Text}" Text="1234" FontSize="Medium" />
+                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="1" TextColor="{StaticResource Text}" Text="Device Type Code" FontSize="Medium" />
+                        <Label Grid.Column="1" Grid.Row="1" TextColor="{StaticResource Text}" Text="4567" FontSize="Medium" />
+                        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Orientation="Vertical" Margin="0,0,0,0">
+                            <BoxView HeightRequest="1" Margin="-15,10,-15,5" Color="#55000000" IsVisible="true"/>
+                            <Button Text="Read" Style="{StaticResource Red}" Command="{Binding Command_0}" HorizontalOptions="FillAndExpand"></Button>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" HeightRequest="150" CornerRadius="20" Margin="6,6,6,0" Padding="1" >
+                    <Grid Padding="10" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="0" TextColor="{StaticResource Text}" Text="Manufacturer Code" FontSize="Medium" />
+                        <Label Grid.Column="1" Grid.Row="0" TextColor="{StaticResource Text}" Text="1234" FontSize="Medium" />
+                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="1" TextColor="{StaticResource Text}" Text="Device Type Code" FontSize="Medium" />
+                        <Label Grid.Column="1" Grid.Row="1" TextColor="{StaticResource Text}" Text="4567" FontSize="Medium" />
+                        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Orientation="Vertical" Margin="0,0,0,0">
+                            <BoxView HeightRequest="1" Margin="-15,10,-15,5" Color="#55000000" IsVisible="true"/>
+                            <Button Text="Read" Style="{StaticResource Red}" Command="{Binding Command_0}" HorizontalOptions="FillAndExpand"></Button>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" HeightRequest="150" CornerRadius="20" Margin="6,6,6,0" Padding="1" >
+                    <Grid Padding="10" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="0" TextColor="{StaticResource Text}" Text="Manufacturer Code" FontSize="Medium" />
+                        <Label Grid.Column="1" Grid.Row="0" TextColor="{StaticResource Text}" Text="1234" FontSize="Medium" />
+                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="1" TextColor="{StaticResource Text}" Text="Device Type Code" FontSize="Medium" />
+                        <Label Grid.Column="1" Grid.Row="1" TextColor="{StaticResource Text}" Text="4567" FontSize="Medium" />
+                        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Orientation="Vertical" Margin="0,0,0,0">
+                            <BoxView HeightRequest="1" Margin="-15,10,-15,5" Color="#55000000" IsVisible="true"/>
+                            <Button Text="Read" Style="{StaticResource Red}" Command="{Binding Command_0}" HorizontalOptions="FillAndExpand"></Button>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" HeightRequest="150" CornerRadius="20" Margin="6,6,6,0" Padding="1" >
+                    <Grid Padding="10" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="0" TextColor="{StaticResource Text}" Text="Manufacturer Code" FontSize="Medium" />
+                        <Label Grid.Column="1" Grid.Row="0" TextColor="{StaticResource Text}" Text="1234" FontSize="Medium" />
+                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="1" TextColor="{StaticResource Text}" Text="Device Type Code" FontSize="Medium" />
+                        <Label Grid.Column="1" Grid.Row="1" TextColor="{StaticResource Text}" Text="4567" FontSize="Medium" />
+                        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Orientation="Vertical" Margin="0,0,0,0">
+                            <BoxView HeightRequest="1" Margin="-15,10,-15,5" Color="#55000000" IsVisible="true"/>
+                            <Button Text="Read" Style="{StaticResource Red}" Command="{Binding Command_0}" HorizontalOptions="FillAndExpand"></Button>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" HeightRequest="150" CornerRadius="20" Margin="6,6,6,0" Padding="1" >
+                    <Grid Padding="10" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="0" TextColor="{StaticResource Text}" Text="Manufacturer Code" FontSize="Medium" />
+                        <Label Grid.Column="1" Grid.Row="0" TextColor="{StaticResource Text}" Text="1234" FontSize="Medium" />
+                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="1" TextColor="{StaticResource Text}" Text="Device Type Code" FontSize="Medium" />
+                        <Label Grid.Column="1" Grid.Row="1" TextColor="{StaticResource Text}" Text="4567" FontSize="Medium" />
+                        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Orientation="Vertical" Margin="0,0,0,0">
+                            <BoxView HeightRequest="1" Margin="-15,10,-15,5" Color="#55000000" IsVisible="true"/>
+                            <Button Text="Read" Style="{StaticResource Red}" Command="{Binding Command_0}" HorizontalOptions="FillAndExpand"></Button>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" HeightRequest="150" CornerRadius="20" Margin="6,6,6,6" Padding="1" >
+                    <Grid Padding="10" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="0" TextColor="{StaticResource Text}" Text="Manufacturer Code" FontSize="Medium" />
+                        <Label Grid.Column="1" Grid.Row="0" TextColor="{StaticResource Text}" Text="1234" FontSize="Medium" />
+                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="1" TextColor="{StaticResource Text}" Text="Device Type Code" FontSize="Medium" />
+                        <Label Grid.Column="1" Grid.Row="1" TextColor="{StaticResource Text}" Text="4567" FontSize="Medium" />
+                        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Orientation="Vertical" Margin="0,0,0,0">
+                            <BoxView HeightRequest="1" Margin="-15,10,-15,5" Color="#55000000" IsVisible="true"/>
+                            <Button Text="Read" Style="{StaticResource Red}" Command="{Binding Command_0}" HorizontalOptions="FillAndExpand"></Button>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+            </FlexLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
