@@ -112,29 +112,37 @@ namespace Andriod_Hart.ViewModels
             S_Transfer_cods.AddRange(_Tables.Transfer_Cods_arr());
             S_Unit_cods.AddRange(_Tables.unit_arr());
         }
-       
+
         private async void _Comand_0()
         {
+
             B_staite_0 = false;
             string[] temp = { };
-             Command_0.ChangeCanExecute();
-            await Task.Factory.StartNew(() =>
+            Command_0.ChangeCanExecute();
+            try
             {
-                lock (balanceLock)
+                await Task.Factory.StartNew(() =>
                 {
-                    Hart_conection.Comand_0(Master_ID, Dev_Adres , ref temp);
-                   
-                }
-            });
-            L_Manufacturer_Code = temp[0];
-            L_Device_Type_Code = temp[1];
-            L_Preambul_leng = temp[2];
-            L_Universal_commands = temp[3];
-            L_Specific_commands = temp[4];
-            L_Software_version = temp[5];
-            L_Hardware_version = temp[6];
-            L_Device_function = temp[8];
-            B_staite_0 = true;          
+                    lock (balanceLock)
+                    {
+                        Hart_conection.Comand_0(Master_ID, Dev_Adres, ref temp);
+
+                    }
+                });
+                L_Manufacturer_Code = temp[0];
+                L_Device_Type_Code = temp[1];
+                L_Preambul_leng = temp[2];
+                L_Universal_commands = temp[3];
+                L_Specific_commands = temp[4];
+                L_Software_version = temp[5];
+                L_Hardware_version = temp[6];
+                L_Device_function = temp[8];
+            }
+            catch (Exception ex)
+            {
+                await Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Fixed Current Value :", ex.Message, "Cancel");
+            }
+            B_staite_0 = true;
             Command_0.ChangeCanExecute();
         }
         private async void _Read_Info()
@@ -142,6 +150,7 @@ namespace Andriod_Hart.ViewModels
             B_info_staite = false;
             Command_info_read.ChangeCanExecute();
             Command_info_write.ChangeCanExecute();
+            try { 
             string mes = "";
             string[] teg_discriptor_data = { };
             string long_teg = "";
@@ -172,6 +181,11 @@ namespace Andriod_Hart.ViewModels
                 }
             });
             T_L_teg = long_teg;
+            }
+            catch (Exception ex)
+            {
+                await Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Fixed Current Value :", ex.Message, "Cancel");
+            }
             B_info_staite = true;
             Command_info_read.ChangeCanExecute();
             Command_info_write.ChangeCanExecute();
@@ -181,6 +195,7 @@ namespace Andriod_Hart.ViewModels
             B_info_staite = false;
             Command_info_read.ChangeCanExecute();
             Command_info_write.ChangeCanExecute();
+            try{ 
             string mes = T_dev_mes;
             await Task.Run(() =>
             {
@@ -210,6 +225,11 @@ namespace Andriod_Hart.ViewModels
                     // Task.Delay(1000);
                 }
             });
+            }
+            catch (Exception ex)
+            {
+                await Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Fixed Current Value :", ex.Message, "Cancel");
+            }
             B_info_staite = true;
             Command_info_read.ChangeCanExecute();
             Command_info_write.ChangeCanExecute();
@@ -219,6 +239,7 @@ namespace Andriod_Hart.ViewModels
             B_info_extend = false;
             Command_extendet_read.ChangeCanExecute();
             Command_extendet_write.ChangeCanExecute();
+            try { 
             int Alarm = 0;
             int Transfer = 0;
             int Unit = 0;
@@ -247,7 +268,11 @@ namespace Andriod_Hart.ViewModels
             T_L_renge = L_renge.ToString();
             T_Demp = Damfing.ToString();
             T_Manufacturer = Manufacturer.ToString();
-
+            }
+            catch (Exception ex)
+            {
+                await Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Fixed Current Value :", ex.Message, "Cancel");
+            }
             B_info_extend = true;
             Command_extendet_read.ChangeCanExecute();
             Command_extendet_write.ChangeCanExecute();
@@ -257,7 +282,7 @@ namespace Andriod_Hart.ViewModels
             B_info_extend = false;
             Command_extendet_read.ChangeCanExecute();
             Command_extendet_write.ChangeCanExecute();
-
+            try { 
             int Alarm = _Tables.Alarm_Cods(Selected_S_Alarm_cods);
             int Transfer = _Tables.Transfer_Cods(Selected_S_Transfer_cods);
             int Unit = _Tables.Encod_unit(Selected_S_Unit_cods);
@@ -286,7 +311,11 @@ namespace Andriod_Hart.ViewModels
                     Hart_conection.Comand_47(Master_ID, Dev_Adres, Transfer);
                 }
             });
-
+            }
+            catch (Exception ex)
+            {
+                await Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Fixed Current Value :", ex.Message, "Cancel");
+            }
             B_info_extend = true;
             Command_extendet_read.ChangeCanExecute();
             Command_extendet_write.ChangeCanExecute();

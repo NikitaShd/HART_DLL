@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Android.Support.V7.App;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Xamarin.Forms;
@@ -24,6 +25,7 @@ namespace Andriod_Hart.Views
             {
                 this.width = width;
                 this.height = height;
+                AppCompatDelegate.DefaultNightMode = AppCompatDelegate.ModeNightNo;
                 if (width > height)
                 {
                     G_HART_DEV.RowDefinitions.Clear();

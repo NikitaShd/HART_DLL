@@ -53,3 +53,5 @@ D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Release\net5.0-windows\Devise\P_MTM701_7.b
 D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Release\net5.0-windows\Wpf_Hart.Properties.Resource.en-US.resources
 D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Release\net5.0-windows\Wpf_Hart.Properties.Resource.ru-RU.resources
 D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Release\net5.0-windows\en-US\Wpf_Hart.resources.dll
+D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Release\net5.0-windows\Info.g.cs
+D:\GIT\HART_DLL\Wpf_Hart\Wpf_Hart\obj\Release\net5.0-windows\Info.baml

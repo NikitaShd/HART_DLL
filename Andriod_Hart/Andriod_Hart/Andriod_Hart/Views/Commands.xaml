@@ -2,201 +2,122 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Andriod_Hart.Views.Commands"
-             xmlns:vm="clr-namespace:Andriod_Hart.ViewModels"
-             xmlns:model="clr-namespace:Andriod_Hart.Models" xmlns:sh="http://sharpnado.com" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             xmlns:local="clr-namespace:Andriod_Hart.ViewModels"  
+             xmlns:model="clr-namespace:Andriod_Hart.Models" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
     <ContentPage.Content>
         <ScrollView>
-            <FlexLayout x:Name="Flex_L" Wrap="NoWrap" JustifyContent="Start" AlignItems="Start" BackgroundColor="BlanchedAlmond">
-                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" HeightRequest="150" CornerRadius="20" Margin="6,6,6,0" Padding="1" >
-                    <Grid Padding="10" >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="0" TextColor="{StaticResource Text}" Text="Manufacturer Code" FontSize="Medium" />
-                        <Label Grid.Column="1" Grid.Row="0" TextColor="{StaticResource Text}" Text="1234" FontSize="Medium" />
-                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="1" TextColor="{StaticResource Text}" Text="Device Type Code" FontSize="Medium" />
-                        <Label Grid.Column="1" Grid.Row="1" TextColor="{StaticResource Text}" Text="4567" FontSize="Medium" />
-                        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Orientation="Vertical" Margin="0,0,0,0">
-                            <BoxView HeightRequest="1" Margin="-15,10,-15,5" Color="#55000000" IsVisible="true"/>
-                            <Button Text="Read" Style="{StaticResource Red}" Command="{Binding Command_0}" HorizontalOptions="FillAndExpand"></Button>
+            <FlexLayout x:Name="Flex_L"  JustifyContent="SpaceAround">
+                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" CornerRadius="20" Margin="6,6,6,6" Padding="1" >
+                    <StackLayout Spacing="0" Padding="10">
+                        <yummy:PancakeView  Margin="0,10,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Fixed Current Value :" FontSize="Small" />
+                                <Entry Margin="4,-13,4,0"  IsEnabled="{Binding Fixed_Current}" TextColor="{StaticResource Text}" Text="{Binding Fixed_Current_str}" FontSize="Medium" Keyboard="Numeric" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <BoxView HeightRequest="1" Margin="-15,10,-15,10" Color="#55000000" IsVisible="true"/>
+                        <StackLayout Orientation="Horizontal" Margin="0,0,0,0">
+                            <Button Text="Exit" Style="{StaticResource Red}" Command="{Binding Fixed_Current_exit }" HorizontalOptions="FillAndExpand"></Button>
+                            <Button Text="Set" Command="{Binding Fixed_Current_set}" HorizontalOptions="FillAndExpand"></Button>
                         </StackLayout>
-                    </Grid>
+                    </StackLayout>
                 </Frame>
-                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" HeightRequest="150" CornerRadius="20" Margin="6,6,6,0" Padding="1" >
-                    <Grid Padding="10" >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="0" TextColor="{StaticResource Text}" Text="Manufacturer Code" FontSize="Medium" />
-                        <Label Grid.Column="1" Grid.Row="0" TextColor="{StaticResource Text}" Text="1234" FontSize="Medium" />
-                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="1" TextColor="{StaticResource Text}" Text="Device Type Code" FontSize="Medium" />
-                        <Label Grid.Column="1" Grid.Row="1" TextColor="{StaticResource Text}" Text="4567" FontSize="Medium" />
-                        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Orientation="Vertical" Margin="0,0,0,0">
-                            <BoxView HeightRequest="1" Margin="-15,10,-15,5" Color="#55000000" IsVisible="true"/>
-                            <Button Text="Read" Style="{StaticResource Red}" Command="{Binding Command_0}" HorizontalOptions="FillAndExpand"></Button>
+                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" CornerRadius="20" Margin="6,6,6,6" Padding="1" >
+                    <StackLayout Spacing="0" Padding="10">
+                        <yummy:PancakeView  Margin="0,10,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Set Zero DAC :        " FontSize="Small" />
+                                <Entry Margin="4,-13,4,0" IsEnabled="{Binding Zero_ACP}"  Keyboard="Numeric" TextColor="{StaticResource Text}" Text="{Binding Zero_ACP_str}" FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <BoxView HeightRequest="1" Margin="-15,10,-15,10" Color="#55000000" IsVisible="true"/>
+                        <StackLayout Orientation="Horizontal" Margin="0,0,0,0">
+
+                            <Button Text="Set" Command="{Binding Zero_ACP_set}" HorizontalOptions="FillAndExpand"></Button>
                         </StackLayout>
-                    </Grid>
+                    </StackLayout>
                 </Frame>
-                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" HeightRequest="150" CornerRadius="20" Margin="6,6,6,0" Padding="1" >
-                    <Grid Padding="10" >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="0" TextColor="{StaticResource Text}" Text="Manufacturer Code" FontSize="Medium" />
-                        <Label Grid.Column="1" Grid.Row="0" TextColor="{StaticResource Text}" Text="1234" FontSize="Medium" />
-                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="1" TextColor="{StaticResource Text}" Text="Device Type Code" FontSize="Medium" />
-                        <Label Grid.Column="1" Grid.Row="1" TextColor="{StaticResource Text}" Text="4567" FontSize="Medium" />
-                        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Orientation="Vertical" Margin="0,0,0,0">
-                            <BoxView HeightRequest="1" Margin="-15,10,-15,5" Color="#55000000" IsVisible="true"/>
-                            <Button Text="Read" Style="{StaticResource Red}" Command="{Binding Command_0}" HorizontalOptions="FillAndExpand"></Button>
+                <Frame  BackgroundColor="{StaticResource Panel}" HasShadow="True" CornerRadius="20" Margin="6,6,6,6" Padding="1" >
+                    <StackLayout Spacing="0" Padding="10">
+                        <yummy:PancakeView  Margin="0,10,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Configure Gain DAC :     " FontSize="Small" />
+                                <Entry Margin="4,-13,4,0" IsEnabled="{Binding Gain_ACP}"  Keyboard="Numeric" TextColor="{StaticResource Text}" Text="{Binding Gain_ACP_str}" FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <BoxView HeightRequest="1" Margin="-15,10,-15,10" Color="#55000000" IsVisible="true"/>
+                        <StackLayout Orientation="Horizontal" Margin="0,0,0,0">
+
+                            <Button Text="Set" Command="{Binding Gain_ACP_set}" HorizontalOptions="FillAndExpand"></Button>
                         </StackLayout>
-                    </Grid>
+                    </StackLayout>
                 </Frame>
-                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" HeightRequest="150" CornerRadius="20" Margin="6,6,6,0" Padding="1" >
-                    <Grid Padding="10" >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="0" TextColor="{StaticResource Text}" Text="Manufacturer Code" FontSize="Medium" />
-                        <Label Grid.Column="1" Grid.Row="0" TextColor="{StaticResource Text}" Text="1234" FontSize="Medium" />
-                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="1" TextColor="{StaticResource Text}" Text="Device Type Code" FontSize="Medium" />
-                        <Label Grid.Column="1" Grid.Row="1" TextColor="{StaticResource Text}" Text="4567" FontSize="Medium" />
-                        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Orientation="Vertical" Margin="0,0,0,0">
-                            <BoxView HeightRequest="1" Margin="-15,10,-15,5" Color="#55000000" IsVisible="true"/>
-                            <Button Text="Read" Style="{StaticResource Red}" Command="{Binding Command_0}" HorizontalOptions="FillAndExpand"></Button>
+                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" CornerRadius="20" Margin="6,6,6,6" Padding="1" >
+                    <StackLayout Spacing="0" Padding="10">
+                        <yummy:PancakeView  Margin="0,10,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Short Adres :  " FontSize="Small" />
+                                <Entry Margin="4,-13,4,0" IsEnabled="{Binding Short_AD}"  Keyboard="Numeric" TextColor="{StaticResource Text}" Text="{Binding Short_AD_str}" FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <BoxView HeightRequest="1" Margin="-15,10,-15,10" Color="#55000000" IsVisible="true"/>
+                        <StackLayout Orientation="Horizontal" Margin="0,0,0,0">
+                            <Button Text="Write" Command="{Binding Short_AD_set}"  HorizontalOptions="FillAndExpand"></Button>
                         </StackLayout>
-                    </Grid>
+                    </StackLayout>
                 </Frame>
-                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" HeightRequest="150" CornerRadius="20" Margin="6,6,6,0" Padding="1" >
-                    <Grid Padding="10" >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="0" TextColor="{StaticResource Text}" Text="Manufacturer Code" FontSize="Medium" />
-                        <Label Grid.Column="1" Grid.Row="0" TextColor="{StaticResource Text}" Text="1234" FontSize="Medium" />
-                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="1" TextColor="{StaticResource Text}" Text="Device Type Code" FontSize="Medium" />
-                        <Label Grid.Column="1" Grid.Row="1" TextColor="{StaticResource Text}" Text="4567" FontSize="Medium" />
-                        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Orientation="Vertical" Margin="0,0,0,0">
-                            <BoxView HeightRequest="1" Margin="-15,10,-15,5" Color="#55000000" IsVisible="true"/>
-                            <Button Text="Read" Style="{StaticResource Red}" Command="{Binding Command_0}" HorizontalOptions="FillAndExpand"></Button>
+                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" CornerRadius="20" Margin="6,6,6,6" Padding="1" >
+                    <StackLayout Spacing="0" Padding="10">
+                        <Button Text="Set Upper Renge Value" Margin="2" Command="{Binding U_range_value_set}" HorizontalOptions="FillAndExpand"></Button>
+                        <Button Text="Set Lower Renge Value" Margin="2" Command="{Binding L_range_value_set}" HorizontalOptions="FillAndExpand"></Button>
+                        <Button Text="Set Zero Primaruy Variable" Margin="2" Command="{Binding Prim_value_set}"  HorizontalOptions="FillAndExpand"></Button>
+                    </StackLayout>
+                </Frame>
+                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" CornerRadius="20" Margin="6,6,6,6" Padding="1" >
+                    <StackLayout Spacing="0" Padding="10">
+                        <yummy:PancakeView  Margin="0,10,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Preambul Leng :" FontSize="Small" />
+                                <Entry Margin="4,-13,4,0" IsEnabled="{Binding Preamb_Leng}"  Keyboard="Numeric" TextColor="{StaticResource Text}" Text="{Binding Preamb_Leng_str}" FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <BoxView HeightRequest="1" Margin="-15,10,-15,10" Color="#55000000" IsVisible="true"/>
+                        <StackLayout Orientation="Horizontal" Margin="0,0,0,0">
+                            <Button Text="Read"  Command ="{Binding Preamb_Leng_get}" Style="{StaticResource Red}" HorizontalOptions="FillAndExpand"></Button>
+                            <Button Text="Write" Command ="{Binding Preamb_Leng_set}" HorizontalOptions="FillAndExpand"></Button>
                         </StackLayout>
-                    </Grid>
+                    </StackLayout>
                 </Frame>
-                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" HeightRequest="150" CornerRadius="20" Margin="6,6,6,0" Padding="1" >
-                    <Grid Padding="10" >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="0" TextColor="{StaticResource Text}" Text="Manufacturer Code" FontSize="Medium" />
-                        <Label Grid.Column="1" Grid.Row="0" TextColor="{StaticResource Text}" Text="1234" FontSize="Medium" />
-                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="1" TextColor="{StaticResource Text}" Text="Device Type Code" FontSize="Medium" />
-                        <Label Grid.Column="1" Grid.Row="1" TextColor="{StaticResource Text}" Text="4567" FontSize="Medium" />
-                        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Orientation="Vertical" Margin="0,0,0,0">
-                            <BoxView HeightRequest="1" Margin="-15,10,-15,5" Color="#55000000" IsVisible="true"/>
-                            <Button Text="Read" Style="{StaticResource Red}" Command="{Binding Command_0}" HorizontalOptions="FillAndExpand"></Button>
+
+                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" CornerRadius="20" Margin="6,6,6,6" Padding="1" >
+                    <StackLayout Spacing="0" Padding="10">
+                        <yummy:PancakeView  Margin="0,10,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Serial Number (HEX) :" FontSize="Small" />
+                                <Entry Margin="4,-13,4,0" IsEnabled="{Binding Serial_Num}"  TextColor="{StaticResource Text}" Text="{Binding Serial_Num_str}" FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <BoxView HeightRequest="1" Margin="-15,10,-15,10" Color="#55000000" IsVisible="true"/>
+                        <StackLayout Orientation="Horizontal" Margin="0,0,0,0">
+                            <Button Text="Read" Command="{Binding Serial_Num_get}" Style="{StaticResource Red}" HorizontalOptions="FillAndExpand"></Button>
+                            <Button Text="Write" Command="{Binding Serial_Num_set}" HorizontalOptions="FillAndExpand"></Button>
                         </StackLayout>
-                    </Grid>
+                    </StackLayout>
                 </Frame>
-                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" HeightRequest="150" CornerRadius="20" Margin="6,6,6,0" Padding="1" >
-                    <Grid Padding="10" >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="0" TextColor="{StaticResource Text}" Text="Manufacturer Code" FontSize="Medium" />
-                        <Label Grid.Column="1" Grid.Row="0" TextColor="{StaticResource Text}" Text="1234" FontSize="Medium" />
-                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="1" TextColor="{StaticResource Text}" Text="Device Type Code" FontSize="Medium" />
-                        <Label Grid.Column="1" Grid.Row="1" TextColor="{StaticResource Text}" Text="4567" FontSize="Medium" />
-                        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Orientation="Vertical" Margin="0,0,0,0">
-                            <BoxView HeightRequest="1" Margin="-15,10,-15,5" Color="#55000000" IsVisible="true"/>
-                            <Button Text="Read" Style="{StaticResource Red}" Command="{Binding Command_0}" HorizontalOptions="FillAndExpand"></Button>
-                        </StackLayout>
-                    </Grid>
+                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" CornerRadius="20" Margin="6,6,6,6" Padding="1" >
+                    <StackLayout Spacing="0" Padding="10">
+                        <Button Text="Reset &lt;Configuration Changed> Flag" Command="{Binding Reset_flag_set}" Margin="2"  HorizontalOptions="FillAndExpand"></Button>
+                        <Button Text="Reset Device" Margin="2" Command="{Binding Reset_set}"  HorizontalOptions="FillAndExpand"></Button>
+                    </StackLayout>
                 </Frame>
-                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" HeightRequest="150" CornerRadius="20" Margin="6,6,6,0" Padding="1" >
-                    <Grid Padding="10" >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="0" TextColor="{StaticResource Text}" Text="Manufacturer Code" FontSize="Medium" />
-                        <Label Grid.Column="1" Grid.Row="0" TextColor="{StaticResource Text}" Text="1234" FontSize="Medium" />
-                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="1" TextColor="{StaticResource Text}" Text="Device Type Code" FontSize="Medium" />
-                        <Label Grid.Column="1" Grid.Row="1" TextColor="{StaticResource Text}" Text="4567" FontSize="Medium" />
-                        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Orientation="Vertical" Margin="0,0,0,0">
-                            <BoxView HeightRequest="1" Margin="-15,10,-15,5" Color="#55000000" IsVisible="true"/>
-                            <Button Text="Read" Style="{StaticResource Red}" Command="{Binding Command_0}" HorizontalOptions="FillAndExpand"></Button>
-                        </StackLayout>
-                    </Grid>
+                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" CornerRadius="20" Margin="6,6,6,6" Padding="1" >
+                    <StackLayout Spacing="0" Padding="10">
+                        <Button Text="Burn EEPROM" Margin="2"  Command="{Binding Burn_EEPROM_set}"   HorizontalOptions="FillAndExpand"></Button>
+                        <Button Text="Restore Shadow RAM" Margin="2"  Command="{Binding Restor_EEPROM_set}"   HorizontalOptions="FillAndExpand"></Button>
+                    </StackLayout>
                 </Frame>
-                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" HeightRequest="150" CornerRadius="20" Margin="6,6,6,6" Padding="1" >
-                    <Grid Padding="10" >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="0" TextColor="{StaticResource Text}" Text="Manufacturer Code" FontSize="Medium" />
-                        <Label Grid.Column="1" Grid.Row="0" TextColor="{StaticResource Text}" Text="1234" FontSize="Medium" />
-                        <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="1" TextColor="{StaticResource Text}" Text="Device Type Code" FontSize="Medium" />
-                        <Label Grid.Column="1" Grid.Row="1" TextColor="{StaticResource Text}" Text="4567" FontSize="Medium" />
-                        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Orientation="Vertical" Margin="0,0,0,0">
-                            <BoxView HeightRequest="1" Margin="-15,10,-15,5" Color="#55000000" IsVisible="true"/>
-                            <Button Text="Read" Style="{StaticResource Red}" Command="{Binding Command_0}" HorizontalOptions="FillAndExpand"></Button>
-                        </StackLayout>
-                    </Grid>
-                </Frame>
+              
             </FlexLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -50,6 +50,7 @@
                             <VisualState x:Name="Selected">
                                 <VisualState.Setters>
                                     <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                 
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>
@@ -92,24 +93,30 @@
            
       
     </Shell.FlyoutHeader>
-   
-    <FlyoutItem Title="Bluetooth" Icon="icon_about.png">
+
+    <FlyoutItem Title="Bluetooth" Icon="bluetooth.png">
         <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="HART Devises" Icon="icon_feed.png">
+    <FlyoutItem Title="HART Devises" Icon="access_point.png">
         <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Base info" Icon="icon_feed.png">
+    <FlyoutItem Title="Base info" Icon="monitor_dashboard.png">
         <ShellContent Route="BaseInfo" ContentTemplate="{DataTemplate local:BaseInfo}" />
     </FlyoutItem>
-    <FlyoutItem Title="Commands" Icon="icon_feed.png">
+    <FlyoutItem Title="Commands" Icon="console_network_outline.png">
         <ShellContent Route="Commands" ContentTemplate="{DataTemplate local:Commands}" />
     </FlyoutItem>
-    <FlyoutItem Title="TEST" Icon="icon_feed.png">
-        <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
+    <FlyoutItem Title="Parameters" Icon="gauge.png">
+        <ShellContent Route="Parametres" ContentTemplate="{DataTemplate local:Parametres}" />
     </FlyoutItem>
+    <FlyoutItem Title="Devices" Icon="dns_outline.png">
+        <ShellContent Route="Parametres" ContentTemplate="{DataTemplate local:Parametres}" />
+    </FlyoutItem>
+    
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
-    <MenuItem Text="GitHub" IconImageSource="icon_feed.png" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked">
+    <MenuItem Text="Info" IconImageSource="book_open_variant.png" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked"/>
+    <MenuItem Text="GitHub" IconImageSource="github.png" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked">
+        
     </MenuItem>
      
     <!--

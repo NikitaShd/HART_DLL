@@ -1,6 +1,7 @@
 ﻿using Andriod_Hart.Models;
 using Andriod_Hart.ViewModels;
 using Andriod_Hart.Views;
+using Android.Support.V7.App;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,9 +38,11 @@ namespace Andriod_Hart.Views
             base.OnSizeAllocated(width, height);
             if (width != this.width || height != this.height)
             {
+                AppCompatDelegate.DefaultNightMode = AppCompatDelegate.ModeNightNo;
                 this.width = width;
                 this.height = height;
                 if (width > height)
+
                 {
                     G_bluet.RowDefinitions.Clear();
                     G_bluet.ColumnDefinitions.Clear();

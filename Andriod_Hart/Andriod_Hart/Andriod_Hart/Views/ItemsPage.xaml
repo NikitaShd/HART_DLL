@@ -8,7 +8,7 @@
              x:Name="BrowseItemsPage" >
              
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Reload" IconImageSource="icon_feed.png" Command="{Binding AddItemCommand}" />
+        <ToolbarItem Text="Reload" IconImageSource="reload.png" Command="{Binding AddItemCommand}" />
     </ContentPage.ToolbarItems>
     <!--
       x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
@@ -71,7 +71,7 @@
                     </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-          
+            <BoxView HeightRequest="1" Margin="-15,0,-15,0" Color="#55000000" IsVisible="true"/>
         </StackLayout>
        
         <StackLayout Grid.Row="1" x:Name="G_bluet_skan" Orientation="Vertical">

@@ -2,6 +2,7 @@
 using Andriod_Hart.ViewModels;
 
 using Android.Content;
+using Android.Support.V7.App;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,6 +32,7 @@ namespace Andriod_Hart.Views
             base.OnSizeAllocated(width, height);
             if (width != this.width || height != this.height)
             {
+                AppCompatDelegate.DefaultNightMode = AppCompatDelegate.ModeNightNo;
                 this.width = width;
                 this.height = height;
                 if (width > height)

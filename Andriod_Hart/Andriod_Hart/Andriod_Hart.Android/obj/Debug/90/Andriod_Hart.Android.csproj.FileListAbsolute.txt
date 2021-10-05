@@ -504,3 +504,13 @@ D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\andr
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\android\src\crc64f8908e42fa42e603\PancakeDrawable.java
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\android\src\crc64f8908e42fa42e603\PancakeViewRenderer.java
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\android\src\crc64f8908e42fa42e603\RoundedCornerOutlineProvider.java
+D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res\drawable\bluetooth.png
+D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res\drawable\access_point.png
+D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res\drawable\cog.png
+D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res\drawable\monitor_dashboard.png
+D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res\drawable\gauge.png
+D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res\drawable\dns_outline.png
+D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res\drawable\github.png
+D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res\drawable\book_open_variant.png
+D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res\drawable\console_network_outline.png
+D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res\drawable\reload.png

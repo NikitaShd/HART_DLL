@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Andriod_Hart.ViewModels;
+using Android.Support.V7.App;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,12 +11,15 @@ using Xamarin.Forms.Xaml;
 
 namespace Andriod_Hart.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+   // [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Commands : ContentPage
     {
+        CommandsModel _viewModel;
         public Commands()
         {
+            BindingContext = _viewModel = new CommandsModel();
             InitializeComponent();
+         
         }
         private double width;
         private double height;
@@ -24,6 +29,7 @@ namespace Andriod_Hart.Views
             base.OnSizeAllocated(width, height);
             if (width != this.width || height != this.height)
             {
+                AppCompatDelegate.DefaultNightMode = AppCompatDelegate.ModeNightNo;
                 this.width = width;
                 this.height = height;
                 if (width > height)

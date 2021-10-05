@@ -871,6 +871,19 @@ namespace Class_HART
                 min = 0;
             }
         }
+        public void Comand_14(int id_master, Byte[] id_slaiv, ref string s_num)
+        {
+            try
+            {
+                Read_Fraim[] temp = Write_long(preambula_leng, id_master, id_slaiv, 14, new Byte[] { });
+                s_num = BitConverter.ToString(temp[0].DT, 0, 3);
+            }
+            catch
+            {
+                EROR = "READ_EROR";
+                s_num = "eror";   
+            }
+        }
         /// <summary>
         /// КОМАНДА #15 ЧТЕНИЕ ИНФОРМАЦИИ О ВЫХОДНОМ СИГНАЛЕ ПО ПЕРВИЧНОЙ ПЕРЕМЕННОЙ
         /// </summary>

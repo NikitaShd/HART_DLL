@@ -129,7 +129,7 @@ namespace Wpf_Hart {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Wpf_Hart;V1.0.0.0;component/window_setings.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Wpf_Hart;component/window_setings.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Window_setings.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

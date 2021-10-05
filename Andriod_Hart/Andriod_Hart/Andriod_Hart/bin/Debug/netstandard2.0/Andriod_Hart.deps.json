@@ -16,6 +16,7 @@
           "Class_HART": "1.0.0.0",
           "Mono.Android": "0.0.0.0",
           "Xamarin.Android.Support.LocalBroadcastManager": "1.0.0.0",
+          "Xamarin.Android.Support.v7.AppCompat": "1.0.0.0",
           "Xamarin.Forms.Platform.Android": "2.0.0.0"
         },
         "runtime": {
@@ -112,6 +113,14 @@
       "Xamarin.Android.Support.LocalBroadcastManager/1.0.0.0": {
         "runtime": {
           "Xamarin.Android.Support.LocalBroadcastManager.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Xamarin.Android.Support.v7.AppCompat/1.0.0.0": {
+        "runtime": {
+          "Xamarin.Android.Support.v7.AppCompat.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -215,6 +224,11 @@
       "sha512": ""
     },
     "Xamarin.Android.Support.LocalBroadcastManager/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Xamarin.Android.Support.v7.AppCompat/1.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

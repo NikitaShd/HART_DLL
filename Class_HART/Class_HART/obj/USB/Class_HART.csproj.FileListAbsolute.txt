@@ -1,8 +1,5 @@
 D:\GIT\HART_DLL\Class_HART\Class_HART\bin\USB\Class_HART.dll
 D:\GIT\HART_DLL\Class_HART\Class_HART\bin\USB\Class_HART.pdb
-D:\GIT\HART_DLL\Class_HART\Class_HART\obj\USB\Class_HART.csproj.CoreCompileInputs.cache
-D:\GIT\HART_DLL\Class_HART\Class_HART\obj\USB\Class_HART.dll
-D:\GIT\HART_DLL\Class_HART\Class_HART\obj\USB\Class_HART.pdb
 D:\GIT\HART_DLL\Class_HART\Class_HART\bin\USB\Base2Base.Abstractions.dll
 D:\GIT\HART_DLL\Class_HART\Class_HART\bin\USB\Plugin.Bluetooth.dll
 D:\GIT\HART_DLL\Class_HART\Class_HART\bin\USB\Plugin.BluetoothLE.dll
@@ -16,5 +13,7 @@ D:\GIT\HART_DLL\Class_HART\Class_HART\bin\USB\System.Reactive.xml
 D:\GIT\HART_DLL\Class_HART\Class_HART\bin\USB\System.Runtime.CompilerServices.Unsafe.xml
 D:\GIT\HART_DLL\Class_HART\Class_HART\bin\USB\System.Threading.Tasks.Extensions.xml
 D:\GIT\HART_DLL\Class_HART\Class_HART\bin\USB\System.ValueTuple.xml
+D:\GIT\HART_DLL\Class_HART\Class_HART\obj\USB\Class_HART.csproj.CoreCompileInputs.cache
 D:\GIT\HART_DLL\Class_HART\Class_HART\obj\USB\Class_HART.csproj.CopyComplete
-D:\GIT\HART_DLL\Class_HART\Class_HART\obj\USB\Class_HART.csprojAssemblyReference.cache
+D:\GIT\HART_DLL\Class_HART\Class_HART\obj\USB\Class_HART.dll
+D:\GIT\HART_DLL\Class_HART\Class_HART\obj\USB\Class_HART.pdb

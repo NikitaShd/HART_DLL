@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Andriod_Hart.Views.Parametres"
+             Title="{Binding Title}"
+             xmlns:local="clr-namespace:Andriod_Hart.ViewModels"  
+             xmlns:model="clr-namespace:Andriod_Hart.Models" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+    <ContentPage.Content>
+        <Grid IsEnabled="true" x:Name="G_bluet" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.4*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="0">
+                <StackLayout>
+                    <Label Text="Param 1:" TextColor="{StaticResource Text}"/>
+                    <Label Text="Param 1" TextColor="{StaticResource Text}"/>
+                    <Label Text="Param 1" TextColor="{StaticResource Text}"/>
+                    <Label Text="Param 1:" TextColor="{StaticResource Text}"/>
+                    <Label Text="Param 1" TextColor="{StaticResource Text}"/>
+                    <Label Text="Param 1" TextColor="{StaticResource Text}"/>
+                </StackLayout>
+            </Frame>
+            <yummy:PancakeView Grid.Row="1" BackgroundColor="#F5F7FA" Margin="0,-20,0,0"  x:Name="controlsGrid_butons" CornerRadius="20,20,0,0" HorizontalOptions="FillAndExpand" Shadow="{yummy:ShadowMarkup BlurRadius=5, Offset='-10,-10'}" HeightRequest="150">
+
+                <ScrollView>
+
+                    <StackLayout Orientation="Vertical" Padding="30,15,30,24" Spacing="0">
+
+                        <Button Margin="0,0,0,0" Text="Start Timer" Command="{Binding _Comand_0_F}" />
+                         
+                        <Button Margin="0,10,0,0" Text="Stop Timer" Style="{StaticResource Red}" Command="{Binding _Comand_0_F_stop}"/>
+
+                        <yummy:PancakeView Margin="0,10,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Timer Interval :" FontSize="Small" />
+                                <Picker Margin="4,-13,4,0" IsEnabled="{Binding B_info_staite}" TextColor="{StaticResource Text}"  FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        
+                        <Button Margin="0,30,0,0" Text="Read" Command="{Binding _Comand_0_F_adres}" />
+
+
+                    </StackLayout>
+
+
+                </ScrollView>
+
+
+            </yummy:PancakeView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

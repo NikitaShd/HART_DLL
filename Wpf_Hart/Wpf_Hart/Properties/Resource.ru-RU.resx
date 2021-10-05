@@ -130,7 +130,7 @@
     <value>Закрыть порт</value>
   </data>
   <data name="R_ConfGainACP" xml:space="preserve">
-    <value>Установить усиление ACP :</value>
+    <value>Установить усиление ЦАП :</value>
   </data>
   <data name="R_CurrentValues" xml:space="preserve">
     <value>Значения тока </value>
@@ -235,7 +235,7 @@
     <value>Установить верхнее значение </value>
   </data>
   <data name="R_SetZeroACP" xml:space="preserve">
-    <value>Установит ноль ACP :</value>
+    <value>Установит ноль ЦАП :</value>
   </data>
   <data name="R_SetZeroPrimary" xml:space="preserve">
     <value>Установить ноль</value>
