@@ -1,5 +1,6 @@
 @string/appbar_scrolling_view_behavior;D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\41\jl\res\layout\flyoutcontent.xml
 @string/appbar_scrolling_view_behavior;D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\41\jl\res\layout\rootlayout.xml
+adaptive-icon;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher.xml
 adaptive-icon;obj\Debug\90\res\mipmap-anydpi-v26\icon.xml
 adaptive-icon;obj\Debug\90\res\mipmap-anydpi-v26\icon_round.xml
 alpha;D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\41\jl\res\anim\enterfromleft.xml
@@ -18,6 +19,7 @@ android.support.v7.widget.Toolbar;D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andr
 android.support.v7.widget.Toolbar;D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\41\jl\res\layout\shellcontent.xml
 android.support.v7.widget.Toolbar;obj\Debug\90\res\layout\toolbar.xml
 attr;D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\41\jl\res\values\attrs.xml
+background;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher.xml
 background;obj\Debug\90\res\mipmap-anydpi-v26\icon.xml
 background;obj\Debug\90\res\mipmap-anydpi-v26\icon_round.xml
 cache-path;D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\39\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
@@ -25,6 +27,7 @@ color;obj\Debug\90\res\values\colors.xml
 declare-styleable;D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\41\jl\res\values\attrs.xml
 external-cache-path;D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\39\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 external-path;D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\39\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
+foreground;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher.xml
 foreground;obj\Debug\90\res\mipmap-anydpi-v26\icon.xml
 foreground;obj\Debug\90\res\mipmap-anydpi-v26\icon_round.xml
 FrameLayout;D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\41\jl\res\layout\bottomtablayout.xml
