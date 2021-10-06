@@ -9,6 +9,18 @@ namespace Andriod_Hart.Models
         public string Description { get; set; }
         public bool IsConected { get; set; }
     }
+    public class Param
+    {
+        public string name { get; set; }
+        public string type { get; set; }
+        public string value { get; set; }
+        public Param(string p1, string p2, string p3)
+        {
+            name = p1;
+            type = p2;
+            value = p3;
+        }
+    }
     public class DEVISE
     {
         public string Short_Address { get; set; }
