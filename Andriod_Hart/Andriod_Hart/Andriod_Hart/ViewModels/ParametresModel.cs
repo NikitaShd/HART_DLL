@@ -95,6 +95,7 @@ namespace Andriod_Hart.ViewModels
             catch (Exception ex)
             {
                 await Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Eror :", ex.Message, "Cancel");
+                timers = false;
             }
         }
     }

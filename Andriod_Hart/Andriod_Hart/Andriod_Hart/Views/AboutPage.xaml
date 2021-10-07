@@ -163,7 +163,7 @@
                     <Button Margin="0,0,0,0" Text="Start skan" Command="{Binding _Comand_0_F}" />
 
                     <Button Margin="0,10,0,0" Text="Stop" Style="{StaticResource Red}" Command="{Binding _Comand_0_F_stop}"/>
-                    <Button Margin="0,30,0,0" Text="Skan Sdres" Command="{Binding _Comand_0_F_adres}" />
+                    <Button Margin="0,30,0,0" Text="Skan Adres" Command="{Binding _Comand_0_F_adres}" />
 
 
                 </StackLayout>

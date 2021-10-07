@@ -95,21 +95,21 @@
                                     <RowDefinition Height="Auto"></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <Grid Grid.Row="0">
-                                    <Label Content="ACP Cods"/>
+                                    <Label Content="ADC Cods"/>
                                 </Grid>
                                 <StackPanel HorizontalAlignment="Right"  Grid.Row="2"  Orientation="Horizontal">
                                     <Button x:Name="B_dev_Acp_read" Click="B_dev_Acp_read_Click" Foreground="{DynamicResource Custom_Botton_tex}" MinWidth="100" BorderBrush="{DynamicResource Custom_red2}"  Background="{DynamicResource Custom_red1}" Content="{x:Static res:Resource.R_Read}" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Bottom"/>
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" Orientation="Vertical">
-                                    <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="ACP1 :" Margin="10,10,0,0" Width="150"/>
+                                    <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="code from pressure sensor" Margin="10,10,0,0" Width="150"/>
                                     <TextBox x:Name="T_ACP_1" IsReadOnly="True" Margin="5,-17,5,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
-                                    <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="ACP2 :" Margin="10,0,0,0" Width="150"/>
+                                    <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="code temperature sensor" Margin="10,0,0,0" Width="150"/>
                                     <TextBox x:Name="T_ACP_2" IsReadOnly="True" Margin="5,-17,5,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
-                                    <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="ACP3 :" Margin="10,0,0,0" Width="150"/>
+                                    <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="code supply voltage" Margin="10,0,0,0" Width="150"/>
                                     <TextBox  x:Name="T_ACP_3" IsReadOnly="True" Margin="5,-17,5,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
-                                    <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="ACP4 :" Margin="10,0,0,0" Width="150"/>
+                                    <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="code supply current" Margin="10,0,0,0" Width="150"/>
                                     <TextBox x:Name="T_ACP_4" IsReadOnly="True" Margin="5,-17,5,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
-                                    <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="ACP5 :" Margin="10,0,0,0" Width="150"/>
+                                    <materialDesign:Badged Foreground="{DynamicResource Custom_textcolor}"  Content="code output current signal" Margin="10,0,0,0" Width="150"/>
                                     <TextBox x:Name="T_ACP_5" IsReadOnly="True" Margin="5,-17,5,10" FontSize="16" Foreground="{DynamicResource Custom_textcolor}" Style="{StaticResource MaterialDesignFilledTextBox}" Cursor="Arrow"/>
                                 </StackPanel>
                             </Grid>

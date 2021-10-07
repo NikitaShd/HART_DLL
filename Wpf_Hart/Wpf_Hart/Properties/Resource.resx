@@ -130,7 +130,7 @@
     <value>Close Port</value>
   </data>
   <data name="R_ConfGainACP" xml:space="preserve">
-    <value>Configure Gain ACP :</value>
+    <value>Configure Gain DAC :</value>
   </data>
   <data name="R_CurrentValues" xml:space="preserve">
     <value>Current Values</value>
@@ -235,7 +235,7 @@
     <value>Set Upper Renge Value </value>
   </data>
   <data name="R_SetZeroACP" xml:space="preserve">
-    <value>Set Zero ACP :</value>
+    <value>Set Zero DAC :</value>
   </data>
   <data name="R_SetZeroPrimary" xml:space="preserve">
     <value>Set Zero Primary Variable</value>

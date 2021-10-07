@@ -15,6 +15,7 @@
     <Shell.Resources>
         <ResourceDictionary>
             <Style x:Key="BaseStyle" TargetType="Element">
+             
                 <Setter Property="Shell.BackgroundColor" Value="{StaticResource Primary}" />
                 <Setter Property="Shell.ForegroundColor" Value="White" />
                 <Setter Property="Shell.TitleColor" Value="White" />
@@ -35,6 +36,7 @@
             -->
             <Style Class="FlyoutItemLabelStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="White"></Setter>
+                
             </Style>
             <Style Class="FlyoutItemLayoutStyle" TargetType="Layout" ApplyToDerivedTypes="True">
                 <Setter Property="BackgroundColor" Value="LightBlue"></Setter>
@@ -57,6 +59,28 @@
                     </VisualStateGroupList>
                 </Setter>
             </Style>
+            
+            <Style Class="FlyoutItemLayoutStyle" TargetType="Image" ApplyToDerivedTypes="True">
+                <Setter Property="Opacity" Value="1"></Setter>
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="Opacity" Value="1" />
+                                    
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="Opacity" Value="0.3" />
+
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
 
             <!--
             Custom Style you can apply to any Flyout Item
@@ -69,6 +93,7 @@
                             <VisualState x:Name="Normal">
                                 <VisualState.Setters>
                                     <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="{StaticResource Primary}" />
+                                    
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>
@@ -93,8 +118,8 @@
            
       
     </Shell.FlyoutHeader>
-
-    <FlyoutItem Title="Bluetooth" Icon="bluetooth.png">
+    
+    <FlyoutItem Title="Bluetooth" Icon="bluetooth.png" >
         <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
     </FlyoutItem>
     <FlyoutItem Title="HART Devises" Icon="access_point.png">
@@ -110,16 +135,21 @@
         <ShellContent Route="Parametres" ContentTemplate="{DataTemplate local:Parametres}" />
     </FlyoutItem>
     <FlyoutItem Title="Devices" Icon="dns_outline.png">
-        <ShellContent Route="Parametres" ContentTemplate="{DataTemplate local:Parametres}" />
+        <ShellContent Route="Devices" ContentTemplate="{DataTemplate local:Devices}" />
+    </FlyoutItem>
+
+   
+    <FlyoutItem Title="Setings" Icon="cog.png">
+        <ShellContent Route="Devices" ContentTemplate="{DataTemplate local:Devices}" />
     </FlyoutItem>
     
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
     <MenuItem Text="Info" IconImageSource="book_open_variant.png" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked"/>
-    <MenuItem Text="GitHub" IconImageSource="github.png" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked">
-        
-    </MenuItem>
-     
-    <!--
+    <MenuItem Text="GitHub" IconImageSource="github.png" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked"/>
+    
+
+
+        <!--
         TabBar lets you define content that won't show up in a flyout menu. When this content is active
         the flyout menu won't be available. This is useful for creating areas of the application where 
         you don't want users to be able to navigate away from. If you would like to navigate to this 

@@ -97,7 +97,7 @@ namespace Wpf_Hart.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Configure Gain ACP :.
+        ///   Ищет локализованную строку, похожую на Configure Gain DAC :.
         /// </summary>
         public static string R_ConfGainACP {
             get {
@@ -412,7 +412,7 @@ namespace Wpf_Hart.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Set Zero ACP :.
+        ///   Ищет локализованную строку, похожую на Set Zero DAC :.
         /// </summary>
         public static string R_SetZeroACP {
             get {

@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Andriod_Hart.Views.Device.Page_MTM701_7"
+             
+              Title="{Binding Title}"
+             xmlns:local="clr-namespace:Andriod_Hart.ViewModels"  
+             xmlns:model="clr-namespace:Andriod_Hart.ViewModels.DeviceModel" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" >
+    <ContentPage.Content>
+        <ScrollView>
+            <FlexLayout x:Name="Flex_L" Direction="Column" AlignItems="Stretch" JustifyContent="SpaceAround">
+                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" CornerRadius="20" Margin="6,6,6,6" Padding="0" >
+                    <StackLayout Spacing="0" Padding="2">
+                        <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="5" Grid.Column="0"  Text="{Binding Progres}" 
+                            
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="Large" 
+                            TextColor="Black"
+                            IsVisible="true" />
+                        <CollectionView IsVisible="{Binding Calibration_Table}" 
+                ItemsSource="{Binding Calib , Mode=TwoWay}" 
+                SelectionMode="None"
+                ItemsLayout="VerticalGrid"
+                VerticalOptions="StartAndExpand"
+                 >
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate >
+
+                                    <Grid  x:DataType="model:Calib_tem" Padding="10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="300"/>
+                                        </Grid.RowDefinitions>
+                                        <BoxView Grid.Row="1" Grid.ColumnSpan="5" HeightRequest="1" Margin="-15,2,-15,2" Color="#20000000"/>
+                                        <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Column="0"  Text="{Binding ID , Mode=TwoWay}" 
+                            Margin="0,-5,0,-5"
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="Medium" 
+                            TextColor="Black"/>
+
+                                        <Entry HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Column="1"  Text="{Binding Temperature , Mode=TwoWay}" 
+                            Margin="-5"
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="Medium" 
+                            TextColor="Black"/>
+                                        <Entry HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Column="2"  Text="{Binding Kod_ACP_Temperature_Sensor , Mode=TwoWay}" 
+                            Margin="-5"
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="Medium" 
+                            TextColor="Black"/>
+                                        <Entry HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Column="3"  Text="{Binding Kod_ACP_Voltage_Sensor , Mode=TwoWay}" 
+                            Margin="-5"
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="Medium" 
+                            TextColor="Black"/>
+                                        <Entry HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Column="4"  Text="{Binding Kod_ACP_Сurrent_Sensor , Mode=TwoWay}" 
+                            Margin="-5"
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="Medium" 
+                            TextColor="Black"/>
+
+                                        <CollectionView 
+                ItemsSource="{Binding _Davs , Mode=TwoWay}" BackgroundColor="Transparent"
+                SelectionMode="None" Grid.Row="2" Grid.ColumnSpan="5"
+                ItemsLayout="VerticalGrid"
+                 >
+                                            <CollectionView.ItemTemplate>
+                                                <DataTemplate>
+
+                                                    <Grid  x:DataType="model:Calib_dav">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="auto"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto"/>
+
+
+                                                        </Grid.RowDefinitions>
+
+                                                        <Label HorizontalTextAlignment="Center" Margin="0,-5,0,-5"  VerticalTextAlignment="Center" Grid.Column="0"  Text="{Binding ID , Mode=TwoWay}" 
+                            
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="Small" 
+                            TextColor="Black"/>
+
+                                                        <Entry HorizontalTextAlignment="Center" Margin="-5" VerticalTextAlignment="Center" Grid.Column="1"  Text="{Binding Pressure , Mode=TwoWay}" 
+                           
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="Small" 
+                            TextColor="Black"/>
+                                                        <Entry HorizontalTextAlignment="Center" Margin="-5" VerticalTextAlignment="Center" Grid.Column="2"  Text="{Binding Kod_ACP_1 , Mode=TwoWay}" 
+                           
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="Small" 
+                            TextColor="Black"/>
+                                                        <Entry HorizontalTextAlignment="Center"  Margin="-5" VerticalTextAlignment="Center" Grid.Column="3"  Text="{Binding Kod_ACP_2 , Mode=TwoWay}" 
+                           
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="Small" 
+                            TextColor="Black"/>
+                                                        <Entry HorizontalTextAlignment="Center" Margin="-5" VerticalTextAlignment="Center" Grid.Column="4"  Text="{Binding Kod_ACP_3 , Mode=TwoWay}" 
+                           
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="Small" 
+                            TextColor="Black"/>
+                                                        <Entry HorizontalTextAlignment="Center" Margin="-5" VerticalTextAlignment="Center" Grid.Column="5"  Text="{Binding Kod_ACP_4 , Mode=TwoWay}" 
+                           
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="Small" 
+                            TextColor="Black"/>
+
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </CollectionView.ItemTemplate>
+                                        </CollectionView>
+
+                                    </Grid>
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <BoxView HeightRequest="1" Margin="-15,10,-15,10" Color="#55000000" IsVisible="true"/>
+                        <StackLayout Orientation="Horizontal" Padding="5">
+                            <Button Text="Read" Style="{StaticResource Red}" Command="{Binding Calibration_Table_get }" HorizontalOptions="FillAndExpand"></Button>
+                            <Button Text="Write" Command="{Binding Calibration_Table_set}" HorizontalOptions="FillAndExpand"></Button>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" CornerRadius="20" Margin="6,6,6,6" Padding="0" >
+                    <StackLayout Spacing="0" Padding="5">
+                        <Label Text="ADC Cods" Margin="0,0,0,0" FontSize="Medium" />
+                        <yummy:PancakeView  Margin="0,10,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="code from pressure sensor" FontSize="Small" />
+                                <Entry Margin="4,-13,4,0" TextColor="{StaticResource Text}" IsEnabled="{Binding ADC_Cods}" Text="{Binding P_Sensor}" FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <yummy:PancakeView  Margin="0,10,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="code temperature sensor" FontSize="Small" />
+                                <Entry Margin="4,-13,4,0" TextColor="{StaticResource Text}" IsEnabled="{Binding ADC_Cods}" Text="{Binding T_Sensor}" FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <yummy:PancakeView  Margin="0,10,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="code supply voltage" FontSize="Small" />
+                                <Entry Margin="4,-13,4,0" TextColor="{StaticResource Text}" IsEnabled="{Binding ADC_Cods}" Text="{Binding V_Sensor}" FontSize="Medium"  />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <yummy:PancakeView  Margin="0,10,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="code supply current" FontSize="Small" />
+                                <Entry Margin="4,-13,4,0" TextColor="{StaticResource Text}" IsEnabled="{Binding ADC_Cods}" Text="{Binding C_Sensor}" FontSize="Medium"  />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <yummy:PancakeView  Margin="0,10,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="code output current signal" FontSize="Small" />
+                                <Entry Margin="4,-13,4,0" TextColor="{StaticResource Text}" IsEnabled="{Binding ADC_Cods}" Text="{Binding Oc_Sensor}" FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <BoxView HeightRequest="1" Margin="-15,10,-15,10" Color="#55000000" IsVisible="true"/>
+                        <StackLayout Orientation="Horizontal" Padding="5">
+                            <Button Text="Read" Style="{StaticResource Red}" Command="{Binding ADC_Cods_get }" HorizontalOptions="FillAndExpand"></Button>
+
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" CornerRadius="20" Margin="6,6,6,6" Padding="0" >
+                    <StackLayout Spacing="0" Padding="5">
+                        <Label x:Name="header" Margin="10,0,0,0" Text="Display Contrast: 30" FontSize="Medium" />
+                        <Slider Minimum="0" Maximum="63" Value="{Binding Contrast}" IsEnabled="{Binding Dev_Param}" ValueChanged="Slider_ValueChanged"
+                                MinimumTrackColor="{StaticResource Primary}" MaximumTrackColor="Gray" ThumbColor="{StaticResource Primary}" />
+                        <yummy:PancakeView  Margin="0,10,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Temperature sensor type code :" FontSize="Small" />
+                                <Picker Margin="4,-13,4,0" TextColor="{StaticResource Text}"  IsEnabled="{Binding Dev_Param}" SelectedIndex="{Binding S_sensor_tupe_t}" ItemsSource="{Binding MTM_Temperature_sensor}" FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <yummy:PancakeView  Margin="0,10,10,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Pressure unit code in the calibration table" FontSize="Small" />
+                                <Picker Margin="4,-13,4,0" TextColor="{StaticResource Text}"  IsEnabled="{Binding Dev_Param}" SelectedIndex="{Binding S_sensor_tupe_p}"  ItemsSource="{Binding MTM_Presure_sensor}"  FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <BoxView HeightRequest="1" Margin="-15,10,-15,10" Color="#55000000" IsVisible="true"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Grid.Column="0">
+                                <Label HorizontalOptions="Center" Margin="0,0,0,0" Text="Уставка 1" FontSize="Medium" />
+                                <yummy:PancakeView  Margin="0,5,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                                    <StackLayout>
+                                        <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Logic :" FontSize="Small" />
+                                        <Picker Margin="4,-13,4,0" TextColor="{StaticResource Text}"  IsEnabled="{Binding Dev_Param}"  SelectedIndex="{Binding S_l_1}" ItemsSource="{Binding MTM_tupe_ys}"  FontSize="Medium" />
+                                    </StackLayout>
+                                </yummy:PancakeView>
+                                <yummy:PancakeView  Margin="0,5,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                                    <StackLayout>
+                                        <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Technological Par." FontSize="Small" />
+                                        <Picker Margin="4,-13,4,0" TextColor="{StaticResource Text}"  IsEnabled="{Binding Dev_Param}" SelectedIndex="{Binding S_p_1}" ItemsSource="{Binding MTM_priv_ys}"  FontSize="Medium" />
+                                    </StackLayout>
+                                </yummy:PancakeView>
+                                <yummy:PancakeView  Margin="0,5,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                                    <StackLayout>
+                                        <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Lower Response" FontSize="Small" />
+                                        <Entry Margin="4,-13,4,0" TextColor="{StaticResource Text}"  IsEnabled="{Binding Dev_Param}" Text="{Binding S_lo_res_1}" FontSize="Medium" />
+                                    </StackLayout>
+                                </yummy:PancakeView>
+                                <yummy:PancakeView  Margin="0,5,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                                    <StackLayout>
+                                        <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Upper Response" FontSize="Small" />
+                                        <Entry Margin="4,-13,4,0" TextColor="{StaticResource Text}"  IsEnabled="{Binding Dev_Param}" Text="{Binding S_up_res_1}" FontSize="Medium" />
+                                    </StackLayout>
+                                </yummy:PancakeView>
+                                <yummy:PancakeView  Margin="0,5,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                                    <StackLayout>
+                                        <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Hysteresis" FontSize="Small" />
+                                        <Entry Margin="4,-13,4,0" TextColor="{StaticResource Text}"  IsEnabled="{Binding Dev_Param}" Text="{Binding S_Hyst_1}" FontSize="Medium" />
+                                    </StackLayout>
+                                </yummy:PancakeView>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1">
+                                <Label HorizontalOptions="Center" Margin="0,0,0,0" Text="Уставка 2" FontSize="Medium" />
+                                <yummy:PancakeView  Margin="0,5,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                                    <StackLayout>
+                                        <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Logic :" FontSize="Small" />
+                                        <Picker Margin="4,-13,4,0" TextColor="{StaticResource Text}"  IsEnabled="{Binding Dev_Param}" SelectedIndex="{Binding S_l_2}"  ItemsSource="{Binding MTM_tupe_ys}"  FontSize="Medium" />
+                                    </StackLayout>
+                                </yummy:PancakeView>
+                                <yummy:PancakeView  Margin="0,5,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                                    <StackLayout>
+                                        <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Technological Par." FontSize="Small" />
+                                        <Picker Margin="4,-13,4,0" TextColor="{StaticResource Text}" IsEnabled="{Binding Dev_Param}"  SelectedIndex="{Binding S_p_2}" ItemsSource="{Binding MTM_priv_ys}"  FontSize="Medium" />
+                                    </StackLayout>
+                                </yummy:PancakeView>
+                                <yummy:PancakeView  Margin="0,5,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                                    <StackLayout>
+                                        <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Lower Response" FontSize="Small" />
+                                        <Entry Margin="4,-13,4,0" TextColor="{StaticResource Text}"  IsEnabled="{Binding Dev_Param}" Text="{Binding S_lo_res_2}" FontSize="Medium" />
+                                    </StackLayout>
+                                </yummy:PancakeView>
+                                <yummy:PancakeView  Margin="0,5,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                                    <StackLayout>
+                                        <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Upper Response" FontSize="Small" />
+                                        <Entry Margin="4,-13,4,0" TextColor="{StaticResource Text}" IsEnabled="{Binding Dev_Param}" Text="{Binding S_up_res_2}" FontSize="Medium" />
+                                    </StackLayout>
+                                </yummy:PancakeView>
+                                <yummy:PancakeView  Margin="0,5,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                                    <StackLayout>
+                                        <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Hysteresis" FontSize="Small" />
+                                        <Entry Margin="4,-13,4,0" TextColor="{StaticResource Text}"  IsEnabled="{Binding Dev_Param}" Text="{Binding S_Hyst_2}" FontSize="Medium" />
+                                    </StackLayout>
+                                </yummy:PancakeView>
+                            </StackLayout>
+                        </Grid>
+                        <BoxView HeightRequest="1" Margin="-15,10,-15,10" Color="#55000000" IsVisible="true"/>
+                        <StackLayout Orientation="Horizontal" Padding="5">
+                            <Button Text="Read" Style="{StaticResource Red}" Command="{Binding Dev_Param_get }" HorizontalOptions="FillAndExpand"></Button>
+                            <Button Text="Write" Command="{Binding Dev_Param_set}" HorizontalOptions="FillAndExpand"></Button>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" CornerRadius="20" Margin="6,6,6,6" Padding="0" >
+                    <StackLayout Spacing="0" Padding="5">
+                        <Label Margin="10,0,0,0" Text="Calibration(Current)" FontSize="Medium" />
+                        <yummy:PancakeView  Margin="0,5,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="I_Max" FontSize="Small" />
+                                <Entry Margin="4,-13,4,0" TextColor="{StaticResource Text}" Text="{Binding Max_i}" FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <yummy:PancakeView  Margin="0,5,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="DAC" FontSize="Small" />
+                                <Entry Margin="4,-13,4,0" TextColor="{StaticResource Text}" Text="{Binding Max_DAC}" FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <yummy:PancakeView  Margin="0,5,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="ADC" FontSize="Small" />
+                                <Entry Margin="4,-13,4,0" TextColor="{StaticResource Text}" Text="{Binding Max_ADC}" FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <BoxView HeightRequest="1" Margin="-15,10,-15,10" Color="#55000000" IsVisible="true"/>
+                        <yummy:PancakeView  Margin="0,5,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="I_Min" FontSize="Small" />
+                                <Entry Margin="4,-13,4,0" TextColor="{StaticResource Text}" Text="{Binding Min_i}" FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <yummy:PancakeView  Margin="0,5,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="DAC" FontSize="Small" />
+                                <Entry Margin="4,-13,4,0" TextColor="{StaticResource Text}" Text="{Binding Min_DAC}" FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <yummy:PancakeView  Margin="0,5,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                            <StackLayout>
+                                <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="ADC" FontSize="Small" />
+                                <Entry Margin="4,-13,4,0" TextColor="{StaticResource Text}" Text="{Binding Min_ADC}" FontSize="Medium" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <BoxView HeightRequest="1" Margin="-15,10,-15,10" Color="#55000000" IsVisible="true"/>
+                        <StackLayout Orientation="Horizontal" Padding="5">
+                            <Button Text="Read" Style="{StaticResource Red}" Command="{Binding Calibration_Current_get}" HorizontalOptions="FillAndExpand"></Button>
+                            <Button Text="Write" Command="{Binding Calibration_Current_set}" HorizontalOptions="FillAndExpand"></Button>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </FlexLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

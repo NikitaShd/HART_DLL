@@ -1,5 +1,5 @@
 ﻿using Andriod_Hart.ViewModels;
-using Andriod_Hart.Views;
+using Andriod_Hart.Views.Device;
 using System;
 using System.Collections.Generic;
 using Xamarin.Essentials;
@@ -12,8 +12,8 @@ namespace Andriod_Hart
         public AppShell()
         {
             InitializeComponent();
-            //   Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
-            //   Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+              Routing.RegisterRoute(nameof(Page_MTM701_7), typeof(Page_MTM701_7));
+           //   Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
           
         }
 
