@@ -1,3 +1,6 @@
+Andriod_Hart.Droid.SplashActivity, Andriod_Hart.Android;crc643d776877d84542f7.SplashActivity
+Andriod_Hart.Droid.SplashActivity;crc643d776877d84542f7.SplashActivity
+andriod_hart.droid.SplashActivity;crc643d776877d84542f7.SplashActivity
 Andriod_Hart.Droid.MainActivity, Andriod_Hart.Android;crc643d776877d84542f7.MainActivity
 Andriod_Hart.Droid.MainActivity;crc643d776877d84542f7.MainActivity
 andriod_hart.droid.MainActivity;crc643d776877d84542f7.MainActivity

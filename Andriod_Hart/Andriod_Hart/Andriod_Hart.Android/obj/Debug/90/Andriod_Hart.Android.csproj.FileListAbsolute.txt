@@ -47,7 +47,6 @@ D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res\
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res\mipmap-xxhdpi\launcher_foreground.png
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res\mipmap-xxxhdpi\icon.png
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res\mipmap-xxxhdpi\launcher_foreground.png
-D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res\drawable\xamarin_logo.png
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res\drawable\icon_about.png
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res\drawable\icon_feed.png
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res\drawable\index.ico
@@ -530,3 +529,6 @@ D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res\
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res\mipmap-xxxhdpi\ic_launcher.png
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res\mipmap-xxxhdpi\ic_launcher_adaptive_back.png
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res\mipmap-xxxhdpi\ic_launcher_adaptive_fore.png
+D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res\drawable\splash_screen.xml
+D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\android\src\crc643d776877d84542f7\SplashActivity.java
+D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res\drawable\titel.png

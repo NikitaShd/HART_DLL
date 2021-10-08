@@ -144,7 +144,7 @@
     </FlyoutItem>
     
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
-    <MenuItem Text="Info" IconImageSource="book_open_variant.png" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked"/>
+    <MenuItem Text="Info" IconImageSource="book_open_variant.png" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked2"/>
     <MenuItem Text="GitHub" IconImageSource="github.png" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked"/>
     
 

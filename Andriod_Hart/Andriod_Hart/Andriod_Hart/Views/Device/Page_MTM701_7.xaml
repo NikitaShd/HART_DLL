@@ -141,7 +141,7 @@
                 </Frame>
                 <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" CornerRadius="20" Margin="6,6,6,6" Padding="0" >
                     <StackLayout Spacing="0" Padding="5">
-                        <Label Text="ADC Cods" Margin="0,0,0,0" FontSize="Medium" />
+                        <Label Text="ADC Cods" Margin="0,0,0,0" FontSize="Medium" TextColor="{StaticResource Text}" />
                         <yummy:PancakeView  Margin="0,10,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
                             <StackLayout>
                                 <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="code from pressure sensor" FontSize="Small" />
@@ -181,7 +181,7 @@
                 </Frame>
                 <Frame BackgroundColor="{StaticResource Panel}" HasShadow="True" CornerRadius="20" Margin="6,6,6,6" Padding="0" >
                     <StackLayout Spacing="0" Padding="5">
-                        <Label x:Name="header" Margin="10,0,0,0" Text="Display Contrast: 30" FontSize="Medium" />
+                        <Label x:Name="header" Margin="10,0,0,0" Text="Display Contrast: 30" TextColor="{StaticResource Text}" FontSize="Medium" />
                         <Slider Minimum="0" Maximum="63" Value="{Binding Contrast}" IsEnabled="{Binding Dev_Param}" ValueChanged="Slider_ValueChanged"
                                 MinimumTrackColor="{StaticResource Primary}" MaximumTrackColor="Gray" ThumbColor="{StaticResource Primary}" />
                         <yummy:PancakeView  Margin="0,10,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
@@ -203,7 +203,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <StackLayout Grid.Column="0">
-                                <Label HorizontalOptions="Center" Margin="0,0,0,0" Text="Уставка 1" FontSize="Medium" />
+                                <Label HorizontalOptions="Center" Margin="0,0,0,0" Text="U1" TextColor="{StaticResource Text}" FontSize="Medium" />
                                 <yummy:PancakeView  Margin="0,5,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
                                     <StackLayout>
                                         <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Logic :" FontSize="Small" />
@@ -236,7 +236,7 @@
                                 </yummy:PancakeView>
                             </StackLayout>
                             <StackLayout Grid.Column="1">
-                                <Label HorizontalOptions="Center" Margin="0,0,0,0" Text="Уставка 2" FontSize="Medium" />
+                                <Label HorizontalOptions="Center" Margin="0,0,0,0" Text="U2" TextColor="{StaticResource Text}" FontSize="Medium" />
                                 <yummy:PancakeView  Margin="0,5,0,0" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
                                     <StackLayout>
                                         <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Logic :" FontSize="Small" />
