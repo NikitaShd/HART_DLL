@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Andriod_Hart.Views.Device.Page_MTM701_7"
-             
+             x:Name="MyPageName"
               Title="{Binding Title}"
              xmlns:local="clr-namespace:Andriod_Hart.ViewModels"  
              xmlns:model="clr-namespace:Andriod_Hart.ViewModels.DeviceModel" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" >
@@ -17,7 +17,7 @@
                             FontSize="Large" 
                             TextColor="Black"
                             IsVisible="true" />
-                        <CollectionView IsVisible="{Binding Calibration_Table}" 
+                        <CollectionView  
                 ItemsSource="{Binding Calib , Mode=TwoWay}" 
                 SelectionMode="None"
                 ItemsLayout="VerticalGrid"
@@ -33,51 +33,54 @@
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="300"/>
                                         </Grid.RowDefinitions>
-                                        <BoxView Grid.Row="1" Grid.ColumnSpan="5" HeightRequest="1" Margin="-15,2,-15,2" Color="#20000000"/>
+                                        <BoxView Grid.Row="1" Grid.ColumnSpan="6" HeightRequest="1" Margin="-15,2,-15,2" Color="#20000000"/>
                                         <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Column="0"  Text="{Binding ID , Mode=TwoWay}" 
+                                               IsEnabled="{Binding BindingContext.Calibration_Table, Source={x:Reference Name=MyPageName}}"
                             Margin="0,-5,0,-5"
                             Style="{DynamicResource ListItemTextStyle}" 
                             FontSize="Medium" 
                             TextColor="Black"/>
 
-                                        <Entry HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Column="1"  Text="{Binding Temperature , Mode=TwoWay}" 
+                                        <Entry HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Column="1" IsEnabled="{Binding BindingContext.Calibration_Table, Source={x:Reference Name=MyPageName}}"  Text="{Binding Temperature , Mode=TwoWay}" 
                             Margin="-5"
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="Medium" 
                             TextColor="Black"/>
-                                        <Entry HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Column="2"  Text="{Binding Kod_ACP_Temperature_Sensor , Mode=TwoWay}" 
+                                        <Entry HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Column="2" IsEnabled="{Binding BindingContext.Calibration_Table, Source={x:Reference Name=MyPageName}}"  Text="{Binding Kod_ACP_Temperature_Sensor , Mode=TwoWay}" 
                             Margin="-5"
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="Medium" 
                             TextColor="Black"/>
-                                        <Entry HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Column="3"  Text="{Binding Kod_ACP_Voltage_Sensor , Mode=TwoWay}" 
+                                        <Entry HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Column="3" IsEnabled="{Binding BindingContext.Calibration_Table, Source={x:Reference Name=MyPageName}}"  Text="{Binding Kod_ACP_Voltage_Sensor , Mode=TwoWay}" 
                             Margin="-5"
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="Medium" 
                             TextColor="Black"/>
-                                        <Entry HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Column="4"  Text="{Binding Kod_ACP_Сurrent_Sensor , Mode=TwoWay}" 
+                                        <Entry HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Column="4" IsEnabled="{Binding BindingContext.Calibration_Table, Source={x:Reference Name=MyPageName}}"  Text="{Binding Kod_ACP_Сurrent_Sensor , Mode=TwoWay}" 
                             Margin="-5"
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="Medium" 
                             TextColor="Black"/>
-
+                                        <Button Text="Get" Grid.Column="5" FontSize="Medium" CornerRadius="5" Padding="0" WidthRequest="20" HeightRequest="20"
+                                                Command="{Binding BindingContext.SelectGridLine, Source={x:Reference Name=MyPageName}}" CommandParameter="{Binding .}"/>
                                         <CollectionView 
                 ItemsSource="{Binding _Davs , Mode=TwoWay}" BackgroundColor="Transparent"
-                SelectionMode="None" Grid.Row="2" Grid.ColumnSpan="5"
-                ItemsLayout="VerticalGrid"
-                 >
+                SelectionMode="None" Grid.Row="2" Grid.ColumnSpan="6"
+                ItemsLayout="VerticalGrid">
                                             <CollectionView.ItemTemplate>
                                                 <DataTemplate>
 
-                                                    <Grid  x:DataType="model:Calib_dav">
+                                                    <Grid  x:DataType="model:Calib_dav" x:Name="Data2">
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="auto"/>
+                                                            <ColumnDefinition Width="*"/>
                                                             <ColumnDefinition Width="*"/>
                                                             <ColumnDefinition Width="*"/>
                                                             <ColumnDefinition Width="*"/>
@@ -91,37 +94,40 @@
                                                         </Grid.RowDefinitions>
 
                                                         <Label HorizontalTextAlignment="Center" Margin="0,-5,0,-5"  VerticalTextAlignment="Center" Grid.Column="0"  Text="{Binding ID , Mode=TwoWay}" 
-                            
+                            IsEnabled="{Binding BindingContext.Calibration_Table, Source={x:Reference Name=MyPageName}}"
                             Style="{DynamicResource ListItemTextStyle}" 
                             FontSize="Small" 
                             TextColor="Black"/>
 
-                                                        <Entry HorizontalTextAlignment="Center" Margin="-5" VerticalTextAlignment="Center" Grid.Column="1"  Text="{Binding Pressure , Mode=TwoWay}" 
+                                                        <Entry HorizontalTextAlignment="Center" IsEnabled="{Binding BindingContext.Calibration_Table, Source={x:Reference Name=MyPageName}}" Margin="-5" VerticalTextAlignment="Center" Grid.Column="1"  Text="{Binding Pressure , Mode=TwoWay}" 
                            
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="Small" 
                             TextColor="Black"/>
-                                                        <Entry HorizontalTextAlignment="Center" Margin="-5" VerticalTextAlignment="Center" Grid.Column="2"  Text="{Binding Kod_ACP_1 , Mode=TwoWay}" 
+                                                        <Entry HorizontalTextAlignment="Center" IsEnabled="{Binding BindingContext.Calibration_Table, Source={x:Reference Name=MyPageName}}" Margin="-5" VerticalTextAlignment="Center" Grid.Column="2"  Text="{Binding Kod_ACP_1 , Mode=TwoWay}" 
                            
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="Small" 
                             TextColor="Black"/>
-                                                        <Entry HorizontalTextAlignment="Center"  Margin="-5" VerticalTextAlignment="Center" Grid.Column="3"  Text="{Binding Kod_ACP_2 , Mode=TwoWay}" 
+                                                        <Entry HorizontalTextAlignment="Center" IsEnabled="{Binding BindingContext.Calibration_Table, Source={x:Reference Name=MyPageName}}" Margin="-5" VerticalTextAlignment="Center" Grid.Column="3"  Text="{Binding Kod_ACP_2 , Mode=TwoWay}" 
                            
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="Small" 
                             TextColor="Black"/>
-                                                        <Entry HorizontalTextAlignment="Center" Margin="-5" VerticalTextAlignment="Center" Grid.Column="4"  Text="{Binding Kod_ACP_3 , Mode=TwoWay}" 
+                                                        <Entry HorizontalTextAlignment="Center" Margin="-5" VerticalTextAlignment="Center" IsEnabled="{Binding BindingContext.Calibration_Table, Source={x:Reference Name=MyPageName}}" Grid.Column="4"  Text="{Binding Kod_ACP_3 , Mode=TwoWay}" 
                            
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="Small" 
                             TextColor="Black"/>
-                                                        <Entry HorizontalTextAlignment="Center" Margin="-5" VerticalTextAlignment="Center" Grid.Column="5"  Text="{Binding Kod_ACP_4 , Mode=TwoWay}" 
-                           
-                            Style="{DynamicResource ListItemDetailTextStyle}"
-                            FontSize="Small" 
-                            TextColor="Black"/>
-
+                                                        <Entry HorizontalTextAlignment="Center" IsEnabled="{Binding BindingContext.Calibration_Table, Source={x:Reference Name=MyPageName}}" 
+                                                               Margin="-5" VerticalTextAlignment="Center" Grid.Column="5"  Text="{Binding Kod_ACP_4 , Mode=TwoWay}" 
+                                                               Style="{DynamicResource ListItemDetailTextStyle}"
+                                                               FontSize="Small" TextColor="Black"/>
+                                                        <!--CommandParameter="{Binding Source={x:DataTemplate model:Calib_dav},Path=ID,StringFormat='{0}'}"-->
+                                                        
+                                                        <Button Text="Get" Grid.Column="6" FontSize="Small" CornerRadius="5"  Margin="2" Padding="0" WidthRequest="20" HeightRequest="20"
+                                                                Command="{Binding BindingContext.SelectGridLine, Source={x:Reference Name=MyPageName}}" CommandParameter="{Binding .}"
+                                                                />
                                                     </Grid>
                                                 </DataTemplate>
                                             </CollectionView.ItemTemplate>

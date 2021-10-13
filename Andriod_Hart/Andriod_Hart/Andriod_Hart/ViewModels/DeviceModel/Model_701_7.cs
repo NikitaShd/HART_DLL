@@ -31,15 +31,17 @@ namespace Andriod_Hart.ViewModels.DeviceModel
     }
     public class Calib_dav
     {
+        public int Parent_ID { get; set; }
         public int ID { get; set; }
         public float Pressure { get; set; }
         public string Kod_ACP_1 { get; set; }
         public string Kod_ACP_2 { get; set; }
         public string Kod_ACP_3 { get; set; }
         public string Kod_ACP_4 { get; set; }
-        public Calib_dav(int i,float P,string K1, string K2, string K3, string K4)
+        public Calib_dav(int i,int j,float P,string K1, string K2, string K3, string K4)
         {
-            ID = i;
+            Parent_ID = i;
+            ID = j;
             Pressure = P;
             Kod_ACP_1 = K1;
             Kod_ACP_2 = K2;
@@ -54,6 +56,7 @@ namespace Andriod_Hart.ViewModels.DeviceModel
         public ObservableCollection<Calib_tem> Calib { get; set; } = new ObservableCollection<Calib_tem> { };
         public Command Calibration_Table_set { get; }
         public Command Calibration_Table_get { get; }
+        
         bool calibration_Table = true;
         public bool Calibration_Table { get => calibration_Table; set { calibration_Table = value; OnPropertyChanged();} }
         public bool Calibration_Table_invers { get => !(Calibration_Table); set { Calibration_Table = !(value); OnPropertyChanged(); } }
@@ -125,12 +128,17 @@ namespace Andriod_Hart.ViewModels.DeviceModel
         public string Max_DAC { get => max_DAC; set { max_DAC = value; OnPropertyChanged(); } }
         string max_ADC = "";
         public string Max_ADC { get => max_ADC; set { max_ADC = value; OnPropertyChanged(); } }
+
+        public Command SelectGridLine { get; }
+        bool SelectButton = true;
+        public bool SelectButton_Changed { get => SelectButton; set { SelectButton = value; OnPropertyChanged(); } }
         public Model_701_7()
         {
             MTM_Temperature_sensor.AddRange(Conect.MTM701_Cods_TempSignal);
             MTM_Presure_sensor.AddRange(Conect.MTM701_Cods_Pressure);
             MTM_tupe_ys.AddRange(Conect.MTM701_Cods_Type);
             MTM_priv_ys.AddRange(Conect.MTM701_Cods_Priv);
+            SelectGridLine = new Command(_SelectGridLine , canExecute: (object _) => Calibration_Table);
             Calibration_Table_get = new Command(_Calibration_Table, canExecute: () => Calibration_Table);
             Calibration_Table_set = new Command(_Calibration_Table_write, canExecute: () => Calibration_Table);
             ADC_Cods_get = new Command(_ADC_Cods, canExecute: () => ADC_Cods);
@@ -138,7 +146,7 @@ namespace Andriod_Hart.ViewModels.DeviceModel
             Dev_Param_set = new Command(_Dev_Param_set, canExecute: () => Dev_Param);
             Calibration_Current_set = new Command(_Calibration_Current_set, canExecute: () => Calibration_Current);
             Calibration_Current_get = new Command(_Calibration_Current_get, canExecute: () => Calibration_Current);
-            for (int i = 0; i <= 1; i++)
+            for (int i = 0; i <= 4; i++)
             {
                 ObservableCollection<Calib_dav> temp = new ObservableCollection<Calib_dav>();
                 for (int j = 0; j <= 9; j++)
@@ -146,6 +154,7 @@ namespace Andriod_Hart.ViewModels.DeviceModel
                     Calib_dav temp2 = new Calib_dav();
                     temp2.ID = j;
                     temp2.Pressure = 0;
+                    temp2.Parent_ID = i;
                     temp2.Kod_ACP_1 = "0x0000";
                     temp2.Kod_ACP_2 = "0x0000";
                     temp2.Kod_ACP_3 = "0x0000";
@@ -164,9 +173,125 @@ namespace Andriod_Hart.ViewModels.DeviceModel
             Title = "MTM701.7";
            
         }
+        async void _SelectGridLine(object parameter)
+        {
+            Calibration_Table = false;
+            SelectGridLine.ChangeCanExecute();
+            Calibration_Table_get.ChangeCanExecute();
+            Calibration_Table_set.ChangeCanExecute();
+            Type obtype = parameter.GetType();
+            if (typeof(Calib_dav) == obtype)
+            {
+                Calib_dav temp = (Calib_dav)parameter;
+              
+                try
+                {
+                    string[] s_res = { };
+                    await Task.Run(() =>
+                    {
+                        lock (balanceLock)
+                        {
+                            Hart_conection.MTM701_Comand_130(Master_ID, Dev_Adres,
+                         ref s_res);
+                        }
+                    });
+                    //p_sensor = s_res[0];
+                    //t_sensor = s_res[1];
+                    //v_sensor = s_res[2];
+                    //c_sensor = s_res[3];
+                    //oc_sensor = s_res[4];
+                    Calib_dav Dav = Calib[temp.Parent_ID]._Davs[temp.ID];
+                    Dav.Kod_ACP_1 = s_res[0];
+                    Dav.Kod_ACP_2 = s_res[1];
+                    Dav.Kod_ACP_3 = s_res[2];
+                    Dav.Kod_ACP_4 = s_res[3];
+                    Calib[temp.Parent_ID]._Davs.RemoveAt(temp.ID);
+                    Calib[temp.Parent_ID]._Davs.Insert(temp.ID, Dav);
+
+                    float pres = Calib[temp.Parent_ID]._Davs[temp.ID].Pressure;
+                    string kod_1 = Calib[temp.Parent_ID]._Davs[temp.ID].Kod_ACP_1,
+                           kod_2 = Calib[temp.Parent_ID]._Davs[temp.ID].Kod_ACP_2,
+                           kod_3 = Calib[temp.Parent_ID]._Davs[temp.ID].Kod_ACP_3,
+                           kod_4 = Calib[temp.Parent_ID]._Davs[temp.ID].Kod_ACP_4;
+                  
+                    await Task.Run(() =>
+                    {
+                        lock (balanceLock)
+                        {
+                            Hart_conection.MTM701_Comand_135(Master_ID, Dev_Adres, 1, temp.Parent_ID, temp.ID,
+                            ref pres,
+                            ref kod_1,
+                            ref kod_2,
+                            ref kod_3,
+                            ref kod_4);
+                        }
+                    });
+                }
+                catch (Exception ex)
+                {
+                    await Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Eror :", ex.Message, "Cancel");
+                }
+            }
+            else if (typeof(Calib_tem) == obtype)
+            {
+                Calib_tem temp = (Calib_tem)parameter;
+                try
+                {
+                    string[] s_res = { };
+                    await Task.Run(() =>
+                    {
+                        lock (balanceLock)
+                        {
+                            Hart_conection.MTM701_Comand_130(Master_ID, Dev_Adres,
+                         ref s_res);
+                        }
+                    });
+                    //p_sensor = s_res[0];
+                    //t_sensor = s_res[1];
+                    //v_sensor = s_res[2];
+                    //c_sensor = s_res[3];
+                    //oc_sensor = s_res[4];
+                    Calib_tem Dav = Calib[temp.ID];
+                    Dav.Kod_ACP_Temperature_Sensor = s_res[1];
+                    Dav.Kod_ACP_Voltage_Sensor = s_res[2];
+                    Dav.Kod_ACP_Сurrent_Sensor = s_res[3];
+                    Calib.RemoveAt(temp.ID);
+                    Calib.Insert(temp.ID, Dav);
+                    float Temperature = Calib[temp.ID].Temperature;
+                    string kod1 = Calib[temp.ID].Kod_ACP_Temperature_Sensor;
+                    string kod2 = Calib[temp.ID].Kod_ACP_Voltage_Sensor;
+                    string kod3 = Calib[temp.ID].Kod_ACP_Сurrent_Sensor;
+                    
+                    await Task.Run(() =>
+                    {
+                        lock (balanceLock)
+                        {
+                            Hart_conection.MTM701_Comand_134(Master_ID, Dev_Adres, 1, temp.ID,
+                            ref Temperature,
+                            ref kod1,
+                            ref kod2,
+                            ref kod3);
+                        }
+                    });
+                }
+                catch (Exception ex)
+                {
+                    await Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Eror :", ex.Message, "Cancel");
+                }
+            }
+            else
+            {
+                await Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Eror :", parameter.ToString(), "Cancel");
+            }
+            Calibration_Table = true;
+            SelectGridLine.ChangeCanExecute();
+            Calibration_Table_get.ChangeCanExecute();
+            Calibration_Table_set.ChangeCanExecute();
+        }
         async void _Calibration_Table()
         {
             Calibration_Table = false;
+            SelectGridLine.ChangeCanExecute();
             Calibration_Table_get.ChangeCanExecute();
             Calibration_Table_set.ChangeCanExecute();
             Calib.Clear();
@@ -230,7 +355,7 @@ namespace Andriod_Hart.ViewModels.DeviceModel
                                         }
                                     }
                                 });
-                                Calib[i]._Davs.Add(new Calib_dav(j, pres, kod_1, kod_2, kod_3, kod_4));
+                                Calib[i]._Davs.Add(new Calib_dav(i,j, pres, kod_1, kod_2, kod_3, kod_4));
                             }
                         }
                     }
@@ -242,14 +367,16 @@ namespace Andriod_Hart.ViewModels.DeviceModel
                 await Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Eror :", ex.Message, "Cancel");
             }
             Calibration_Table = true;
+            SelectGridLine.ChangeCanExecute();
             Calibration_Table_get.ChangeCanExecute();
             Calibration_Table_set.ChangeCanExecute();
-            
+
             Progres = "Calibration Table";
         }
         async void _Calibration_Table_write()
         {
             Calibration_Table = false;
+            SelectGridLine.ChangeCanExecute();
             Calibration_Table_get.ChangeCanExecute();
             Calibration_Table_set.ChangeCanExecute();
             for (int i = 0; i <= 4; i++)
@@ -294,6 +421,7 @@ namespace Andriod_Hart.ViewModels.DeviceModel
                 }
             }
             Calibration_Table = true;
+            SelectGridLine.ChangeCanExecute();
             Calibration_Table_get.ChangeCanExecute();
             Calibration_Table_set.ChangeCanExecute();
             Progres = "Calibration Table";

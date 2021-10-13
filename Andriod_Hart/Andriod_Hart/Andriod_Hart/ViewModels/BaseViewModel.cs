@@ -194,7 +194,10 @@ namespace Andriod_Hart.ViewModels
         public static BluetoothSocket btSocket = null;
         public static _Conect Hart_conection ;
         public static byte[] Dev_Adres ;
-       
+
+        public const string Name_Tameout = "TameoutProperty";
+        public const string Name_Master = "MasterProperty";
+        public const string Name_PrLeng = "RreambulLengProperty";
         public object balanceLock { get; } = new object();
         string title = string.Empty;
         public string Title

@@ -5,9 +5,7 @@ D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\Andr
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\_VerifyXamarinAndroidSupportVersions.stamp
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\stamp\_BuildLibraryImportsCache.stamp
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res.flag
-D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\14\jl\files.cache
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\34\jl\files.cache
-D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\35\jl\files.cache
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\R.txt
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\R.cs.flag
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\Andriod_Hart.Android.csproj.CoreCompileInputs.cache
@@ -23,7 +21,6 @@ D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\bin\Debug\Class_H
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\bin\Debug\Andriod_Hart.pdb
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\bin\Debug\Class_HART.pdb
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\bin\Debug\Class_HART.dll.mdb
-D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\41\jl\files.cache
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\Andriod_Hart.Android.csproj.CopyComplete
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\Andriod_Hart.Android.dll
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\Andriod_Hart.Android.pdb
@@ -493,12 +490,7 @@ D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\stam
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\stamp\_GeneratePackageManagerJava.stamp
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\stamp\_ResolveLibraryProjectImports.stamp
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\13\jl\files.cache
-D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\18\jl\files.cache
-D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\20\jl\files.cache
-D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\27\jl\files.cache
-D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\31\jl\files.cache
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\33\jl\files.cache
-D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\39\jl\files.cache
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\android\assets\Xamarin.Forms.PancakeView.dll
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\android\src\crc64f8908e42fa42e603\PancakeDrawable.java
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\android\src\crc64f8908e42fa42e603\PancakeViewRenderer.java
@@ -532,3 +524,11 @@ D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res\
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res\drawable\splash_screen.xml
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\android\src\crc643d776877d84542f7\SplashActivity.java
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\res\drawable\titel.png
+D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\12\jl\files.cache
+D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\17\jl\files.cache
+D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\19\jl\files.cache
+D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\26\jl\files.cache
+D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\30\jl\files.cache
+D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\32\jl\files.cache
+D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\38\jl\files.cache
+D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart.Android\obj\Debug\90\lp\40\jl\files.cache

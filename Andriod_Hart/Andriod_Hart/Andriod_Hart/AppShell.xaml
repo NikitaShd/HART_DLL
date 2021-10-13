@@ -140,7 +140,7 @@
 
    
     <FlyoutItem Title="Setings" Icon="cog.png">
-        <ShellContent Route="Devices" ContentTemplate="{DataTemplate local:Devices}" />
+        <ShellContent Route="Setings" ContentTemplate="{DataTemplate local:Setings}" />
     </FlyoutItem>
     
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->

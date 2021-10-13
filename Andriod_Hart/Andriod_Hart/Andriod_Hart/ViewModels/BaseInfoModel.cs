@@ -12,6 +12,7 @@ namespace Andriod_Hart.ViewModels
 {
     public class BaseInfoModel : BaseViewModel
     {
+      
         string[] Values = new string[10] {"NAN", "NAN", "NAN", "NAN", "NAN", "NAN", "NAN", "NAN", "NAN", "NAN"};
         public string L_Manufacturer_Code  { get { return Values[0]; }  set { SetProperty(ref Values[0], value); } }
         public string L_Device_Type_Code   { get { return Values[1]; } set { SetProperty(ref Values[1], value); } }

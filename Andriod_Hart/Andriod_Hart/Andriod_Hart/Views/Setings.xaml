@@ -1,12 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Andriod_Hart.Views.Setings">
+             x:Class="Andriod_Hart.Views.Setings"  
+             xmlns:local="clr-namespace:Andriod_Hart.ViewModels"  
+             xmlns:model="clr-namespace:Andriod_Hart.Models" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="{Binding Title}" Margin="0,10,0,0" HorizontalTextAlignment="Center" FontSize="Large"/>
+            <yummy:PancakeView  Margin="10" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                <StackLayout>
+                    <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Tameout :" FontSize="Small" />
+                    <Picker Margin="4,-13,4,0"   TextColor="{StaticResource Text}" SelectedIndex="{Binding tamaut_int}" ItemsSource="{Binding Tamaut}" FontSize="Medium"/>
+                </StackLayout>
+            </yummy:PancakeView>
+            <yummy:PancakeView  Margin="10" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                <StackLayout>
+                    <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Master :" FontSize="Small" />
+                    <Picker Margin="4,-13,4,0"  TextColor="{StaticResource Text}"  SelectedIndex="{Binding master_int}" ItemsSource="{Binding Master}"  FontSize="Medium"/>
+                </StackLayout>
+            </yummy:PancakeView>
+            <yummy:PancakeView  Margin="10" BackgroundColor="{StaticResource Color_editor}" Padding="-1,0,-1,-6" CornerRadius="10,10,0,0">
+                <StackLayout>
+                    <Label Margin="8,3,0,0" TextColor="{StaticResource Text}" Text="Preambul Leng :" FontSize="Small" />
+                    <Picker Margin="4,-13,4,0"   TextColor="{StaticResource Text}"   SelectedIndex="{Binding leng_int}" ItemsSource="{Binding Leng}"  FontSize="Medium"/>
+                </StackLayout>
+            </yummy:PancakeView>
+           
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

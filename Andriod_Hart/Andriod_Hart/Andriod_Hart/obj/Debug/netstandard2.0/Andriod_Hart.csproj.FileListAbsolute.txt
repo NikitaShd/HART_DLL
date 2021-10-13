@@ -31,3 +31,4 @@ D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart\bin\Debug\netstandard2.0\
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart\obj\Debug\netstandard2.0\Views\Parametres.xaml.g.cs
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart\obj\Debug\netstandard2.0\Views\Devices.xaml.g.cs
 D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart\obj\Debug\netstandard2.0\Views\Device\Page_MTM701_7.xaml.g.cs
+D:\GIT\HART_DLL\Andriod_Hart\Andriod_Hart\Andriod_Hart\obj\Debug\netstandard2.0\Views\Setings.xaml.g.cs

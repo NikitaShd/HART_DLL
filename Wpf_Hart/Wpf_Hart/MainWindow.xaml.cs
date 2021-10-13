@@ -602,7 +602,7 @@ namespace Wpf_Hart
             {
                 lock (balanceLock)
                 {
-                    // HART_conection.Comand_22(Properties.Settings.Default.Master, Devise_long_adres, l_teg);
+                    HART_conection.Comand_22(Properties.Settings.Default.Master, Devise_long_adres, l_teg);
                     // Thread.Sleep(500);
                 }
             });

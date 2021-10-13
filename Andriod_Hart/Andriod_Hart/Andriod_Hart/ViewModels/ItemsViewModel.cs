@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Andriod_Hart.ViewModels
@@ -48,6 +49,7 @@ namespace Andriod_Hart.ViewModels
             {
                 bluetoothAdapter.Enable();
             }
+          
         }
 
         async Task ExecuteLoadItemsCommand()
@@ -157,6 +159,10 @@ namespace Andriod_Hart.ViewModels
                         }
 
                         Hart_conection = new _Conect(btSocket);
+                        Hart_conection.write_taim = Preferences.Get(Name_Tameout, 700);
+                        Hart_conection.preambula_leng = Preferences.Get(Name_PrLeng, 7);
+                        Master_ID = Preferences.Get(Name_Master, 0);
+
                     }
                     catch { }
                 }
